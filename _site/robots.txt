@@ -1,0 +1,1 @@
+Sitemap: http://localhost:4000/lecture_template/sitemap.xml

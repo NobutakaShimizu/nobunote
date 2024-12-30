@@ -1,0 +1,19 @@
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/eventmachine-1.2.7/ext/fastfilereader
+/Users/nobushimi/.rbenv/versions/3.3.6/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-i855qa sitelibdir\=./.gem.20241201-55380-i855qa clean
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-i855qa sitelibdir\=./.gem.20241201-55380-i855qa
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.bundle
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-i855qa sitelibdir\=./.gem.20241201-55380-i855qa install
+/usr/bin/install -c -m 0755 fastfilereaderext.bundle ./.gem.20241201-55380-i855qa
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-i855qa sitelibdir\=./.gem.20241201-55380-i855qa clean

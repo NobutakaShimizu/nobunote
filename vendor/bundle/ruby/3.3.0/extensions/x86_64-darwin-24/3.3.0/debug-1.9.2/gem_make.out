@@ -1,0 +1,19 @@
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/debug-1.9.2/ext/debug
+/Users/nobushimi/.rbenv/versions/3.3.6/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-xwo2uj sitelibdir\=./.gem.20241201-55380-xwo2uj clean
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-xwo2uj sitelibdir\=./.gem.20241201-55380-xwo2uj
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-xwo2uj sitelibdir\=./.gem.20241201-55380-xwo2uj install
+/usr/bin/install -c -m 0755 debug.bundle ./.gem.20241201-55380-xwo2uj/debug
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/debug-1.9.2/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-xwo2uj sitelibdir\=./.gem.20241201-55380-xwo2uj clean

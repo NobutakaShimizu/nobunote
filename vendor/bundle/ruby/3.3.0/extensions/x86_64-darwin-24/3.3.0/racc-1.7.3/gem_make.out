@@ -1,0 +1,18 @@
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/racc-1.7.3/ext/racc/cparse
+/Users/nobushimi/.rbenv/versions/3.3.6/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-k4l5dt sitelibdir\=./.gem.20241201-55380-k4l5dt clean
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-k4l5dt sitelibdir\=./.gem.20241201-55380-k4l5dt
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-k4l5dt sitelibdir\=./.gem.20241201-55380-k4l5dt install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20241201-55380-k4l5dt/racc
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-k4l5dt sitelibdir\=./.gem.20241201-55380-k4l5dt clean

@@ -1,0 +1,18 @@
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.2/ext/stringio
+/Users/nobushimi/.rbenv/versions/3.3.6/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.2/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-fek22z sitelibdir\=./.gem.20241201-55380-fek22z clean
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.2/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-fek22z sitelibdir\=./.gem.20241201-55380-fek22z
+compiling stringio.c
+linking shared-object stringio.bundle
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.2/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-fek22z sitelibdir\=./.gem.20241201-55380-fek22z install
+/usr/bin/install -c -m 0755 stringio.bundle ./.gem.20241201-55380-fek22z
+
+current directory: /Users/nobushimi/Documents/GitHub/just-the-docs/vendor/bundle/ruby/3.3.0/gems/stringio-3.1.2/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20241201-55380-fek22z sitelibdir\=./.gem.20241201-55380-fek22z clean
