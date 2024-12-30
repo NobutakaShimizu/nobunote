@@ -1,0 +1,55 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="ページ1" id="QA49zqoxARoJChQHKG7e">
+    <mxGraphModel dx="954" dy="604" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-98" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="307.5" y="70" width="225" height="225" as="geometry" />
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-95" value="" style="shape=waypoint;sketch=0;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="172.5" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-96" value="$$g_1\colon x\mapsto 0$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="334" y="142.5" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-100" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;dashed=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="452" y="288.5" as="sourcePoint" />
+            <mxPoint x="422" y="188.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-101" value="$$0.25$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="416" y="222.5" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-109" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="81" y="80" width="225" height="225" as="geometry" />
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-110" value="" style="shape=waypoint;sketch=0;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;" vertex="1" parent="1">
+          <mxGeometry x="183.5" y="182.5" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-111" value="$$g_2\colon x\mapsto x_1$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="60" y="142.5" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-114" value="" style="shape=waypoint;sketch=0;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;" vertex="1" parent="1">
+          <mxGeometry x="297" y="177.5" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-116" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="317.5" y="352.5" as="sourcePoint" />
+            <mxPoint x="307.5" y="222.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-117" value="$$g_1,g_2$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="235" y="358" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-118" value="どちらからも距離0.25" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="301" y="361" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rkfB6d5xKjTVFHqS0ALG-119" value="$$g&#39;$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="266" y="168.5" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

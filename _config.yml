@@ -13,11 +13,11 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: 講義資料テンプレート
-description: 講義資料のテンプレート
-baseurl: "/lecture_template" # the subpath of your site, e.g. /blog
+title: NobuNote
+description: Private Note of Nobutaka Shimizu
+baseurl: "/nobunote" # the subpath of your site, e.g. /blog
 url: "https://nobutakashimizu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-repository: lecture_template # for github-metadata
+repository: nobunote # for github-metadata
 
 permalink: pretty
 
@@ -192,6 +192,7 @@ plugins:
   - jekyll-github-metadata
   - jekyll-include-cache
   - jekyll-sitemap
+
 
 kramdown:
   syntax_highlighter_opts:
