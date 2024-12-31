@@ -137,12 +137,27 @@ $$
     \end{align*}
   $$
 
+<details markdown="1" style="background-color: #eee;">
+<summary style="display: list-item">証明</summary>
+  
+</details>
+
+
   より, 確かにペア独立性を満たします.
   ここで最後の等式では, $X_i$たちの独立性より, $Y_{I\setminus J}$と$Y_{J\setminus I}$が独立であることを用いています ($I\ne J$より$I\setminus J$と$J\setminus I$はどちらも非空であることに注意). $\square$
 
 </details>
 
 この方法を用いると$n$ビットのエントロピーから長さ$2^n-1$の擬似ランダム文字列を得られるので, 指数的に長さを延ばすことが可能となります.
+
+### ランダム線形関数としての視点
+
+  例2の構成で得られる$(Y_I)_{I\ne \emptyset}$は, 一様ランダムなベクトル$c \sim \mathbb{F}_2^n$に対して線形関数$z \mapsto \inprod{c,z}$を考えて
+  その($0$以外での)真理値表としてみなすことができます. 
+  この解釈は [Goldreich-Levinの定理]({{site.baseurl}}/docs/average_case_complexity/Goldreich-Levin)
+  の証明において本質的に効いてきます.
+
+
 
 ## 例3. ランダムな直線
 
@@ -211,5 +226,3 @@ $$
 </details>
 
 ランダムな直線に基づく生成はランダムな$a,b\sim \mathbb{F}_q$を受け取って$q$個の$\mathbb{F}_q$の元を出力しています.
-
-
