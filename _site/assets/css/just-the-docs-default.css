@@ -7357,7 +7357,7 @@ p.definition::before, blockquote.definition::before {
   content: "定義.";
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7365,7 +7365,7 @@ p.definition > .definition-title, blockquote.definition > .definition-title {
   color: #183385;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7383,7 +7383,7 @@ p.definition-title > p:first-child, blockquote.definition-title > p:first-child 
   color: #183385;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7422,7 +7422,7 @@ p.lemma::before, blockquote.lemma::before {
   content: "補題.";
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7430,7 +7430,7 @@ p.lemma > .lemma-title, blockquote.lemma > .lemma-title {
   color: #026e57;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7448,7 +7448,7 @@ p.lemma-title > p:first-child, blockquote.lemma-title > p:first-child {
   color: #026e57;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7487,7 +7487,7 @@ p.proposition::before, blockquote.proposition::before {
   content: "命題.";
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7495,7 +7495,7 @@ p.proposition > .proposition-title, blockquote.proposition > .proposition-title 
   color: #381885;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7513,7 +7513,7 @@ p.proposition-title > p:first-child, blockquote.proposition-title > p:first-chil
   color: #381885;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7552,7 +7552,7 @@ p.theorem::before, blockquote.theorem::before {
   content: "定理.";
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7560,7 +7560,7 @@ p.theorem > .theorem-title, blockquote.theorem > .theorem-title {
   color: #dd2e2e;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7578,7 +7578,7 @@ p.theorem-title > p:first-child, blockquote.theorem-title > p:first-child {
   color: #dd2e2e;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7617,7 +7617,7 @@ p.corollary::before, blockquote.corollary::before {
   content: "系.";
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7625,7 +7625,7 @@ p.corollary > .corollary-title, blockquote.corollary > .corollary-title {
   color: #e7af06;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7643,7 +7643,7 @@ p.corollary-title > p:first-child, blockquote.corollary-title > p:first-child {
   color: #e7af06;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7682,7 +7682,7 @@ p.remark::before, blockquote.remark::before {
   content: "注釈.";
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7690,7 +7690,7 @@ p.remark > .remark-title, blockquote.remark > .remark-title {
   color: #777777;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }
@@ -7708,7 +7708,7 @@ p.remark-title > p:first-child, blockquote.remark-title > p:first-child {
   color: #777777;
   display: block;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 0.75em;
   padding-bottom: 0.125rem;
 }

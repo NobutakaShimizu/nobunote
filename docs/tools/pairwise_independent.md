@@ -224,3 +224,56 @@ $$
 </details>
 
 ランダムな直線に基づく生成はランダムな$a,b\sim \mathbb{F}_q$を受け取って$q$個の$\mathbb{F}_q$の元を出力しています.
+
+## 性質
+
+独立な確率変数の和の分散はそれぞれの確率変数の分散の和に等しいことが知られていますが,
+この性質はペア独立な確率変数の和についても成り立ちます.
+
+{: .lemma }
+> $X_1,\dots,X_n$をペア独立な確率変数とし, $S=\sum_{i\in[n]} X_i$とすると, $\Var[S] = \sum_{i\in[n]} \Var[X_i]$が成り立つ.
+
+<details markdown="1" style="background-color: #eee;">
+<summary style="display: list-item">証明</summary>
+
+確率変数はシフト(定数$a$に対して$X$を$X+a$に変換する操作)に対して分散は変わらないので, $X_i$の期待値を$0$にシフトしても一般性を失いません.
+  このとき, $S$の期待値は$0$なので, その分散は$\E[S^2]$に等しくなります.
+  また, $X_i$たちはペア独立なので, $i\ne j$に対して$\E[X_iX_j]=\E[X_i]\E[X_j]=0$が成り立ちます.
+  実際, $i\ne j$に対して$\Pr[X_i=x_i \text{ and }X_j=x_j]=\Pr[X_i=x_i]\Pr[X_j=x_j]$だから
+
+  $$
+    \begin{align*}
+      \E[X_iX_j] &= \sum_{x_i,x_j} x_i x_j \Pr[X_i=x_i \text{ and }X_j=x_j] \\
+      &= \sum_{x_i,x_j} x_i x_j \Pr[X_i=x_i]\Pr[X_j=x_j] \\
+      &= \left( \sum_{x_i} x_i \Pr[X_i=x_i] \right) \left( \sum_{x_j} x_j \Pr[X_j=x_j] \right) \\
+      &= \E[X_i]\E[X_j] \\
+      &= 0
+    \end{align*}
+  $$
+  
+  となります.
+  従って, 期待値の線形性より
+
+  $$
+    \begin{align*}
+      \E[S^2] &= \E\left[ \left( \sum_{i\in[n]} X_i \right)^2 \right] \\
+      &= \E\left[ \sum_{i\in[n]} X_i^2 + \sum_{i\ne j} X_iX_j \right] \\
+      &= \sum_{i\in[n]} \E[X_i^2] + \sum_{i\ne j} \E[X_iX_j] \\
+      &= \sum_{i\in[n]} \E[X_i^2] \\
+      &= \sum_{i\in[n]} \Var[X_i] & & \because\text{ $X_i$の期待値は$0$}
+    \end{align*}
+  $$
+  
+  となり主張を得ます. $\square$
+</details>
+
+このことから和$S$の分散が簡単に計算できるため, <a href="{{site.baseurl}}/docs/tools/prob_inequalities#chebyshev-inequality">チェビシェフの不等式</a>より以下を得ます:
+
+{: .corollary }
+> $X_1,\dots,X_n$をペア独立な確率変数とし, $S=\sum_{i\in[n]} X_i$とすると, 任意の$a>0$に対して
+> 
+> $$
+  \begin{align*}
+    \Pr\qty[\abs{S-\E[S]}\ge a] \le \frac{\sum_{i\in[n]} \Var[X_i]}{a^2}.
+  \end{align*}
+> $$
