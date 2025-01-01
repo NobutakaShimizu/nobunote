@@ -36,7 +36,15 @@
 	"link":{
 		"prefix": "link",
 		"body":[
-			"![text]({{site.baseurl}}/docs/$1)"
+			"[text]({{site.baseurl}}/docs/$1)"
+		]
+	},
+	"figure":{
+		"prefix": "fig",
+		"body":[
+			"{: align=\"center\"}",
+			"![text]({{site.baseurl}}/docs/$1)",
+			"{: width=70%}",
 		]
 	},
 	"definition":{

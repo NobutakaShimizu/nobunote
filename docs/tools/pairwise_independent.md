@@ -157,8 +157,6 @@ $$
   この解釈は [Goldreich-Levinの定理]({{site.baseurl}}/docs/average_case_complexity/Goldreich-Levin)
   の証明において本質的に効いてきます.
 
-
-
 ## 例3. ランダムな直線
 
 要素数$q$の有限体$\mathbb{F}_q$に対して一様ランダムに$a,b\sim \mathbb{F}_q$を選び, 各$i\in \mathbb{F}_q$に対して
