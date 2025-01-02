@@ -269,6 +269,7 @@ $$
 
 このことから和$S$の分散が簡単に計算できるため, <a href="{{site.baseurl}}/docs/tools/prob_inequalities#chebyshev-inequality">チェビシェフの不等式</a>より以下を得ます:
 
+<div id="pairwise_independent_chebyshev" markdown="1">
 {: .corollary }
 > $X_1,\dots,X_n$をペア独立な確率変数とし, $S=\sum_{i\in[n]} X_i$とすると, 任意の$a>0$に対して
 > 
@@ -277,3 +278,4 @@ $$
     \Pr\qty[\abs{S-\E[S]}\ge a] \le \frac{\sum_{i\in[n]} \Var[X_i]}{a^2}.
   \end{align*}
 > $$
+</div>

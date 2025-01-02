@@ -14,6 +14,7 @@ Goldreich-Levinの定理とは, [Goldreich, Levin (1989)](https://dl.acm.org/doi
 
 と理解されています.
 ただしここではそれぞれの文脈の前知識を必要としない解説をします.
+イメージとしては, Goldreich-Levinの定理とは, 任意のBoolean関数$f$がオラクルアクセスとして与えられたとき, その関数に「近い」全ての線形関数を効率的に列挙するアルゴリズムを与える定理と言えます.
 
 ## ウォームアップ1. 線形関数の復元
 
@@ -275,37 +276,69 @@ Goldreich-Levinの定理とはそのような全ての線形関数$g$を多項�
 アルゴリズムのベースラインは<a href="#algorithm2">アルゴリズム2</a>と同じです.
 ランダムな$x$に対して$f(x+e_i)-f(x)$を計算し, これを繰り返して$x$に関して多数決をとることによって係数ベクトルの第$i$成分$c_i$を確率$1-1/n$で復元し, これを各$i\in[n]$に対して行うというものです.
 
-しかしこの方法では$f(x+e_i)$と$f(x)$の二つの値を得なければならず, オラクルアクセスを使って得ようとすると$f$のノイズが小さくなければ精度を保証できません.
-そこで, Goldreich-Levinのアルゴリズムでは, **$f(x)$の値を推測する**という方針をとります.
+しかしこの方法では, 求めたい線形関数$g$に対して$g(x+e_i)$と$g(x)$の二つの値を得なければならず, $f$へのオラクルアクセスを使って得ようとすると$f$のノイズが小さくなければ精度を保証できません.
+そこで, Goldreich-Levinのアルゴリズムでは, **$g(x)$の値を推測する**という方針をとります.
 例えば$x_1,\dots,x_T$に関して$f(x_j + e_i) - f(x_j)$の多数決をとることを考えましょう.
-このとき, $(f(x_1),\dots,f(x_T)) \in \binset^T$は$2^T$通りしかとらないので, 各$(a_1,\dots,a_T)\in \binset^T$に対して
-  - ${}^{\forall}j\in[T],f(x_j)=a_j$だと思って$f(x_j+e_i) - a_j$を計算
-  - 計算した値を$j$に関して多数決をとって, その結果を$\widetilde{c}_i$の推測値とする.
+このとき, $(g(x_1),\dots,g(x_T)) \in \binset^T$は$2^T$通りしかないので, 各$(a_1,\dots,a_T)\in \binset^T$に対して
+  - ${}^{\forall}j\in[T],g(x_j)=a_j$だと思って$f(x_j+e_i) - a_j$を計算する. ここで, $x_j\sim\binset^n$より確率$\frac{1}{2}+\varepsilon$で$f(x_j+e_i)=g(x_j+e_i)$となる.
+  - $j$に関して多数決をとって, その結果を$\widetilde{c}_i$の推測値とする.
   - 全ての$i=1,\dots,n$に対して$\widetilde{c}_i$を推測して$\widetilde{c}=(\widetilde{c}_1,\dots,\widetilde{c}_n)$を出力リストに加える.
 
-という操作を行うことによって$2^T$個の$c$の候補を得ることができます.
+という操作を行うことによって$2^T$個の$c$の候補を得ることができます (全ての$(a_1,\dots,a_T)\in \binset^T$に対して行なっているので, どれかの$(a_1,\dots,a_T)$では求めたい線形関数$g$が$g(x_j)=a_j$を満たすはずです).
 ここでは, オラクルアクセスは$f(x_j+e_i)$の取得のみに用いており, $x_j$が$\binset^n$上で一様ランダムなベクトルなので$f(x_j+e_i)=\inprod{c,x_j+e_i}$となる確率は$\frac{1}{2}+\varepsilon$となります.
 
 {: align="center"}
 ![オラクルアクセスのイメージ]({{site.baseurl}}/docs/average_case_complexity/images/majority2.drawio.svg)
 {: width=70%}
 
-各$i=1,\dots,n$に関するunion boundを適用するには多数決の結果が確率$1-1/n$で正しくなくてはならず, そのためには少なくとも $T \ge \frac{\log n}{\varepsilon^2}$でなければなりません.
-残念ながらこのアルゴリズムの計算量は$2^T \ge n^{\Omega(1/\varepsilon^2)}$に比例するので, <a href="#GLtheorem">Goldreich-Levinの定理</a>で要求される計算量$\poly(n,1/\varepsilon)$よりも大きくなってしまいます.
+各$i=1,\dots,n$に関するunion boundを適用するには多数決の結果が確率$1-\frac{1}{n}$で正しくなくてはならず, そのためには少なくとも $T \ge \frac{\log n}{\varepsilon^2}$でなければなりません.
+
+残念ながらこのアルゴリズムは$2^T$通りの推定を列挙する必要があるため, その時間計算量は少なくとも$2^T \ge n^{\Omega(1/\varepsilon^2)}$以上となり, <a href="#GLtheorem">Goldreich-Levinの定理</a>で要求される計算量$\poly(n,1/\varepsilon)$よりも大きくなってしまいます.
 この計算量を改善するために, $x_1,\dots,x_T$を[ペア独立]({{site.baseurl}}/docs/tools/pairwise_independent)に生成して, 列挙すべき$(a_1,\dots,a_T)$の個数を少なくするという工夫を行います.
 
 ### ペア独立性+線形性を用いた多数決
 
-肝となる観察は真の関数が線形関数なので,
-$f(x_i)=b_i,f(x_j)=b_j$と推定したとき, $f(x_i+x_j)=a_i+a_j$と推定できるはずです.
-より一般に点$x_1,\dots,x_T$における$f$の値を$a_1,\dots,a_T$と推定したとき, 全ての非空な$S\subseteq[T]$に対して
-点$x_S=\sum_{i\in S}x_i$における$f$の値は$\sum_{i\in S} a_i$と推定できます.
-さらに, 独立一様ランダムに$x_1,\dots,x_T \sim \binset^n$を選んだとき, [ペア独立の例2]({{site.baseurl}}/docs/tools/pairwise_independent#例2-ランダムビットの線形結合)より確率変数族
+オラクル$f$に近い線形関数の一つを$g$とし, この関数を求めることを考えます.
+関数$g$が線形関数なので,
+点$x_1,\dots,x_T$における$g$の値が$a_1,\dots,a_T$であるとき, 全ての非空な$S\subseteq[T]$に対して
+点$x_S=\sum_{i\in S}x_i$において$g(x_S)=\sum_{i\in S} a_i$が成り立ちます.
+最終的には全ての$(a_1,\dots,a_T)\in\binset^T$を列挙するアルゴリズムを考えるので, 以後では$g(x_j)=a_j$が成り立つような$(a_1,\dots,a_T)$に対して議論していきます.
+
+独立一様ランダムに$x_1,\dots,x_T \sim \binset^n$を選んだとき, [ペア独立の例2]({{site.baseurl}}/docs/tools/pairwise_independent#例2-ランダムビットの線形結合)より確率変数族
 $(x_S)$はペア独立になります.
 また, $x_S$上での$f$の推定値は$a_S=\sum_{i\in S}a_i$ですので, $S\ne \emptyset$を列挙して$f(x_S+e_i)-a_S$の多数決をとることによって$c_i$の推定値$\widetilde{c}_i$を計算できます.
+ここで線形関数$g$が$\dist(f,g) \le 0.5-\varepsilon$を満たすとすると, $x_S \in \binset^n$の周辺分布は一様なので
 
-ここでは$2^T-1$個のペア独立な確率変数の多数決を考えていますが, Chebyshevの不等式より, $2^T-1 \ge ...$ならば多数決は確率$1 - 1/n$で正解となります.
-よって$T=...$に対して上記のアルゴリズムを適用すれば計算量$2^T\cdot \poly(n)$で$c$を計算できます.
+$$
+  \begin{align*}
+    \Pr\qty[ f(x_S+e_i)=g(x_S+e_i) ] \ge \frac{1}{2} + \varepsilon
+  \end{align*}
+$$
+
+となります.
+まとめると, 確率変数$X_S$を
+$$
+  X_S = f(x_S+e_i) - a_S \pmod 2
+$$
+とすると, $X_S$は確率$\frac{1}{2}+\varepsilon$で$1$であり, しかも族$(X_S)_{S\ne \emptyset}$はペア独立性を持ちます.
+ここで
+$$Z = \sum_{S\ne\emptyset} X_S$$,
+$N=2^T-1$とすると$\E[Z]\ge \qty(\frac{1}{2} + \varepsilon) N$および
+各$X_S$の分散は高々$1$なので, <a href="{{site.baseurl}}/docs/tools/pairwise_independent#pairwise_independent_chebyshev">ペア独立な確率変数族の和に対するChebyshevの不等式</a>より, 
+
+$$
+  \begin{align*}
+    \Pr\qty[ S \le \frac{N}{2} ] &= \Pr\qty[ Z \le \E[Z] - \varepsilon N] \\
+    &\le \Pr\qty[ \abs{Z - \E[Z]} \ge \varepsilon N] \\
+    &\le \frac{1}{\varepsilon^2 N}.
+  \end{align*}
+$$
+
+よって, $N \ge 10n/\varepsilon^2$ならば, 確率$1-\frac{1}{10n}$で$(X_S)$らの多数決が$g(e_i)$に等しくなるので, 各$i\in[n]$に関するunion boundより, 確率$0.9$で$g$を復元できます (詳細は<a href="#algorithm3">アルゴリズム3</a>参照).
+
+オラクル$f$に近い各$g$に対してアルゴリズム3は確率$0.9$で$g$を復元します, 多項式回だけ繰り返すことによってこの復元確率を$1-2^{\poly(n)}$まで増幅できるので, その後に$g$に関するunion boundをとればGoldreich-Levinの定理が示されます (ありうる$g$は線形関数であることを踏まえれば高々$2^n$個ですが, 実際には$f$に近いという条件もあるのでその個数は$O(1/\varepsilon^2)$で抑えられることが知られています).
+
+なお, $N = 2^T -1 \ge 10n/\varepsilon^2$であれば上記のアルゴリズムは動くので, アルゴリズムの計算量は$\poly(n)\cdot O(2^T) = \poly(n,1/\varepsilon)$となります.
 
 ### アルゴリズム
 
@@ -314,17 +347,27 @@ $(x_S)$はペア独立になります.
 {: .corollary-title }
 > **アルゴリズム3.**
 >
-> 1. パラメータ$\ell = O(\log n)$を適切に選ぶ.
-> 2. 各$a=(a_1,\dots,a_\ell)\in \binset^\ell$に対して以下を行う:
->    1. 独立一様ランダムにベクトル$u_1,\dots,u_\ell \sim \binset^n$を選ぶ.
+> 1. パラメータ$T\in\Nat$を, $2^T > 10n/\varepsilon^2$を満たすように選ぶ.
+> 2. 各$a=(a_1,\dots,a_T)\in \binset^T$に対して以下を行う:
+>    1. 独立一様ランダムにベクトル$x_1,\dots,x_T \sim \binset^n$を選ぶ.
 >    2. 各$i=1,\dots,n$に対して以下を行う:
->       2. 各非空な$S\subseteq [\ell]$に対して$b_S = f(u_S+e_i) - a_S$を計算する. ここで$$u_S := \sum_{i\in S} u_i$$, $$a_S := \sum_{i\in I} a_i$$.
+>       2. 各非空な$S\subseteq [T]$に対して$b_S = f(x_S+e_i) - a_S$を計算する. ここで$$x_S := \sum_{i\in S} x_i$$, $$a_S := \sum_{i\in I} a_i$$.
 >       3. $(b_S)_{S\ne \emptyset}$の中で多数決をとり, その結果を$c_i$とする.
 >     2. $c_a = (c_1,\dots,c_n) \in \binset^n$とする.
-> 3. $(c_a)_{a\in \binset^\ell}$を出力する.
+> 3. $(c_a)_{a\in \binset^T}$を出力する.
 
 </div>
 
+### アルゴリズム3の計算量
+ループの外であらかじめ各$x_S$を計算しておくと
+ステップ2-bの各反復で計算量$O(2^T)$で実装できます.
+この反復が合計で$2^T\cdot n$回繰り返されるため,
+全体の計算量は
 
+$$
+  \begin{align*}
+    O(n \cdot (2^T)^2) = O(n N^2) = O(n^3/\varepsilon^4)
+  \end{align*}
+$$
 
-
+となります.
