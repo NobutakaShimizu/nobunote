@@ -34,10 +34,39 @@ $(1/2-\varepsilon)$-困難となることを主張します.
 > ある定数$C>0$が存在して, パラメータ$n\in\Nat,\delta>0,\varepsilon>0$に対し$k\ge C\log(1/\varepsilon)/\delta^2$ならば以下が成り立つ:
 > 関数$f\colon \binset^n\to\binset$が$\SIZE(s)$に対して$\delta$-困難ならば, 式(1)で定まる関数$f^{\oplus k}$は$\SIZE(s')$に対して$(1/2-\varepsilon)$-困難である. ただし$s' = ...$.
 
-YaoのXOR補題には様々な証明方法が知られていますが, ここではパラメータは悪いものの非常に簡潔で教育的な証明を紹介します.
+YaoのXOR補題には様々な証明方法が知られています.
+
+## サンプラーを使った簡潔な証明
+
+パラメータはよく知られるバージョンより悪いものの, 非常に簡潔で教育的な証明を紹介します.
 
 {: .proposition-title }
 > **命題 (弱いパラメータに対するYaoのXOR補題).**
 >
 > ある定数$C>0$が存在して, パラメータ$n\in\Nat,\delta>0,\varepsilon>0$に対し$k\ge C\log(1/\varepsilon)/\delta^2$ならば以下が成り立つ:
 > 関数$f\colon \binset^n\to\binset$が$\SIZE(s)$に対して$\delta$-困難ならば, 式(1)で定まる関数$f^{\oplus k}$は$\SIZE(s')$に対して$(1/2-\varepsilon)$-困難である. ただし$s' = ...$.
+
+証明では**サンプラー(sampler)**と呼ばれる道具を使います.
+
+{: .definition-title }
+> **定義(サンプラー).**
+> 
+> 確率変数の組$(X,Y)$は以下を満たすとき**$(\delta,\varepsilon)$-サンプラー**という:
+> 任意の関数$S \colon \supp(Y)\to [0,1]$に対して
+> 
+> $$
+  \begin{align*}
+    \Pr_{x\sim X} \left[ \abs*{ \E[S(Y)| X=x] - \E[S(Y)]} \ge \varepsilon \right] \le \delta.
+  \end{align*}
+> $$
+>
+> 同様に, $(X,Y)$は以下を満たすとき**乗法的$(\delta,\varepsilon)$-サンプラー**という: $\E[S(Y)]\ge \varepsilon$を満たす任意の関数$S\colon \supp(Y)\to[0,1]$に対して
+> 
+>$$
+  \begin{align*}
+    \Pr_{x\sim X}\left[\mathbb{E}[S(Y)|X=x] \le \frac{\mathbb{E}[S(Y)]}{2}\right] \le \delta.
+  \end{align*}
+>$$
+
+例えば$X$と$Y$が独立であれば明らかに$\E\left[S(Y) \vert X=x\right]=\E[S(Y)]$となるので$(0,0)$-サンプラーになります.
+
