@@ -81,6 +81,28 @@ $X$が連続値をとる場合についても, $\sum$を$\int$に置き換えて
   より主張を得る. $\square$
 </details>
 
+また, Markovの不等式を用いるとunion boundと呼ばれる基本的な不等式を簡単に証明できます (意外とこのことを知らない人が多いような気がします).
+
+{: .corollary-title }
+> **系 (union bound).**
+>
+> 事象$\calE_1,\dots,\calE_m$のうち少なくとも一つが発生する確率は高々$\Pr[\calE_1]+\dots+\Pr[\calE_m]$である.
+
+<details markdown="1" style="background-color: #eee;">
+<summary style="display: list-item">証明</summary>
+  事象$\calE_i$の指示確率変数を$\indicator_i$とし, $X = \indicator_1+\dots+\indicator_m$とします.
+  つまり, $\calE_i$が発生したら$\indicator_i=1$, そうでなければ$\indicator_i=0$で定まる確率変数を考えます.
+  少なくとも一つの事象が発生するということは$X\ge 1$と等しいので, $X$に対するMarkovの不等式より
+
+  $$
+    \begin{align*}
+      \Pr[\calE_1 \cup \cdots \cup \calE_m] = \Pr[X\ge 1] \le \E[X] = \Pr[\calE_1] + \cdots + \Pr[\calE_m]
+    \end{align*}
+  $$
+  
+  となり主張を得ます.
+
+</details>
 
 ## Chebyshevの不等式
 Chebyshevの不等式は分散が小さい確率変数に対する集中性を与える不等式です. Markovの不等式よりも強い上界を与えることができますが, 分散が大きい場合にはMarkovの不等式よりも弱い上界を与えることがあります.
