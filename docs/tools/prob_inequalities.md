@@ -53,6 +53,35 @@ Markovの不等式とは期待値よりはるかに大きい値をとる確率�
 </details>
 $X$が連続値をとる場合についても, $\sum$を$\int$に置き換えて同様に示すことができます.
 
+マルコフの不等式は基本的に$X$が大きすぎないことを示すために使われますが, 逆に$X$が小さすぎないこ
+とを示すためにも用いることができます.
+
+{: .corollary }
+>
+> $X$を$[0,1]$に値をとる確率変数とし, $\mu = \E[X] > 0$とすると, 任意の$0\le \varepsilon \le \mu$に対して
+> 
+> $$
+  \begin{align*}
+    \Pr[X > \mu-\varepsilon] \ge \frac{\varepsilon}{1-\mu+\varepsilon}\ge \varepsilon.
+  \end{align*}
+> $$
+
+<details markdown="1" style="background-color: #eee;">
+<summary style="display: list-item">証明</summary>
+  確率変数$1-X$に対してMarkovの不等式を適用すると
+
+  $$
+    \begin{align*}
+      \Pr[X \le \mu-\varepsilon] &= \Pr[1-X\ge 1-\mu+\varepsilon] \\
+      &\le \frac{1-\mu}{1-\mu+\varepsilon} \\
+      &= 1-\frac{\varepsilon}{1-\mu+\varepsilon}
+    \end{align*}
+  $$
+  
+  より主張を得る. $\square$
+</details>
+
+
 ## Chebyshevの不等式
 Chebyshevの不等式は分散が小さい確率変数に対する集中性を与える不等式です. Markovの不等式よりも強い上界を与えることができますが, 分散が大きい場合にはMarkovの不等式よりも弱い上界を与えることがあります.
 
@@ -80,7 +109,7 @@ Chebyshevの不等式は分散が小さい確率変数に対する集中性を�
     \end{align*}
   $$
 
-  より主張をえる. $\square$
+  より主張を得る. $\square$
 </details>
 
 ## Hoeffdingの不等式
@@ -100,8 +129,8 @@ Hoeffdingの不等式は独立な確率変数の和の集中性を与える基�
 > $$
 </div>
 
-## Chernoff限界
-Chernoff限界 (Chernoff bound) はHoeffdingの不等式と同様に, 独立な確率変数の和の集中性を与える不等式です. Hoeffdingの不等式では各確率変数$X_i$が$[0,1]$区間に収まる場合に成り立ちます汎用的な不等式ですが, Chernoff限界ではさらに$X_i$の期待値の情報を用いた上界を与えているため, 状況によってはHoeffdingの不等式よりも強い上界を与えることができます.
+## Chernoffバウンド
+Chernoffバウンド (Chernoff bound) はHoeffdingの不等式と同様に, 独立な確率変数の和の集中性を与える不等式です. Hoeffdingの不等式では各確率変数$X_i$が$[0,1]$区間に収まる場合に成り立ちます汎用的な不等式ですが, Chernoffバウンドではさらに$X_i$の期待値の情報を用いた上界を与えているため, 状況によってはHoeffdingの不等式よりも強い上界を与えることができます.
 
 {: .lemma-title }
 > **補題 (Chernoff限界)**
@@ -116,4 +145,4 @@ Chernoff限界 (Chernoff bound) はHoeffdingの不等式と同様に, 独立な�
 > $$
 
 
-<a href="#hoeffding-inequality">Hoeffdingの不等式</a>と比較すると, 期待値$\E[S]$が小さい場合にはChernoff限界の方が強い上界を与えることがわかります.
+<a href="#hoeffding-inequality">Hoeffdingの不等式</a>と比較すると, 期待値$\E[S]$が小さい場合にはChernoffバウンドの方が強い上界を与えることがわかります.

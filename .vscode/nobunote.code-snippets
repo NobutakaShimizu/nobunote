@@ -36,7 +36,13 @@
 	"link":{
 		"prefix": "link",
 		"body":[
-			"[text]({{site.baseurl}}/docs/$1)"
+			"[${1:text}]({{site.baseurl}}/docs/$2)"
+		]
+	},
+	"ref":{
+		"prefix": "ref",
+		"body":[
+			"<a href=\"{{site.baseurl}}/docs/$1)\">$2</a>"
 		]
 	},
 	"figure":{

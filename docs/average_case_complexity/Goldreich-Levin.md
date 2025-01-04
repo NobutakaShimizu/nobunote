@@ -1,6 +1,6 @@
 ---
 title: Goldreich-Levinの定理
-nav_order: 1
+nav_order: 2
 parent: 平均時計算量
 ---
 
