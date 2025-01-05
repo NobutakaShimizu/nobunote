@@ -70,7 +70,7 @@ $C$の外側の頂点の次数は期待値が$n/2$ですがそこから標準偏
   Hoeffdingの不等式より$\Pr \left[ \Bin(n-k,1/2) \le \frac{n-k}{2} - c\sqrt{n\log n}\right] \le n^{-2c^2}$を得ます.
 
   {: align="center"}
-  ![degree distribution]({{site.baseurl}}/docs/planted_clique/images/PCdegree.drawio.svg)
+  ![degree distribution]({{site.baseurl}}/docs/planted_clique/images/PCdegree.svg)
   {: width=70%}
 
   頂点 $u \in C$に関するunion boundにより

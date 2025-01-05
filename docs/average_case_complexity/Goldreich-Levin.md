@@ -34,7 +34,7 @@ Goldreich-Levinの定理とは, [Goldreich, Levin (1989)](https://dl.acm.org/doi
 > と表せる関数 $f \colon \\{0,1\\}^n \to \\{0,1\\}$ がオラクルアクセスとして与えられたとき, ベクトル$c \in \\{0,1\\}^n$を$\mathrm{poly}(n)$時間で求めよ.
 
 {: align="center"}
-![オラクルアクセスの図]({{site.baseurl}}/docs/average_case_complexity/images/oracleaccess.drawio.svg)
+![オラクルアクセスの図]({{site.baseurl}}/docs/average_case_complexity/images/oracleaccess.svg)
 {: width=70%}
 
 
@@ -89,7 +89,7 @@ $$
 > を満たす関数 $f \colon \\{0,1\\}^n \to \\{0,1\\}$ がオラクルアクセスとして与えられたとき, ベクトル$c \in \\{0,1\\}^n$を$\mathrm{poly}(n)$時間で求めよ. ここで, 上式の確率は一様ランダムに選ばれた$x\sim \\{0,1\\}^n$に関する確率を考える.
 
 {: align="center"}
-![オラクルアクセスの図]({{site.baseurl}}/docs/average_case_complexity/images/oracleaccess2.drawio.svg)
+![オラクルアクセスの図]({{site.baseurl}}/docs/average_case_complexity/images/oracleaccess2.svg)
 
 上図では$c=(101)$に対して$x\mapsto \langle c,x\rangle$という関数の真理値表のうち二つのビットだけ反転(赤字)したものがオラクルアクセスとして与えられた状態で係数ベクトル$c$を復元する問題を表現しています.
 このような「ノイズがのった線形関数」の局所的な情報から元の線形関数の情報を取得せよという問題を考えています.
@@ -164,7 +164,7 @@ $\square$
 
 </div>
 
-![アルゴリズム2のイメージ]({{site.baseurl}}/docs/average_case_complexity/images/naive_majority.drawio.svg)
+![アルゴリズム2のイメージ]({{site.baseurl}}/docs/average_case_complexity/images/naive_majority.svg)
 
 ## Goldreich-Levinの定理: 強いノイズが乗った線形関数の復元
 
@@ -192,7 +192,7 @@ $\square$
 > あるベクトル$c\in \\{0,1\\}^n$を係数ベクトルとして持つ線形関数$g\colon x\mapsto \langle c,x\rangle$に対し, $\mathrm{dist}(f,g)\le \delta$を満たす関数$f$へのオラクルアクセスが与えられたとき, $c$を求めよ.
 
 {: align="center"}
-![オラクルアクセスの図]({{site.baseurl}}/docs/average_case_complexity/images/GLproblem.drawio.svg)
+![オラクルアクセスの図]({{site.baseurl}}/docs/average_case_complexity/images/GLproblem.svg)
 
 すなわち, 知りたい関数$g$から半径$\delta$以内にある関数$f$の真理値表の局所的な情報のみを用いて$g$の係数ベクトルを求めよという問題になっています.
 
@@ -256,7 +256,7 @@ $$
 アルゴリズムが$g'$をオラクルアクセスとして与えられたとき, $g_1$と$g_2$はどちらも正解の条件に当てはまってしまうのです.
 
 {: align="center"}
-![半径0.25のボールが重なる図]({{site.baseurl}}/docs/average_case_complexity/images/nonunique.drawio.svg)
+![半径0.25のボールが重なる図]({{site.baseurl}}/docs/average_case_complexity/images/nonunique.svg)
 
 </details>
 
@@ -288,7 +288,7 @@ Goldreich-Levinの定理とはそのような全ての線形関数$g$を多項�
 ここでは, オラクルアクセスは$f(x_j+e_i)$の取得のみに用いており, $x_j$が$\binset^n$上で一様ランダムなベクトルなので$f(x_j+e_i)=\inprod{c,x_j+e_i}$となる確率は$\frac{1}{2}+\varepsilon$となります.
 
 {: align="center"}
-![オラクルアクセスのイメージ]({{site.baseurl}}/docs/average_case_complexity/images/majority2.drawio.svg)
+![オラクルアクセスのイメージ]({{site.baseurl}}/docs/average_case_complexity/images/majority2.svg)
 {: width=70%}
 
 各$i=1,\dots,n$に関するunion boundを適用するには多数決の結果が確率$1-\frac{1}{n}$で正しくなくてはならず, そのためには少なくとも $T \ge \frac{\log n}{\varepsilon^2}$でなければなりません.

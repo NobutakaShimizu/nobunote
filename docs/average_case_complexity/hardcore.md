@@ -28,7 +28,7 @@ parent: 平均時計算量理論
 このような$H$を**ハードコア集合**といいます.
 
 {: align="center"}
-  ![ハードコア補題のイメージ]({{site.baseurl}}/docs/average_case_complexity/images/hardcore_image.drawio.svg)
+  ![ハードコア補題のイメージ]({{site.baseurl}}/docs/average_case_complexity/images/hardcore_image.svg)
 {: width=70%}
 
 ハードコア補題は二通りの証明が有名です.

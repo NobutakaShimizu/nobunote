@@ -1,0 +1,40 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="ページ1" id="ovDetr280c3366bAC-_3">
+    <mxGraphModel dx="1434" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="6J4T-fZdG9NTrBltYoV5-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="80" y="110" width="80" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="6J4T-fZdG9NTrBltYoV5-4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="240" y="100" width="80" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="6J4T-fZdG9NTrBltYoV5-5" value="$$\mathsf{supp}(X)$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="330" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6J4T-fZdG9NTrBltYoV5-6" value="$$\mathsf{supp}(Y)$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="210" y="330" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6J4T-fZdG9NTrBltYoV5-7" value="" style="shape=waypoint;sketch=0;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="190" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="6J4T-fZdG9NTrBltYoV5-8" value="" style="shape=waypoint;sketch=0;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="170" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="6J4T-fZdG9NTrBltYoV5-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.65;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="6J4T-fZdG9NTrBltYoV5-7" target="6J4T-fZdG9NTrBltYoV5-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6J4T-fZdG9NTrBltYoV5-10" value="$$X$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="90" y="200" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6J4T-fZdG9NTrBltYoV5-11" value="$$Y$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="250" y="185" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6J4T-fZdG9NTrBltYoV5-12" value="$$w(e)$$" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="160" width="70" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -48,7 +48,7 @@ BKWアルゴリズムでは二つのパラメータ$g,h$ (ただし$g\cdot h \ge
 以後では簡単のため$n=gh$とします (そうでない場合, ベクトル$s$の後ろに$0$を適当な個数だけ連結してベクトル長を$g$または$h$の倍数にしておきます. 追加した部分は全て成分が$0$なのでラベル$b$に影響を与えることはありません).
 
 {: align="center"}
-![ベクトルを分割している図]({{site.baseurl}}/docs/learning_with_error/images/vector_split.drawio.svg)
+![ベクトルを分割している図]({{site.baseurl}}/docs/learning_with_error/images/vector_split.svg)
 
 ## 鍵となる補題
 
@@ -60,7 +60,7 @@ BKWアルゴリズムでは二つのパラメータ$g,h$ (ただし$g\cdot h \ge
 > ベクトル$v \in \mathbb{F}_2^n$であって, 後ろ$i$個の全てのブロックに対応する成分が全て$0$であるようなものの集合を$V_i \subseteq \mathbb{F}_2^n$で表し, $V_i$から一様ランダムに選ばれたベクトルを**$i$-サンプル**と呼ぶ.
 
 {: align="center"}
-![ベクトルを分割している図]({{site.baseurl}}/docs/learning_with_error/images/i-sample.drawio.svg)
+![ベクトルを分割している図]({{site.baseurl}}/docs/learning_with_error/images/i-sample.svg)
 
 特に, オラクル$\mathcal{O}$の出力$(a,b)$に対して$a \sim \mathbb{F}_2^n$は$0$-サンプルであると言えます.
 BKWアルゴリズムの核となるアイデアは, $i$-サンプルを用いて$i+1$-サンプルを効率的に計算できるという以下の補題に基づいています.
@@ -72,7 +72,7 @@ BKWアルゴリズムの核となるアイデアは, $i$-サンプルを用い�
  
 
 {: align="center"}
-![i-sampleから(i+1)-sampleを計算する図 (小サイズ)]({{site.baseurl}}/docs/learning_with_error/images/i-sample_lemma.drawio.svg){: width="70%"}
+![i-sampleから(i+1)-sampleを計算する図 (小サイズ)]({{site.baseurl}}/docs/learning_with_error/images/i-sample_lemma.svg){: width="70%"}
 
 {: align="center"}
 図: 補題1のアルゴリズム適用後はサンプルの個数が減るが, $0$のブロックは一つ増える.
