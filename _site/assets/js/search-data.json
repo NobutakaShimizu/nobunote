@@ -99,214 +99,221 @@
   },"14": {
     "doc": "ハードコア補題",
     "title": "ハードコア補題",
-    "content": "サイズ$s$以下の回路全体の集合を$\\SIZE(s)$とします. 部分集合$H\\subseteq\\binset^n$は$|H|\\ge \\delta 2^n$を満たすとき$\\delta$-密であると呼ぶことにします. 定理 (ハードコア補題) . 任意の$\\delta,\\varepsilon&gt;0$に対して以下が成り立つ: 関数$f\\colon \\binset^n\\to\\binset$がサイズ$s$に対して$\\delta$-困難ならば, ある$\\delta$-密な集合$H\\subseteq\\binset^n$が存在して, 任意のサイズ$O(\\delta^2\\varepsilon^2s)$の回路$C$に対して . \\[\\begin{align*} \\Pr_{x\\sim H}\\left[ C(x) = f(x) \\right] \\le \\frac{1}{2} + \\varepsilon. \\end{align*}\\] 証明はブースティングと呼ばれる機械学習の手法に基づくものと線形最適化の文脈で登場するvon-Neumannのminimax定理に基づくものが有名です. ここではまずブースティングに基づく証明を解説します. ",
+    "content": "ハードコア補題とは Impagliazzo (1995)の結果で, XOR補題など平均時計算量の様々な定理の証明に用いることができる非常に便利な定理です. サイズ$s$以下の回路全体の集合を$\\SIZE(s)$とします. 部分集合$H\\subseteq\\binset^n$は$|H|\\ge \\delta 2^n$を満たすとき$\\delta$-密であると呼ぶことにします. 定理 (ハードコア補題) . 任意の$\\delta,\\varepsilon&gt;0$に対して以下が成り立つ: 関数$f\\colon \\binset^n\\to\\binset$がサイズ$s$に対して$\\delta$-困難ならば, ある$\\delta$-密な集合$H\\subseteq\\binset^n$と十分小さな定数$c&gt;0$が存在して, 全ての回路$C \\in \\SIZE(c\\delta^2\\varepsilon^2 s)$に対して . \\[\\begin{align*} \\Pr_{x\\sim H}\\left[ C(x) = f(x) \\right] \\le \\frac{1}{2} + \\varepsilon. \\end{align*}\\] 弱い平均時困難性を持つ任意の関数$f$では, 任意の小さい回路はそこそこの割合の入力で誤った値を出力しますが, ハードコア補題はその関数$f$の困難性を凝縮したような入力部分集合$H\\subset\\binset^n$が存在して, $H$上では$f(x)$の計算が非常に困難になります. このような$H$をハードコア集合といいます. ハードコア補題は二通りの証明が有名です. ",
     "url": "/nobunote/docs/average_case_complexity/hardcore/",
     
     "relUrl": "/docs/average_case_complexity/hardcore/"
   },"15": {
     "doc": "ハードコア補題",
-    "title": "証明1. ブースティング",
+    "title": "証明1. ブースティングに基づく証明",
     "content": "対偶を証明します. つまり, 任意の$\\delta$-密な部分集合$H\\subseteq \\binset^n$に対してあるサイズ$s_0$の回路$C_H$が存在して . \\[\\begin{align*} \\Pr_{x\\sim H} \\left[ C_H(x) = f(x) \\right] \\ge \\frac{1}{2} + \\varepsilon \\tag{1} \\end{align*}\\] を満たすならば, あるサイズ$O(s_0\\cdot \\delta^{-2}\\varepsilon^{-2})$の回路$C’$が存在して . \\[\\begin{align*} \\Pr_{x\\sim\\binset^n} \\left[ C'(x) = f(x) \\right] \\ge 1-\\delta \\end{align*}\\] を満たすことを示します. 実は所望の回路$C’$は幾つかの$\\delta$-密な部分集合$H_1,\\dots,H_m\\subseteq\\binset^n$を選び, それぞれに対し(1)を満たす回路$C_{H_1},\\dots,C_{H_m}$の出力値の多数決を出力する回路となります (ここで$m=O(\\delta^{-2}\\delta^{-2})$). それぞれの回路$C_{H_1},\\dots,C_{H_m}$のサイズは高々$s_0$なので最終的な回路$C’$のサイズは$O(s_0\\cdot \\delta^{-2}\\varepsilon^{-2})$で上から抑えられます. 以下ではそれらの$H_1,\\dots,H_m$を選ぶアルゴリズムを記述します. 強調しておきますが, このアルゴリズムの計算量は最終的な回路$C’$の複雑性に影響を与えません. どのように$H_1,\\dots,H_m$を選んでも最終的に得られる回路$C’$のサイズは$O(s_0\\cdot m)$です. イメージとしては, 局所的($H$上)にそこそこ$f$の値を推測できる機械があったとき, それらをうまく繋げて大域的($\\binset^n$上)に$f$を高精度で計算せよ, という問題を考えています. このように弱い学習器をうまく用いて強い学習器を構成する方法を機械学習の分野ではブースティング(boosting)と呼びます. ",
-    "url": "/nobunote/docs/average_case_complexity/hardcore/#%E8%A8%BC%E6%98%8E1-%E3%83%96%E3%83%BC%E3%82%B9%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0",
+    "url": "/nobunote/docs/average_case_complexity/hardcore/#%E8%A8%BC%E6%98%8E1-%E3%83%96%E3%83%BC%E3%82%B9%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E8%A8%BC%E6%98%8E",
     
-    "relUrl": "/docs/average_case_complexity/hardcore/#証明1-ブースティング"
+    "relUrl": "/docs/average_case_complexity/hardcore/#証明1-ブースティングに基づく証明"
   },"16": {
+    "doc": "ハードコア補題",
+    "title": "準備",
+    "content": "証明を述べるためにいくつかの概念を導入します. 部分集合$H\\subseteq \\binset^n$の指示関数を$\\indicator_H\\colon\\binset^n\\to\\binset$と表し, 値域を$\\binset$から$[0,1]$に緩和した関数$S\\colon \\binset^n\\to[0,1]$を測度(measure)と呼びます. 一様ランダムな$x\\sim\\binset^n$に関する期待値を$\\E[S]=2^{-n}\\cdot \\sum_{x\\in\\binset^n} S(x)$で表し, 測度$S$が$\\E[S]\\ge \\delta$を満たすとき$\\delta$-密であるといいます. 特に, $S=\\indicator_H$が部分集合$H$の指示関数であるとき, $\\indicator_H$と$H$の$\\delta$-密性は一致します. $\\E[S]&gt;0$を満たす測度$S$に付随する$\\binset^n$上の分布$\\calL_S$を . \\[\\begin{align*} \\Pr_{x\\sim \\calL_S}[ x = a] = \\frac{S(a)}{2^n\\E[S]} \\end{align*}\\] で定めます. 例えば$S=\\indicator_H$と表せるとき, $\\calL_S$は$H$上の一様分布と一致します. ",
+    "url": "/nobunote/docs/average_case_complexity/hardcore/#%E6%BA%96%E5%82%99",
+    
+    "relUrl": "/docs/average_case_complexity/hardcore/#準備"
+  },"17": {
     "doc": "Home",
     "title": "Home",
     "content": "This is a private memo of my own. ",
     "url": "/nobunote/",
     
     "relUrl": "/"
-  },"17": {
+  },"18": {
     "doc": "よく使う道具",
     "title": "よく使う道具",
     "content": "ここでは様々な場面でよく出てくる道具をまとめて紹介していきます. ",
     "url": "/nobunote/docs/tools/",
     
     "relUrl": "/docs/tools/"
-  },"18": {
+  },"19": {
     "doc": "Learning with Error",
     "title": "Learning with Error (LWE) とは?",
     "content": "Learning with Error (LWE) とはノイズが乗った線形方程式を解けという非常にシンプルな問題です. ノイズが乗っていない場合はガウスの消去法などを用いて簡単に解けますが, ノイズが乗った設定では適切なパラメータ下では . | 情報理論的には最尤推定 (全探索) で解ける. | しかし, 多項式時間で解けるかどうかは不明 | . という状況になっています. そして, これが情報論的なtractabilityと計算量的なtractabilityの間の非自明なギャップであろうと広く信じられています. LWEの計算量的困難性を仮定すると学習理論や暗号などの分野において様々な計算量的下界が成り立ち, 以下に挙げる様々な利点から次世代の暗号技術(特に耐量子暗号)の核になることが期待されている重要な問題です: . | 公開鍵暗号方式など様々な暗号学的プリミティブを設計できる. | 格子上の問題(最短ベクトル問題など)の最悪時困難性を仮定するとLWEの平均時困難性が成り立つという結果が知られている (最悪時から平均時への帰着). | 上記の格子上の問題を解く効率的な量子アルゴリズムの存在性は長年未解決. | . ",
     "url": "/nobunote/docs/learning_with_error/#learning-with-error-lwe-%E3%81%A8%E3%81%AF",
     
     "relUrl": "/docs/learning_with_error/#learning-with-error-lwe-とは"
-  },"19": {
+  },"20": {
     "doc": "Learning with Error",
     "title": "問題の定義",
     "content": "行列$A \\in \\mathbb{F}^{m\\times d}$とベクトル $b = As \\in \\mathbb{F}^m$ (ただし $s \\in \\mathbb{F}^d$は秘密のベクトル) が入力として与えられたときに $s $ を復元することはできるでしょうか? この問題は単に連立一時方程式 . \\[\\begin{align} As = b \\end{align}\\] を解くだけですので, ガウスの消去法などを用いて多項式時間で解けます. では, 与えられるベクトル$b$が小さいノイズを含む場合はどうでしょうか? 具体的には, 入力として与えられるベクトル$b$がノイズベクトル$e \\in \\mathbb{F}^m$に対して$b=As + e$を満たす場合を考えます. ここで$e$はランダムなベクトルであり, 各成分が独立に$\\mathbb{F}$上の同じ分布に従って生成されるものとします. このような設定は線形関数の学習を考えると(有限体であることを除けば)非常にありふれた自然な設定であろうことがわかります. つまり, 様々な評価点とその点におけるラベルが与えられたときに, 未知の線形関数 $ \\mathbb{F}^d \\ni x \\mapsto s^\\top x $ を学習する際, ラベルにノイズが乗る設定を考えると上記のような問題が自然に現れます. Learning with Error (以下, LWE問題) は平均時の問題, すなわち入力が何かしらの分布に従って生成される問題であり, ここでは秘密のベクトル $s \\in \\mathbb{F}^d$ と係数行列 $A \\in \\mathbb{F}^{m\\times d}$ が一様ランダムに選ばれたとき, 行列$A$と$b=As+e$が入力として与えられます. $\\mathbb{F}$を有限体, $m,d\\in \\mathbb{N}$をパラメータ, そして$\\chi$を$\\mathbb{F}$上の分布とする. 一様ランダムな$A\\sim \\mathbb{F}^{m\\times d}$, $s\\sim \\mathbb{F}^d$, およびノイズベクトル$e \\sim \\chi^m$に対し, 三つ組$(A,As+e,s)$の周辺分布を$\\mathsf{LWE}_{\\mathbb{F},m,d,\\chi}$で表す. ここで, $\\chi^m$は$\\mathbb{F}^m$上の分布であり, 各成分が$\\chi$から独立に選ばれたベクトルの分布を表す. パラメータ$\\mathbb{F},m,d,\\chi$が明らかな場合は単に$\\mathsf{LWE}$で表す. パラメータ$m$をサンプル数, $d$を次元, $\\chi^m$をノイズ分布, $s$を秘密のベクトル, $b$をラベルと呼ぶ. 代表的なノイズ分布としては以下の二つが挙げられます: . | ランダムスパースベクトル: 体として$\\mathbb{F}=\\mathbb{F}_2$を考え, $\\chi$はパラメータ$\\theta\\in[0,1]$に対して$\\Pr[\\chi=1]=\\theta$を満たすもの. パラメータ$\\theta$が小さければ, ノイズベクトル$e\\sim\\chi^m$は非ゼロ要素数の個数がおおよそ$m\\theta$となる. | 離散ガウス分布: 位数が素数$p$であるような有限体$\\mathbb{F}_p$に対し$\\chi$は$\\mathbb{F}_p$上の分布であり, パラメータ$\\sigma$に対し, $\\chi$は$\\Pr[\\chi = x] \\propto \\exp\\left(-\\frac{x^2}{2\\sigma^2}\\right)$で定まる分布を考える (ここの右辺では$x\\in{0,1,\\dots,p-1}$を非負整数として扱って確率を計算する). | . また, 特殊ケース$\\mathbb{F} = \\mathbb{F}_2$におけるLWE問題は特にLPN(Learning Parity with Noise)問題と呼ばれます. LWE問題では$(A,b,s) \\sim \\mathsf{LWE}$に対し, $(A,b)$の情報から$s$を復元せよという問題を考えます. 実際には様々な問題設定があり, 代表的なものとして探索問題 (search), 判定問題 (decision)などが考えられています. ",
     "url": "/nobunote/docs/learning_with_error/#%E5%95%8F%E9%A1%8C%E3%81%AE%E5%AE%9A%E7%BE%A9",
     
     "relUrl": "/docs/learning_with_error/#問題の定義"
-  },"20": {
+  },"21": {
     "doc": "Learning with Error",
     "title": "探索問題",
     "content": "探索問題とは, その名の通り, 秘密のベクトル$s$を復元せよという問題です. 分布$\\mathsf{LWE}_{\\mathbb{F},m,d,\\chi}$に従って選ばれた$(A,b,s)$に対し, $(A,b)$を入力として受け取って$s$を出力せよという問題を探索LWE問題という. アルゴリズム$\\mathcal{A}$は . \\[\\begin{align*} \\Pr_{(A,b,s) \\sim \\mathsf{LWE}} \\left[ \\mathcal{A}(A,b) = s \\right] \\ge \\gamma \\end{align*}\\] を満たすとき, 探索LWE問題を成功確率$\\gamma$で解くという. サンプル数$m$が小さいと, 与えられた$(A,b)$に対して $As \\approx b$を満たす$s$は複数存在しえるため, 秘密のベクトル$s$を復元することはできません. これを情報理論的に解けないと言うことがあります. 一方で$m$が十分大きいとき, 全てのありうる$s$を試して$As\\approx b$を見れば, $(A,b,s) \\sim \\mathsf{LWE}$に関して非常に高確率で秘密のベクトル$s$を復元できます. これを, サンプル数$m$が十分大きいときは情報理論的に解けるという言い方をします. もちろん, 情報理論的に解けるからといってそれが効率的に解けるかどうかは分かりません. ",
     "url": "/nobunote/docs/learning_with_error/#%E6%8E%A2%E7%B4%A2%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/learning_with_error/#探索問題"
-  },"21": {
+  },"22": {
     "doc": "Learning with Error",
     "title": "判定問題",
     "content": "アルゴリズムは$(A,b) \\in \\mathbb{F}^{m\\times d}\\times \\mathbb{F}^m$を与えられます. ただし入力$(A,b)$は以下の二つどちらかの分布に従って生成されます: . | $(A,b,s) \\sim \\mathsf{LWE}$に対して$(A,b)$の周辺分布. | $\\mathbb{F}^{m\\times d}\\times \\mathbb{F}^m$上の一様分布. | . 判定問題では, 入力が上記どちらの分布に従って生成されたかを判別する問題です. 出力値が0または1のアルゴリズム $\\mathcal{A}$ は . \\[\\begin{align*} \\left| \\Pr_{(A,b,s) \\sim \\mathsf{LWE}} \\left[ \\mathcal{A}(A,b)=1 \\right] - \\Pr_{\\substack{A\\sim \\mathbb{F}^{m\\times d} \\\\ b \\sim \\mathbb{F}^m}} \\left[ \\mathcal{A}(A,b) = 1 \\right] \\right| \\ge \\gamma \\end{align*}\\] を満たすとき, 判定LWE問題をアドバンテージ$\\gamma$で解くという. サンプル数$m$が十分大きいとき, 一様ランダムな$A\\sim \\mathbb{F}^{m\\times d},b\\sim \\mathbb{F}^m$に対して$As\\approx b$を満たす$s\\in \\mathbb{F}^d$は存在しない. 一方で$(A,b)$が$\\mathsf{LWE}$の分布から生成された場合はそのような$s$は必ず存在する. 従って与えられた$(A,b)$が$\\mathsf{LWE}$から来たのか, 一様分布から来たのかは秘密のベクトルの存在性を解けば判定できることになる. このような背景で, $\\mathsf{LWE}$と一様分布の識別を判定問題と呼んでいる. ",
     "url": "/nobunote/docs/learning_with_error/#%E5%88%A4%E5%AE%9A%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/learning_with_error/#判定問題"
-  },"22": {
+  },"23": {
     "doc": "Learning with Error",
     "title": "学習としてのLWE問題",
     "content": "LWE問題はなぜLearningなのでしょうか? 実は, LWE問題は線形関数をノイズ下で学習するタスクとみなすこともできます. 大雑把に言えば学習とは, 何かしら未知の関数 $f\\colon \\mathcal{X} \\to \\mathcal{L}$ があって, サンプルと呼ばれる幾つかの点の集合$(x_1,f(x_1)),\\dots,(x_m,f(x_m))$が与えられたとき, この関数$f$を模倣する関数$\\tilde{f}$を構成せよというタスクを意味し, このタスクを行うアルゴリズムを学習アルゴリズムといいます. 基本的には任意の関数を扱うことはせず, $f$は何かしらの性質(例えば線形性)を持つことを仮定します. ここでは学習の概念については深掘りせず, ひとまずLWE問題を学習タスクとして捉えられることを説明します. LWE問題では未知のベクトル$s\\in \\mathbb{F}^n$に対して, 一様ランダムな$A \\sim \\mathbb{F}^{m\\times n}$とノイズベクトル$e \\in \\mathbb{F}^m$に対して$b=As+e$および$A$が入力として与えられ, $s$を求めることを目標としていました. そこで$a_1,\\dots,a_m$を$A$の行ベクトルとすると, この問題は未知の線形関数$f\\colon x \\mapsto s^\\top x$のノイズ付きのサンプル$(a_1,f(a_1)+e_1),\\dots,(a_m,f(a_m)+e_m)$が与えられたときに, 未知の線形関数$f$を復元せよという問題と捉えることができます. ",
     "url": "/nobunote/docs/learning_with_error/#%E5%AD%A6%E7%BF%92%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AElwe%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/learning_with_error/#学習としてのlwe問題"
-  },"23": {
+  },"24": {
     "doc": "Learning with Error",
     "title": "Learning with Error",
     "content": " ",
     "url": "/nobunote/docs/learning_with_error/",
     
     "relUrl": "/docs/learning_with_error/"
-  },"24": {
+  },"25": {
     "doc": "よく使う記号",
     "title": "よく使う記号",
     "content": "しばし使う記法を定義します. | 自然数$n\\in \\mathbb{N}$に対して$[n]={1,\\dots,n}$とします. | 有限集合$S$に対し, $x\\sim S$と書いたとき, 要素$x$は$S$上一様ランダムに選ばれることを意味します. | 例えば$\\Pr_{x\\sim S}[\\cdot]$と書くと, $S$上一様ランダムに選ばれた$x$に関する確率を考えることを意味します. | . | より一般に, 有限集合上の分布$\\nu$に対し, $x\\sim \\nu$と書くと$x$は分布$\\nu$に従って選ばれたことを意味します. | 確率変数$X$に対して$\\supp(X) = \\{ x\\colon \\Pr[X=x]&gt;0 \\}$を$X$の台(サポート)といいます (基本的には$X$として離散的な値をとるもののみを考えます). | アルゴリズム$\\mathcal{A}$と入力$x$に対し, $\\mathcal{A}(x)$はアルゴリズム$\\mathcal{A}$の入力$x$に対する出力を表すことにします. | $\\mathcal{A}$が乱択アルゴリズムの場合は$\\mathcal{A}(x)$は確率変数として扱われます. | . | . ",
     "url": "/nobunote/docs/notation/",
     
     "relUrl": "/docs/notation/"
-  },"25": {
+  },"26": {
     "doc": "平均時計算量",
     "title": "平均時計算量",
     "content": "平均時計算量とは, 計算問題に対してそれが効率的に解ける入力の割合を研究する分野です. 研究対象の性質上, 問題と入力分布のペア(しばし分布問題と呼ばれる)を考えます. 効率的なアルゴリズム(例えば多項式時間アルゴリズム)が, 入力分布に従って生成された入力に対して正解する確率(成功確率)を考え, 成功確率が最大となるようなアルゴリズムやその限界について理解することが目標となります. 具体的な問題としては埋め込みクリーク問題やLWE問題などを考えます. 大まかに分けて平均時計算量は二つの文脈で研究されています. | 計算量的擬似ランダムネスとその応用. 効率的に解ける入力が少なければ少ないほど, その問題の困難性は強いとみなし, 強い困難性を持つ判定問題は計算量的擬似ランダム性を通じて暗号学的プリミティブの構成や乱択アルゴリズムの脱乱択化といった応用を持ちます. 統計的には, $ \\{0,1\\}^n $ 上で一様ランダムに選ばれた$x$と任意の関数$f\\colon \\{0,1\\}^n\\to \\{0,1\\}$に対して, $(x,f(x))$の情報論的エントロピーは$n$ビットです (つまり, ランダム文字列に$f$を適用してもエントロピーは増えない). しかし, $f\\colon \\{0,1\\}^n\\to \\{0,1\\}$が強い困難性を持つ関数ならば, 任意の効率的なアルゴリズムにとって, $x$から$f(x)$を推定するのは難しいので, $f(x)$は$x$とは独立なランダムビットに見えます. 従って$(x,f(x))$の計算量的エントロピーは$n+1$ビットとなります. このように, 驚くべきことに, 強い困難性を持つ問題があれば, 計算量的なエントロピーを増幅させられます. そして, そのような問題を構成するための手法として誤り訂正符号やエクスパンダーグラフなどの組合わせ的, 代数的な概念が積極的に応用されています. | 求解における情報理論と計算量理論のギャップ. 高次元統計学の文脈では最尤推定法で解ける具体的な問題に対し, それが計算量的の意味で効率的に解けるかどうかが議論されます. 例えば埋め込みクリーク問題では, $n$頂点ランダムグラフのランダムな位置に埋め込まれた$k$-クリークを探し出せという問題を考えます. クリークサイズが$k\\gg \\log n$であれば, 高確率でランダムグラフが$k$-クリークを含まないので, $k$頂点部分集合を列挙することにより探索することができます. しかしながら現在のところ, 埋め込みクリーク問題を解く多項式時間アルゴリズムは$k\\ge \\sqrt{n}$の範囲でしか見つかっておらず, $\\log n \\ll k \\ll \\sqrt{n}$の範囲でこの問題が解けるかどうかは重要な未解決問題とされています. また, 埋め込みクリーク問題の計算量的下界を仮定すると, 圧縮センシング, 分布の性質検査, あるゲームのナッシュ均衡の近似, 主成分分析など様々な実用的な問題に対する計算量下界が導出できることが知られています. | . ",
     "url": "/nobunote/docs/average_case_complexity/",
     
     "relUrl": "/docs/average_case_complexity/"
-  },"26": {
+  },"27": {
     "doc": "埋め込みクリーク問題",
     "title": "埋め込みクリーク問題",
     "content": "グラフ$G=(V,E)$に対し, 頂点部分集合$C\\subseteq V$は$\\binom{C}{2}\\subseteq E$を満たすときクリークと呼び, 特に頂点数$k$のクリークを$k$-クリークと呼びます. 入力として与えられたグラフ$G=(V,E)$のクリークのうち頂点数最大のものを求める問題を最大クリーク問題と呼び, 古典的なNP困難問題の一つです. 埋め込みクリーク問題 (Planted Clique Problem)とは, 最大クリーク問題の平均時計算量解析の文脈で現れる問題で, 端的に言うとランダムな場所に大きいクリーク$C$を埋め込まれたランダムグラフが入力として与えられたときに, クリーク$C$を求めよという問題です. この問題の計算量的困難性は, 高次元統計学など幅広い分野の問題の計算量的下界を導くのみならず, 暗号学的プリミティブの構成(一方向性関数)などにも応用されています. 暗号学的プリミティブの安全性は素因数分解やLearning with Errorやその他の代数的な問題の困難性に依拠していますが, 一方で最大クリークといった組み合わせ的な問題の困難性に依拠したプリミティブ(特に公開鍵暗号方式)の構成は知られておらず, 重要な研究テーマと認識されています. ",
     "url": "/nobunote/docs/planted_clique/",
     
     "relUrl": "/docs/planted_clique/"
-  },"27": {
+  },"28": {
     "doc": "埋め込みクリーク問題",
     "title": "背景",
     "content": "最大クリーク問題はNP完全なので最悪時の意味では広くその困難性が信じられています. 実はそれだけではなく, 平均時計算量の意味でも最大クリークは多項式時間で解けないであろうと予想されています. 具体的にはグラフ$G$がErdős–Rényiグラフ からサンプリングされた時に最大クリークを見つけられるかを議論します. 本ページでは$\\calG(n,1/2)$を主に考えます (他の$p$でも似たような議論は適用できます). ランダムグラフ$G\\sim \\mathcal{G}(n,1/2)$は確率$1-o(1)$で最大クリークのサイズが$\\approx 2\\log_2 n$となることが知られています. 一方, 適当な単一頂点からスタートして一つずつ頂点を追加していくと極大クリークが得られますが, このようにして得られる極大クリークの頂点数は高確率で$\\approx \\log_2 n$となることが知られています (ここでの「高確率」とは$G\\sim \\mathcal{G}(n,1/2)$の選択に関する確率). したがって単純な貪欲法は$\\mathcal{G}(n,1/2)$上では最大クリーク問題を近似率$1/2$で解くことになりますが, 実は近似率$0.501$達成する多項式時間アルゴリズムは知られていません. ",
     "url": "/nobunote/docs/planted_clique/#%E8%83%8C%E6%99%AF",
     
     "relUrl": "/docs/planted_clique/#背景"
-  },"28": {
+  },"29": {
     "doc": "埋め込みクリーク問題",
     "title": "問題の定義",
     "content": "$\\mathcal{G}(n,1/2)$上の最大クリーク問題では本質的に, サイズ$2\\log_2 n$のクリークが含まれていることがわかっているグラフが与えられたときにそのクリークを見つけ出せるかが問われていました. そこで, より一般にサイズ$k \\gg \\log n$のクリークが含まれていることがわかっているグラフが与えられたときにその$k$-クリークを見つけ出せるかという問題を考えます. パラメータ$n,k\\in \\mathbb{N}$, $p\\in [0,1]$ (ただし$k\\le n$) に対し, $\\mathsf{PC}(n,p,k)$を以下の手続きによって定まる分布とする. | $G \\sim \\mathcal{G}(n,p)$を生成する. 頂点集合を$V(G)=[n]$とする. | 一様ランダムな$k$-頂点部分集合$C\\sim \\binom{[n]}{k}$を選ぶ. | グラフ$G’=\\left([n],E(G)\\cup \\binom{C}{2}\\right)$に対し, $(G’,C)$を$\\mathsf{PC}(n,p,k)$のサンプルとして出力する. | . 特に$p=1/2$の時は$\\mathsf{PC}(n,p,k)$を省略して$\\mathsf{PC}(n,k)$で表す. LWE問題と同様に, 埋め込みクリーク問題においても探索や判定などの問題設定が考えられています. ",
     "url": "/nobunote/docs/planted_clique/#%E5%95%8F%E9%A1%8C%E3%81%AE%E5%AE%9A%E7%BE%A9",
     
     "relUrl": "/docs/planted_clique/#問題の定義"
-  },"29": {
+  },"30": {
     "doc": "埋め込みクリーク問題",
     "title": "埋め込みクリーク探索問題",
     "content": "探索問題では埋め込まれたクリークを復元せよという問題を考えます. パラメータ$n,k\\in \\mathbb{N}$ (ただし$k\\le n$) に対し, 分布$\\mathsf{PC}(n,k)$に従って選ばれた$(G’,C)$を考える. 入力として$G’$を受け取り, $C$を出力せよという問題を埋め込みクリーク探索問題という. アルゴリズム$\\mathcal{A}$は . \\[\\begin{align*} \\Pr_{(G',C) \\sim \\mathsf{PC}(n,k)}\\left[ \\mathcal{A}(G') = C \\right] \\ge \\gamma \\end{align*}\\] を満たすとき, 埋め込みクリーク探索問題を成功確率$\\gamma$で解くという (もしくは単に成功確率$\\gamma$で埋め込みクリークを探すという). ここでは考えるランダムグラフの辺密度を$1/2$に固定していますが, より一般に$p \\in [0,1]$でパラメタライズされた設定も考えることができます. ",
     "url": "/nobunote/docs/planted_clique/#%E5%9F%8B%E3%82%81%E8%BE%BC%E3%81%BF%E3%82%AF%E3%83%AA%E3%83%BC%E3%82%AF%E6%8E%A2%E7%B4%A2%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/planted_clique/#埋め込みクリーク探索問題"
-  },"30": {
+  },"31": {
     "doc": "埋め込みクリーク問題",
     "title": "埋め込みクリーク判定問題",
     "content": "判定問題ではクリークが埋め込まれたグラフ$G’$をErdős–Rényiグラフ$G(n,1/2)$と識別する問題を考えます. もう少し詳しくいうと, 埋め込みクリーク判定問題ではアルゴリズムの入力として一つのグラフが与えられます. ただしこのグラフは次のどちらかの分布に従って生成されるとします: . | $(G,C) \\sim \\mathsf{PC}(n,k)$に対して$G$. | $G \\sim \\mathcal{G}(n,1/2)$. このとき, アルゴリズムの入力はどちらの分布から生成されたかを当てる問題が判定問題です. | . 出力値が0または1のアルゴリズム$\\mathcal{A}$は . \\[\\begin{align*} \\left| \\Pr_{(G,C) \\sim \\mathsf{PC}(n,k)}[\\mathcal{A}(G) = 1] - \\Pr_{G\\sim \\mathcal{G}(n,1/2)}[\\mathcal{A}(G) = 1] \\right| \\ge \\gamma \\end{align*}\\] を満たすとき, 埋め込みクリーク判定問題をアドバンテージ$\\gamma$で解くという. ",
     "url": "/nobunote/docs/planted_clique/#%E5%9F%8B%E3%82%81%E8%BE%BC%E3%81%BF%E3%82%AF%E3%83%AA%E3%83%BC%E3%82%AF%E5%88%A4%E5%AE%9A%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/planted_clique/#埋め込みクリーク判定問題"
-  },"31": {
+  },"32": {
     "doc": "ペア独立性",
     "title": "確率変数族のペア独立性",
     "content": "確率変数族のペア独立性 (pairwise independence)は計算量理論の文脈では Goldreich-Levinの定理, set lower bound protocol, ハッシュ関数, 擬似ランダム生成器などの文脈でよく使われるテクニックです. 通常の意味での独立性を緩めた概念であり, 少ないランダムネスを用いて多くの確率変数を生成する手法としては典型的なものとなります. 確率変数の列$(X_1,\\dots,X_n)$が独立であるというのは「いくつかの$i$に対し$X_i=x_i$である」という事象が他の確率変数の分布に影響を与えないこととされます. ここでは今後の比較のために, 確率変数族の独立性を以下の形で定義しておきます: . 定義 (独立性) . 確率変数の列$(X_1,\\dots,X_n$)が独立であるとは, 任意のインデックスの部分集合$I= \\{i_1,\\dots,i_k\\}\\subseteq [n]$と$x_{i_1},\\dots,x_{i_k}$に対して以下が成り立つことである: . \\[\\begin{align*} \\Pr \\left[ X_{i_1} = x_{i_1}\\text{ and }\\dots\\text{ and }X_{i_k} = x_{i_k} \\right] = \\prod_{j\\in[k]} \\Pr[X_{i_j}=x_{i_j}]. \\tag{1} \\end{align*}\\] ペア独立性とは, 式(1)が成り立つ部分集合$I$の範囲を任意の部分集合ではなく要素数$2$の部分集合に制限することによって定まる概念です. 定義 (ペア独立性) . 確率変数の列$(X_1,\\dots,X_n$)がペア独立であるとは, 任意の要素数$2$のインデックスの部分集合$0\\le i &lt; j \\le n$と$x_i,x_j$に対して以下が成り立つことである: . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} X_{i} &amp;= x_{i} \\\\ X_{j} &amp;= x_{j} \\end{aligned} \\right] = \\Pr[X_{i}=x_{i}]\\cdot \\Pr[X_j = x_j]. \\tag{2} \\end{align*}\\] ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E7%A2%BA%E7%8E%87%E5%A4%89%E6%95%B0%E6%97%8F%E3%81%AE%E3%83%9A%E3%82%A2%E7%8B%AC%E7%AB%8B%E6%80%A7",
     
     "relUrl": "/docs/tools/pairwise_independent/#確率変数族のペア独立性"
-  },"32": {
+  },"33": {
     "doc": "ペア独立性",
     "title": "例1",
     "content": "$X_1,\\dots,X_n$を独立で$\\{0,1\\}$上一様ランダムな確率変数とし, 各$1\\le i &lt; j \\le n$に対して . \\[\\begin{align*} Y_{ij} = X_i + X_j \\bmod 2 \\end{align*}\\] で定まる確率変数族$(Y_{ij})_{1\\le i&lt;j\\le n}$はペア独立です. 証明 簡単のため$n=3$で考えます (一般の$n$についても同様). 任意の$y_{12},y_{23}\\in \\{0,1\\}$に対して . \\[\\begin{align*} \\Pr\\left[ \\begin{aligned} Y_{12}&amp;=y_{12} \\\\ Y_{23}&amp;=y_{23} \\end{aligned} \\right] &amp;= \\Pr\\left[ \\begin{aligned} X_1+X_2&amp;=y_{12} \\pmod 2 \\\\ X_2+X_3&amp;=y_{23} \\pmod 2 \\end{aligned} \\right] \\\\ &amp;= \\Pr\\left[ \\begin{aligned} X_1 &amp;= y_{12} + X_2 \\pmod 2 \\\\ X_3 &amp;= y_{23} + X_2 \\pmod 2 \\end{aligned} \\right] \\\\ &amp;= \\frac{1}{4} \\\\ &amp;= \\Pr[Y_{12}=y_{12}]\\cdot \\Pr[Y_{23}=y_{23}] \\end{align*}\\] を得ます. 三つ目の等式では$X_1,X_2,X_3$の独立性を用いています. 上記の例で$n$ビットのランダムな文字列$(X_1,\\dots,X_n) \\sim \\{0,1\\}^n$を$\\binom{n}{2}$ビットの文字列$(Y_{ij})$\\に変換しています (ただし変換で文字列を延ばす代わりに各ビットの独立性は損なわれるため, 得られる長い文字列を擬似ランダム文字列と呼ぶ). このように, ペア独立性の技法を用いると少ないエントロピーのランダムネスから長い擬似ランダム文字列を生成できます (このアイデアはより一般に擬似ランダム生成器の概念で一般化されます). 例えばこのように生成された長い擬似ランダム文字列を乱択アルゴリズムのランダムシードとして代用することでより少ないランダムネスを用いた乱択アルゴリズムの模倣が可能になります. この模倣の精度をペア独立性を用いて評価していくことになります. ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E4%BE%8B1",
     
     "relUrl": "/docs/tools/pairwise_independent/#例1"
-  },"33": {
+  },"34": {
     "doc": "ペア独立性",
     "title": "例2. ランダムビットの線形結合",
     "content": "例1と同様に独立に$X_1,\\dots,X_n \\sim \\{0,1\\}$を選びます. 例1では$X_i + X_j$という形を考えていましたが, より一般に$X_{i_1}+\\dots + X_{i_k}$という形を考えてもペア独立性が保たれることが同様にして証明できます. 非空な部分集合$I \\subseteq [n]$に対して . \\[\\begin{align*} Y_I = \\sum_{i\\in I} X_i \\bmod 2 \\end{align*}\\] とすることによって定まる確率変数族$(Y_I)_{I\\ne \\emptyset}$はペア独立性を持つ. 証明 任意の非空な$I \\subseteq[n]$に対して, $X_1,\\dots,X_n\\sim \\{0,1\\}$が独立一様ランダムなので, $Y_I$の周辺分布も$\\{0,1\\}$上で一様となります. また, 相異なる二つの非空な部分集合$I,J\\subseteq[n]$および$a,b \\in \\{0,1\\}$に対して . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} Y_I &amp;= a \\\\ Y_J &amp;= b \\end{aligned} \\right] &amp;= \\Pr \\left[ \\begin{aligned} Y_{I\\setminus J} + Y_{I\\cap J} &amp;= a \\\\ Y_{J\\setminus I} + Y_{I\\cap J} &amp;= b \\end{aligned} \\right] \\\\ &amp;= \\Pr \\left[ \\begin{aligned} Y_{I\\setminus J} &amp;= a - Y_{I\\cap J} \\\\ Y_{J\\setminus I} &amp;= b - Y_{I\\cap J} \\end{aligned} \\right] \\\\ &amp;= \\frac{1}{4} \\end{align*}\\] 証明 より, 確かにペア独立性を満たします. ここで最後の等式では, $X_i$たちの独立性より, $Y_{I\\setminus J}$と$Y_{J\\setminus I}$が独立であることを用いています ($I\\ne J$より$I\\setminus J$と$J\\setminus I$はどちらも非空であることに注意). $\\square$ . この方法を用いると$n$ビットのエントロピーから長さ$2^n-1$の擬似ランダム文字列を得られるので, 指数的に長さを延ばすことが可能となります. ランダム線形関数としての視点 . 例2の構成で得られる$(Y_I)_{I\\ne \\emptyset}$は, 一様ランダムなベクトル$c \\sim \\mathbb{F}_2^n$に対して線形関数$z \\mapsto \\inprod{c,z}$を考えて その($0$以外での)真理値表としてみなすことができます. この解釈は Goldreich-Levinの定理 の証明において本質的に効いてきます. ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E4%BE%8B2-%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%83%93%E3%83%83%E3%83%88%E3%81%AE%E7%B7%9A%E5%BD%A2%E7%B5%90%E5%90%88",
     
     "relUrl": "/docs/tools/pairwise_independent/#例2-ランダムビットの線形結合"
-  },"34": {
+  },"35": {
     "doc": "ペア独立性",
     "title": "例3. ランダムな直線",
     "content": "要素数$q$の有限体$\\mathbb{F}_q$に対して一様ランダムに$a,b\\sim \\mathbb{F}_q$を選び, 各$i\\in \\mathbb{F}_q$に対して . \\[\\begin{align*} X_i = a i + b \\end{align*}\\] として確率変数族$(X_i)_{i\\in \\mathbb{F}_q}$を定めると$(X_i)$はペア独立です. 証明 任意の相異なる$\\mathbb{F}_q$の元$i,j$および$c,d \\in \\mathbb{F}_q$に対して . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} X_i &amp;= c \\\\ X_j &amp;= d \\end{aligned} \\right] &amp;= \\Pr_{a,b\\sim \\mathbb{F}_q} \\left[ \\begin{aligned} ai+b &amp;= c \\\\ aj+b &amp;= d \\end{aligned} \\right] \\\\ &amp;= \\Pr_{a,b\\sim \\mathbb{F}_q} \\left[ \\begin{bmatrix} i &amp; 1 \\\\ j &amp; 1 \\end{bmatrix} \\begin{bmatrix} a \\\\ b \\end{bmatrix} = \\begin{bmatrix} c \\\\ d \\end{bmatrix} \\right] \\end{align*}\\] ここで, $i\\ne j$より行列 . \\[\\begin{align*} \\begin{bmatrix} i &amp; 1 \\\\ j &amp; 1 \\end{bmatrix} \\end{align*}\\] は逆行列を持つ (Vandermonde行列の特殊ケース) ので, 最後の等式の確率の中身は$a=\\ast,b=\\ast$の形で書けます. $a,b$は一様ランダムなので, この確率は$1/q^2$です. 一方で, ランダムな$a,b\\sim \\mathbb{F}_q$と固定した$i\\in \\mathbb{F}_q$に対し$X_i=ai+b$の周辺分布は$\\mathbb{F}_q$上一様なので, 確かに$(X_i)$はペア独立です. ランダムな直線に基づく生成はランダムな$a,b\\sim \\mathbb{F}_q$を受け取って$q$個の$\\mathbb{F}_q$の元を出力しています. ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E4%BE%8B3-%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%81%AA%E7%9B%B4%E7%B7%9A",
     
     "relUrl": "/docs/tools/pairwise_independent/#例3-ランダムな直線"
-  },"35": {
+  },"36": {
     "doc": "ペア独立性",
     "title": "性質",
     "content": "独立な確率変数の和の分散はそれぞれの確率変数の分散の和に等しいことが知られていますが, この性質はペア独立な確率変数の和についても成り立ちます. $X_1,\\dots,X_n$をペア独立な確率変数とし, $S=\\sum_{i\\in[n]} X_i$とすると, $\\Var[S] = \\sum_{i\\in[n]} \\Var[X_i]$が成り立つ. 証明 確率変数はシフト(定数$a$に対して$X$を$X+a$に変換する操作)に対して分散は変わらないので, $X_i$の期待値を$0$にシフトしても一般性を失いません. このとき, $S$の期待値は$0$なので, その分散は$\\E[S^2]$に等しくなります. また, $X_i$たちはペア独立なので, $i\\ne j$に対して$\\E[X_iX_j]=\\E[X_i]\\E[X_j]=0$が成り立ちます. 実際, $i\\ne j$に対して$\\Pr[X_i=x_i \\text{ and }X_j=x_j]=\\Pr[X_i=x_i]\\Pr[X_j=x_j]$だから . \\[\\begin{align*} \\E[X_iX_j] &amp;= \\sum_{x_i,x_j} x_i x_j \\Pr[X_i=x_i \\text{ and }X_j=x_j] \\\\ &amp;= \\sum_{x_i,x_j} x_i x_j \\Pr[X_i=x_i]\\Pr[X_j=x_j] \\\\ &amp;= \\left( \\sum_{x_i} x_i \\Pr[X_i=x_i] \\right) \\left( \\sum_{x_j} x_j \\Pr[X_j=x_j] \\right) \\\\ &amp;= \\E[X_i]\\E[X_j] \\\\ &amp;= 0 \\end{align*}\\] となります. 従って, 期待値の線形性より . \\[\\begin{align*} \\E[S^2] &amp;= \\E\\left[ \\left( \\sum_{i\\in[n]} X_i \\right)^2 \\right] \\\\ &amp;= \\E\\left[ \\sum_{i\\in[n]} X_i^2 + \\sum_{i\\ne j} X_iX_j \\right] \\\\ &amp;= \\sum_{i\\in[n]} \\E[X_i^2] + \\sum_{i\\ne j} \\E[X_iX_j] \\\\ &amp;= \\sum_{i\\in[n]} \\E[X_i^2] \\\\ &amp;= \\sum_{i\\in[n]} \\Var[X_i] &amp; &amp; \\because\\text{ $X_i$の期待値は$0$} \\end{align*}\\] となり主張を得ます. $\\square$ . このことから和$S$の分散が簡単に計算できるため, チェビシェフの不等式より以下を得ます: . $X_1,\\dots,X_n$をペア独立な確率変数とし, $S=\\sum_{i\\in[n]} X_i$とすると, 任意の$a&gt;0$に対して . \\[\\begin{align*} \\Pr\\qty[\\abs{S-\\E[S]}\\ge a] \\le \\frac{\\sum_{i\\in[n]} \\Var[X_i]}{a^2}. \\end{align*}\\] ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E6%80%A7%E8%B3%AA",
     
     "relUrl": "/docs/tools/pairwise_independent/#性質"
-  },"36": {
+  },"37": {
     "doc": "ペア独立性",
     "title": "ペア独立性",
     "content": " ",
     "url": "/nobunote/docs/tools/pairwise_independent/",
     
     "relUrl": "/docs/tools/pairwise_independent/"
-  },"37": {
+  },"38": {
     "doc": "よく使う不等式",
     "title": "よく使う不等式",
     "content": "確率に関するよく使う不等式を紹介していきます. 基本的には様々な確率集中不等式 (concentration inequality)を紹介していきます. 確率集中不等式とは, 興味の対象となる確率変数が高確率でその期待値もしくは中央値付近の値をとることを主張する結果です. 例えば, 実数値をとり期待値が存在する確率変数$Y$に対して以下の確率 . \\[\\begin{align*} &amp;\\Pr[Y\\ge \\mathbb{E}[Y] + \\delta] \\\\ &amp;\\Pr[Y\\le \\mathbb{E}[Y] - \\delta] \\end{align*}\\] のできるだけ良い上界(もしくは下界)を与えることが目標です. このような確率集中不等式は様々な分野で利用されており, 確率論, 統計学, 情報理論, 機械学習, 理論計算機科学など幅広い分野で利用されています. ",
     "url": "/nobunote/docs/tools/prob_inequalities/",
     
     "relUrl": "/docs/tools/prob_inequalities/"
-  },"38": {
+  },"39": {
     "doc": "よく使う不等式",
     "title": "Markovの不等式",
     "content": "Markovの不等式は最も基本的な集中不等式です. Markovの不等式は非負値をとる任意の確率変数に対して成り立つため汎用性が高いのが特徴です. 一方でその汎用性が高いあまり, Markovの不等式単体で用いると弱い上界を与えることが多いのですが, 後述するChebyshevの不等式, Chernoff限界など様々な確率集中不等式の証明に利用されています. 補題 (Markovの不等式) 非負値をとり期待値が存在する任意の確率変数$X$と任意の$a&gt;0$に対して . \\[\\begin{align*} \\Pr[X\\ge a]\\le \\frac{\\mathbb{E}[X]}{a}. \\end{align*}\\] Markovの不等式とは期待値よりはるかに大きい値をとる確率を上から抑える不等式ですので, 集中不等式の一種といえるでしょう. 証明 ($X$が離散値をとる場合) 期待値の定義より, 任意の$a&gt;0$に対して . \\[\\begin{align*} \\E[X]&amp;=\\sum_{x\\in \\supp(X)}x\\cdot \\Pr[X=x] \\\\ &amp;\\ge \\sum_{x\\in\\supp(X),x\\ge a}x\\cdot \\Pr[X=x] \\\\ &amp;\\ge a\\cdot \\sum_{x\\in\\supp(X),x\\ge a} \\Pr[X=x] \\\\ &amp;= a\\cdot \\Pr[X\\ge a] \\end{align*}\\] より主張を得る. $\\square$ . $X$が連続値をとる場合についても, $\\sum$を$\\int$に置き換えて同様に示すことができます. マルコフの不等式は基本的に$X$が大きすぎないことを示すために使われますが, 逆に$X$が小さすぎないこ とを示すためにも用いることができます. $X$を$[0,1]$に値をとる確率変数とし, $\\mu = \\E[X] &gt; 0$とすると, 任意の$0\\le \\varepsilon \\le \\mu$に対して . \\[\\begin{align*} \\Pr[X &gt; \\mu-\\varepsilon] \\ge \\frac{\\varepsilon}{1-\\mu+\\varepsilon}\\ge \\varepsilon. \\end{align*}\\] 証明 確率変数$1-X$に対してMarkovの不等式を適用すると . \\[\\begin{align*} \\Pr[X \\le \\mu-\\varepsilon] &amp;= \\Pr[1-X\\ge 1-\\mu+\\varepsilon] \\\\ &amp;\\le \\frac{1-\\mu}{1-\\mu+\\varepsilon} \\\\ &amp;= 1-\\frac{\\varepsilon}{1-\\mu+\\varepsilon} \\end{align*}\\] より主張を得る. $\\square$ . また, Markovの不等式を用いるとunion boundと呼ばれる基本的な不等式を簡単に証明できます (意外とこのことを知らない人が多いような気がします). 系 (union bound). 事象$\\calE_1,\\dots,\\calE_m$のうち少なくとも一つが発生する確率は高々$\\Pr[\\calE_1]+\\dots+\\Pr[\\calE_m]$である. 証明 事象$\\calE_i$の指示確率変数を$\\indicator_i$とし, $X = \\indicator_1+\\dots+\\indicator_m$とします. つまり, $\\calE_i$が発生したら$\\indicator_i=1$, そうでなければ$\\indicator_i=0$で定まる確率変数を考えます. 少なくとも一つの事象が発生するということは$X\\ge 1$と等しいので, $X$に対するMarkovの不等式より . \\[\\begin{align*} \\Pr[\\calE_1 \\cup \\cdots \\cup \\calE_m] = \\Pr[X\\ge 1] \\le \\E[X] = \\Pr[\\calE_1] + \\cdots + \\Pr[\\calE_m] \\end{align*}\\] となり主張を得ます. ",
     "url": "/nobunote/docs/tools/prob_inequalities/#markov%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/tools/prob_inequalities/#markovの不等式"
-  },"39": {
+  },"40": {
     "doc": "よく使う不等式",
     "title": "Chebyshevの不等式",
     "content": "Chebyshevの不等式は分散が小さい確率変数に対する集中性を与える不等式です. Markovの不等式よりも強い上界を与えることができますが, 分散が大きい場合にはMarkovの不等式よりも弱い上界を与えることがあります. 補題 (Chebyshevの不等式) 実数値をとる確率変数$X$と任意の$a&gt;0$に対して . \\[\\begin{align*} \\Pr[|X-\\mathbb{E}[X]|\\ge a]\\le \\frac{\\Var[X]}{a^2}. \\end{align*}\\] 証明 非負の確率変数$(X-\\E[X])^2$に対してMarkovの不等式を適用すると . \\[\\begin{align*} \\Pr[|X-\\E[X]|\\ge a] &amp;= \\Pr[(X-\\E[X])^2\\ge a^2] \\\\ &amp;\\le \\frac{\\E[(X-\\E[X])^2]}{a^2} \\\\ &amp;= \\frac{\\Var[X]}{a^2} \\end{align*}\\] より主張を得る. $\\square$ . ",
     "url": "/nobunote/docs/tools/prob_inequalities/#chebyshev%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/tools/prob_inequalities/#chebyshevの不等式"
-  },"40": {
+  },"41": {
     "doc": "よく使う不等式",
     "title": "Hoeffdingの不等式",
     "content": "Hoeffdingの不等式は独立な確率変数の和の集中性を与える基本的だが非常に有用な不等式です. 補題 (Hoeffdingの不等式) $X_1,\\dots,X_n$を独立な確率変数, $S=\\sum_{i\\in[n]}X_i$とし, 任意の$i\\in[n]$に対して$0\\le X_i\\le 1$とする. このとき, 任意の$c \\ge 0$に対して . \\[\\begin{align*} \\Pr[S \\ge \\E[S] + c] &amp;\\le \\exp\\left(-\\frac{2c^2}{n}\\right), \\\\ \\Pr[S \\le \\E[S] - c] &amp;\\le \\exp\\left(-\\frac{2c^2}{n}\\right). \\end{align*}\\] ",
     "url": "/nobunote/docs/tools/prob_inequalities/#hoeffding%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/tools/prob_inequalities/#hoeffdingの不等式"
-  },"41": {
+  },"42": {
     "doc": "よく使う不等式",
     "title": "Chernoffバウンド",
     "content": "Chernoffバウンド (Chernoff bound) はHoeffdingの不等式と同様に, 独立な確率変数の和の集中性を与える不等式です. Hoeffdingの不等式では各確率変数$X_i$が$[0,1]$区間に収まる場合に成り立ちます汎用的な不等式ですが, Chernoffバウンドではさらに$X_i$の期待値の情報を用いた上界を与えているため, 状況によってはHoeffdingの不等式よりも強い上界を与えることができます. 補題 (Chernoff限界) $X_1,\\dots,X_n$を独立な確率変数, $S=\\sum_{i\\in[n]}X_i$とし, 任意の$i\\in[n]$に対して$0\\le X_i\\le 1$とする. このとき, 任意の$c \\ge 0$に対して . \\[\\begin{align*} \\Pr[S \\ge \\E[S] + c] &amp;\\le \\exp\\left(-\\frac{c^2}{2\\E[S] + 2c/3}\\right), \\\\ \\Pr[S \\le \\E[S] - c] &amp;\\le \\exp\\left(-\\frac{c^2}{2\\E[S]}\\right). \\end{align*}\\] Hoeffdingの不等式と比較すると, 期待値$\\E[S]$が小さい場合にはChernoffバウンドの方が強い上界を与えることがわかります. ",
     "url": "/nobunote/docs/tools/prob_inequalities/#chernoff%E3%83%90%E3%82%A6%E3%83%B3%E3%83%89",
     
     "relUrl": "/docs/tools/prob_inequalities/#chernoffバウンド"
-  },"42": {
+  },"43": {
     "doc": "ランダムグラフ",
     "title": "ランダムグラフ",
     "content": "ランダムグラフとはその名の通り, ランダムに生成されたグラフであり, その分布をランダムグラフモデルと呼びます. ",
     "url": "/nobunote/docs/tools/random_graph/",
     
     "relUrl": "/docs/tools/random_graph/"
-  },"43": {
+  },"44": {
     "doc": "ランダムグラフ",
     "title": "Erdős–Rényiグラフ",
     "content": "Erdős–Rényiグラフとは最も基本的なランダムグラフで, 各頂点のペアそれぞれに対し独立にコイントスを行い, その結果に応じて辺で結んで得られるランダムグラフです. 定義 (Erdős–Rényiグラフ). パラメータ$n\\in\\Nat$, $p\\in[0,1]$に対し, Erdős–Rényiグラフとは頂点集合が$[n]= \\{1,\\dots,n\\}$で 各頂点ペアを独立に同じ確率$p$で辺で結んで得られるランダムなグラフで, そのようなランダムグラフの分布を$\\mathcal{G}(n,p)$と表します. すなわち $\\calG(n,p)$とは . \\[\\begin{align*} \\Pr_{G\\sim \\mathcal{G}(n,p)}[G=H] = p^{|E(H)|}\\cdot (1-p)^{\\binom{n}{2} - |E(H)|} \\tag{1} \\end{align*}\\] によって定まる$n$頂点グラフ上の分布です. 特に$p=1/2$のとき, 式(1)の右辺は$H$に依存しない値になるので, $G(n,1/2)$は$n$頂点グラフ全体の集合から一様ランダムに選ばれたグラフとなります. ",
     "url": "/nobunote/docs/tools/random_graph/#erd%C5%91sr%C3%A9nyi%E3%82%B0%E3%83%A9%E3%83%95",
     
     "relUrl": "/docs/tools/random_graph/#erdősrényiグラフ"
-  },"44": {
+  },"45": {
     "doc": "ランダムグラフ",
     "title": "ランダム正則グラフ",
     "content": "ランダム正則グラフとは次数を固定したときの一様ランダムな正則グラフです. 正則グラフとは全ての頂点の次数が等しいグラフのことを意味し, 特にその次数が$d$に等しいグラフを$d$-正則と呼びます. 定義 (ランダム正則グラフ). パラメータ$n,d\\in\\Nat$ (ただし$nd$は偶数)に対してランダム$d$-正則グラフ$G_{n,d}$とは, $n$頂点$d$-正則グラフ全体の中から一様ランダムに選ばれたグラフであり, その分布を$\\calG_{n,d}$で表す. ",
