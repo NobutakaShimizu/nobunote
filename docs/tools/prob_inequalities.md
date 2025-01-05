@@ -1,7 +1,7 @@
 ---
 title: よく使う不等式
 parent: よく使う道具
-nav_order: 1
+nav_order: 2
 ---
 
 # よく使う不等式

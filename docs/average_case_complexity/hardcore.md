@@ -1,7 +1,7 @@
 ---
 title: ハードコア補題
 nav_order: 3
-parent: 平均時計算量
+parent: 平均時計算量理論
 ---
 
 # ハードコア補題

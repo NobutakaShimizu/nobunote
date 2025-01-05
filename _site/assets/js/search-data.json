@@ -78,7 +78,7 @@
   },"11": {
     "doc": "XOR補題",
     "title": "サンプラーを使った簡潔な証明",
-    "content": "パラメータはよく知られるバージョンより悪いものの, 非常に簡潔で教育的な証明を紹介します. 命題 (弱いパラメータに対するYaoのXOR補題). ある定数$C&gt;0$が存在して, パラメータ$n\\in\\Nat,\\delta&gt;0,\\varepsilon&gt;0$に対し$k\\ge C\\log(1/\\varepsilon)/\\delta^2$ならば以下が成り立つ: 関数$f\\colon \\binset^n\\to\\binset$が$\\SIZE(s)$に対して$\\delta$-困難ならば, 式(1)で定まる関数$f^{\\oplus k}$は$\\SIZE(s’)$に対して$(1/2-\\varepsilon)$-困難である. ただし$s’ = …$. 証明ではサンプラー(sampler)と呼ばれる道具を使います. 定義(サンプラー). 確率変数の組$(X,Y)$は以下を満たすとき$(\\delta,\\varepsilon)$-サンプラーという: 任意の関数$S \\colon \\supp(Y)\\to [0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X} \\left[ \\abs*{ \\E[S(Y)| X=x] - \\E[S(Y)]} \\ge \\varepsilon \\right] \\le \\delta. \\end{align*}\\] 同様に, $(X,Y)$は以下を満たすとき乗法的$(\\delta,\\varepsilon)$-サンプラーという: $\\E[S(Y)]\\ge \\varepsilon$を満たす任意の関数$S\\colon \\supp(Y)\\to[0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X}\\left[\\mathbb{E}[S(Y)|X=x] \\le \\frac{\\mathbb{E}[S(Y)]}{2}\\right] \\le \\delta. \\end{align*}\\] 例えば$X$と$Y$が独立であれば明らかに$\\E\\left[S(Y) \\vert X=x\\right]=\\E[S(Y)]$となるので$(0,0)$-サンプラーになります. ",
+    "content": "パラメータはよく知られるバージョンより悪いものの, 非常に簡潔で教育的な証明を紹介します. 命題 (弱いパラメータに対するYaoのXOR補題). ある定数$C&gt;0$が存在して, パラメータ$n\\in\\Nat,\\delta&gt;0,\\varepsilon&gt;0$に対し$k\\ge C\\log(1/\\varepsilon)/\\delta^2$ならば以下が成り立つ: 関数$f\\colon \\binset^n\\to\\binset$が$\\SIZE(s)$に対して$\\delta$-困難ならば, 式(1)で定まる関数$f^{\\oplus k}$は$\\SIZE(s’)$に対して$(1/2-\\varepsilon)$-困難である. ただし$s’ = …$. ",
     "url": "/nobunote/docs/average_case_complexity/Yao_XOR/#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%A9%E3%83%BC%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E7%B0%A1%E6%BD%94%E3%81%AA%E8%A8%BC%E6%98%8E",
     
     "relUrl": "/docs/average_case_complexity/Yao_XOR/#サンプラーを使った簡潔な証明"
@@ -120,7 +120,7 @@
   },"17": {
     "doc": "Home",
     "title": "Home",
-    "content": "This is a private memo of my own. ",
+    "content": "理論計算機科学, 特に平均時計算量(average-case complexity)に関する様々なテクニックやアルゴリズムを解説していきます. ",
     "url": "/nobunote/",
     
     "relUrl": "/"
@@ -174,16 +174,16 @@
     
     "relUrl": "/docs/learning_with_error/"
   },"25": {
-    "doc": "よく使う記号",
-    "title": "よく使う記号",
-    "content": "しばし使う記法を定義します. | 自然数$n\\in \\mathbb{N}$に対して$[n]={1,\\dots,n}$とします. | 有限集合$S$に対し, $x\\sim S$と書いたとき, 要素$x$は$S$上一様ランダムに選ばれることを意味します. | 例えば$\\Pr_{x\\sim S}[\\cdot]$と書くと, $S$上一様ランダムに選ばれた$x$に関する確率を考えることを意味します. | . | より一般に, 有限集合上の分布$\\nu$に対し, $x\\sim \\nu$と書くと$x$は分布$\\nu$に従って選ばれたことを意味します. | 確率変数$X$に対して$\\supp(X) = \\{ x\\colon \\Pr[X=x]&gt;0 \\}$を$X$の台(サポート)といいます (基本的には$X$として離散的な値をとるもののみを考えます). | アルゴリズム$\\mathcal{A}$と入力$x$に対し, $\\mathcal{A}(x)$はアルゴリズム$\\mathcal{A}$の入力$x$に対する出力を表すことにします. | $\\mathcal{A}$が乱択アルゴリズムの場合は$\\mathcal{A}(x)$は確率変数として扱われます. | . | . ",
-    "url": "/nobunote/docs/notation/",
-    
-    "relUrl": "/docs/notation/"
-  },"26": {
-    "doc": "平均時計算量",
-    "title": "平均時計算量",
+    "doc": "平均時計算量理論",
+    "title": "平均時計算量理論の概要",
     "content": "平均時計算量とは, 計算問題に対してそれが効率的に解ける入力の割合を研究する分野です. 研究対象の性質上, 問題と入力分布のペア(しばし分布問題と呼ばれる)を考えます. 効率的なアルゴリズム(例えば多項式時間アルゴリズム)が, 入力分布に従って生成された入力に対して正解する確率(成功確率)を考え, 成功確率が最大となるようなアルゴリズムやその限界について理解することが目標となります. 具体的な問題としては埋め込みクリーク問題やLWE問題などを考えます. 大まかに分けて平均時計算量は二つの文脈で研究されています. | 計算量的擬似ランダムネスとその応用. 効率的に解ける入力が少なければ少ないほど, その問題の困難性は強いとみなし, 強い困難性を持つ判定問題は計算量的擬似ランダム性を通じて暗号学的プリミティブの構成や乱択アルゴリズムの脱乱択化といった応用を持ちます. 統計的には, $ \\{0,1\\}^n $ 上で一様ランダムに選ばれた$x$と任意の関数$f\\colon \\{0,1\\}^n\\to \\{0,1\\}$に対して, $(x,f(x))$の情報論的エントロピーは$n$ビットです (つまり, ランダム文字列に$f$を適用してもエントロピーは増えない). しかし, $f\\colon \\{0,1\\}^n\\to \\{0,1\\}$が強い困難性を持つ関数ならば, 任意の効率的なアルゴリズムにとって, $x$から$f(x)$を推定するのは難しいので, $f(x)$は$x$とは独立なランダムビットに見えます. 従って$(x,f(x))$の計算量的エントロピーは$n+1$ビットとなります. このように, 驚くべきことに, 強い困難性を持つ問題があれば, 計算量的なエントロピーを増幅させられます. そして, そのような問題を構成するための手法として誤り訂正符号やエクスパンダーグラフなどの組合わせ的, 代数的な概念が積極的に応用されています. | 求解における情報理論と計算量理論のギャップ. 高次元統計学の文脈では最尤推定法で解ける具体的な問題に対し, それが計算量的の意味で効率的に解けるかどうかが議論されます. 例えば埋め込みクリーク問題では, $n$頂点ランダムグラフのランダムな位置に埋め込まれた$k$-クリークを探し出せという問題を考えます. クリークサイズが$k\\gg \\log n$であれば, 高確率でランダムグラフが$k$-クリークを含まないので, $k$頂点部分集合を列挙することにより探索することができます. しかしながら現在のところ, 埋め込みクリーク問題を解く多項式時間アルゴリズムは$k\\ge \\sqrt{n}$の範囲でしか見つかっておらず, $\\log n \\ll k \\ll \\sqrt{n}$の範囲でこの問題が解けるかどうかは重要な未解決問題とされています. また, 埋め込みクリーク問題の計算量的下界を仮定すると, 圧縮センシング, 分布の性質検査, あるゲームのナッシュ均衡の近似, 主成分分析など様々な実用的な問題に対する計算量下界が導出できることが知られています. | . ",
+    "url": "/nobunote/docs/average_case_complexity/#%E5%B9%B3%E5%9D%87%E6%99%82%E8%A8%88%E7%AE%97%E9%87%8F%E7%90%86%E8%AB%96%E3%81%AE%E6%A6%82%E8%A6%81",
+    
+    "relUrl": "/docs/average_case_complexity/#平均時計算量理論の概要"
+  },"26": {
+    "doc": "平均時計算量理論",
+    "title": "平均時計算量理論",
+    "content": " ",
     "url": "/nobunote/docs/average_case_complexity/",
     
     "relUrl": "/docs/average_case_complexity/"
@@ -223,102 +223,123 @@
     
     "relUrl": "/docs/planted_clique/#埋め込みクリーク判定問題"
   },"32": {
+    "doc": "記法",
+    "title": "よく使う記法",
+    "content": ". | 自然数$n\\in \\mathbb{N}$に対して$[n]={1,\\dots,n}$とします. | 有限集合$S$に対し, $x\\sim S$と書いたとき, 要素$x$は$S$上一様ランダムに選ばれることを意味します. | 例えば$\\Pr_{x\\sim S}[\\cdot]$と書くと, $S$上一様ランダムに選ばれた$x$に関する確率を考えることを意味します. | . | より一般に, 有限集合上の分布$\\nu$に対し, $x\\sim \\nu$と書くと$x$は分布$\\nu$に従って選ばれたことを意味します. | 確率変数$X$に対して$\\supp(X) = \\{ x\\colon \\Pr[X=x]&gt;0 \\}$を$X$の台(サポート)といいます (基本的には$X$として離散的な値をとるもののみを考えます). | アルゴリズム$\\mathcal{A}$と入力$x$に対し, $\\mathcal{A}(x)$はアルゴリズム$\\mathcal{A}$の入力$x$に対する出力を表すことにします. | $\\mathcal{A}$が乱択アルゴリズムの場合は$\\mathcal{A}(x)$は確率変数として扱われます. | . | . ",
+    "url": "/nobunote/docs/tools/notation/#%E3%82%88%E3%81%8F%E4%BD%BF%E3%81%86%E8%A8%98%E6%B3%95",
+    
+    "relUrl": "/docs/tools/notation/#よく使う記法"
+  },"33": {
+    "doc": "記法",
+    "title": "記法",
+    "content": " ",
+    "url": "/nobunote/docs/tools/notation/",
+    
+    "relUrl": "/docs/tools/notation/"
+  },"34": {
     "doc": "ペア独立性",
     "title": "確率変数族のペア独立性",
     "content": "確率変数族のペア独立性 (pairwise independence)は計算量理論の文脈では Goldreich-Levinの定理, set lower bound protocol, ハッシュ関数, 擬似ランダム生成器などの文脈でよく使われるテクニックです. 通常の意味での独立性を緩めた概念であり, 少ないランダムネスを用いて多くの確率変数を生成する手法としては典型的なものとなります. 確率変数の列$(X_1,\\dots,X_n)$が独立であるというのは「いくつかの$i$に対し$X_i=x_i$である」という事象が他の確率変数の分布に影響を与えないこととされます. ここでは今後の比較のために, 確率変数族の独立性を以下の形で定義しておきます: . 定義 (独立性) . 確率変数の列$(X_1,\\dots,X_n$)が独立であるとは, 任意のインデックスの部分集合$I= \\{i_1,\\dots,i_k\\}\\subseteq [n]$と$x_{i_1},\\dots,x_{i_k}$に対して以下が成り立つことである: . \\[\\begin{align*} \\Pr \\left[ X_{i_1} = x_{i_1}\\text{ and }\\dots\\text{ and }X_{i_k} = x_{i_k} \\right] = \\prod_{j\\in[k]} \\Pr[X_{i_j}=x_{i_j}]. \\tag{1} \\end{align*}\\] ペア独立性とは, 式(1)が成り立つ部分集合$I$の範囲を任意の部分集合ではなく要素数$2$の部分集合に制限することによって定まる概念です. 定義 (ペア独立性) . 確率変数の列$(X_1,\\dots,X_n$)がペア独立であるとは, 任意の要素数$2$のインデックスの部分集合$0\\le i &lt; j \\le n$と$x_i,x_j$に対して以下が成り立つことである: . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} X_{i} &amp;= x_{i} \\\\ X_{j} &amp;= x_{j} \\end{aligned} \\right] = \\Pr[X_{i}=x_{i}]\\cdot \\Pr[X_j = x_j]. \\tag{2} \\end{align*}\\] ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E7%A2%BA%E7%8E%87%E5%A4%89%E6%95%B0%E6%97%8F%E3%81%AE%E3%83%9A%E3%82%A2%E7%8B%AC%E7%AB%8B%E6%80%A7",
     
     "relUrl": "/docs/tools/pairwise_independent/#確率変数族のペア独立性"
-  },"33": {
+  },"35": {
     "doc": "ペア独立性",
     "title": "例1",
     "content": "$X_1,\\dots,X_n$を独立で$\\{0,1\\}$上一様ランダムな確率変数とし, 各$1\\le i &lt; j \\le n$に対して . \\[\\begin{align*} Y_{ij} = X_i + X_j \\bmod 2 \\end{align*}\\] で定まる確率変数族$(Y_{ij})_{1\\le i&lt;j\\le n}$はペア独立です. 証明 簡単のため$n=3$で考えます (一般の$n$についても同様). 任意の$y_{12},y_{23}\\in \\{0,1\\}$に対して . \\[\\begin{align*} \\Pr\\left[ \\begin{aligned} Y_{12}&amp;=y_{12} \\\\ Y_{23}&amp;=y_{23} \\end{aligned} \\right] &amp;= \\Pr\\left[ \\begin{aligned} X_1+X_2&amp;=y_{12} \\pmod 2 \\\\ X_2+X_3&amp;=y_{23} \\pmod 2 \\end{aligned} \\right] \\\\ &amp;= \\Pr\\left[ \\begin{aligned} X_1 &amp;= y_{12} + X_2 \\pmod 2 \\\\ X_3 &amp;= y_{23} + X_2 \\pmod 2 \\end{aligned} \\right] \\\\ &amp;= \\frac{1}{4} \\\\ &amp;= \\Pr[Y_{12}=y_{12}]\\cdot \\Pr[Y_{23}=y_{23}] \\end{align*}\\] を得ます. 三つ目の等式では$X_1,X_2,X_3$の独立性を用いています. 上記の例で$n$ビットのランダムな文字列$(X_1,\\dots,X_n) \\sim \\{0,1\\}^n$を$\\binom{n}{2}$ビットの文字列$(Y_{ij})$\\に変換しています (ただし変換で文字列を延ばす代わりに各ビットの独立性は損なわれるため, 得られる長い文字列を擬似ランダム文字列と呼ぶ). このように, ペア独立性の技法を用いると少ないエントロピーのランダムネスから長い擬似ランダム文字列を生成できます (このアイデアはより一般に擬似ランダム生成器の概念で一般化されます). 例えばこのように生成された長い擬似ランダム文字列を乱択アルゴリズムのランダムシードとして代用することでより少ないランダムネスを用いた乱択アルゴリズムの模倣が可能になります. この模倣の精度をペア独立性を用いて評価していくことになります. ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E4%BE%8B1",
     
     "relUrl": "/docs/tools/pairwise_independent/#例1"
-  },"34": {
+  },"36": {
     "doc": "ペア独立性",
     "title": "例2. ランダムビットの線形結合",
     "content": "例1と同様に独立に$X_1,\\dots,X_n \\sim \\{0,1\\}$を選びます. 例1では$X_i + X_j$という形を考えていましたが, より一般に$X_{i_1}+\\dots + X_{i_k}$という形を考えてもペア独立性が保たれることが同様にして証明できます. 非空な部分集合$I \\subseteq [n]$に対して . \\[\\begin{align*} Y_I = \\sum_{i\\in I} X_i \\bmod 2 \\end{align*}\\] とすることによって定まる確率変数族$(Y_I)_{I\\ne \\emptyset}$はペア独立性を持つ. 証明 任意の非空な$I \\subseteq[n]$に対して, $X_1,\\dots,X_n\\sim \\{0,1\\}$が独立一様ランダムなので, $Y_I$の周辺分布も$\\{0,1\\}$上で一様となります. また, 相異なる二つの非空な部分集合$I,J\\subseteq[n]$および$a,b \\in \\{0,1\\}$に対して . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} Y_I &amp;= a \\\\ Y_J &amp;= b \\end{aligned} \\right] &amp;= \\Pr \\left[ \\begin{aligned} Y_{I\\setminus J} + Y_{I\\cap J} &amp;= a \\\\ Y_{J\\setminus I} + Y_{I\\cap J} &amp;= b \\end{aligned} \\right] \\\\ &amp;= \\Pr \\left[ \\begin{aligned} Y_{I\\setminus J} &amp;= a - Y_{I\\cap J} \\\\ Y_{J\\setminus I} &amp;= b - Y_{I\\cap J} \\end{aligned} \\right] \\\\ &amp;= \\frac{1}{4} \\end{align*}\\] 証明 より, 確かにペア独立性を満たします. ここで最後の等式では, $X_i$たちの独立性より, $Y_{I\\setminus J}$と$Y_{J\\setminus I}$が独立であることを用いています ($I\\ne J$より$I\\setminus J$と$J\\setminus I$はどちらも非空であることに注意). $\\square$ . この方法を用いると$n$ビットのエントロピーから長さ$2^n-1$の擬似ランダム文字列を得られるので, 指数的に長さを延ばすことが可能となります. ランダム線形関数としての視点 . 例2の構成で得られる$(Y_I)_{I\\ne \\emptyset}$は, 一様ランダムなベクトル$c \\sim \\mathbb{F}_2^n$に対して線形関数$z \\mapsto \\inprod{c,z}$を考えて その($0$以外での)真理値表としてみなすことができます. この解釈は Goldreich-Levinの定理 の証明において本質的に効いてきます. ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E4%BE%8B2-%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%83%93%E3%83%83%E3%83%88%E3%81%AE%E7%B7%9A%E5%BD%A2%E7%B5%90%E5%90%88",
     
     "relUrl": "/docs/tools/pairwise_independent/#例2-ランダムビットの線形結合"
-  },"35": {
+  },"37": {
     "doc": "ペア独立性",
     "title": "例3. ランダムな直線",
     "content": "要素数$q$の有限体$\\mathbb{F}_q$に対して一様ランダムに$a,b\\sim \\mathbb{F}_q$を選び, 各$i\\in \\mathbb{F}_q$に対して . \\[\\begin{align*} X_i = a i + b \\end{align*}\\] として確率変数族$(X_i)_{i\\in \\mathbb{F}_q}$を定めると$(X_i)$はペア独立です. 証明 任意の相異なる$\\mathbb{F}_q$の元$i,j$および$c,d \\in \\mathbb{F}_q$に対して . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} X_i &amp;= c \\\\ X_j &amp;= d \\end{aligned} \\right] &amp;= \\Pr_{a,b\\sim \\mathbb{F}_q} \\left[ \\begin{aligned} ai+b &amp;= c \\\\ aj+b &amp;= d \\end{aligned} \\right] \\\\ &amp;= \\Pr_{a,b\\sim \\mathbb{F}_q} \\left[ \\begin{bmatrix} i &amp; 1 \\\\ j &amp; 1 \\end{bmatrix} \\begin{bmatrix} a \\\\ b \\end{bmatrix} = \\begin{bmatrix} c \\\\ d \\end{bmatrix} \\right] \\end{align*}\\] ここで, $i\\ne j$より行列 . \\[\\begin{align*} \\begin{bmatrix} i &amp; 1 \\\\ j &amp; 1 \\end{bmatrix} \\end{align*}\\] は逆行列を持つ (Vandermonde行列の特殊ケース) ので, 最後の等式の確率の中身は$a=\\ast,b=\\ast$の形で書けます. $a,b$は一様ランダムなので, この確率は$1/q^2$です. 一方で, ランダムな$a,b\\sim \\mathbb{F}_q$と固定した$i\\in \\mathbb{F}_q$に対し$X_i=ai+b$の周辺分布は$\\mathbb{F}_q$上一様なので, 確かに$(X_i)$はペア独立です. ランダムな直線に基づく生成はランダムな$a,b\\sim \\mathbb{F}_q$を受け取って$q$個の$\\mathbb{F}_q$の元を出力しています. ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E4%BE%8B3-%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%81%AA%E7%9B%B4%E7%B7%9A",
     
     "relUrl": "/docs/tools/pairwise_independent/#例3-ランダムな直線"
-  },"36": {
+  },"38": {
     "doc": "ペア独立性",
     "title": "性質",
     "content": "独立な確率変数の和の分散はそれぞれの確率変数の分散の和に等しいことが知られていますが, この性質はペア独立な確率変数の和についても成り立ちます. $X_1,\\dots,X_n$をペア独立な確率変数とし, $S=\\sum_{i\\in[n]} X_i$とすると, $\\Var[S] = \\sum_{i\\in[n]} \\Var[X_i]$が成り立つ. 証明 確率変数はシフト(定数$a$に対して$X$を$X+a$に変換する操作)に対して分散は変わらないので, $X_i$の期待値を$0$にシフトしても一般性を失いません. このとき, $S$の期待値は$0$なので, その分散は$\\E[S^2]$に等しくなります. また, $X_i$たちはペア独立なので, $i\\ne j$に対して$\\E[X_iX_j]=\\E[X_i]\\E[X_j]=0$が成り立ちます. 実際, $i\\ne j$に対して$\\Pr[X_i=x_i \\text{ and }X_j=x_j]=\\Pr[X_i=x_i]\\Pr[X_j=x_j]$だから . \\[\\begin{align*} \\E[X_iX_j] &amp;= \\sum_{x_i,x_j} x_i x_j \\Pr[X_i=x_i \\text{ and }X_j=x_j] \\\\ &amp;= \\sum_{x_i,x_j} x_i x_j \\Pr[X_i=x_i]\\Pr[X_j=x_j] \\\\ &amp;= \\left( \\sum_{x_i} x_i \\Pr[X_i=x_i] \\right) \\left( \\sum_{x_j} x_j \\Pr[X_j=x_j] \\right) \\\\ &amp;= \\E[X_i]\\E[X_j] \\\\ &amp;= 0 \\end{align*}\\] となります. 従って, 期待値の線形性より . \\[\\begin{align*} \\E[S^2] &amp;= \\E\\left[ \\left( \\sum_{i\\in[n]} X_i \\right)^2 \\right] \\\\ &amp;= \\E\\left[ \\sum_{i\\in[n]} X_i^2 + \\sum_{i\\ne j} X_iX_j \\right] \\\\ &amp;= \\sum_{i\\in[n]} \\E[X_i^2] + \\sum_{i\\ne j} \\E[X_iX_j] \\\\ &amp;= \\sum_{i\\in[n]} \\E[X_i^2] \\\\ &amp;= \\sum_{i\\in[n]} \\Var[X_i] &amp; &amp; \\because\\text{ $X_i$の期待値は$0$} \\end{align*}\\] となり主張を得ます. $\\square$ . このことから和$S$の分散が簡単に計算できるため, チェビシェフの不等式より以下を得ます: . $X_1,\\dots,X_n$をペア独立な確率変数とし, $S=\\sum_{i\\in[n]} X_i$とすると, 任意の$a&gt;0$に対して . \\[\\begin{align*} \\Pr\\qty[\\abs{S-\\E[S]}\\ge a] \\le \\frac{\\sum_{i\\in[n]} \\Var[X_i]}{a^2}. \\end{align*}\\] ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E6%80%A7%E8%B3%AA",
     
     "relUrl": "/docs/tools/pairwise_independent/#性質"
-  },"37": {
+  },"39": {
     "doc": "ペア独立性",
     "title": "ペア独立性",
     "content": " ",
     "url": "/nobunote/docs/tools/pairwise_independent/",
     
     "relUrl": "/docs/tools/pairwise_independent/"
-  },"38": {
+  },"40": {
     "doc": "よく使う不等式",
     "title": "よく使う不等式",
     "content": "確率に関するよく使う不等式を紹介していきます. 基本的には様々な確率集中不等式 (concentration inequality)を紹介していきます. 確率集中不等式とは, 興味の対象となる確率変数が高確率でその期待値もしくは中央値付近の値をとることを主張する結果です. 例えば, 実数値をとり期待値が存在する確率変数$Y$に対して以下の確率 . \\[\\begin{align*} &amp;\\Pr[Y\\ge \\mathbb{E}[Y] + \\delta] \\\\ &amp;\\Pr[Y\\le \\mathbb{E}[Y] - \\delta] \\end{align*}\\] のできるだけ良い上界(もしくは下界)を与えることが目標です. このような確率集中不等式は様々な分野で利用されており, 確率論, 統計学, 情報理論, 機械学習, 理論計算機科学など幅広い分野で利用されています. ",
     "url": "/nobunote/docs/tools/prob_inequalities/",
     
     "relUrl": "/docs/tools/prob_inequalities/"
-  },"39": {
+  },"41": {
     "doc": "よく使う不等式",
     "title": "Markovの不等式",
     "content": "Markovの不等式は最も基本的な集中不等式です. Markovの不等式は非負値をとる任意の確率変数に対して成り立つため汎用性が高いのが特徴です. 一方でその汎用性が高いあまり, Markovの不等式単体で用いると弱い上界を与えることが多いのですが, 後述するChebyshevの不等式, Chernoff限界など様々な確率集中不等式の証明に利用されています. 補題 (Markovの不等式) 非負値をとり期待値が存在する任意の確率変数$X$と任意の$a&gt;0$に対して . \\[\\begin{align*} \\Pr[X\\ge a]\\le \\frac{\\mathbb{E}[X]}{a}. \\end{align*}\\] Markovの不等式とは期待値よりはるかに大きい値をとる確率を上から抑える不等式ですので, 集中不等式の一種といえるでしょう. 証明 ($X$が離散値をとる場合) 期待値の定義より, 任意の$a&gt;0$に対して . \\[\\begin{align*} \\E[X]&amp;=\\sum_{x\\in \\supp(X)}x\\cdot \\Pr[X=x] \\\\ &amp;\\ge \\sum_{x\\in\\supp(X),x\\ge a}x\\cdot \\Pr[X=x] \\\\ &amp;\\ge a\\cdot \\sum_{x\\in\\supp(X),x\\ge a} \\Pr[X=x] \\\\ &amp;= a\\cdot \\Pr[X\\ge a] \\end{align*}\\] より主張を得る. $\\square$ . $X$が連続値をとる場合についても, $\\sum$を$\\int$に置き換えて同様に示すことができます. マルコフの不等式は基本的に$X$が大きすぎないことを示すために使われますが, 逆に$X$が小さすぎないこ とを示すためにも用いることができます. $X$を$[0,1]$に値をとる確率変数とし, $\\mu = \\E[X] &gt; 0$とすると, 任意の$0\\le \\varepsilon \\le \\mu$に対して . \\[\\begin{align*} \\Pr[X &gt; \\mu-\\varepsilon] \\ge \\frac{\\varepsilon}{1-\\mu+\\varepsilon}\\ge \\varepsilon. \\end{align*}\\] 証明 確率変数$1-X$に対してMarkovの不等式を適用すると . \\[\\begin{align*} \\Pr[X \\le \\mu-\\varepsilon] &amp;= \\Pr[1-X\\ge 1-\\mu+\\varepsilon] \\\\ &amp;\\le \\frac{1-\\mu}{1-\\mu+\\varepsilon} \\\\ &amp;= 1-\\frac{\\varepsilon}{1-\\mu+\\varepsilon} \\end{align*}\\] より主張を得る. $\\square$ . また, Markovの不等式を用いるとunion boundと呼ばれる基本的な不等式を簡単に証明できます (意外とこのことを知らない人が多いような気がします). 系 (union bound). 事象$\\calE_1,\\dots,\\calE_m$のうち少なくとも一つが発生する確率は高々$\\Pr[\\calE_1]+\\dots+\\Pr[\\calE_m]$である. 証明 事象$\\calE_i$の指示確率変数を$\\indicator_i$とし, $X = \\indicator_1+\\dots+\\indicator_m$とします. つまり, $\\calE_i$が発生したら$\\indicator_i=1$, そうでなければ$\\indicator_i=0$で定まる確率変数を考えます. 少なくとも一つの事象が発生するということは$X\\ge 1$と等しいので, $X$に対するMarkovの不等式より . \\[\\begin{align*} \\Pr[\\calE_1 \\cup \\cdots \\cup \\calE_m] = \\Pr[X\\ge 1] \\le \\E[X] = \\Pr[\\calE_1] + \\cdots + \\Pr[\\calE_m] \\end{align*}\\] となり主張を得ます. ",
     "url": "/nobunote/docs/tools/prob_inequalities/#markov%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/tools/prob_inequalities/#markovの不等式"
-  },"40": {
+  },"42": {
     "doc": "よく使う不等式",
     "title": "Chebyshevの不等式",
     "content": "Chebyshevの不等式は分散が小さい確率変数に対する集中性を与える不等式です. Markovの不等式よりも強い上界を与えることができますが, 分散が大きい場合にはMarkovの不等式よりも弱い上界を与えることがあります. 補題 (Chebyshevの不等式) 実数値をとる確率変数$X$と任意の$a&gt;0$に対して . \\[\\begin{align*} \\Pr[|X-\\mathbb{E}[X]|\\ge a]\\le \\frac{\\Var[X]}{a^2}. \\end{align*}\\] 証明 非負の確率変数$(X-\\E[X])^2$に対してMarkovの不等式を適用すると . \\[\\begin{align*} \\Pr[|X-\\E[X]|\\ge a] &amp;= \\Pr[(X-\\E[X])^2\\ge a^2] \\\\ &amp;\\le \\frac{\\E[(X-\\E[X])^2]}{a^2} \\\\ &amp;= \\frac{\\Var[X]}{a^2} \\end{align*}\\] より主張を得る. $\\square$ . ",
     "url": "/nobunote/docs/tools/prob_inequalities/#chebyshev%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/tools/prob_inequalities/#chebyshevの不等式"
-  },"41": {
+  },"43": {
     "doc": "よく使う不等式",
     "title": "Hoeffdingの不等式",
     "content": "Hoeffdingの不等式は独立な確率変数の和の集中性を与える基本的だが非常に有用な不等式です. 補題 (Hoeffdingの不等式) $X_1,\\dots,X_n$を独立な確率変数, $S=\\sum_{i\\in[n]}X_i$とし, 任意の$i\\in[n]$に対して$0\\le X_i\\le 1$とする. このとき, 任意の$c \\ge 0$に対して . \\[\\begin{align*} \\Pr[S \\ge \\E[S] + c] &amp;\\le \\exp\\left(-\\frac{2c^2}{n}\\right), \\\\ \\Pr[S \\le \\E[S] - c] &amp;\\le \\exp\\left(-\\frac{2c^2}{n}\\right). \\end{align*}\\] ",
     "url": "/nobunote/docs/tools/prob_inequalities/#hoeffding%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/tools/prob_inequalities/#hoeffdingの不等式"
-  },"42": {
+  },"44": {
     "doc": "よく使う不等式",
     "title": "Chernoffバウンド",
     "content": "Chernoffバウンド (Chernoff bound) はHoeffdingの不等式と同様に, 独立な確率変数の和の集中性を与える不等式です. Hoeffdingの不等式では各確率変数$X_i$が$[0,1]$区間に収まる場合に成り立ちます汎用的な不等式ですが, Chernoffバウンドではさらに$X_i$の期待値の情報を用いた上界を与えているため, 状況によってはHoeffdingの不等式よりも強い上界を与えることができます. 補題 (Chernoff限界) $X_1,\\dots,X_n$を独立な確率変数, $S=\\sum_{i\\in[n]}X_i$とし, 任意の$i\\in[n]$に対して$0\\le X_i\\le 1$とする. このとき, 任意の$c \\ge 0$に対して . \\[\\begin{align*} \\Pr[S \\ge \\E[S] + c] &amp;\\le \\exp\\left(-\\frac{c^2}{2\\E[S] + 2c/3}\\right), \\\\ \\Pr[S \\le \\E[S] - c] &amp;\\le \\exp\\left(-\\frac{c^2}{2\\E[S]}\\right). \\end{align*}\\] Hoeffdingの不等式と比較すると, 期待値$\\E[S]$が小さい場合にはChernoffバウンドの方が強い上界を与えることがわかります. ",
     "url": "/nobunote/docs/tools/prob_inequalities/#chernoff%E3%83%90%E3%82%A6%E3%83%B3%E3%83%89",
     
     "relUrl": "/docs/tools/prob_inequalities/#chernoffバウンド"
-  },"43": {
+  },"45": {
     "doc": "ランダムグラフ",
     "title": "ランダムグラフ",
     "content": "ランダムグラフとはその名の通り, ランダムに生成されたグラフであり, その分布をランダムグラフモデルと呼びます. ",
     "url": "/nobunote/docs/tools/random_graph/",
     
     "relUrl": "/docs/tools/random_graph/"
-  },"44": {
+  },"46": {
     "doc": "ランダムグラフ",
     "title": "Erdős–Rényiグラフ",
     "content": "Erdős–Rényiグラフとは最も基本的なランダムグラフで, 各頂点のペアそれぞれに対し独立にコイントスを行い, その結果に応じて辺で結んで得られるランダムグラフです. 定義 (Erdős–Rényiグラフ). パラメータ$n\\in\\Nat$, $p\\in[0,1]$に対し, Erdős–Rényiグラフとは頂点集合が$[n]= \\{1,\\dots,n\\}$で 各頂点ペアを独立に同じ確率$p$で辺で結んで得られるランダムなグラフで, そのようなランダムグラフの分布を$\\mathcal{G}(n,p)$と表します. すなわち $\\calG(n,p)$とは . \\[\\begin{align*} \\Pr_{G\\sim \\mathcal{G}(n,p)}[G=H] = p^{|E(H)|}\\cdot (1-p)^{\\binom{n}{2} - |E(H)|} \\tag{1} \\end{align*}\\] によって定まる$n$頂点グラフ上の分布です. 特に$p=1/2$のとき, 式(1)の右辺は$H$に依存しない値になるので, $G(n,1/2)$は$n$頂点グラフ全体の集合から一様ランダムに選ばれたグラフとなります. ",
     "url": "/nobunote/docs/tools/random_graph/#erd%C5%91sr%C3%A9nyi%E3%82%B0%E3%83%A9%E3%83%95",
     
     "relUrl": "/docs/tools/random_graph/#erdősrényiグラフ"
-  },"45": {
+  },"47": {
     "doc": "ランダムグラフ",
     "title": "ランダム正則グラフ",
     "content": "ランダム正則グラフとは次数を固定したときの一様ランダムな正則グラフです. 正則グラフとは全ての頂点の次数が等しいグラフのことを意味し, 特にその次数が$d$に等しいグラフを$d$-正則と呼びます. 定義 (ランダム正則グラフ). パラメータ$n,d\\in\\Nat$ (ただし$nd$は偶数)に対してランダム$d$-正則グラフ$G_{n,d}$とは, $n$頂点$d$-正則グラフ全体の中から一様ランダムに選ばれたグラフであり, その分布を$\\calG_{n,d}$で表す. ",
     "url": "/nobunote/docs/tools/random_graph/#%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E6%AD%A3%E5%89%87%E3%82%B0%E3%83%A9%E3%83%95",
     
     "relUrl": "/docs/tools/random_graph/#ランダム正則グラフ"
+  },"48": {
+    "doc": "サンプラー",
+    "title": "サンプラー",
+    "content": "サンプラー(sampler)は平均時計算量理論や誤り訂正符号の文脈において証明で提案した帰着の正当性の証明などでよく使われます. 定義(サンプラー). 確率変数の組$(X,Y)$は以下を満たすとき$(\\delta,\\varepsilon)$-サンプラーという: 任意の関数$S \\colon \\supp(Y)\\to [0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X} \\left[ \\abs*{ \\E[S(Y)| X=x] - \\E[S(Y)]} \\ge \\varepsilon \\right] \\le \\delta. \\end{align*}\\] 同様に, $(X,Y)$は以下を満たすとき乗法的$(\\delta,\\varepsilon)$-サンプラーという: $\\E[S(Y)]\\ge \\varepsilon$を満たす任意の関数$S\\colon \\supp(Y)\\to[0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X}\\left[\\mathbb{E}[S(Y)|X=x] \\le \\frac{\\mathbb{E}[S(Y)]}{2}\\right] \\le \\delta. \\end{align*}\\] 例えば$X$と$Y$が独立であれば明らかに$\\E\\left[S(Y) \\vert X=x\\right]=\\E[S(Y)]$となるので$(0,0)$-サンプラーになります. ",
+    "url": "/nobunote/docs/tools/sampler/",
+    
+    "relUrl": "/docs/tools/sampler/"
   }
 }

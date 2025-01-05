@@ -1,7 +1,7 @@
 ---
 title: XOR補題
 nav_order: 2
-parent: 平均時計算量
+parent: 平均時計算量理論
 ---
 # XOR補題
 平均時計算量において脱乱化などの応用を考える文脈では, **困難性の増幅 (hardness amlpification)**と呼ばれる, 弱い平均時困難性を持つ関数$f$から強い平均時困難性を持つ関数$g$を構成する手法が研究されています.
@@ -46,27 +46,5 @@ YaoのXOR補題には様々な証明方法が知られています.
 > ある定数$C>0$が存在して, パラメータ$n\in\Nat,\delta>0,\varepsilon>0$に対し$k\ge C\log(1/\varepsilon)/\delta^2$ならば以下が成り立つ:
 > 関数$f\colon \binset^n\to\binset$が$\SIZE(s)$に対して$\delta$-困難ならば, 式(1)で定まる関数$f^{\oplus k}$は$\SIZE(s')$に対して$(1/2-\varepsilon)$-困難である. ただし$s' = ...$.
 
-証明では**サンプラー(sampler)**と呼ばれる道具を使います.
 
-{: .definition-title }
-> **定義(サンプラー).**
-> 
-> 確率変数の組$(X,Y)$は以下を満たすとき**$(\delta,\varepsilon)$-サンプラー**という:
-> 任意の関数$S \colon \supp(Y)\to [0,1]$に対して
-> 
-> $$
-  \begin{align*}
-    \Pr_{x\sim X} \left[ \abs*{ \E[S(Y)| X=x] - \E[S(Y)]} \ge \varepsilon \right] \le \delta.
-  \end{align*}
-> $$
->
-> 同様に, $(X,Y)$は以下を満たすとき**乗法的$(\delta,\varepsilon)$-サンプラー**という: $\E[S(Y)]\ge \varepsilon$を満たす任意の関数$S\colon \supp(Y)\to[0,1]$に対して
-> 
->$$
-  \begin{align*}
-    \Pr_{x\sim X}\left[\mathbb{E}[S(Y)|X=x] \le \frac{\mathbb{E}[S(Y)]}{2}\right] \le \delta.
-  \end{align*}
->$$
-
-例えば$X$と$Y$が独立であれば明らかに$\E\left[S(Y) \vert X=x\right]=\E[S(Y)]$となるので$(0,0)$-サンプラーになります.
 
