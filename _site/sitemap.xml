@@ -4,6 +4,9 @@
 <loc>http://localhost:4000/nobunote/404</loc>
 </url>
 <url>
+<loc>http://localhost:4000/nobunote/docs/planted_clique/AKS%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/nobunote/docs/learning_with_error/BKW%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/</loc>
 </url>
 <url>
@@ -53,6 +56,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/tools/sampler/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/nobunote/docs/tools/spectra/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/components/aux_nav.html</loc>

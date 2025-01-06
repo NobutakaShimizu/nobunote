@@ -12,6 +12,7 @@ Kučeraのアルゴリズムとは$k\ge \sqrt{n\log n}$に対して[埋め込み
 {: .corollary-title }
 > **Kučeraのアルゴリズム** 
 >
+> **入力**: グラフ$G=([n],E)\sim \calG(n,1/2,k)$.
 > 1. 次数の大きい順に頂点を並び替え, $v_1,\dots,v_n$とする.
 > 2. $C=\\{v_1,\dots,v_k\\}$を出力する.
 
@@ -21,6 +22,10 @@ $C$の外側の頂点の次数は期待値が$n/2$ですがそこから標準偏
 実際には$n$個の頂点があるので, 最大次数は期待値から$O(\sqrt{n\log n})$だけ離れます.
 従って, $C$内の頂点の次数の増分$k/2$が$O(\sqrt{n\log n})$より大きければ, $C$内の頂点の次数は$C$外の頂点の次数より大きくなるので,
 次数の大きい順に$k$個の頂点を出力すればそれが$k$-クリークになっているはずです.
+
+{: align="center"}
+![次数によってクリークの位置がわかる]({{site.baseurl}}/docs/planted_clique/images/PCdegree_dist.svg)
+{: width=70%}
 
 <div id="theorem" markdown="1">
 {: .theorem }
@@ -54,10 +59,10 @@ $C$の外側の頂点の次数は期待値が$n/2$ですがそこから標準偏
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item"><a href="#theorem">定理</a>の証明</summary>
 
-  分布$\PC(n,k)$に従って生成された$(G',C)$に対し, グラフ$G'$が入力として与えられたとする.
-  補題より, クリーク$C$を追加する前のランダムグラフの最大次数は確率$1-n^{1-2c^2}$で高々$\frac{n}{2} + c\sqrt{n\log n}$である.
+  入力を$G'\sim \calG(n,1/2,k)$とします.
+  補題より, クリーク$C$を追加する前のランダムグラフの最大次数は確率$1-n^{1-2c^2}$で高々$\frac{n}{2} + c\sqrt{n\log n}$です.
 
-  また, クリーク$C$の追加によってクリーク外$v \not\in C$の次数は変化しないため, グラフ$G'$においても頂点$v\not\in C$の次数は高々
+  リーク$C$の追加によってクリーク外$v \not\in C$の次数は変化しないため, グラフ$G'$においても頂点$v\not\in C$の次数は高々
    
   $$
     \begin{align*}
