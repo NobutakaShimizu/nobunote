@@ -69,19 +69,57 @@ $$
 
 証明を述べるためにいくつかの概念を導入します.
 部分集合$H\subseteq \binset^n$の指示関数を$\indicator_H\colon\binset^n\to\binset$と表し,
-値域を$\binset$から$[0,1]$に緩和した関数$S\colon \binset^n\to[0,1]$を**測度(measure)**と呼びます.
-一様ランダムな$x\sim\binset^n$に関する期待値を$\E[S]=2^{-n}\cdot \sum_{x\in\binset^n} S(x)$で表し, 測度$S$が$\E[S]\ge \delta$を満たすとき**$\delta$-密**であるといいます.
-特に, $S=\indicator_H$が部分集合$H$の指示関数であるとき, $\indicator_H$と$H$の$\delta$-密性は一致します.
-$\E[S]>0$を満たす測度$S$に付随する$\binset^n$上の分布$\calL_S$を
+値域を$\binset$から$[0,1]$に緩和した関数
 
 $$
   \begin{align*}
-    \Pr_{x\sim \calL_S}[ x = a] = \frac{S(a)}{2^n\E[S]}
+    M\colon \binset^n\to[0,1]
+  \end{align*}
+$$
+
+を**測度(measure)**と呼びます.
+一様ランダムな$x\sim\binset^n$に関する期待値$\E[M]=2^{-n}\cdot \sum_{x\in\binset^n} M(x)$で表し, 測度$M$が$\E[M]\ge \delta$を満たすとき**$\delta$-密**であるといいます.
+特に, $M=\indicator_H$が部分集合$H$の指示関数であるとき, $\indicator_H$と$H$の$\delta$-密性は一致します.
+
+$\E[M]]>0$を満たす測度$M$に付随する$\binset^n$上の分布$\calL_M$を
+
+$$
+  \begin{align*}
+    \Pr_{x\sim \calL_M}[ x = a] = \frac{M(a)}{2^n\E[M]}
   \end{align*}
 $$
 
 で定めます.
-例えば$S=\indicator_H$と表せるとき, $\calL_S$は$H$上の一様分布と一致します.
+例えば$M=\indicator_H$と表せるとき, $\calL_M$は$H$上の一様分布と一致します.
+
+## ステップ　1. ハードコア測度の存在性
+
+ハードコア補題では任意の$\delta$-密な集合$H$上である程度$f$を計算する回路$C_H$の存在性を仮定していましたが, まず最初にハードコア補題の主張において集合を測度に緩めた次の主張を証明します.
+
+{: .lemma-title }
+> **補題(ハードコア測度).**
+>
+> 任意の$\delta,\varepsilon>0$に対して以下が成り立つ:
+> 関数$f\colon \binset^n\to\binset$がサイズ$s$に対して$\delta$-困難ならば,
+> ある$\delta$-密な測度$M\colon \binset^n\to[0,1]$と十分小さな定数$c>0$が存在して, 全ての回路$C \in \SIZE(c\delta^2\varepsilon^2 s)$に対して
+> 
+> $$
+  \begin{align*}
+    \Pr_{x\sim \calL_M}\left[ C(x) = f(x) \right] \le \frac{1}{2} + \varepsilon.
+  \end{align*}
+> $$
+
+対偶を証明します.
+任意の$\delta$-密な測度$M$に対してあるサイズ$s$の回路$C_M$が存在して
+
+$$
+  \begin{align*}
+    \Pr_{x\sim \calL_M} \left[ C_M(x) = f(x) \right] \ge \frac{1}{2} + \delta
+  \end{align*}
+$$
+
+が成り立つとします.
+
 
 
 
