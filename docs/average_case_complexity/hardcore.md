@@ -17,13 +17,15 @@ parent: 平均時計算量理論
 >
 > 任意の$\delta,\varepsilon>0$および$s\le 2^{o(n)}$に対して以下が成り立つ:
 > 関数$f\colon \binset^n\to\binset$がサイズ$s$に対して$\delta$-困難ならば,
-> ある$\delta$-密な集合$H\subseteq\binset^n$と十分小さな定数$c>0$が存在して, 全ての回路$C \in \SIZE(c\delta^2\varepsilon^2 s)$に対して
+> ある$(1-o(1))\delta$-密な集合$H\subseteq\binset^n$と十分小さな定数$c>0$が存在して, 全ての回路$C \in \SIZE(c\delta^2\varepsilon^2 s)$に対して
 > 
 > $$
   \begin{align*}
-    \Pr_{x\sim H}\left[ C(x) = f(x) \right] \le \frac{1}{2} + \varepsilon.
+    \Pr_{x\sim H}\left[ C(x) = f(x) \right] \le \frac{1}{2} + \varepsilon + o(1).
   \end{align*}
 > $$
+>
+> ここで$o(1)$の項は$n^{-\omega(1)}$にとれる.
 </div>
 
 弱い平均時困難性を持つ任意の関数$f$では, 任意の小さい回路はそこそこの割合の入力で誤った値を出力しますが, ハードコア補題はその関数$f$の困難性を凝縮したような入力部分集合$H\subset\binset^n$が存在して, $H$上では$f(x)$の計算が非常に困難になります.
@@ -333,6 +335,7 @@ $$
 
 [ハードコア測度補題](#hardcore-measure)
 ではハードコア測度の存在性を示しましたが, これを確率論的手法に基づいて離散化してハードコア集合の存在性を簡単に証明できます.
+[ハードコア補題](#hardcore-set)におけるパラメータ$\delta,\varepsilon$のロス分$o(1)$や$s\le 2^{o(n)}$という条件はこのステップに由来します.
 
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item">
