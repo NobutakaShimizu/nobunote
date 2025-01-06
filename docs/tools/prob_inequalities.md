@@ -12,8 +12,8 @@ nav_order: 2
 
 $$
 \begin{align*}
-&\Pr[Y\ge \mathbb{E}[Y] + \delta] \\
-&\Pr[Y\le \mathbb{E}[Y] - \delta]
+&\Pr[Y\ge \E[Y] + \delta] \\
+&\Pr[Y\le \E[Y] - \delta]
 \end{align*}
 $$
 
@@ -29,7 +29,7 @@ $$
 > 
 > $$
   \begin{align*}
-    \Pr[X\ge a]\le \frac{\mathbb{E}[X]}{a}.
+    \Pr[X\ge a]\le \frac{\E[X]}{a}.
   \end{align*}
 > $$
 
@@ -113,10 +113,12 @@ Chebyshevの不等式は分散が小さい確率変数に対する集中性を�
 > 実数値をとる確率変数$X$と任意の$a>0$に対して
 > 
 > $$
-  \begin{align*}
-    \Pr[|X-\mathbb{E}[X]|\ge a]\le \frac{\Var[X]}{a^2}.  
-  \end{align*}
+  \begin{align}
+    \Pr[|X-\E[X]|\ge a]\le \frac{\Var[X]}{a^2}.
+  \end{align}
 > $$
+>
+> 
 </div>
 
 <details markdown="1" style="background-color: #eee;">

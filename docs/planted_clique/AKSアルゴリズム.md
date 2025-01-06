@@ -107,8 +107,6 @@ $$
 ![埋め込みクリークのexactな復元]({{site.baseurl}}/docs/planted_clique/images/PC_overlap.svg)
 {: width=70%}
 
-
-
 ## アルゴリズムの正当性の証明
 
 {: .theorem }
@@ -120,7 +118,7 @@ $$
   \end{align*}
 > $$
 
-
+math
 
 
 
