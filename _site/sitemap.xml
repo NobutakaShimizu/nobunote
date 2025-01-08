@@ -22,6 +22,9 @@
 <loc>http://localhost:4000/nobunote/docs/average_case_complexity/average_case_hardness/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/nobunote/docs/tools/benri/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/nobunote/docs/tools/expander/</loc>
 </url>
 <url>
@@ -31,6 +34,9 @@
 <loc>http://localhost:4000/nobunote/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/nobunote/docs/planted_clique/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/nobunote/docs/tools/</loc>
 </url>
 <url>
@@ -38,9 +44,6 @@
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/average_case_complexity/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/nobunote/docs/planted_clique/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/tools/notation/</loc>

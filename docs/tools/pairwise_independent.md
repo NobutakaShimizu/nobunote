@@ -1,7 +1,7 @@
 ---
 title: ペア独立性
 parent: よく使う道具
-nav_order: 3
+nav_order: 8
 ---
 # 確率変数族のペア独立性
 

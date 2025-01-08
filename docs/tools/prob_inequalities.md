@@ -156,6 +156,7 @@ Hoeffdingの不等式は独立な確率変数の和の集中性を与える基�
 ## Chernoffバウンド
 Chernoffバウンド (Chernoff bound) はHoeffdingの不等式と同様に, 独立な確率変数の和の集中性を与える不等式です. Hoeffdingの不等式では各確率変数$X_i$が$[0,1]$区間に収まる場合に成り立ちます汎用的な不等式ですが, Chernoffバウンドではさらに$X_i$の期待値の情報を用いた上界を与えているため, 状況によってはHoeffdingの不等式よりも強い上界を与えることができます.
 
+<div id="chernoffbound" markdown="1">
 {: .lemma-title }
 > **補題 (Chernoff限界)**
 > $X_1,\dots,X_n$を独立な確率変数, $S=\sum_{i\in[n]}X_i$とし, 任意の$i\in[n]$に対して$0\le X_i\le 1$とする.
@@ -167,6 +168,6 @@ Chernoffバウンド (Chernoff bound) はHoeffdingの不等式と同様に, 独�
     \Pr[S \le \E[S] - c] &\le \exp\left(-\frac{c^2}{2\E[S]}\right).
   \end{align*}
 > $$
-
+</div>
 
 <a href="#hoeffding-inequality">Hoeffdingの不等式</a>と比較すると, 期待値$\E[S]$が小さい場合にはChernoffバウンドの方が強い上界を与えることがわかります.
