@@ -14,9 +14,11 @@ Learning with Error (LWE) とはノイズが乗った線形方程式を解けと
 そして, これが情報論的なtractabilityと計算量的なtractabilityの間の非自明なギャップであろうと広く信じられています.
 
 LWEの計算量的困難性を仮定すると学習理論や暗号などの分野において様々な計算量的下界が成り立ち, 以下に挙げる様々な利点から次世代の暗号技術(特に耐量子暗号)の核になることが期待されている重要な問題です:
-- 公開鍵暗号方式など様々な暗号学的プリミティブを設計できる.
-- 格子上の問題(最短ベクトル問題など)の最悪時困難性を仮定するとLWEの平均時困難性が成り立つという結果が知られている (最悪時から平均時への帰着).
+- 擬似乱数生成器[[Blum, Furst, Kearns, Lipton(CRYPTO1993)]](https://link.springer.com/chapter/10.1007/3-540-48329-2_24), [[Goldreich, Krawczyk, Luby(SICOMP1993)]](https://epubs.siam.org/doi/10.1137/0222069)や公開鍵暗号方式[[Alekhnovich(FOCS2003)]](https://ieeexplore.ieee.org/abstract/document/1238204)など様々な暗号学的プリミティブを設計できる.
+- 格子上の問題(最短ベクトル問題など)の最悪時困難性を仮定するとLWEの平均時困難性が成り立つという結果が知られている [[Regev(JACM2009)]](https://dl.acm.org/doi/10.1145/1568318.1568324).
 - 上記の格子上の問題を解く効率的な量子アルゴリズムの存在性は長年未解決.
+
+詳細は[Regevによるサーベイ論文(2010)](https://ieeexplore.ieee.org/document/5497885)を参照.
 
 # 問題の定義
 
