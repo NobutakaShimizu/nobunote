@@ -127,7 +127,7 @@
   },"18": {
     "doc": "Zero-Knowledge Proofs and the Complexity of Interactive Proof Systems",
     "title": "Info",
-    "content": ". | authors: Oded Goldreich, Silvio Micali, Avi Wigderson | publication: JACM91 | . 全体の要約 ゼロ知識証明系とは, ある命題が真であることを証明する際に, その証明それ自体以外の情報を一切漏らさない証明方法です. 論文では, NP（非決定性多項式時間）問題全てに対し, 安全な暗号化関数の存在を仮定すればゼロ知識証明系が存在することを示しています. さらに, グラフ同型性問題とグラフ非同型性問題について, 暗号化関数を用いないゼロ知識証明系を提示しています. ",
+    "content": ". | authors: Oded Goldreich, Silvio Micali, Avi Wigderson | publication: JACM91 | . 全体の要約 ゼロ知識証明系とは, ある命題が真であることを証明する際に, その証明それ自体以外の情報を一切漏らさない証明方法です. 論文の結果は以下の通り: . | 全てのNPに属する問題に対するゼロ知識対話証明系を構築　(ただし, 安全な暗号化関数の存在を仮定) | グラフ同型性問題とグラフ非同型性問題に対するゼロ知識対話証明系を構築 (暗号化関数を用いない). | . ",
     "url": "/nobunote/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/#info",
     
     "relUrl": "/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/#info"
