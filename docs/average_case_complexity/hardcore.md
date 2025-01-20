@@ -71,6 +71,21 @@ $$
 
 [ハードコア補題](#hardcore-set)では, ハードコア集合$H$上で困難性を議論する回路のサイズは$O(\delta^2\varepsilon^2 s)$になっていましたが, このバウンドを改善し, より大きなサイズ$s\cdot O(\varepsilon^2/\log(1/\delta))$回路に対する困難性を主張することができます [[Krivans, Servedio, Machine Learning(2003)]](https://link.springer.com/article/10.1023/A:1022949332276), [[Barak, Hardt, Kale, SODA(2009)]](https://epubs.siam.org/doi/10.1137/1.9781611973068.129).
 
+<div id="hardcore-set" markdown="1">
+{: .theorem-title }
+> **定理 (Informal; Barak, Hardt, Kale(1995))**
+>
+> 任意の$\delta,\varepsilon>0$および$s$に対して以下が成り立つ:
+> 関数$f\colon \binset^n\to\binset$がサイズ$s$に対して$\delta$-困難ならば,
+> ある$\delta$-密な集合$H\subseteq\binset^n$と十分小さな定数$c>0$が存在して, 全ての回路$C \in \SIZE( s\cdot c\varepsilon^2/\log(1/\delta) )$に対して
+> 
+> $$
+  \begin{align*}
+    \Pr_{x\sim H}\left[ C(x) = f(x) \right] \le \frac{1}{2} + \varepsilon.
+  \end{align*}
+> $$
+</div>
+
 ---
 
 # ハードコア補題の証明

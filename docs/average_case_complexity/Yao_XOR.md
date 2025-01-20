@@ -1,6 +1,6 @@
 ---
 title: XOR補題
-nav_order: 2
+nav_order: 5
 parent: 平均時計算量理論
 ---
 # XOR補題
