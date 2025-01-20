@@ -13,7 +13,7 @@ parent: 平均時計算量理論
 
 <div id="hardcore-set" markdown="1">
 {: .theorem-title }
-> **定理 (ハードコア補題)**
+> **定理 (ハードコア補題; Impagliazzo(1995))**
 >
 > 任意の$\delta,\varepsilon>0$および$s\le 2^{o(n)}$に対して以下が成り立つ:
 > 関数$f\colon \binset^n\to\binset$がサイズ$s$に対して$\delta$-困難ならば,
@@ -34,6 +34,46 @@ parent: 平均時計算量理論
 {: align="center"}
   ![ハードコア補題のイメージ]({{site.baseurl}}/docs/average_case_complexity/images/hardcore_image.svg)
 {: width=70%}
+
+## 擬似ランダムネスからの理解
+
+$\delta$-困難な関数$f\colon\binset^n\to\binset$を考えます.
+この困難性は, 一様ランダムな$x\sim\binset^n$に対して確率変数$f(x)$は確率$\delta$で表が出るコイントス$\mathrm{Ber}(\delta)$と(計算量的に)識別できないことを意味し, 特に$\delta\approx 1/2$のときはフェアなコイントスと識別できません.
+さて, $\delta$-困難な関数$f$に対してハードコア補題により保証されるハードコア集合を$H\subseteq\binset^n$とします.
+$H$上では関数$f$は$(1/2-\varepsilon)$-困難ですので, ($\varepsilon\approx 0$のとき)一様ランダムな$x\sim H$に対して$f(x)$は$\mathrm{Ber}(1/2)$と識別できません.
+
+これを鑑みて, ランダム関数$f_H$を
+
+$$
+  \begin{align*}
+    f_H(x) = \begin{cases}
+      \mathrm{Ber}(1/2) & \text{if } x\in H, \\
+      f(x) & \text{otherwise}
+    \end{cases}
+  \end{align*}
+$$
+
+と定義します (各$x\in H$ごとに独立ランダムに$f(x)$の値を定める).
+すると$f$と$f_H$は識別不可能性が成り立つことが期待されます.
+この直感は実際に成り立ち, 一様ランダムな$x\sim\binset^n$に対して二つの確率変数
+
+$$
+  \begin{align*}
+    (x,f(x)),\quad (x,f_H(x))
+  \end{align*}
+$$
+
+の識別困難性がハードコア補題から証明することができます (cf. [[Healy, Vadhan, Viola, SICOMP(2006)]](https://epubs.siam.org/doi/10.1137/S0097539705447281), Lemma 3.2).
+
+
+
+## パラメータの改善
+
+[ハードコア補題](#hardcore-set)では, ハードコア集合$H$上で困難性を議論する回路のサイズは$O(\delta^2\varepsilon^2 s)$になっていましたが, このバウンドを改善し, より大きなサイズ$s\cdot O(\varepsilon^2/\log(1/\delta))$回路に対する困難性を主張することができます [[Krivans, Servedio, Machine Learning(2003)]](https://link.springer.com/article/10.1023/A:1022949332276), [[Barak, Hardt, Kale, SODA(2009)]](https://epubs.siam.org/doi/10.1137/1.9781611973068.129).
+
+---
+
+# ハードコア補題の証明
 
 ハードコア補題はブースティングに基づく証明とvon-Neumannのminimax定理に基づく証明の二通りの証明が有名ですが, ここでは前者の証明を解説します.
 

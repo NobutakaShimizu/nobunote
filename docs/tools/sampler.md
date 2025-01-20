@@ -64,12 +64,14 @@ $(X,Y)$がサンプラーであるとは, ほとんどの$x$に対して$S$の�
 
 実はサンプラー性は対称であり, $(Y,X)$がサンプラーならば$(X,Y)$もまたサンプラーとなります.
 
+<div id="lemma:exchange" markdown="1">
 {: .lemma-title }
 > **補題(交換補題).**
 >
 > 確率変数のペア$(Y,X)$が$\left(\frac{\varepsilon}{2},\frac{\delta\varepsilon}{8}\right)$-サンプラーならば$(X,Y)$は$(\delta,\varepsilon)$-サンプラーである.
 >
 > 同様に, $(Y,X)$が乗法的$\left(\frac{\varepsilon}{4},\delta\right)$-サンプラーならば, $(X,Y)$は乗法的$(\delta,\varepsilon)$-サンプラーである.
+</div>
 
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item">一つ目の主張の証明</summary>
@@ -171,6 +173,7 @@ $(X,Y)$がサンプラーであるとは, ほとんどの$x$に対して$S$の�
 
 平均時計算量の文脈では以下に定義する直積サンプラーと呼ばれるペア$(X,Y)$をよく考えます.
 
+<div id="direct-product-sampler-definition" markdown="1">
 {: .definition-title }
 > **定義(直積サンプラー).**
 >
@@ -179,11 +182,50 @@ $(X,Y)$がサンプラーであるとは, ほとんどの$x$に対して$S$の�
 > 一様ランダムに$i\sim[k]$を選び, $Y=(X_1,\dots,X_{i-1},X,X_{i+1},\dots,X_k)$とする.
 >
 > このようにして得られる$(X,Y)$を**$k$-直積サンプラー**と呼ぶ.
-
+</div>
 直積サンプラーに付随する二部グラフでは,
 左側の頂点集合$\supp(X)$に対して$\supp(Y)=\supp(X)^k$となり, 頂点$x\in\supp(X)$と$(x_1,\dots,x_k)\in\supp(Y)$の間には, $(x_1,\dots,x_k)$の中に登場する$x$の回数だけ多重辺を引いて得られます (下図参照)
 
 {: align="center"}
 ![直積サンプラーに付随するグラフ]({{site.baseurl}}/docs/tools/images/direct_product_sampler.svg)
 {: width=70%}
+
+<div id="direct-product-sampler" markdown="1">
+{: .lemma-title }
+> **補題(直積サンプラーのサンプラー性).**
+>
+> 十分大きな定数$C>0$が存在し, 任意のパラメータ$\delta,\varepsilon>0$に対し, $k\ge \frac{C\log(1/\varepsilon)}{\varepsilon^2\delta^2}$ならば, $k$-直積サンプラーは$(\delta,\varepsilon)$-サンプラーである.
+</div>
+<details markdown="1" style="background-color: #eee;">
+<summary style="display: list-item">証明</summary>
+
+  まず$(Y,X)$が$\qty(\frac{\varepsilon}{2},\frac{\delta\varepsilon}{8})$-サンプラーであることを示し, その後に[交換補題](#lemma:exchange)を使って$(X,Y)$が$(\delta,\varepsilon)$-サンプラーであることを示します.
+  任意の関数$S\colon \supp(X)\to[0,1]$を固定します.
+  式(1)を($X$と$Y$が入れ替わっていることに注意)示すために, $y\sim Y$をランダムに選んだときの確率変数$\E[S(X)|Y=y]$を考えます.
+
+  $Y=(x_1,\dots,x_k)$で条件つけたときの$X$の条件付き分布は(多重)集合$\set{x_1,\dots,x_k}$上の一様分布となります(実際これは$(X,Y)$の分布を計算すれば確かめられます).
+  また, $Y=(x_1,\dots,x_k)$をランダムに選んだとき, $x_1,\dots,x_k$は$\binset^n$上で独立一様ランダムに分布しているため,
+  従って
+  
+  $$
+    \begin{align*}
+      \E[S(X)|Y=(x_1,\dots,x_k)]=\frac{1}{k}\sum_{i\in[k]} S(x_i)
+    \end{align*}
+  $$
+
+  は$k$個の独立な確率変数の和となります. [Hoeffdingの不等式]({{site.baseurl}}/docs/tools/prob_inequalities#hoeffding-inequality)より,
+
+  $$
+    \begin{align*}
+      \Pr_{x_1,\dots,x_k}\qty[ \left|\frac{1}{k}\sum_{i\in[k]}S(x_k) - \E_X[S(X)] \right| \ge \frac{\delta\varepsilon}{8} ] \le 2\exp\qty(-\frac{k\delta^2\varepsilon^2}{32}) \le \frac{\varepsilon}{2}
+    \end{align*}
+  $$
+  
+  を得ます (最後の不等号では$k$に関する条件を利用).
+  すなわち, $(Y,X)$は$\qty(\frac{\varepsilon}{2},\frac{\delta\varepsilon}{8})$-サンプラーとなるので, [交換補題](#lemma:exchange)より$(X,Y)$は$(\delta,\varepsilon)$-サンプラーとなります.  
+</details>
+
+
+
+
 
