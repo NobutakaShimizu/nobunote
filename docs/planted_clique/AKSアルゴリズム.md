@@ -118,7 +118,4 @@ $$
   \end{align*}
 > $$
 
-math
-
-
-
+<!-- TODO: proof -->

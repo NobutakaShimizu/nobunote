@@ -40,9 +40,6 @@
 <loc>http://localhost:4000/nobunote/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/nobunote/docs/planted_clique/</loc>
-</url>
-<url>
 <loc>http://localhost:4000/nobunote/docs/tools/</loc>
 </url>
 <url>
@@ -53,6 +50,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/average_case_complexity/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/nobunote/docs/planted_clique/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/tools/notation/</loc>
@@ -71,6 +71,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/tools/spectra/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/nobunote/docs/tools/statistical_distance/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/components/aux_nav.html</loc>
