@@ -69,475 +69,510 @@
     
     "relUrl": "/docs/learning_with_error/BKW%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/#パラメータghの設定"
   },"10": {
+    "doc": "GMW91",
+    "title": "Zero-Knowledge Proofs and the Complexity of Interactive Proof Systems",
+    "content": " ",
+    "url": "/nobunote/docs/memo/GMW91/#zero-knowledge-proofs-and-the-complexity-of-interactive-proof-systems",
+    
+    "relUrl": "/docs/memo/GMW91/#zero-knowledge-proofs-and-the-complexity-of-interactive-proof-systems"
+  },"11": {
+    "doc": "GMW91",
+    "title": "Info",
+    "content": ". | authors: Oded Goldreich, Silvio Micali, Avi Wigderson | publication: JACM(1991) | . 全体の要約 ゼロ知識証明系とは, ある命題が真であることを証明する際に, その証明それ自体以外の情報を一切漏らさない証明方法です. 論文の結果は以下の通り: . | 全てのNPに属する問題に対するゼロ知識対話証明系を構築　(ただし, 安全な暗号化関数の存在を仮定) | グラフ同型性問題とグラフ非同型性問題に対するゼロ知識対話証明系を構築 (暗号化関数を用いない). | . ",
+    "url": "/nobunote/docs/memo/GMW91/#info",
+    
+    "relUrl": "/docs/memo/GMW91/#info"
+  },"12": {
+    "doc": "GMW91",
+    "title": "対話証明系とは?",
+    "content": "NP（非決定性多項式時間）を, メンバーシップを主張する短い証明を持つ言語のクラスとして捉えたとき, その証明を, 強力な証明者と確率的多項式時間検証者の間の相互作用に拡張した概念が対話証明系です. 定義（対話チューリング機械; Interactive Turing Machine） . 対話チューリング機械(interactive Turing machine)とは, 以下の六つのテープからなる決定的チューリング機械です: . | 入力テープ (read-only) | ランダムシードテープ (read-only) | 作業テープ (read/write) | 受信テープ (read-only) | 送信テープ (write-only) | 出力テープ (write-only) | . 送信テープと受信テープをまとめて通信テープ(communication tape)と呼ぶこともあります. 対話するチューリング機械の組 (interactive pair of Turing machines)とは, 通信テープを共有している二つの対話チューリング機械$M_1,M_2$からなる組$\\langle M_1,M_2 \\rangle$であり, 次の性質を満たします: . | 一方の送信テープは他方の受信テープと同期しており, 逆もまた然りです. | 各計算ステップにおいて, どちらか一方の機械はactiveと呼ばれる状態にあり, もう一方の機械はidleという. activeな機械がidle状態に遷移したとき, もう一方の機械はactive状態になり, その機械は自信の入力テープ, 受信テープ, ランダムシードテープの内容に基づき計算を行います. この際に受信テープに書かれている文字列をメッセージと呼びます. | . 対話するチューリング機械の組$\\langle A,B \\rangle$に対し, $[A(x),B(y)]$を計算が終了した際の$B$の出力テープの内容とします ($A$の出力テープの内容は無視しています). 図1: 対話チューリング機械の構造 . 定義（対話証明系） . 言語$L$に対する対話証明系(interactive proof system)とは, 対話するチューリング機械の組$\\langle P,V \\rangle$であって, 以下の性質を満たすものです: . | $V$は乱択多項式時間アルゴリズムです | (完全性) 任意の定数$c&gt;0$および十分長い文字列$x\\in L$に対して | . \\[\\begin{align*} \\Pr \\qty[ [P(x),V(x)] = 1 ] \\ge 1 - |x|^{-c}. \\end{align*}\\] . | (健全性) 任意の定数$c&gt;0$および任意の対話チューリング機械$P^*$, そして十分長い文字列$x\\notin L$に対して | . \\[\\begin{align*} \\Pr \\qty[ [P^*(x),V(x)] = 1 ] \\le |x|^{-c}. \\end{align*}\\] . 図2: 対話証明系の構造 . 例えば充足可能性判定問題に対する対話証明系は, 証明者が充足する割り当てを提示し, 検証者がその割り当てが充足することを確認することによって得られます. つまり, . | $P(x)$ : 入力として与えられた論理式$x$に対し, その充足割り当てのうち一つ$a$を送信テープに記述してidle状態になります. | $V(x)$ : $P(x)$が送信した割り当て$a$を受信し, その割り当てが確かに$x$を充足するかどうかを確認します. | . 上記の対話証明系では, 検証者は論理式$x$が充足可能であるという事実に加え, その充足割り当てが何かという情報も得ることができます. ゼロ知識証明とは, このような余分な情報の漏洩は許さず, 証明が有効であること以外には何も情報を漏らさないような対話証明です. 定義（ゼロ知識証明系） . 言語$L$に対するゼロ知識証明系(zero-knowledge proof system)とは, 対話証明系$\\langle P,V \\rangle$であって, 以下の性質を満たすものです: . | (ゼロ知識性) 任意の乱択多項式時間機械$W$に対して, ある乱択多項式時間機械$M_{W}$が存在して, 二つの確率変数列 . \\[\\begin{align*} (M_{W}(x))_{x\\in L}, \\quad ([P(x),W(x)])_{x\\in L} \\end{align*}\\] の分布が任意の多項式時間アルゴリズムにとって識別不可能です. | . この機械$M_W$を$W$の模倣者(simulator)と呼びます. 出力値の識別不可能性の代わりに, 以下のようにメッセージ内容の識別不可能性で定義しても同値となります. 定義（ゼロ知識証明系） . 乱択多項式時間で動く対話チューリング機械$W$およびそれらの共通入力$x$に対して, $\\langle P,W\\rangle(x)$を機械$W$の全てのread-onlyテープの内容の分布とします. 言語$L$に対するゼロ知識証明系(zero-knowledge proof system)とは, 対話証明系$\\langle P,V \\rangle$であって, 任意の乱択多項式時間で動く対話チューリング機械$W$に対してある乱択多項式時間機械$M_{W}$が存在して, 二つの確率変数列 . \\[\\begin{align*} (M_{W}(x))_{x\\in L}, \\quad (\\langle P,W \\rangle (x))_{x\\in L} \\end{align*}\\] が任意の多項式時間アルゴリズムにとって識別不可能です. 要するに, 検証者の受信内容(=証明者の送信内容)が簡単に計算できることを意味します. 例えば充足可能性判定問題に対する素朴な対話証明系では, 証明者が充足割当の一つをメッセージとして提示しますが, 論理式$x$が与えられたときにその充足割当の一つを求めることはNP困難です. Remark (完全なゼロ知識) . ゼロ知識性では二つの分布の計算量的識別不可能性を要求していますが, さらに強めて二つの分布が統計距離の意味で一致するとき, これを完全なゼロ知識性(perfect zero-knowledge)と呼びます. ",
+    "url": "/nobunote/docs/memo/GMW91/#%E5%AF%BE%E8%A9%B1%E8%A8%BC%E6%98%8E%E7%B3%BB%E3%81%A8%E3%81%AF",
+    
+    "relUrl": "/docs/memo/GMW91/#対話証明系とは"
+  },"13": {
+    "doc": "GMW91",
+    "title": "グラフ同型性判定問題に対する対話証明系",
+    "content": "ここでは対話証明系の代表的な例としてグラフ同型性判定問題を取り上げます. 定義（グラフ同型性判定問題） . 同一の頂点集合$V$を持つ二つのグラフ$G_0=(V,E_0),G_1=(V,E_1)$を考えます. 頂点集合$V$上のある順列$\\pi$が存在して, 全ての${i,j}\\in\\binom{V}{2}$に対して${i,j}\\in E_0 \\iff {\\pi(i),\\pi(j)}\\in E_1$が成り立つとき, 二つのグラフ$G_0$と$G_1$は同型であるといいます. 二つの無向グラフ$G_0=(V,E_0),G_1=(V,E_1)$が与えられたとき, これらが同型であるならばYes, そうでなければNoを返す問題をグラフ同型性判定問題(GI; graph isomorphism problem)と呼びます. 答えのYes/Noを反転させた問題, すなわち二つのグラフが同型でないならばYes, 同型ならばNoを返す問題をグラフ非同型性判定問題 (GNI; graph non-isormophism problem)と呼びます. グラフ非同型性問題に対する対話証明系 . グラフ同型性判定問題は「同型である」ということの証拠として同型写像を提示すれば良いのでNPに属することは明らかです. 一方で「同型でない」ことの証拠が存在するかは不明ですので, グラフ非同型性判定問題の方はNPに属するかどうかは分かりません. ところが, 実は対話証明を用いれば効率的に非同型性を検証することができます. これは対話証明系の代表的な例として有名です. グラフ$G=(V,E)$を$V$上の置換$\\pi\\colon V \\to V$でラベルを付け替えて得られるグラフを$\\pi(G)$とします. すなわち$\\pi(G)$は辺集合が$\\set{\\set{\\pi(u),\\pi(v)}\\colon \\set{u,v} \\in E}$で表されるグラフです. 対話証明系1 . 入力: 二つのグラフ $G_1=(V,E_1),G_2=(V,E_2)$ . | (V1). 頂点集合$V$上の順列$\\pi$とビット$b\\in\\binset$をそれぞれ一様ランダムに選び, グラフ$\\pi(G_b)$を送信テープに書き込みます. | (P1). グラフ$H$を受信し, それが$G_0$と$G_1$のどちらと同型かを判定します. グラフ$G_a$と同型であったときに$a\\in\\binset$を送信テープに書き込みます. | (V2). ビット$a$を受信し, $b=a$であるならば受理. そうでなければ拒否します. | . 入力$(G_1,G_2)$が非同型ならば証明者は受信したグラフ$H$が$G_0$と$G_1$のどちらと同型かを知ることができるので, このプロトコルは健全性を満たします. 一方で$G_0$と$G_1$が同型である場合, 一様ランダムな$\\pi$に対して$\\pi(G_0)$と$\\pi(G_1)$の分布は同一なので, 特に証明者が(P1)で送信する$a\\in\\binset$が$b$と一致する確率は$1/2$です. 従ってこのプロトコルは(何度も繰り返すことによって)完全性を満たします. 図3: グラフ非同型性判定問題に対する対話証明系 . グラフ同型性問題に対するゼロ知識対話証明系 . グラフ同型性判定問題はNPに属するため自明に対話証明系を構築できますが, 一方でゼロ知識性を持つ対話証明系を構築することは非自明です. この節では, そのようなグラフ同型性判定問題に対する非自明なゼロ知識性を持つ対話証明系を構築します. 対話証明系2 . 入力: 二つのグラフ $G_0=(V,E_0),G_2=(V,E_1)$ (これらは同型とする) . 補助入力: $G_1 = \\phi(G_0)$ (この写像$\\phi$は無限の計算能力を持つ証明者があらかじめ計算しておくことができるが, ゼロ知識性を保つため検証者には秘匿). | (P1). 頂点集合$V$上の順列$\\pi$を一様ランダムに選び, グラフ$H=\\pi(G_1)$を送信します. | (V1). 一様ランダムなビット$\\alpha \\in \\binset$を選び, このビットを送信します. | (P2). ビット$\\alpha$を受信し, 写像 . \\[\\begin{align*} \\psi = \\begin{cases} \\pi &amp; \\text{if } \\alpha = 1 \\\\ \\pi \\circ \\phi &amp; \\text{otherwise} \\end{cases} \\end{align*}\\] を送信します (ただし$\\circ$は写像の合成を表します). | (V2). 受信した写像$\\psi$が$G_\\alpha$と$H$の間の同型写像でない (i.e., $H\\ne\\psi (G_\\alpha)$)ならば検証者は拒否し, そうでなければ(P1)から繰り返します. | . ゼロ知識性の直感的説明 イメージとしては, 証明者は検証者に「二つのグラフ$G_0,G_1$いずれかを指定してください. 指定されたグラフから$G_1$への同型写像を探してご覧に入れましょう」と言っています. | 確かに$G_0$と$G_1$が同型ならば, その同型写像$\\phi$を使って証明者は確率$1$で検証者を受理させることができます. | 一方で$G_0$と$G_1$が同型でないならば, ステップ(V1)で$\\alpha=0$が選択された場合に$H=\\pi(G_1)$と$G_\\alpha=G_0$が同型ではないので検証者は拒否します. この事象は確率$1/2$で発生するので, 十分な回数を繰り返せば健全性を持つことが示せます. | . さて, 同型写像を渡してしまうとゼロ知識性を持たないので, 秘密の同型写像を一様ランダムな置換$\\pi$でマスクすることによって, 証明者は$\\phi$の情報を秘匿することができます. $\\pi$でマスクするのに伴って証明者は$H=\\pi(G_1)$を渡す必要があります. ステップ(V1)の$\\alpha$がどちらの値であろうともステップ(P2)で構成される写像$\\psi$は($\\pi$のランダムネスにおいて)周辺分布が一様分布となり, しかも$\\alpha$とは独立です. このため, 検証者が見るメッセージ$(\\alpha,\\pi)$の分布は独立一様ランダムとなるので, 確かにゼロ知識性を満たします (フォーマルな証明は割愛; 元論文のTheorem 2を参照). グラフ非同型性問題に対するゼロ知識対話証明系 (*) . 対話証明系3 . 入力: 二つのグラフ $G_1=(V,E_1),G_2=(V,E_2)$ . | (V1). 頂点集合$V$上の順列$\\pi$とビット$\\alpha\\in\\binset$をそれぞれ一様ランダムに選び, グラフ$H=\\pi(G_\\alpha)$を計算する (このグラフを質問と呼ぶ). また, 各$i=1,\\dots,n^2$に対して独立にランダムビット$b_i$と二つのランダム置換$\\pi_{i,0},\\pi_{i,1}$を生成し, . \\[\\begin{align*} (T_{i,0},T_{i,1}) = \\begin{cases} (\\pi_{i,0}(G_0),\\pi_{i,1}(G_1)) &amp; \\text{if } b_i=1 \\\\ (\\pi_{i,0}(G_1),\\pi_{i,1}(G_0)) &amp; \\text{if } b_i=0 \\end{cases} \\end{align*}\\] として$n^2$個のグラフのペア $(T_{i,0},T_{i,1})$ を生成します ($i\\in[n^2]$). これらをテストペアと呼びます. 最後に質問$H$とテストペアの集合$(H,(T_{i,0},T_{i,1}))$を送信します. | (P1). 一様ランダムな部分集合$I\\subseteq[n^2]$を選び, これを送信する. | (V2). 部分集合$I$を受信し, 各$i\\in[n^2]$に対して以下を計算します: . | $i\\in I$ならば, $i$番目のテストペアを構成するのに用いた$(b_i,\\pi_{i,0},\\pi_{i,1})$を送信テープに書き込みます. | $i\\not\\in I$ならば, $i$番目のテストペア$(T_{i,0},T_{i,1})$のうち$H$と同型なもの(すなわち$T_{i,\\alpha\\oplus b_i}$)に対し, $(\\alpha\\oplus b_i,\\pi_{i,\\alpha\\oplus b_i}\\circ\\pi^{-1})$を送信テープに書き込みます. この写像は . \\[\\begin{align*} \\pi_{i,\\alpha\\oplus b_i}\\circ\\pi^{-1}(H)=\\pi_{i,\\alpha\\oplus b_i}(G_\\alpha)=T_{i,\\alpha\\oplus b_i} \\end{align*}\\] より, $H$から$T_{i,\\alpha\\oplus b_i}$への同型写像となります. | . | (P2). 受信した情報を元に, 各$i\\in I,j\\in\\binset$に対して$\\pi_{i,j}$が$G_{j\\oplus b_i}$と$T_{i,j}$の間の同型写像になっているかどうかを確認します. 同様に, 各$i\\not\\in I$に対して$\\pi_{i,\\alpha\\oplus b_i}\\circ\\pi^{-1}(H)$が$H$と$T_{i,\\alpha\\oplus b_i}$の間の同型写像になっているかどうかを確認します. これらの条件が満たされない場合は拒否します. そうでない(条件が満たされる)場合, ビット$\\beta\\in\\binset$を, $G_\\beta$と$H$が同型となるようなビットとして, これを送信します (そのようなビット$\\beta$が存在しない場合は$\\beta=0$とする.) | (V2). $\\alpha=\\beta$かどうかによって受理/拒否を決定します. | . ",
+    "url": "/nobunote/docs/memo/GMW91/#%E3%82%B0%E3%83%A9%E3%83%95%E5%90%8C%E5%9E%8B%E6%80%A7%E5%88%A4%E5%AE%9A%E5%95%8F%E9%A1%8C%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E5%AF%BE%E8%A9%B1%E8%A8%BC%E6%98%8E%E7%B3%BB",
+    
+    "relUrl": "/docs/memo/GMW91/#グラフ同型性判定問題に対する対話証明系"
+  },"14": {
+    "doc": "GMW91",
+    "title": "3. NPに対するゼロ知識対話証明系 (安全な暗号化関数の仮定)",
+    "content": "安全な暗号化関数の存在を仮定して, すべてのNP言語に対してゼロ知識インタラクティブ証明系を構築する方法を示します. 具体的には, グラフ3彩色問題に対するゼロ知識対話証明系を構成します. 定義（3彩色問題） . グラフ$G=(V,E)$は, ある関数$\\phi\\colon V \\to \\set{1,2,3}$が存在して, 任意の${u,v}\\in E$に対して$\\phi(u)\\ne\\phi(v)$が成り立つとき, 3彩色可能であるといい, この関数$\\phi$を3彩色といいます. グラフ$G$が3彩色可能であるかどうかを判定する問題を3彩色問題といいます. 以後では特に断りなく, 3彩色問題はNP完全であるという事実を用います. 3彩色問題に対する「物理的な」ゼロ知識対話証明系 . まずは以下の仮想的なプロトコルを考えます. 対話証明系4 . 入力: 3彩色問題のグラフ$G=(V,E)$ . 補助入力として, 証明者は$G$の3彩色$\\phi$を受け取ります (実際には証明者は無限の計算能力を使って$\\phi$を計算できる). 以下を$|E|^2$回繰り返します: . | (P1). 集合$\\set{1,2,3}$上の一様ランダムな置換$\\pi$を選び, 各$u\\in V$に対して$(\\pi(\\phi(u)))_{u\\in V}$と書かれた紙をラベル$u$の「封筒」に入れて封をする. これらの封筒を送信します (封筒の鍵は送らない). | (V1). 一様ランダムな辺$\\set{u,v}\\in E$を選び, その辺を送信します. | (P2). 辺${u,v}$を受信し, ラベル$u$と$v$の二つの封筒の鍵を送信します (受信した文字列がグラフの辺でない場合は終了). | (V2). 受信した二つの鍵を用いて封筒の中身を見る. これらの値が同じ値であったならば拒否し, そうでなければパスして次の反復に進みます (全ての反復においてパスしたならば受理). | . 上記の対話証明系では「封筒」という物理的なデバイスに依存したプロトコルとなっています. 証明者が知っている彩色を$\\pi$でランダムに置換することによって, 元の彩色の情報を秘匿したまま, その彩色が3彩色であることを検証者に示すことができます. 暗号化関数 . 暗号化関数は, 封筒という物理的なデバイスを実装するために用います. 「色の情報を記した紙を封筒に入れる」という操作は「色を暗号化する」に対応します. ここでは3彩色問題を考えるため, 以下の定義では色の情報のみを暗号化することを考えます. 定義（安全な暗号化関数） . | 関数$f\\colon \\set{0,1,2,3} \\times \\binset^{\\ast} \\to \\binset^{\\ast}$ は, 任意の$x\\ne y\\in\\set{0,1,2,3}$と任意の$r,s\\in\\binset^{\\ast}$に対して$f(x,r)\\ne f(y,s)$を満たすとき, 暗号化関数(encryption function)といいます. | セキュリティパラメータ$n\\in\\Nat$に対し, $r\\sim\\binset^n$, $f_n(x)=f(x,r)$として得られる確率変数$f_n(x)$を確率的な暗号化 (probabilistic encryption)といいます. | 暗号化関数$f\\colon \\set{0,1,2,3}\\times\\binset^\\ast\\to\\binset^\\ast$は, 全ての$x\\ne y \\in\\set{0,1,2,3}$に対して, 二つの確率的な暗号化$(f_n(x))_n$と$(f_n(y))_n$が任意の多項式時間アルゴリズムにとって識別不可能なとき, 安全(secure)という. つまり, 任意の多項式時間アルゴリズム$A$と十分大きな$n\\in\\Nat$に対して . \\[\\begin{align*} \\abs{ \\Pr[A(f_n(x))=1] - \\Pr[A(f_n(y))=1] } \\le n^{-\\omega(1)} \\end{align*}\\] を満たすことを意味します. | . 3彩色問題に対するゼロ知識対話証明系 . 対話証明系4’ . 入力: 3彩色問題のグラフ$G=(V,E)$ . 補助入力として, 証明者は$G$の3彩色$\\phi$を受け取ります (実際には証明者は無限の計算能力を使って$\\phi$を計算できる). また, $f\\colon\\binset\\to\\binset^*$を安全な暗号化関数とし, 特に多項式時間で計算できるものとします. 以下を$|E|^2$回繰り返します: . | (P1). 集合$\\set{1,2,3}$上の一様ランダムな置換$\\pi$を選び, 各$u\\in V$に対して$r_u\\sim\\binset^n$とし, $F_u := f(\\pi(\\phi(u)),r_u)$とし, $(F_u)_{u\\in V}$を送信する. | (V1). 一様ランダムな辺$\\set{u,v}\\in E$を選び, その辺を送信します. | (P2). 辺${u,v}$を受信し, $F_u,F_v$の計算に用いた$f$への入力, すなわち$(\\pi(\\phi(u)),r_u),(\\pi(\\phi(v)),r_v)$を送信します. | (V2). 受信した二つのペア$(\\pi(\\phi(u)),r_u),(\\pi(\\phi(v)),r_v)$を用いて$F_u,F_v$を計算し, これらの値が同じ値であったならば拒否し, そうでなければパスして次の反復に進みます (全ての反復においてパスしたならば受理). | . この対話証明系4’のゼロ知識性は暗号化関数の安全性によって保証されます. 対話証明系4’では, NP証明を補助的な入力として与えられたとき証明者は多項式時間で動く. ",
+    "url": "/nobunote/docs/memo/GMW91/#3-np%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E3%82%BC%E3%83%AD%E7%9F%A5%E8%AD%98%E5%AF%BE%E8%A9%B1%E8%A8%BC%E6%98%8E%E7%B3%BB-%E5%AE%89%E5%85%A8%E3%81%AA%E6%9A%97%E5%8F%B7%E5%8C%96%E9%96%A2%E6%95%B0%E3%81%AE%E4%BB%AE%E5%AE%9A",
+    
+    "relUrl": "/docs/memo/GMW91/#3-npに対するゼロ知識対話証明系-安全な暗号化関数の仮定"
+  },"15": {
+    "doc": "GMW91",
+    "title": "GMW91",
+    "content": " ",
+    "url": "/nobunote/docs/memo/GMW91/",
+    
+    "relUrl": "/docs/memo/GMW91/"
+  },"16": {
     "doc": "Goldreich-Levinの定理",
     "title": "Goldreich-Levinの定理",
     "content": "Goldreich-Levinの定理とは, Goldreich, Levin (1989)による定理です. 様々な文脈で解釈できる有名な定理で, 主に . | 任意の一方向性置換(one-way permutation)からハードコア述語を構成する定理 | アダマール符号の局所リスト復号を与える定理 | Boolean関数の大きいフーリエ級数の列挙アルゴリズムを与える定理 | . と理解されています. ただしここではそれぞれの文脈の前知識を必要としない解説をします. イメージとしては, Goldreich-Levinの定理とは, 任意のBoolean関数$f$がオラクルアクセスとして与えられたとき, その関数に「近い」全ての線形関数を効率的に列挙するアルゴリズムを与える定理と言えます. ",
     "url": "/nobunote/docs/average_case_complexity/Goldreich-Levin/",
     
     "relUrl": "/docs/average_case_complexity/Goldreich-Levin/"
-  },"11": {
+  },"17": {
     "doc": "Goldreich-Levinの定理",
     "title": "ウォームアップ1. 線形関数の復元",
     "content": "まずは導入として, 以下の問題を考えてみましょう. 問題(線形関数の復元). あるベクトル$c=(c_1,\\dots,c_n) \\in \\{0,1\\}^n$に対して . \\[\\begin{align*} f(x_1,\\dots,x_n) = \\sum_{i\\in[n]} c_i x_i \\bmod 2 \\end{align*}\\] と表せる関数 $f \\colon \\{0,1\\}^n \\to \\{0,1\\}$ がオラクルアクセスとして与えられたとき, ベクトル$c \\in \\{0,1\\}^n$を$\\mathrm{poly}(n)$時間で求めよ. 計算時間が指数時間かかって良いのであれば, 全ての$x \\in \\{0,1\\}^n$に対して$f(x)$にオラクルアクセスして$f$の真理値表を取得して, そして全ての$c\\in \\{0,1\\}^n$を列挙して線形関数を列挙して, 真理値表と合致する線形関数を求めればよいです. ところがそもそも$f$が線形関数であることから . \\[\\begin{align*} f(1,\\underbrace{0,\\dots,0}_{n-1\\text{個}}) = c_1 \\end{align*}\\] から$c_1$を直接求められます. より一般に各単位ベクトル上での$f$の値にオラクルアクセスすればよく, 以下のアルゴリズムによって求められます. アルゴリズム1. | 各$i=1,\\dots,n$ に対して以下を行う: . | $e_i$を$i$番目の成分が$1$, それ以外の成分が$0$であるような単位ベクトルとする. | $c_i \\leftarrow f(e_i)$とする. | . | $c=(c_1,\\dots,c_n)$を出力する. | . ",
     "url": "/nobunote/docs/average_case_complexity/Goldreich-Levin/#%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%A2%E3%83%83%E3%83%971-%E7%B7%9A%E5%BD%A2%E9%96%A2%E6%95%B0%E3%81%AE%E5%BE%A9%E5%85%83",
     
     "relUrl": "/docs/average_case_complexity/Goldreich-Levin/#ウォームアップ1-線形関数の復元"
-  },"12": {
+  },"18": {
     "doc": "Goldreich-Levinの定理",
     "title": "ウォームアップ2. 線形関数の復元 (ノイズ付き)",
     "content": "では, ウォームアップ1を少し難しくした次の問題を考えてみましょう. 以後, 二つのベクトル $x,y\\in \\{0,1\\}^n$ の $\\mathbb{F}_2$ 上での内積を . \\[\\begin{align*} \\langle x,y \\rangle = \\sum_{i\\in[n]} x_i y_i \\pmod 2 \\end{align*}\\] と表すことにします. 問題(線形関数の弱いノイズからの復元). あるベクトル$c=(c_1,\\dots,c_n) \\in \\{0,1\\}^n$に対して . \\[\\begin{align} \\Pr_{x \\sim \\{0,1\\}^n} \\left[ f(x) = \\langle c,x \\rangle \\right] \\ge 0.99 \\tag{1} \\end{align}\\] を満たす関数 $f \\colon \\{0,1\\}^n \\to \\{0,1\\}$ がオラクルアクセスとして与えられたとき, ベクトル$c \\in \\{0,1\\}^n$を$\\mathrm{poly}(n)$時間で求めよ. ここで, 上式の確率は一様ランダムに選ばれた$x\\sim \\{0,1\\}^n$に関する確率を考える. 上図では$c=(101)$に対して$x\\mapsto \\langle c,x\\rangle$という関数の真理値表のうち二つのビットだけ反転(赤字)したものがオラクルアクセスとして与えられた状態で係数ベクトル$c$を復元する問題を表現しています. このような「ノイズがのった線形関数」の局所的な情報から元の線形関数の情報を取得せよという問題を考えています. 例えばアルゴリズム1を考えてみましょう. 今回の問題設定では, 各単位ベクトル上でオラクルアクセスの値$f(e_i)$が必ずしも$c_i=\\langle c,e_i \\rangle$と等しいとは限りません. 例えば . \\[\\begin{align*} f(x) = \\begin{cases} 1 - c_i &amp; \\text{if $x=e_i$ is a unit vector},\\\\ \\langle c,x\\rangle &amp; \\text{otherwise} \\end{cases} \\end{align*}\\] で定まる関数$f$は, $n$が十分大きければ式(1)を満たしますが, アルゴリズム1の出力は正解$c$とは異なるベクトルになってしまいます. このように, この問題設定で考える$f$はアルゴリズムに応じて「いじわるに」(敵対的に)オラクルアクセスとして与えられます. そもそも, 任意の決定的多項式時間アルゴリズムは$f$の真理値表のうち$\\mathrm{poly}(n)$個の成分しか見ません. しかし$f$を敵対的に選ぶときは$0.01\\cdot 2^n$個の$x$に対して$f(x)$の値を自由に選ぶことができますので, $\\mathrm{poly}(n) &lt; 0.01\\cdot 2^n$を満たす十分大きな$n$に対してはこの多項式時間アルゴリズムのオラクルアクセスの返答を自由に選べてしまうので係数ベクトル$c$の情報を得ることはできません. つまり情報理論的にこの問題は決定的多項式時間アルゴリズムでは解けないことになります (もっというと計算時間は少なくとも$0.01\\cdot 2^n$は必要です). 一見すると非常に難しそうに見えますが, 実はランダムネスの力を借りると解くことができます. 上記の問題を確率$0.99$で解く$O(n\\log n)$時間乱択アルゴリズムが存在する. 証明 任意の単位ベクトルを$e_i$とと$x\\in {0,1}^n$に対して . \\[\\begin{align*} \\langle c, e_i \\rangle = \\langle c, x+e_i \\rangle - \\langle c,x \\rangle \\end{align*}\\] が成り立つので, 何らかの$x$に対して$\\langle c,x+e_i \\rangle$と$\\langle c,x \\rangle$の値が求められれば$f(e_i)$を計算することができます (ここでベクトルの加算は$\\mathbb{F}_2$上で考えます). そこで$x\\in {0,1}^n$を一様ランダムに選んだとき, $x+e_i \\in {0,1}^n$もまた一様ランダムなベクトルとなるので, 任意の固定した$i\\in[n]$に対して . \\[\\begin{align*} &amp;\\Pr_{x\\sim\\{0,1\\}^n} \\left[ f(x) = \\langle c,x \\rangle \\text{ and } f(x+e_i) = \\langle c,x+e_i \\rangle \\right] \\\\ &amp;\\ge 1 - \\Pr_x \\left[ f(x) \\ne \\langle c,x \\rangle \\right] - \\Pr_x \\left[f(x + e_i) \\ne \\langle c,x+e_i \\rangle \\right] \\\\ &amp;\\ge 0.98 \\tag{2} \\end{align*}\\] となります. このことから, 一様ランダムな$x\\sim {0,1}^n$に対して確率$0.98$で$c_i = \\langle c,e_i \\rangle = f(x+e_i) - f(x)$を満たします. この操作を$O(\\log n)$回繰り返して多数決をとれば確率$\\ge 1-\\frac{1}{100n}$で$c_i$が得られるので, 全ての$i \\in [n]$に対して同様の操作を行えば, $i$に関するunion boundから確率$0.99$で$c=(c_1,\\dots,c_n)$を得られます. $\\square$ . まとめると命題のアルゴリズムは以下となります: . アルゴリズム2. | 各$i=1,\\dots,n$に対して以下を行う: . | 各$t=1,\\dots,100\\log_2 n$に対して以下を行う: . | 一様ランダムなベクトル$x \\sim {0,1}^n$を選ぶ. | オラクルアクセスを用いて$b_t = f(x+e_i) - f(x)$とする. | . | $(b_t)$の中で多数決をとり, それを$c_i$とする. | . | $c=(c_1,\\dots,c_n)$を出力する. | . ",
     "url": "/nobunote/docs/average_case_complexity/Goldreich-Levin/#%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%A2%E3%83%83%E3%83%972-%E7%B7%9A%E5%BD%A2%E9%96%A2%E6%95%B0%E3%81%AE%E5%BE%A9%E5%85%83-%E3%83%8E%E3%82%A4%E3%82%BA%E4%BB%98%E3%81%8D",
     
     "relUrl": "/docs/average_case_complexity/Goldreich-Levin/#ウォームアップ2-線形関数の復元-ノイズ付き"
-  },"13": {
+  },"19": {
     "doc": "Goldreich-Levinの定理",
     "title": "Goldreich-Levinの定理: 強いノイズが乗った線形関数の復元",
     "content": "ウォームアップ2の問題設定では線形関数の真理値表のうち1%の成分が反転した場合でも乱択を用いれば$O(n\\log n)$時間で復元できることを証明しました. ではこのノイズ率$0.01$はどこまで大きくできるでしょうか? 以後の議論を明確に述べるために, 二つの関数間の距離の概念を導入します: . 二つの関数$f,g\\colon \\{0,1\\}^n \\to \\{0,1\\}$の距離$\\mathrm{dist}(f,g)$を . \\[\\begin{align*} \\mathrm{dist}(f,g):=\\Pr_{x\\sim \\{0,1\\}} \\left[f(x)\\ne g(x)\\right] \\end{align*}\\] とする. すなわち, $f$と$g$の真理値表を長さ$2^n$のベクトルとみなしたときの(正規化された)ハミング距離を考えていることになります. この距離を用いてウォームアップ2の問題設定を一般的な形で述べ直します. 問題. あるベクトル$c\\in \\{0,1\\}^n$を係数ベクトルとして持つ線形関数$g\\colon x\\mapsto \\langle c,x\\rangle$に対し, $\\mathrm{dist}(f,g)\\le \\delta$を満たす関数$f$へのオラクルアクセスが与えられたとき, $c$を求めよ. すなわち, 知りたい関数$g$から半径$\\delta$以内にある関数$f$の真理値表の局所的な情報のみを用いて$g$の係数ベクトルを求めよという問題になっています. 詳細は割愛しますが, この問題は冒頭にも述べたように . | Boolean関数の線形近似 | 一方向性置換からハードコア述語の構成 | アダマール符号の局所リスト復号 | . といった文脈において直接的に応用されています. ウォームアップ2では$\\delta\\le 0.01$に対してこの問題が効率的に解けることを証明しました. では$\\delta$はどこまで大きくできるでしょうか? アルゴリズム2では最後に多数決で成功確率を増幅させているわけですが, そのためには一回の試行の成功(すなわち $f(x)=\\langle c,x\\rangle$かつ $f(x+e_i)=\\langle c,x+e_i \\rangle $という事象)の確率が$0.5$を超えていなければなりません. この確率は式(2)で抑えていたわけですが, この最後の値が$0.5$を超えるには . \\[\\begin{align*} \\delta = \\Pr_x \\left[f(x) \\ne \\langle c,x \\rangle\\right] &lt; 0.25 \\end{align*}\\] でなければなりません. つまり, アルゴリズム2は$\\delta &lt; 0.25$でなければ成功する保証がないということになります. 実は$\\delta \\ge 0.25$の場合は復元すべき線形関数が一意に定まるとは限りません. 一意復元できない例 例えば$\\delta=0.25$とし, $c_1=(0,\\dots,0),c_2=(1,0,\\dots,0)$として二つの線形関数 . \\[\\begin{align*} g_1 \\colon x &amp;\\mapsto \\langle c_1, x \\rangle = 0, \\\\ g_2 \\colon x &amp;\\mapsto \\langle c_2, x \\rangle = x_1 \\end{align*}\\] を考えてみましょう. 最初の線形関数$g_1$は恒等的に$0$を出力する定数関数ですので, . \\[\\begin{align*} g' \\colon x \\mapsto x_1\\cdot x_2 \\end{align*}\\] という関数を考えると$\\mathrm{dist}(g_1,g’)\\le 0.25$を満たします. この関数$g’$は$g’(x)=1 \\iff x_1=x_2=1$ですので . | $x_1 = 0$のとき, $g_2(x)=g’(x)=0$ | $x_1 = 1$のとき, $g_2(x)=1$, $g’(x)=x_2$ | . より . \\[\\begin{align*} \\mathrm{dist}(g_2,g')=\\Pr_x [g_2(x) \\ne g'(x)] = \\Pr_x[x_1=1\\text{ and }x_2=0] = 0.25 \\end{align*}\\] です. つまり$g’$は$g_1,g_2$どちらからも距離$0.25$だけ離れている関数となっているため, アルゴリズムが$g’$をオラクルアクセスとして与えられたとき, $g_1$と$g_2$はどちらも正解の条件に当てはまってしまうのです. ところが, 実は任意の関数$f\\colon \\{0,1\\}^n\\to \\{0,1\\}$に対して, $\\mathrm{dist}(f,g)\\le 0.5-\\varepsilon$を満たす線形関数$g$は高々$O(\\varepsilon^{-2})$個しかないことが知られています. Goldreich-Levinの定理とはそのような全ての線形関数$g$を多項式時間で列挙できることを主張する定理です. 定理 (Goldreich-Levinの定理). 任意の関数$f\\colon \\{0,1\\}^n\\to \\{0,1\\}$に対し, $f$へのオラクルアクセスとパラメータ$\\varepsilon&gt;0$が与えられたときに$\\mathrm{dist}(f,g)\\le 0.5 - \\varepsilon$を満たす全ての線形関数$g$の係数ベクトルを確率$2/3$で出力する$\\mathrm{poly}(n,1/\\varepsilon)$時間乱択アルゴリズムが存在する. 証明のアイデア . アルゴリズムのベースラインはアルゴリズム2と同じです. ランダムな$x$に対して$f(x+e_i)-f(x)$を計算し, これを繰り返して$x$に関して多数決をとることによって係数ベクトルの第$i$成分$c_i$を確率$1-1/n$で復元し, これを各$i\\in[n]$に対して行うというものです. しかしこの方法では, 求めたい線形関数$g$に対して$g(x+e_i)$と$g(x)$の二つの値を得なければならず, $f$へのオラクルアクセスを使って得ようとすると$f$のノイズが小さくなければ精度を保証できません. そこで, Goldreich-Levinのアルゴリズムでは, $g(x)$の値を推測するという方針をとります. 例えば$x_1,\\dots,x_T$に関して$f(x_j + e_i) - f(x_j)$の多数決をとることを考えましょう. このとき, $(g(x_1),\\dots,g(x_T)) \\in \\binset^T$は$2^T$通りしかないので, 各$(a_1,\\dots,a_T)\\in \\binset^T$に対して . | ${}^{\\forall}j\\in[T],g(x_j)=a_j$だと思って$f(x_j+e_i) - a_j$を計算する. ここで, $x_j\\sim\\binset^n$より確率$\\frac{1}{2}+\\varepsilon$で$f(x_j+e_i)=g(x_j+e_i)$となる. | $j$に関して多数決をとって, その結果を$\\widetilde{c}_i$の推測値とする. | 全ての$i=1,\\dots,n$に対して$\\widetilde{c}_i$を推測して$\\widetilde{c}=(\\widetilde{c}_1,\\dots,\\widetilde{c}_n)$を出力リストに加える. | . という操作を行うことによって$2^T$個の$c$の候補を得ることができます (全ての$(a_1,\\dots,a_T)\\in \\binset^T$に対して行なっているので, どれかの$(a_1,\\dots,a_T)$では求めたい線形関数$g$が$g(x_j)=a_j$を満たすはずです). ここでは, オラクルアクセスは$f(x_j+e_i)$の取得のみに用いており, $x_j$が$\\binset^n$上で一様ランダムなベクトルなので$f(x_j+e_i)=\\inprod{c,x_j+e_i}$となる確率は$\\frac{1}{2}+\\varepsilon$となります. 各$i=1,\\dots,n$に関するunion boundを適用するには多数決の結果が確率$1-\\frac{1}{n}$で正しくなくてはならず, そのためには少なくとも $T \\ge \\frac{\\log n}{\\varepsilon^2}$でなければなりません. 残念ながらこのアルゴリズムは$2^T$通りの推定を列挙する必要があるため, その時間計算量は少なくとも$2^T \\ge n^{\\Omega(1/\\varepsilon^2)}$以上となり, Goldreich-Levinの定理で要求される計算量$\\poly(n,1/\\varepsilon)$よりも大きくなってしまいます. この計算量を改善するために, $x_1,\\dots,x_T$をペア独立に生成して, 列挙すべき$(a_1,\\dots,a_T)$の個数を少なくするという工夫を行います. ペア独立性+線形性を用いた多数決 . オラクル$f$に近い線形関数の一つを$g$とし, この関数を求めることを考えます. 関数$g$が線形関数なので, 点$x_1,\\dots,x_T$における$g$の値が$a_1,\\dots,a_T$であるとき, 全ての非空な$S\\subseteq[T]$に対して 点$x_S=\\sum_{i\\in S}x_i$において$g(x_S)=\\sum_{i\\in S} a_i$が成り立ちます. 最終的には全ての$(a_1,\\dots,a_T)\\in\\binset^T$を列挙するアルゴリズムを考えるので, 以後では$g(x_j)=a_j$が成り立つような$(a_1,\\dots,a_T)$に対して議論していきます. 独立一様ランダムに$x_1,\\dots,x_T \\sim \\binset^n$を選んだとき, ペア独立の例2より確率変数族 $(x_S)$はペア独立になります. また, $x_S$上での$f$の推定値は$a_S=\\sum_{i\\in S}a_i$ですので, $S\\ne \\emptyset$を列挙して$f(x_S+e_i)-a_S$の多数決をとることによって$c_i$の推定値$\\widetilde{c}_i$を計算できます. ここで線形関数$g$が$\\dist(f,g) \\le 0.5-\\varepsilon$を満たすとすると, $x_S \\in \\binset^n$の周辺分布は一様なので . \\[\\begin{align*} \\Pr\\qty[ f(x_S+e_i)=g(x_S+e_i) ] \\ge \\frac{1}{2} + \\varepsilon \\end{align*}\\] となります. まとめると, 確率変数$X_S$を \\(X_S = f(x_S+e_i) - a_S \\pmod 2\\) とすると, $X_S$は確率$\\frac{1}{2}+\\varepsilon$で$1$であり, しかも族$(X_S)_{S\\ne \\emptyset}$はペア独立性を持ちます. ここで \\(Z = \\sum_{S\\ne\\emptyset} X_S\\), $N=2^T-1$とすると$\\E[Z]\\ge \\qty(\\frac{1}{2} + \\varepsilon) N$および 各$X_S$の分散は高々$1$なので, ペア独立な確率変数族の和に対するChebyshevの不等式より, . \\[\\begin{align*} \\Pr\\qty[ S \\le \\frac{N}{2} ] &amp;= \\Pr\\qty[ Z \\le \\E[Z] - \\varepsilon N] \\\\ &amp;\\le \\Pr\\qty[ \\abs{Z - \\E[Z]} \\ge \\varepsilon N] \\\\ &amp;\\le \\frac{1}{\\varepsilon^2 N}. \\end{align*}\\] よって, $N \\ge 10n/\\varepsilon^2$ならば, 確率$1-\\frac{1}{10n}$で$(X_S)$らの多数決が$g(e_i)$に等しくなるので, 各$i\\in[n]$に関するunion boundより, 確率$0.9$で$g$を復元できます (詳細はアルゴリズム3参照). オラクル$f$に近い各$g$に対してアルゴリズム3は確率$0.9$で$g$を復元します, 多項式回だけ繰り返すことによってこの復元確率を$1-2^{\\poly(n)}$まで増幅できるので, その後に$g$に関するunion boundをとればGoldreich-Levinの定理が示されます (ありうる$g$は線形関数であることを踏まえれば高々$2^n$個ですが, 実際には$f$に近いという条件もあるのでその個数は$O(1/\\varepsilon^2)$で抑えられることが知られています). なお, $N = 2^T -1 \\ge 10n/\\varepsilon^2$であれば上記のアルゴリズムは動くので, アルゴリズムの計算量は$\\poly(n)\\cdot O(2^T) = \\poly(n,1/\\varepsilon)$となります. アルゴリズム . アルゴリズム3. | パラメータ$T\\in\\Nat$を, $2^T &gt; 10n/\\varepsilon^2$を満たすように選ぶ. | 各$a=(a_1,\\dots,a_T)\\in \\binset^T$に対して以下を行う: . | 独立一様ランダムにベクトル$x_1,\\dots,x_T \\sim \\binset^n$を選ぶ. | 各$i=1,\\dots,n$に対して以下を行う: . | 各非空な$S\\subseteq [T]$に対して$b_S = f(x_S+e_i) - a_S$を計算する. ここで\\(x_S := \\sum_{i\\in S} x_i\\), \\(a_S := \\sum_{i\\in I} a_i\\). | $(b_S)_{S\\ne \\emptyset}$の中で多数決をとり, その結果を$c_i$とする. | . | $c_a = (c_1,\\dots,c_n) \\in \\binset^n$とする. | . | $(c_a)_{a\\in \\binset^T}$を出力する. | . アルゴリズム3の計算量 . ループの外であらかじめ各$x_S$を計算しておくと ステップ2-bの各反復で計算量$O(2^T)$で実装できます. この反復が合計で$2^T\\cdot n$回繰り返されるため, 全体の計算量は . \\[\\begin{align*} O(n \\cdot (2^T)^2) = O(n N^2) = O(n^3/\\varepsilon^4) \\end{align*}\\] となります. ",
     "url": "/nobunote/docs/average_case_complexity/Goldreich-Levin/#goldreich-levin%E3%81%AE%E5%AE%9A%E7%90%86-%E5%BC%B7%E3%81%84%E3%83%8E%E3%82%A4%E3%82%BA%E3%81%8C%E4%B9%97%E3%81%A3%E3%81%9F%E7%B7%9A%E5%BD%A2%E9%96%A2%E6%95%B0%E3%81%AE%E5%BE%A9%E5%85%83",
     
     "relUrl": "/docs/average_case_complexity/Goldreich-Levin/#goldreich-levinの定理-強いノイズが乗った線形関数の復元"
-  },"14": {
+  },"20": {
+    "doc": "IJKW10",
+    "title": "UNIFORM DIRECT PRODUCT THEOREMS: SIMPLIFIED, OPTIMIZED, AND DERANDOMIZED",
+    "content": " ",
+    "url": "/nobunote/docs/memo/IJKW10/#uniform-direct-product-theorems-simplified-optimized-and-derandomized",
+    
+    "relUrl": "/docs/memo/IJKW10/#uniform-direct-product-theorems-simplified-optimized-and-derandomized"
+  },"21": {
+    "doc": "IJKW10",
+    "title": "Info",
+    "content": ". | authors: Russel Impagliazzo, Ragesh Jaiswal, Valentine Kabanets, Avi Wigderson | publication: SICOMP(2010) | . 全体の要約 . | uniform direct product theorem: 次の性質を満たすアルゴリズム$A$が存在する: $f^k$を確率$\\varepsilon$で計算する回路$C$を入力として受け取ったとき, 確率$\\Omega(\\varepsilon)$である回路$C’$を出力し, この回路$C’$は$f$を確率$1-\\delta$で計算する. ここで$\\delta = O(\\log(1/\\varepsilon)/k)$. | これをGoldreich-Levinの定理と組み合わせることでuniform XOR lemmaを証明. | 同じ手法を使って, アフィン部分空間全体によって得られるderandomized direct productも証明. | . ",
+    "url": "/nobunote/docs/memo/IJKW10/#info",
+    
+    "relUrl": "/docs/memo/IJKW10/#info"
+  },"22": {
+    "doc": "IJKW10",
+    "title": "一様な直積定理",
+    "content": "関数$f\\colon\\binset^n\\to\\binset$と$k\\in\\Nat$に対して, $f^k\\colon\\binset^{nk}\\to\\binset^k$を . \\[\\begin{align*} f^k(x_1,\\ldots,x_k) = (f(x_1),\\dots,f(x_k)) \\end{align*}\\] で定める. 直積定理とは, $f^k$を$\\varepsilon$の割合の入力上で正しく計算する回路$C$が存在するとき, $f$を$1-\\delta$の確率で計算する回路$C’$が存在することを主張する定理である. ここで$\\delta = O(\\log(1/\\varepsilon)/k)$であり, $C’$のサイズは$C$のサイズとほぼ同じ. よく知られる直積定理の証明は, 回路$C’$は(入力とは独立に)適切に選ばれた複数の$x’\\in\\binset^n$に対して$f(x’)$の値に依存する. このように, 入力には依存しないが, $f$の値など, 入力長$n$にのみ依存する文字列(アドバイス)に依存する回路を構成するような直積定理を非一様(nonuniform)という. 言い換えれば, 非一様な直積定理とはあくまでも所望の回路$C’$の存在性のみを保証するのであって, $C$を受け取って$C’$を構成するアルゴリズムを与えるものではない. 一方, 構成的な直積定理, すなわち$f^k$をある程度計算する回路$C$を入力として受け取ってほとんどの入力で$f$を計算する回路$C$を出力するアルゴリズムを与えるものを一様(uniform)な直積定理という. この論文の主結果は一様な直積定理である. 定理 (一様な直積定理; informal) . 任意の関数$f\\colon\\binset^n\\to\\binset$と$k\\in\\Nat$に対して, $f^k$を$\\varepsilon$の割合の入力上で正しく計算する回路$C$が存在するならば, $f$を$1-\\delta$の確率で計算する回路$C’$であって, $C$とほぼ同程度のサイズであるようなものが存在する. ただし$\\delta = O(\\log(1/\\varepsilon)/k)$. さらに, 回路$C$を受け取って$C’$を確率$\\Omega(\\varepsilon)$で出力する乱択アルゴリズム$A$が存在する. 誤り訂正符号の観点 . 一様な直積定理は誤り訂正符号の言葉を使うと, 近似局所復号アルゴリズムを与える定理として解釈できる. 文字列$f\\in\\binset^N$と$k\\in\\Nat$に対して, $\\mathrm{Code}(f)=f^k$によって符号化する符号$\\mathrm{Code}$を直積符号(direct product code)と呼ぶ. ここで文字列$f$を関数$f\\colon[N]\\to\\binset$と同一視する. 一様な直積定理により, $\\mathrm{Code}(f)\\colon[N]^k\\to\\binset^k$を$\\varepsilon$の割合の入力上で正しく計算する回路$C$が存在するならば$f\\colon[N]\\to\\binset$を$1-\\delta$の確率で計算する回路$C’$が存在することが保証される. 特に, 元の回路$C$は . \\[\\begin{align*} \\Pr_{y\\sim[N]^k}[C(y)=f^k(y)]\\geq \\varepsilon \\end{align*}\\] より, 真理値表の文字列と同一視すると$C’\\in(\\binset^k)^{N^k}$と$f^k\\in(\\binset^k)^{N^k}$の(正規化された)ハミング距離は高々$1-\\varepsilon$である. 一方で直積定理によって得られる回路$C’$は(真理値表で比較すると)$f$からのハミング距離が高々$\\delta$となる. すなわち, 一様な直積定理により, $\\mathrm{Code}(f)$からのハミング距離が$1-\\varepsilon$であるような文字列$C$へのオラクルアクセスが与えられたとき, 文字列$f$からのハミング距離が高々$\\delta$であるような文字列$C’$へのオラクルアクセスを提供するアルゴリズム$A$が存在することが保証される. このように, ノイズが付与された符号語へのオラクルアクセスを, 元のメッセージに非常に近い文字列へのオラクルアクセスに変換するタスクを近似局所復号 (approximate local list-decoding)と呼ぶ. ",
+    "url": "/nobunote/docs/memo/IJKW10/#%E4%B8%80%E6%A7%98%E3%81%AA%E7%9B%B4%E7%A9%8D%E5%AE%9A%E7%90%86",
+    
+    "relUrl": "/docs/memo/IJKW10/#一様な直積定理"
+  },"23": {
+    "doc": "IJKW10",
+    "title": "IJKW10",
+    "content": " ",
+    "url": "/nobunote/docs/memo/IJKW10/",
+    
+    "relUrl": "/docs/memo/IJKW10/"
+  },"24": {
     "doc": "Kučeraのアルゴリズム",
     "title": "Kučeraのアルゴリズム",
     "content": "Kučeraのアルゴリズムとは$k\\ge \\sqrt{n\\log n}$に対して埋め込みクリーク探索問題を解くアルゴリズムです. アルゴリズム自体は非常にシンプルで, 次数の大きい順に$k$個の頂点を出力するだけです. Kučeraのアルゴリズム . 入力: グラフ$G=([n],E)\\sim \\calG(n,1/2,k)$. | 次数の大きい順に頂点を並び替え, $v_1,\\dots,v_n$とする. | $C=\\{v_1,\\dots,v_k\\}$を出力する. | . なぜこれで解けるのでしょうか? 直感的には, ランダムグラフ$G(n,1/2)$に大きなクリーク$C\\subseteq [n]$を追加すると, $C$に属する頂点の次数は$k/2$増えます. $C$の外側の頂点の次数は期待値が$n/2$ですがそこから標準偏差$\\pm O(\\sqrt{n})$だけずれます. 実際には$n$個の頂点があるので, 最大次数は期待値から$O(\\sqrt{n\\log n})$だけ離れます. 従って, $C$内の頂点の次数の増分$k/2$が$O(\\sqrt{n\\log n})$より大きければ, $C$内の頂点の次数は$C$外の頂点の次数より大きくなるので, 次数の大きい順に$k$個の頂点を出力すればそれが$k$-クリークになっているはずです. 任意の$c&gt;0$に対して, $k\\ge 4c\\sqrt{n\\log n}$ならば, Kučeraのアルゴリズムは$\\PC(n,k)$に対する埋め込みクリーク探索問題を成功確率$1-2n^{-1-2c^2}$で解く. 定理の証明のために, ランダムグラフの次数に関する以下の補題を証明します. 任意の$c&gt;0$に対してErdős–Rényiグラフ$G(n,1/2)$の最大次数は確率$1-n^{1-2c^2}$以上で高々$\\frac{n}{2} + c\\sqrt{n\\log n}$以下である. 証明 任意に固定した頂点$u\\in [n]$の次数 $\\deg(u)$ の周辺分布は二項分布 $\\Bin(n-1,1/2)$ となるため, Hoeffdingの不等式より, 任意の$x&gt;0$に対して . \\[\\begin{align*} \\Pr \\left[ \\deg(u) \\ge \\frac{n}{2} + c\\sqrt{n\\log n}\\right] \\le \\exp \\left( - 2c^2 \\log n \\right) \\le n^{-2c^2}. \\end{align*}\\] 頂点$u\\in [n]$に関するunion boundより, 最大次数が$\\frac{n}{2} + c\\sqrt{n\\log n}$以上となる確率は高々$n^{1-2c^2}$である. $\\square$ . なお, 同じ議論によって同じ確率で最小次数は$\\frac{n}{2}-c\\sqrt{n\\log n}$以上であることも証明できます. 補題を用いると以下のようにしてKučeraのアルゴリズムの正当性を証明できます. 定理の証明 入力を$G’\\sim \\calG(n,1/2,k)$とします. 補題より, クリーク$C$を追加する前のランダムグラフの最大次数は確率$1-n^{1-2c^2}$で高々$\\frac{n}{2} + c\\sqrt{n\\log n}$です. リーク$C$の追加によってクリーク外$v \\not\\in C$の次数は変化しないため, グラフ$G’$においても頂点$v\\not\\in C$の次数は高々 . \\[\\begin{align*} \\frac{n}{2} + c\\sqrt{n\\log n} \\tag{1} \\end{align*}\\] です. 一方でクリーク内の頂点$u \\in C$の次数の周辺分布は$\\Bin(n-k)+(k-1)$であり(下図参照), Hoeffdingの不等式より$\\Pr \\left[ \\Bin(n-k,1/2) \\le \\frac{n-k}{2} - c\\sqrt{n\\log n}\\right] \\le n^{-2c^2}$を得ます. 頂点 $u \\in C$に関するunion boundにより . \\[\\begin{align*} \\Pr \\left[ {}^\\exists u\\in C, \\deg(u) \\le \\frac{n+k}{2} -1 - c\\sqrt{n\\log n} \\right] \\le n^{1-2c^2} \\end{align*}\\] なので, 確率$1-n^{1-2c^2}$で全ての$u\\in C$の次数は少なくとも . \\[\\begin{align*} \\frac{n+k}{2} - c\\sqrt{n\\log n} \\tag{2} \\end{align*}\\] です. 式(1)と(2)を比較すると, $\\frac{n+k}{2} - c\\sqrt{n\\log n} &gt; \\frac{n}{2}+c\\sqrt{n\\log n}$, すなわち$k \\ge 4c\\sqrt{n\\log n}$ならば, $C$内の全ての頂点の次数が$C$外の全ての頂点の次数を上回るので, Kučeraのアルゴリズムの出力は確率$1-2n^{1-2c^2}$で埋め込まれたクリーク$C$に一致します. ",
     "url": "/nobunote/docs/planted_clique/Kucera%E3%81%AE%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/",
     
     "relUrl": "/docs/planted_clique/Kucera%E3%81%AE%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/"
-  },"15": {
+  },"25": {
     "doc": "XOR補題",
     "title": "XOR補題",
     "content": "平均時計算量において脱乱化などの応用を考える文脈では, 困難性の増幅 (hardness amlpification)と呼ばれる, 弱い平均時困難性を持つ関数$f$から強い平均時困難性を持つ関数$g$を構成する手法が研究されています. XOR補題はその中でも代表的なものの一つです. 主張を述べるために準備をします. 関数$f\\colon \\binset^n\\to\\binset$に対して関数$f^{\\oplus k}\\colon \\binset^{kn} \\to \\binset$を, $y\\in\\binset^{kn}$を$n$ビットずつ区切って$y = (x_1,\\dots,x_k)$としたとき . \\[\\begin{align*} f^{\\oplus k}(y) = f(x_1)\\oplus \\dots \\oplus f(x_k) \\tag{1} \\end{align*}\\] で定めます. ここで$\\oplus$はXORを表します. XOR補題とは, 元の関数$f$がある簡潔な関数族$\\calF$に対し$\\delta$-困難であるとき, $k$が十分大きければ$f^{\\oplus k}$はもう少し簡潔な関数族$\\calF’$に対し $(1/2-\\varepsilon)$-困難となることを主張します. 特に$\\calF,\\calF’$として小さい回路族を考えるものをYaoのXOR補題といいます. XOR補題が成り立つ直感的な理由. XOR補題の直感としては, 関数$f$が$\\delta$-困難であるとき, 一様ランダムな$x\\sim\\binset^n$に対して確率変数$f(x)$は確率$\\delta$で表が出るコイントス$\\mathrm{Ber}(\\delta)$と(計算量的に)識別できないことを意味します. これを . \\[\\begin{align*} f(x)\\approx_c \\mathrm{Ber}(\\delta) \\end{align*}\\] と書くことにしましょう. さて, 独立に$x_1,\\dots,x_k\\sim\\binset^n$を選んだときの$k$個の確率変数$f(x_1),\\dots,f(x_k)$はそれぞれ$\\mathrm{Ber}(\\delta)$の識別できません. 従ってこれらのXORをとると . \\[\\begin{align*} f(x_1)\\oplus \\dots \\oplus f(x_k) \\approx_c \\mathrm{Ber}(\\delta)\\oplus \\dots \\oplus \\mathrm{Ber}(\\delta) \\approx \\mathrm{Ber}(1/2) \\end{align*}\\] となります. 最後の$\\approx$は統計距離(total variation distance)の意味で近いことを意味し, 具体的には両者の間の統計距離は$2^{-\\Omega(k\\delta)}$となります. ですので, $k \\gg \\log(1/\\varepsilon)/\\delta$のとき, $y\\sim\\binset^{kn}$に対し$f^{\\oplus k}(y)\\approx_c \\mathrm{Ber}(1/2)$となり, これはすなわち$f^{\\oplus k}$は$(1/2-\\varepsilon)$-困難であることを意味します. ここではYaoのXOR補題を述べます. サイズ$s$以下の回路全体の集合を$\\SIZE(s)$と表します. なお, ここで考える回路とはAND, OR, NOTゲートを繋げたものであり, ANDとORゲートの入力素子数(fan-in)は2です. 回路のサイズはその回路に含まれるAND,OR,NOTゲートの個数とします. 定理 (YaoのXOR補題). ある定数$C&gt;0$が存在して, パラメータ$n\\in\\Nat,\\delta&gt;0,\\varepsilon&gt;0$に対し$k\\ge C\\log(1/\\varepsilon)/\\delta^2$ならば以下が成り立つ: 関数$f\\colon \\binset^n\\to\\binset$が$\\SIZE(s)$に対して$\\delta$-困難ならば, 式(1)で定まる関数$f^{\\oplus k}$は$\\SIZE(s’)$に対して$(1/2-\\varepsilon)$-困難である. ただし$s’ = …$. YaoのXOR補題には様々な証明方法が知られています. ",
     "url": "/nobunote/docs/average_case_complexity/Yao_XOR/",
     
     "relUrl": "/docs/average_case_complexity/Yao_XOR/"
-  },"16": {
+  },"26": {
     "doc": "XOR補題",
     "title": "ハードコア補題を用いた証明",
     "content": " ",
     "url": "/nobunote/docs/average_case_complexity/Yao_XOR/#%E3%83%8F%E3%83%BC%E3%83%89%E3%82%B3%E3%82%A2%E8%A3%9C%E9%A1%8C%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E8%A8%BC%E6%98%8E",
     
     "relUrl": "/docs/average_case_complexity/Yao_XOR/#ハードコア補題を用いた証明"
-  },"17": {
+  },"27": {
     "doc": "XOR補題",
     "title": "直積定理とGoldreich-Levinの定理に基づく証明",
     "content": " ",
     "url": "/nobunote/docs/average_case_complexity/Yao_XOR/#%E7%9B%B4%E7%A9%8D%E5%AE%9A%E7%90%86%E3%81%A8goldreich-levin%E3%81%AE%E5%AE%9A%E7%90%86%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E8%A8%BC%E6%98%8E",
     
     "relUrl": "/docs/average_case_complexity/Yao_XOR/#直積定理とgoldreich-levinの定理に基づく証明"
-  },"18": {
+  },"28": {
     "doc": "XOR補題",
     "title": "サンプラーを使った簡潔な証明",
     "content": "パラメータはよく知られるバージョンより悪いものの, 非常に簡潔で教育的な証明を紹介します. 命題 (弱いパラメータに対するYaoのXOR補題). ある定数$C&gt;0$が存在して, パラメータ$n\\in\\Nat,\\delta&gt;0,\\varepsilon&gt;0$に対し$k\\ge \\frac{C\\log(1/\\varepsilon)}{\\varepsilon^2\\delta^2}$ならば以下が成り立つ: 関数$f\\colon \\binset^n\\to\\binset$が$\\SIZE(s)$に対して$\\delta$-困難ならば, 式(1)で定まる関数$f^{\\oplus k}$は$\\SIZE(s’)$に対して$(1/2-\\varepsilon)$-困難である. ただし$s’ = s\\cdot \\frac{\\varepsilon^2}{C\\log(1/\\delta)}$. 証明 対偶を証明します. すなわち, $f^{\\oplus k}$が$\\SIZE(s’)$に対して$(1/2-\\varepsilon)$-困難でないと仮定して, $f$が$\\SIZE(s)$に対して$\\delta$-困難でないことを示します. そのために, 次の性質を満たすオラクル回路$C^\\calO$を構成します: オラクル$\\calO$が . \\[\\begin{align*} \\Pr_{y\\sim\\binset^{kn}}[C(y) = f^{\\oplus k}(y)] \\ge \\frac{1}{2} + \\varepsilon \\end{align*}\\] を満たすときに$C^{\\calO}$は . \\[\\begin{align*} \\Pr_{\\substack{x\\sim\\binset^n\\\\ C^{\\calO}}}[C(x) = f(x)] \\ge 1-\\delta \\end{align*}\\] を満たし, さらに$C^\\calO$のサイズは(オラクルゲートのサイズを定数として)$O(kn\\cdot \\log(1/\\delta)/\\varepsilon^2)$となり, オラクルコールの回数は高々$O(\\log(1/\\delta)/\\varepsilon^2)$となる. なお, ここではランダムな入力$x\\sim\\binset^n$と$C^\\calO$の内部のランダムネスに関する確率を考えています. オラクル回路$C^{\\calO}$ . 入力: $f$のインスタンス$x\\in\\binset^n$, ランダムシード$r$, アドバイス$\\alpha = \\alpha(n,r)$ . | 各$t=1,\\dots,T$ (ここで$T=O(\\log(1/\\delta)/\\varepsilon^2)$)に対して以下を行う: . | ランダムシード$r$に基づいて一様ランダムに$(x_1,\\dots,x_k)\\sim\\binset^{kn}$および$i\\sim[k]$をサンプリングする. | $y = (x_1,\\dots,x_{i-1},x,x_{i+1},\\dots,x_k)$とし, オラクルとアドバイスを用いて$b_t := \\calO(y) + \\sum_{j\\ne i} f(x_j) \\bmod 2 $を計算する. ここで, 各$f(x_j)$ ($j\\ne i$) はランダムシード$r$と$n$に依存するため, アドバイス$\\alpha$に含めておくことができます. | . | $b_1,\\dots,b_T$の中での多数決を出力する (多数決が存在しない場合は任意のビットを出力する). | . オラクル$\\calO$としてサイズ$s’$の回路を用いたとき, 上記のオラクル回路はサイズ$s=O((kn+s’)\\log(1/\\delta)/\\varepsilon^2) = O(s’\\log(1/\\delta)/\\varepsilon^2)$となります (ここでは$C$のサイズは入力長以上なので$s’\\ge kn$). 次に回路$C^\\calO$が$f$を多くの入力上で計算することを示します. オラクル$\\calO$がステップ1(b)で入力$y=(x_1,\\dots,x_{i-1},x,x_{i+1},\\dots,x_k)$に対して$f^{\\oplus k}(y)$を正しく計算すると仮定します. するとステップ1(b)で計算される$b_t$は . \\[\\begin{align*} b_t = f^{\\oplus k}(y) + \\sum_{j\\ne i} f(x_j) \\pmod 2 = f(x) \\end{align*}\\] となります. したがって, オラクル回路$C^\\calO$は, ステップ1において半数以上の反復においてオラクル$\\calO$インスタンス$y$で成功する場合に$f(x)$を出力します. 一様ランダムな$x\\sim\\binset^n$とステップ1(b)で構成される$y$に対して, 確率変数の組$(x,y)$は 直積サンプラー です. 従って, 直積サンプラーのサンプラー性によってこの組は$(\\delta/2,\\varepsilon/2)$-サンプラーとなります. ここで, オラクル$\\calO$に対し, 関数$S\\colon\\binset^{kn}\\to\\binset$を . \\[\\begin{align*} S(y) = \\begin{cases} 1 &amp; \\text{if } \\calO(y) = f^{\\oplus k}(y), \\\\ 0 &amp; \\text{otherwise} \\end{cases} \\end{align*}\\] とします. オラクル$\\calO$の仮定より$\\E_y[S(y)]\\ge \\frac{1}{2} + \\varepsilon$です. 一方で$(x,y)$のサンプラー性より . \\[\\begin{align*} \\Pr_{x\\sim \\binset^n} \\qty[ \\E[S(y)|x] \\ge \\frac{1+\\varepsilon}{2} ] &amp;\\le \\Pr_{x\\sim \\binset^n} \\qty[ \\left|\\E[S(y)|x] - \\E[S(y)]\\right| \\ge \\frac{\\varepsilon}{2} ] \\\\ &amp;\\le \\frac{\\delta}{2} \\end{align*}\\] を得ます. すなわち, $(1-\\delta/2)$の割合の$x$に対して, $y$をランダムに生成したとき$S(y)=$となる確率が少なくとも$1/2+\\varepsilon/2$だけあります. このような$x$をgoodであると呼びます. goodなインスタンス$x$に対して$C^\\calO(x)$の挙動を考えましょう. ステップ$1(b)$で生成したランダムな$y$は, $x$がgoodであることから, $\\Pr_y[S(y)=1|x]\\ge \\frac{1+\\varepsilon}{2}$を満たします. 従って, $T=O(\\log(1/\\delta)/\\varepsilon^2)$回の各反復$t$において, 確率$\\frac{1+\\varepsilon}{2}$で$b_t=f(x)$となります. したがって, $T$の仮定から, 多数決によって確率$1-\\delta/2$で$C^\\calO(x)$は$f(x)$を出力します. 以上より, この回路$C^\\calO$は . \\[\\begin{align*} \\Pr_{x\\sim\\binset^n,C^\\calO}[C^\\calO(x) = f(x)] &amp;=\\Pr_x[x\\text{ is good}]\\Pr_{C^{\\calO}}[C^{\\calO}(x) = f(x) | x \\text{ is good}] \\\\ &amp;\\ge (1-\\delta/2)(1-\\delta/2) = 1-\\delta \\end{align*}\\] となるため, $f$が$\\SIZE(s)$に対して$\\delta$-困難でないことが示されました. ",
     "url": "/nobunote/docs/average_case_complexity/Yao_XOR/#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%A9%E3%83%BC%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E7%B0%A1%E6%BD%94%E3%81%AA%E8%A8%BC%E6%98%8E",
     
     "relUrl": "/docs/average_case_complexity/Yao_XOR/#サンプラーを使った簡潔な証明"
-  },"19": {
-    "doc": "Zero-Knowledge Proofs and the Complexity of Interactive Proof Systems",
-    "title": "Zero-Knowledge Proofs and the Complexity of Interactive Proof Systems",
-    "content": " ",
-    "url": "/nobunote/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/",
-    
-    "relUrl": "/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/"
-  },"20": {
-    "doc": "Zero-Knowledge Proofs and the Complexity of Interactive Proof Systems",
-    "title": "Info",
-    "content": ". | authors: Oded Goldreich, Silvio Micali, Avi Wigderson | publication: JACM91 | . 全体の要約 ゼロ知識証明系とは, ある命題が真であることを証明する際に, その証明それ自体以外の情報を一切漏らさない証明方法です. 論文の結果は以下の通り: . | 全てのNPに属する問題に対するゼロ知識対話証明系を構築　(ただし, 安全な暗号化関数の存在を仮定) | グラフ同型性問題とグラフ非同型性問題に対するゼロ知識対話証明系を構築 (暗号化関数を用いない). | . ",
-    "url": "/nobunote/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/#info",
-    
-    "relUrl": "/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/#info"
-  },"21": {
-    "doc": "Zero-Knowledge Proofs and the Complexity of Interactive Proof Systems",
-    "title": "対話証明系とは?",
-    "content": "NP（非決定性多項式時間）を, メンバーシップを主張する短い証明を持つ言語のクラスとして捉えたとき, その証明を, 強力な証明者と確率的多項式時間検証者の間の相互作用に拡張した概念が対話証明系です. 定義（対話チューリング機械; Interactive Turing Machine） . 対話チューリング機械(interactive Turing machine)とは, 以下の六つのテープからなる決定的チューリング機械です: . | 入力テープ (read-only) | ランダムシードテープ (read-only) | 作業テープ (read/write) | 受信テープ (read-only) | 送信テープ (write-only) | 出力テープ (write-only) | . 送信テープと受信テープをまとめて通信テープ(communication tape)と呼ぶこともあります. 対話するチューリング機械の組 (interactive pair of Turing machines)とは, 通信テープを共有している二つの対話チューリング機械$M_1,M_2$からなる組$\\langle M_1,M_2 \\rangle$であり, 次の性質を満たします: . | 一方の送信テープは他方の受信テープと同期しており, 逆もまた然りです. | 各計算ステップにおいて, どちらか一方の機械はactiveと呼ばれる状態にあり, もう一方の機械はidleという. activeな機械がidle状態に遷移したとき, もう一方の機械はactive状態になり, その機械は自信の入力テープ, 受信テープ, ランダムシードテープの内容に基づき計算を行います. この際に受信テープに書かれている文字列をメッセージと呼びます. | . 対話するチューリング機械の組$\\langle A,B \\rangle$に対し, $[A(x),B(y)]$を計算が終了した際の$B$の出力テープの内容とします ($A$の出力テープの内容は無視しています). 図1: 対話チューリング機械の構造 . 定義（対話証明系） . 言語$L$に対する対話証明系(interactive proof system)とは, 対話するチューリング機械の組$\\langle P,V \\rangle$であって, 以下の性質を満たすものです: . | $V$は乱択多項式時間アルゴリズムです | (完全性) 任意の定数$c&gt;0$および十分長い文字列$x\\in L$に対して | . \\[\\begin{align*} \\Pr \\qty[ [P(x),V(x)] = 1 ] \\ge 1 - |x|^{-c}. \\end{align*}\\] . | (健全性) 任意の定数$c&gt;0$および任意の対話チューリング機械$P^*$, そして十分長い文字列$x\\notin L$に対して | . \\[\\begin{align*} \\Pr \\qty[ [P^*(x),V(x)] = 1 ] \\le |x|^{-c}. \\end{align*}\\] . 図2: 対話証明系の構造 . 例えば充足可能性判定問題に対する対話証明系は, 証明者が充足する割り当てを提示し, 検証者がその割り当てが充足することを確認することによって得られます. つまり, . | $P(x)$ : 入力として与えられた論理式$x$に対し, その充足割り当てのうち一つ$a$を送信テープに記述してidle状態になります. | $V(x)$ : $P(x)$が送信した割り当て$a$を受信し, その割り当てが確かに$x$を充足するかどうかを確認します. | . 上記の対話証明系では, 検証者は論理式$x$が充足可能であるという事実に加え, その充足割り当てが何かという情報も得ることができます. ゼロ知識証明とは, このような余分な情報の漏洩は許さず, 証明が有効であること以外には何も情報を漏らさないような対話証明です. 定義（ゼロ知識証明系） . 言語$L$に対するゼロ知識証明系(zero-knowledge proof system)とは, 対話証明系$\\langle P,V \\rangle$であって, 以下の性質を満たすものです: . | (ゼロ知識性) 任意の乱択多項式時間機械$W$に対して, ある乱択多項式時間機械$M_{W}$が存在して, 二つの確率変数列 . \\[\\begin{align*} (M_{W}(x))_{x\\in L}, \\quad ([P(x),W(x)])_{x\\in L} \\end{align*}\\] の分布が任意の多項式時間アルゴリズムにとって識別不可能です. | . この機械$M_W$を$W$の模倣者(simulator)と呼びます. 出力値の識別不可能性の代わりに, 以下のようにメッセージ内容の識別不可能性で定義しても同値となります. 定義（ゼロ知識証明系） . 乱択多項式時間で動く対話チューリング機械$W$およびそれらの共通入力$x$に対して, $\\langle P,W\\rangle(x)$を機械$W$の全てのread-onlyテープの内容の分布とします. 言語$L$に対するゼロ知識証明系(zero-knowledge proof system)とは, 対話証明系$\\langle P,V \\rangle$であって, 任意の乱択多項式時間で動く対話チューリング機械$W$に対してある乱択多項式時間機械$M_{W}$が存在して, 二つの確率変数列 . \\[\\begin{align*} (M_{W}(x))_{x\\in L}, \\quad (\\langle P,W \\rangle (x))_{x\\in L} \\end{align*}\\] が任意の多項式時間アルゴリズムにとって識別不可能です. 要するに, 検証者の受信内容(=証明者の送信内容)が簡単に計算できることを意味します. 例えば充足可能性判定問題に対する素朴な対話証明系では, 証明者が充足割当の一つをメッセージとして提示しますが, 論理式$x$が与えられたときにその充足割当の一つを求めることはNP困難です. Remark (完全なゼロ知識) . ゼロ知識性では二つの分布の計算量的識別不可能性を要求していますが, さらに強めて二つの分布が統計距離の意味で一致するとき, これを完全なゼロ知識性(perfect zero-knowledge)と呼びます. ",
-    "url": "/nobunote/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/#%E5%AF%BE%E8%A9%B1%E8%A8%BC%E6%98%8E%E7%B3%BB%E3%81%A8%E3%81%AF",
-    
-    "relUrl": "/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/#対話証明系とは"
-  },"22": {
-    "doc": "Zero-Knowledge Proofs and the Complexity of Interactive Proof Systems",
-    "title": "グラフ同型性判定問題に対する対話証明系",
-    "content": "ここでは対話証明系の代表的な例としてグラフ同型性判定問題を取り上げます. 定義（グラフ同型性判定問題） . 同一の頂点集合$V$を持つ二つのグラフ$G_0=(V,E_0),G_1=(V,E_1)$を考えます. 頂点集合$V$上のある順列$\\pi$が存在して, 全ての${i,j}\\in\\binom{V}{2}$に対して${i,j}\\in E_0 \\iff {\\pi(i),\\pi(j)}\\in E_1$が成り立つとき, 二つのグラフ$G_0$と$G_1$は同型であるといいます. 二つの無向グラフ$G_0=(V,E_0),G_1=(V,E_1)$が与えられたとき, これらが同型であるならばYes, そうでなければNoを返す問題をグラフ同型性判定問題(GI; graph isomorphism problem)と呼びます. 答えのYes/Noを反転させた問題, すなわち二つのグラフが同型でないならばYes, 同型ならばNoを返す問題をグラフ非同型性判定問題 (GNI; graph non-isormophism problem)と呼びます. グラフ非同型性問題に対する対話証明系 . グラフ同型性判定問題は「同型である」ということの証拠として同型写像を提示すれば良いのでNPに属することは明らかです. 一方で「同型でない」ことの証拠が存在するかは不明ですので, グラフ非同型性判定問題の方はNPに属するかどうかは分かりません. ところが, 実は対話証明を用いれば効率的に非同型性を検証することができます. これは対話証明系の代表的な例として有名です. グラフ$G=(V,E)$を$V$上の置換$\\pi\\colon V \\to V$でラベルを付け替えて得られるグラフを$\\pi(G)$とします. すなわち$\\pi(G)$は辺集合が$\\set{\\set{\\pi(u),\\pi(v)}\\colon \\set{u,v} \\in E}$で表されるグラフです. 対話証明系1 . 入力: 二つのグラフ $G_1=(V,E_1),G_2=(V,E_2)$ . | (V1). 頂点集合$V$上の順列$\\pi$とビット$b\\in\\binset$をそれぞれ一様ランダムに選び, グラフ$\\pi(G_b)$を送信テープに書き込みます. | (P1). グラフ$H$を受信し, それが$G_0$と$G_1$のどちらと同型かを判定します. グラフ$G_a$と同型であったときに$a\\in\\binset$を送信テープに書き込みます. | (V2). ビット$a$を受信し, $b=a$であるならば受理. そうでなければ拒否します. | . 入力$(G_1,G_2)$が非同型ならば証明者は受信したグラフ$H$が$G_0$と$G_1$のどちらと同型かを知ることができるので, このプロトコルは健全性を満たします. 一方で$G_0$と$G_1$が同型である場合, 一様ランダムな$\\pi$に対して$\\pi(G_0)$と$\\pi(G_1)$の分布は同一なので, 特に証明者が(P1)で送信する$a\\in\\binset$が$b$と一致する確率は$1/2$です. 従ってこのプロトコルは(何度も繰り返すことによって)完全性を満たします. 図3: グラフ非同型性判定問題に対する対話証明系 . グラフ同型性問題に対するゼロ知識対話証明系 . グラフ同型性判定問題はNPに属するため自明に対話証明系を構築できますが, 一方でゼロ知識性を持つ対話証明系を構築することは非自明です. この節では, そのようなグラフ同型性判定問題に対する非自明なゼロ知識性を持つ対話証明系を構築します. 対話証明系2 . 入力: 二つのグラフ $G_0=(V,E_0),G_2=(V,E_1)$ (これらは同型とする) . 補助入力: $G_1 = \\phi(G_0)$ (この写像$\\phi$は無限の計算能力を持つ証明者があらかじめ計算しておくことができるが, ゼロ知識性を保つため検証者には秘匿). | (P1). 頂点集合$V$上の順列$\\pi$を一様ランダムに選び, グラフ$H=\\pi(G_1)$を送信します. | (V1). 一様ランダムなビット$\\alpha \\in \\binset$を選び, このビットを送信します. | (P2). ビット$\\alpha$を受信し, 写像 . \\[\\begin{align*} \\psi = \\begin{cases} \\pi &amp; \\text{if } \\alpha = 1 \\\\ \\pi \\circ \\phi &amp; \\text{otherwise} \\end{cases} \\end{align*}\\] を送信します (ただし$\\circ$は写像の合成を表します). | (V2). 受信した写像$\\psi$が$G_\\alpha$と$H$の間の同型写像でない (i.e., $H\\ne\\psi (G_\\alpha)$)ならば検証者は拒否し, そうでなければ(P1)から繰り返します. | . ゼロ知識性の直感的説明 イメージとしては, 証明者は検証者に「二つのグラフ$G_0,G_1$いずれかを指定してください. 指定されたグラフから$G_1$への同型写像を探してご覧に入れましょう」と言っています. | 確かに$G_0$と$G_1$が同型ならば, その同型写像$\\phi$を使って証明者は確率$1$で検証者を受理させることができます. | 一方で$G_0$と$G_1$が同型でないならば, ステップ(V1)で$\\alpha=0$が選択された場合に$H=\\pi(G_1)$と$G_\\alpha=G_0$が同型ではないので検証者は拒否します. この事象は確率$1/2$で発生するので, 十分な回数を繰り返せば健全性を持つことが示せます. | . さて, 同型写像を渡してしまうとゼロ知識性を持たないので, 秘密の同型写像を一様ランダムな置換$\\pi$でマスクすることによって, 証明者は$\\phi$の情報を秘匿することができます. $\\pi$でマスクするのに伴って証明者は$H=\\pi(G_1)$を渡す必要があります. ステップ(V1)の$\\alpha$がどちらの値であろうともステップ(P2)で構成される写像$\\psi$は($\\pi$のランダムネスにおいて)周辺分布が一様分布となり, しかも$\\alpha$とは独立です. このため, 検証者が見るメッセージ$(\\alpha,\\pi)$の分布は独立一様ランダムとなるので, 確かにゼロ知識性を満たします (フォーマルな証明は割愛; 元論文のTheorem 2を参照). グラフ非同型性問題に対するゼロ知識対話証明系 (*) . 対話証明系3 . 入力: 二つのグラフ $G_1=(V,E_1),G_2=(V,E_2)$ . | (V1). 頂点集合$V$上の順列$\\pi$とビット$\\alpha\\in\\binset$をそれぞれ一様ランダムに選び, グラフ$H=\\pi(G_\\alpha)$を計算する (このグラフを質問と呼ぶ). また, 各$i=1,\\dots,n^2$に対して独立にランダムビット$b_i$と二つのランダム置換$\\pi_{i,0},\\pi_{i,1}$を生成し, . \\[\\begin{align*} (T_{i,0},T_{i,1}) = \\begin{cases} (\\pi_{i,0}(G_0),\\pi_{i,1}(G_1)) &amp; \\text{if } b_i=1 \\\\ (\\pi_{i,0}(G_1),\\pi_{i,1}(G_0)) &amp; \\text{if } b_i=0 \\end{cases} \\end{align*}\\] として$n^2$個のグラフのペア $(T_{i,0},T_{i,1})$ を生成します ($i\\in[n^2]$). これらをテストペアと呼びます. 最後に質問$H$とテストペアの集合$(H,(T_{i,0},T_{i,1}))$を送信します. | (P1). 一様ランダムな部分集合$I\\subseteq[n^2]$を選び, これを送信する. | (V2). 部分集合$I$を受信し, 各$i\\in[n^2]$に対して以下を計算します: . | $i\\in I$ならば, $i$番目のテストペアを構成するのに用いた$(b_i,\\pi_{i,0},\\pi_{i,1})$を送信テープに書き込みます. | $i\\not\\in I$ならば, $i$番目のテストペア$(T_{i,0},T_{i,1})$のうち$H$と同型なもの(すなわち$T_{i,\\alpha\\oplus b_i}$)に対し, $(\\alpha\\oplus b_i,\\pi_{i,\\alpha\\oplus b_i}\\circ\\pi^{-1})$を送信テープに書き込みます. この写像は . \\[\\begin{align*} \\pi_{i,\\alpha\\oplus b_i}\\circ\\pi^{-1}(H)=\\pi_{i,\\alpha\\oplus b_i}(G_\\alpha)=T_{i,\\alpha\\oplus b_i} \\end{align*}\\] より, $H$から$T_{i,\\alpha\\oplus b_i}$への同型写像となります. | . | (P2). 受信した情報を元に, 各$i\\in I,j\\in\\binset$に対して$\\pi_{i,j}$が$G_{j\\oplus b_i}$と$T_{i,j}$の間の同型写像になっているかどうかを確認します. 同様に, 各$i\\not\\in I$に対して$\\pi_{i,\\alpha\\oplus b_i}\\circ\\pi^{-1}(H)$が$H$と$T_{i,\\alpha\\oplus b_i}$の間の同型写像になっているかどうかを確認します. これらの条件が満たされない場合は拒否します. そうでない(条件が満たされる)場合, ビット$\\beta\\in\\binset$を, $G_\\beta$と$H$が同型となるようなビットとして, これを送信します (そのようなビット$\\beta$が存在しない場合は$\\beta=0$とする.) | (V2). $\\alpha=\\beta$かどうかによって受理/拒否を決定します. | . ",
-    "url": "/nobunote/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/#%E3%82%B0%E3%83%A9%E3%83%95%E5%90%8C%E5%9E%8B%E6%80%A7%E5%88%A4%E5%AE%9A%E5%95%8F%E9%A1%8C%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E5%AF%BE%E8%A9%B1%E8%A8%BC%E6%98%8E%E7%B3%BB",
-    
-    "relUrl": "/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/#グラフ同型性判定問題に対する対話証明系"
-  },"23": {
-    "doc": "Zero-Knowledge Proofs and the Complexity of Interactive Proof Systems",
-    "title": "3. NPに対するゼロ知識対話証明系 (安全な暗号化関数の仮定)",
-    "content": "安全な暗号化関数の存在を仮定して, すべてのNP言語に対してゼロ知識インタラクティブ証明系を構築する方法を示します. 具体的には, グラフ3彩色問題に対するゼロ知識対話証明系を構成します. 定義（3彩色問題） . グラフ$G=(V,E)$は, ある関数$\\phi\\colon V \\to \\set{1,2,3}$が存在して, 任意の${u,v}\\in E$に対して$\\phi(u)\\ne\\phi(v)$が成り立つとき, 3彩色可能であるといい, この関数$\\phi$を3彩色といいます. グラフ$G$が3彩色可能であるかどうかを判定する問題を3彩色問題といいます. 以後では特に断りなく, 3彩色問題はNP完全であるという事実を用います. 3彩色問題に対する「物理的な」ゼロ知識対話証明系 . まずは以下の仮想的なプロトコルを考えます. 対話証明系4 . 入力: 3彩色問題のグラフ$G=(V,E)$ . 補助入力として, 証明者は$G$の3彩色$\\phi$を受け取ります (実際には証明者は無限の計算能力を使って$\\phi$を計算できる). 以下を$|E|^2$回繰り返します: . | (P1). 集合$\\set{1,2,3}$上の一様ランダムな置換$\\pi$を選び, 各$u\\in V$に対して$(\\pi(\\phi(u)))_{u\\in V}$と書かれた紙をラベル$u$の「封筒」に入れて封をする. これらの封筒を送信します (封筒の鍵は送らない). | (V1). 一様ランダムな辺$\\set{u,v}\\in E$を選び, その辺を送信します. | (P2). 辺${u,v}$を受信し, ラベル$u$と$v$の二つの封筒の鍵を送信します (受信した文字列がグラフの辺でない場合は終了). | (V2). 受信した二つの鍵を用いて封筒の中身を見る. これらの値が同じ値であったならば拒否し, そうでなければパスして次の反復に進みます (全ての反復においてパスしたならば受理). | . 上記の対話証明系では「封筒」という物理的なデバイスに依存したプロトコルとなっています. 証明者が知っている彩色を$\\pi$でランダムに置換することによって, 元の彩色の情報を秘匿したまま, その彩色が3彩色であることを検証者に示すことができます. 暗号化関数 . 暗号化関数は, 封筒という物理的なデバイスを実装するために用います. 「色の情報を記した紙を封筒に入れる」という操作は「色を暗号化する」に対応します. ここでは3彩色問題を考えるため, 以下の定義では色の情報のみを暗号化することを考えます. 定義（安全な暗号化関数） . | 関数$f\\colon \\set{0,1,2,3} \\times \\binset^{\\ast} \\to \\binset^{\\ast}$ は, 任意の$x\\ne y\\in\\set{0,1,2,3}$と任意の$r,s\\in\\binset^{\\ast}$に対して$f(x,r)\\ne f(y,s)$を満たすとき, 暗号化関数(encryption function)といいます. | セキュリティパラメータ$n\\in\\Nat$に対し, $r\\sim\\binset^n$, $f_n(x)=f(x,r)$として得られる確率変数$f_n(x)$を確率的な暗号化 (probabilistic encryption)といいます. | 暗号化関数$f\\colon \\set{0,1,2,3}\\times\\binset^\\ast\\to\\binset^\\ast$は, 全ての$x\\ne y \\in\\set{0,1,2,3}$に対して, 二つの確率的な暗号化$(f_n(x))_n$と$(f_n(y))_n$が任意の多項式時間アルゴリズムにとって識別不可能なとき, 安全(secure)という. つまり, 任意の多項式時間アルゴリズム$A$と十分大きな$n\\in\\Nat$に対して . \\[\\begin{align*} \\abs{ \\Pr[A(f_n(x))=1] - \\Pr[A(f_n(y))=1] } \\le n^{-\\omega(1)} \\end{align*}\\] を満たすことを意味します. | . 3彩色問題に対するゼロ知識対話証明系 . 対話証明系4’ . 入力: 3彩色問題のグラフ$G=(V,E)$ . 補助入力として, 証明者は$G$の3彩色$\\phi$を受け取ります (実際には証明者は無限の計算能力を使って$\\phi$を計算できる). また, $f\\colon\\binset\\to\\binset^*$を安全な暗号化関数とし, 特に多項式時間で計算できるものとします. 以下を$|E|^2$回繰り返します: . | (P1). 集合$\\set{1,2,3}$上の一様ランダムな置換$\\pi$を選び, 各$u\\in V$に対して$r_u\\sim\\binset^n$とし, $F_u := f(\\pi(\\phi(u)),r_u)$とし, $(F_u)_{u\\in V}$を送信する. | (V1). 一様ランダムな辺$\\set{u,v}\\in E$を選び, その辺を送信します. | (P2). 辺${u,v}$を受信し, $F_u,F_v$の計算に用いた$f$への入力, すなわち$(\\pi(\\phi(u)),r_u),(\\pi(\\phi(v)),r_v)$を送信します. | (V2). 受信した二つのペア$(\\pi(\\phi(u)),r_u),(\\pi(\\phi(v)),r_v)$を用いて$F_u,F_v$を計算し, これらの値が同じ値であったならば拒否し, そうでなければパスして次の反復に進みます (全ての反復においてパスしたならば受理). | . この対話証明系4’のゼロ知識性は暗号化関数の安全性によって保証されます. 対話証明系4’では, NP証明を補助的な入力として与えられたとき証明者は多項式時間で動く. ",
-    "url": "/nobunote/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/#3-np%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E3%82%BC%E3%83%AD%E7%9F%A5%E8%AD%98%E5%AF%BE%E8%A9%B1%E8%A8%BC%E6%98%8E%E7%B3%BB-%E5%AE%89%E5%85%A8%E3%81%AA%E6%9A%97%E5%8F%B7%E5%8C%96%E9%96%A2%E6%95%B0%E3%81%AE%E4%BB%AE%E5%AE%9A",
-    
-    "relUrl": "/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/#3-npに対するゼロ知識対話証明系-安全な暗号化関数の仮定"
-  },"24": {
+  },"29": {
     "doc": "問題の平均時困難性",
     "title": "問題の平均時困難性",
     "content": "計算問題が平均時困難であるという性質は, 多くの入力上でその問題を解くことが困難であることを意味します. NP困難性などの最悪時困難性では困難な入力の存在性を議論するのに対し, 平均時困難性ではその困難な入力が入力全体に対しどの程度の割合を占めるかを議論します. ここでは判定問題の平均時困難性を導入します; 一般の問題についても同様に平均時困難性の概念を定義できます. まず, 導入として関数$f\\colon \\binset^n\\to\\binset$の平均時困難性を定義します. 定義 (関数の平均時困難性) . 自然数$n\\in\\Nat$を固定し, $\\calA = \\{ A\\colon \\binset^n \\to \\binset \\}$を関数の族とする. パラメータ$\\gamma\\in[0,1]$に対して関数$f\\colon\\binset^n\\to \\binset$が$\\calA$に対して$\\gamma$-困難であるとは, . \\[\\begin{align*} {}^\\forall A \\in \\calA,\\Pr_{x\\sim\\binset^n}\\left[ A(x) = f(x) \\right] \\le 1-\\gamma \\end{align*}\\] を意味する. なお, 基本的に$\\calA$としては定数関数$A_b\\colon x\\mapsto b$を含み, $A_0$と$A_1$の少なくとも一方は$1/2$以上の割合の$x\\sim\\binset^n$に対して$A(x)=f(x)$となるので, 考える$\\gamma$の範囲は$\\gamma \\le 1/2$となります. 判定問題を考える際は入力長$n$は固定されず, 関数$f \\colon \\binset^*\\to \\binset$を考えるので以下のように定義します. 定義 (判定問題の平均時困難性) . 関数族$\\calA = \\{ A\\colon \\binset^*\\to\\binset \\}$を考え, $\\gamma\\colon \\Nat\\to[0,1]$を関数とする. 判定問題 $f \\colon \\binset^* \\to \\binset$が$\\calA$に対して$\\gamma(n)$-困難であるとは, 十分大きな全ての$n$に対して . \\[\\begin{align*} {}^\\forall A\\in \\calA,\\Pr_{x\\sim\\binset^n} \\left[ A(x)=f(x) \\right] \\le 1-\\gamma(n) \\end{align*}\\] を意味する. 引数$n$は常に入力長なので, しばし省略して$\\gamma$-困難と表す. ",
     "url": "/nobunote/docs/average_case_complexity/average_case_hardness/",
     
     "relUrl": "/docs/average_case_complexity/average_case_hardness/"
-  },"25": {
+  },"30": {
     "doc": "便利な不等式",
     "title": "便利な不等式",
     "content": "よく使う不等式ほど頻繁に登場しないものの, 知っていると便利な不等式を紹介していきます. ",
     "url": "/nobunote/docs/tools/benri/",
     
     "relUrl": "/docs/tools/benri/"
-  },"26": {
+  },"31": {
     "doc": "便利な不等式",
     "title": "リード-$k$族の和の集中不等式",
     "content": "Gavinsky, Lovett, Saks, Srinivasan (2014)による集中不等式を紹介します. ChernoffバウンドやHoeffdingバウンドは独立な確率変数$Y_1,\\dots,Y_n$の和の集中性を保証します. これを, 必ずしも$Y_1,\\dots,Y_n$が独立とは限らない場合に拡張することを考えます. もちろん, どんな場合でも必ず集中性が保証されるわけではありませんが, $Y_1,\\dots,Y_n$たちの従属関係が何かしら良い構造を持つときにその性質を利用しようと思うわけです. ハイパーグラフによって従属関係が表現された確率変数族を考えます. ハイパーグラフ$\\calH=(V,\\calE)$を考え, 各ハイパー辺$e \\in \\calE$には関数$f_e \\colon [0,1]^{e} \\to [0,1]$が付随しているとします. 各頂点ごとに独立な$[0,1]$値の確率変数$X_v$を考えたとき, 各ハイパー辺$e\\in \\calE$に対し, . \\[\\begin{align*} Y_e = f_e(X\\restr{e}) \\end{align*}\\] によって定まる確率変数の族$(Y_e)_{e\\in \\calE}$を, $\\calH$-従属な確率変数族と呼ぶ. $\\calH$-従属という用語は一般的な用語ではなく, このノートで局所的に便宜上用いる用語です. ハイパーグラフ$\\calH$の構造的性質を和 $\\sum_{e\\in \\calE}Y_e$ の集中性に反映させることが目標です. この設定はChernoffバウンドやHoeffdingバウンドを特殊ケースとして含んでいます. 実際, 各ハイパー辺$e_i$がシングルトンで$e_i=\\{v_i\\}$のようになっているとき, $(Y_e)$は独立な確率変数族となります. Gavinsky, Lovett, Saks, Srinivasan (2014)は, ハイパーグラフ$\\calH$の最大次数が小さいときに集中性が成り立つことを証明しました. 定義(リード-$k$族). 最大次数が高々$k$であるハイパーグラフ$\\calH=(V,\\calE)$に対し, $\\calH$-従属な確率変数族をリード-$k$族 (read-$k$ family)という. 定理 (Gavinsky, Lovett, Saks, Srinivasan (2014)). 確率変数$Y_1,\\dots,Y_m$をリード-$k$族とし, 和を$S=\\sum_{e\\in \\calE} Y_e$, 期待値の平均を$\\mu = \\frac{\\E[S]}{m}$とする. 任意の$\\delta&gt;0$に対して以下が成り立つ: . \\[\\begin{align*} &amp;\\Pr \\qty[ S \\ge \\qty(\\mu + \\delta) ] \\le \\exp\\qty(- \\frac{m}{k}\\cdot \\KL {\\mu+\\delta} \\mu),\\\\ &amp;\\Pr \\qty[ S \\le \\qty(\\mu - \\delta) ] \\le \\exp\\qty(- \\frac{m}{k}\\cdot \\KL {\\mu-\\delta}{\\mu}). \\end{align*}\\] ここで, $\\KL{p}{q}=p\\log\\frac{p}{q} + (1-p)\\log\\frac{1-p}{1-q}$は二値KLダイバージェンス(もしくは二値相対エントロピー)と呼ばれる ($\\log$は自然対数). 二値KLダイバージェンスについては以下の不等式が成り立つ. 任意の$p,q\\in[0,1]$に対して . \\[\\begin{align*} &amp;\\KL p q \\ge 2(p-q)^2 &amp; &amp; \\text{(Pinskerの不等式)} \\\\ &amp;\\KL p q \\ge \\frac{(p-q)^2}{\\max(p,q)}. \\end{align*}\\] ",
     "url": "/nobunote/docs/tools/benri/#%E3%83%AA%E3%83%BC%E3%83%89-k%E6%97%8F%E3%81%AE%E5%92%8C%E3%81%AE%E9%9B%86%E4%B8%AD%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/tools/benri/#リード-k族の和の集中不等式"
-  },"27": {
+  },"32": {
     "doc": "エクスパンダーグラフ",
     "title": "エクスパンダーグラフ",
     "content": "エクスパンダーグラフ(expander graph)とは単純ランダムウォークが非常に早く混交するという性質を持ったグラフであり, 理論計算機科学の様々な場面で登場する非常に有用なグラフクラスで, 具体的には . | 誤り訂正符号: エクスパンダー符号, 量子LDPC符号, Ta-Shma符号 | 計算量理論: PCP定理のDinur(2006)による証明, 擬似乱数生成器の構成 | グラフアルゴリズム: エクスパンダー分解に基づくグラフ最適化問題に対する高速なアルゴリズムの設計 | 暗号分野: ハッシュ関数の構成 | . などで活躍します (これらはしばし, 実用的なアルゴリズムの設計というよりも理論的な高速性を追求する方針の研究の論文において登場します). 端的にいえば単純ランダムウォークが非常に早く混交するという性質をエクスパンダー性と呼び, この性質を持つグラフをエクスパンダーグラフといいます. グラフ$G=(V,E)$の正規化された隣接行列$P\\in[0,1]^{V\\times V}$を . \\[\\begin{align*} P(u,v) = \\frac{\\indicator_{\\{u,v\\} \\in E}}{\\deg(u)} \\end{align*}\\] で定める. グラフ$G$が正則グラフならば$P$は対称行列なので$P$の全ての固有値が実数になることはすぐに分かるのですが, 正則でなくても常に$P$は実固有値を持つことが簡単に示せます. 定義(エクスパンダーグラフ). グラフ$G=(V,E)$の正規化された隣接行列$P$の固有値を$\\lambda_1\\ge \\lambda_2\\ge \\dots \\ge \\lambda_{\\abs{V}}$とし, 非自明な固有値を$\\lambda(P)=\\max \\{\\abs{\\lambda_2},\\abs{\\lambda_{\\abs{V}}}\\}$で定める. パラメータ$\\lambda\\in[0,1]$に対し, $\\lambda(P)\\le \\lambda$を満たすとき$G$は$\\lambda$-エクスパンダーであるという. また, $\\lambda_2\\le \\lambda$を満たすとき$G$は片側$\\lambda$-エクスパンダーであるという. ",
     "url": "/nobunote/docs/tools/expander/",
     
     "relUrl": "/docs/tools/expander/"
-  },"28": {
+  },"33": {
     "doc": "関数の擬似ランダム性",
     "title": "関数の擬似ランダム性",
     "content": "擬似ランダム性とは端的にいうと「ランダムに見える」という性質を意味します. この「ランダムに見える」という性質を定義するには, 二つの分布の識別不可能性の概念を導入します. 定義 (分布の識別不可能性) . 同じ台$V$上に値をとる二つの確率変数$X,Y$および関数族$\\calF = \\set{f\\colon V \\to \\binset}$を考える. パラメータ$\\gamma\\in[0,1]$に対して, $X$と$Y$が$\\calF$に対して$\\gamma$-識別不可能であるとは, . \\[\\begin{align*} {}^\\forall f\\in\\calF, \\left| \\Pr[f(X)=1] - \\Pr[f(Y)=1] \\right| \\le \\gamma \\end{align*}\\] を意味する. | 擬似ランダム性は確率変数$X,Y$の分布にのみに依存する性質なので, $(X,Y)$が独立かどうかは問いません. | 特に, 関数族$\\calF$が全ての$\\binset$値関数からなる集合の場合, $\\gamma$-識別不可能であることと$X$と$Y$の分布間の統計距離が$\\gamma$以下であることは等価です (cf. 統計距離). | . ある確率変数(または分布)$X$が擬似ランダムであるとは, 特定の関数族に対して一様分布と識別不可能であることを意味します. 関数$f\\colon\\binset^n\\to\\binset$が擬似ランダムであるとは, 二つの分布 . \\[\\begin{align*} (X,f(X)), \\quad (X,U) \\end{align*}\\] が識別不可能であると定義します. ここで$X\\sim\\binset^n$および$U\\sim\\binset$ ($X$と$U$は独立). 定義 (関数の擬似ランダム性) . 自然数$n\\in\\Nat$を固定し, 関数$f\\colon \\binset^n\\to\\binset$および関数族$\\calC=\\set{C\\colon\\binset^{n+1}\\to\\binset}$を考える. パラメータ$\\gamma\\in[0,1]$に対して . \\[\\begin{align*} {}^\\forall C\\in\\calC, \\left| \\Pr_{x\\sim\\binset^n}[C(x,f(x))=1] - \\Pr_{x\\sim\\binset^n,u\\sim\\binset}[C(x,u)=1] \\right| \\le \\gamma \\end{align*}\\] を満たすとき, 関数$f$は$\\calC$に対して$\\gamma$-擬似ランダムであるという. なお, $f$がランダムな関数である場合は確率の中に$f$に関する確率も含める. 主に関数クラス$\\calC$としては多項式時間アルゴリズムや多項式サイズの回路を考えます. このように, 制限された計算能力で計算できる関数族$\\calC$に対する擬似ランダム性を計算量的擬似ランダム性といいます. ",
     "url": "/nobunote/docs/average_case_complexity/function_pseudorandomness/",
     
     "relUrl": "/docs/average_case_complexity/function_pseudorandomness/"
-  },"29": {
+  },"34": {
     "doc": "関数の擬似ランダム性",
     "title": "関数の平均時困難性と擬似ランダム性",
     "content": "平均時困難性と擬似ランダムネス性は密接に関連しています. そもそも, 平均時の意味で困難な関数$f\\colon \\binset^n\\to\\binset$はどのような関数なのでしょうか? 「計算が難しい」とは, 入力$x$を見た時に$f(x)$を推測するのが難しいということを意味します. 従って, $f(x)\\in\\binset$が$x$に依存せずランダムであれば推測することは不可能なので, 難しそうな気がします. これを決定的な関数$f$で模倣するためには$f(x)$がランダムっぽく見える必要があります. このように, $x\\mapsto f(x)$の計算困難性と$f(x)$の擬似ランダム性には密接な関係があります. 具体的には, 関数$f$が強い平均時困難性を持つとき, 一様ランダムな$x\\sim \\binset^n$に対して$f(x)$もまた擬似ランダムなビットになります. これはYaoのnext-bit predictorという結果で形式的に証明されており, 平均時計算量理論(特にハードコア補題の応用)を直感的に理解する上で非常に大切な視点になります. ここでは$\\calC=\\SIZE(s)$として, サイズ$s$の回路で表現される関数族を考えます. 定理 (平均時困難性と擬似ランダム性の等価性) . 入力長$n\\in\\Nat$を固定する. 十分大きな($n$に依存しない)定数$c&gt;0$が存在して以下が成り立つ: 関数$f\\colon\\binset^n\\to\\binset$が$\\SIZE(s)$に対して$(1/2 - \\varepsilon)$-困難であるとき, $f$は$\\SIZE(s-c)$に対して$(1/2 - \\varepsilon)$-擬似ランダムである. 逆に, $f$が$\\SIZE(s)$に対して$(1/2 - \\varepsilon)$-擬似ランダムであるとき, $f$は$\\SIZE(s-c)$に対して$(1/2 - \\varepsilon)$-困難である. 擬似ランダム性$\\Rightarrow$平均時困難性 関数$f$が$(1/2-\\varepsilon)$-困難でない, すなわちある回路$C\\in\\SIZE(s)$が存在して . \\[\\begin{align*} \\Pr_{x\\sim\\binset^n}[C(x)=f(x)] \\ge 1/2 + \\varepsilon \\end{align*}\\] を満たすとき, 回路$C’\\colon\\binset^{n+1}\\to\\binset$を . \\[\\begin{align*} C'(x,b) = b \\oplus C(x) \\oplus 1 \\end{align*}\\] で定めます. このとき, $C’$のサイズは$s+O(1)$であり, $(x,b)\\sim\\binset^{n+1}$のときは確率$1/2$で$1$を出力します. 一方, $x\\sim\\binset^n$に対し$b=f(x)$であるならば, . \\[\\begin{align*} \\Pr_{x\\sim\\binset^n}[C'(x,f(x))=1] = \\Pr_{x\\sim\\binset^n}[C(x)=f(x)] \\ge 1/2 + \\varepsilon \\end{align*}\\] ですので, 分布$(x,f(x))$はサイズ$s+O(1)$に対して$\\varepsilon$-擬似ランダムではありません. 逆方向の主張(の対偶)はYaoのnext-bit predictorという結果を用いて証明されます. 命題 (Yaoのnext-bit predictor) . 関数$f\\colon\\binset^n\\to\\binset$および確率変数$X\\sim\\binset^n$を考える. 分布$(X,f(X))$が$\\SIZE(s)$に対して$(1/2-\\varepsilon)$-擬似ランダムでないならば, ある($n$に依存しない)定数$c&gt;0$と回路$C’\\in\\SIZE(s-c)$が存在して . \\[\\begin{align*} \\Pr_{x\\sim\\binset^n}[C'(x)=f(x)] \\ge 1/2 + \\varepsilon. \\end{align*}\\] 証明 擬似ランダムでないという仮定から, ある回路$C\\in\\SIZE(s)$が存在して . \\[\\begin{align*} \\Pr_{x\\sim\\binset^n}[C(x,f(x))=1] - \\Pr_{x\\sim\\binset^n,b\\sim\\binset}[C(x,b)=1] &gt; \\varepsilon \\end{align*}\\] が成り立ちます (必要に応じて出力をフリップすることにより絶対値を外します). $b\\sim\\binset$は$x$とは独立なので, この不等式を書き換えると . \\[\\begin{align*} \\E_{x\\sim\\binset^n}[C(x,f(x))] - \\E_{x\\sim\\binset^n}\\qty[C\\qty(x,\\overline{f(x)})] &gt; 2\\varepsilon \\tag{1} \\end{align*}\\] が成り立ちます. つまり, $C(x,b)$は$b=f(x)$のときにより$1$を出力しやすい回路となっているわけですので, $C(x,1)$と$C(x,0)$を実行してみて$C$が$1$を出力した方のビットを出力すれば, $f(x)$を推測できそうな直感があります. そこで, 回路$C_b\\colon\\binset^n\\to\\binset$を . \\[\\begin{align*} C_b(x) = 1\\oplus b \\oplus C(x,b) \\end{align*}\\] と定義します. $C_0$と$C_1$の少なくとも一方が$C’$として所望のものになっていることを主張します. 実際, ランダムな$x\\sim\\binset^n$と$b\\sim\\binset$に対して . \\[\\begin{align*} \\Pr_{(x,b)\\sim\\binset^{n+1}}\\qty[ C_b(x)=f(x) ] &amp;= \\E_{x,b}\\qty[ C_b(x)\\oplus f(x) \\oplus 1 ] \\\\ &amp;= \\E_{x,b}\\qty[ C(x,b) \\oplus f(x) \\oplus b] \\\\ &amp;= \\frac{1}{2}\\underbrace{\\E_x[C(x,f(x))]}_{b=f(x)} + \\frac{1}{2}\\underbrace{\\qty(1-\\E_x[C(x,\\overline{f(x)})])}_{b\\ne f(x)} \\\\ &amp;&gt; \\frac{1}{2} + \\varepsilon &amp; &amp; \\because (1) \\end{align*}\\] より, $C_0$と$C_1$の少なくとも一方は$f$を$(1/2+\\varepsilon)$の割合の入力で計算しますので, 確かに所望の回路$C’$の存在性は示せました. ",
     "url": "/nobunote/docs/average_case_complexity/function_pseudorandomness/#%E9%96%A2%E6%95%B0%E3%81%AE%E5%B9%B3%E5%9D%87%E6%99%82%E5%9B%B0%E9%9B%A3%E6%80%A7%E3%81%A8%E6%93%AC%E4%BC%BC%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E6%80%A7",
     
     "relUrl": "/docs/average_case_complexity/function_pseudorandomness/#関数の平均時困難性と擬似ランダム性"
-  },"30": {
+  },"35": {
     "doc": "ハードコア補題",
     "title": "ハードコア補題",
     "content": "ハードコア補題とは Impagliazzo (1995)の結果で, XOR補題など平均時計算量の様々な定理の証明に用いることができる非常に便利な定理です. サイズ$s$以下の回路全体の集合を$\\SIZE(s)$とします. 部分集合$H\\subseteq\\binset^n$は$|H|\\ge \\delta 2^n$を満たすとき$\\delta$-密であると呼ぶことにします. 定理 (ハードコア補題; Impagliazzo(1995)) . 任意の$\\delta,\\varepsilon&gt;0$および$s\\le 2^{o(n)}$に対して以下が成り立つ: 関数$f\\colon \\binset^n\\to\\binset$がサイズ$s$に対して$\\delta$-困難ならば, ある$(1-o(1))\\delta$-密な集合$H\\subseteq\\binset^n$と十分小さな定数$c&gt;0$が存在して, 全ての回路$C \\in \\SIZE(c\\delta^2\\varepsilon^2 s)$に対して . \\[\\begin{align*} \\Pr_{x\\sim H}\\left[ C(x) = f(x) \\right] \\le \\frac{1}{2} + \\varepsilon + o(1). \\end{align*}\\] ここで$o(1)$の項は$n^{-\\omega(1)}$にとれる. 弱い平均時困難性を持つ任意の関数$f$では, 任意の小さい回路はそこそこの割合の入力で誤った値を出力しますが, ハードコア補題はその関数$f$の困難性を凝縮したような入力部分集合$H\\subset\\binset^n$が存在して, $H$上では$f(x)$の計算が非常に困難になります. このような$H$をハードコア集合といいます. ",
     "url": "/nobunote/docs/average_case_complexity/hardcore/",
     
     "relUrl": "/docs/average_case_complexity/hardcore/"
-  },"31": {
+  },"36": {
     "doc": "ハードコア補題",
     "title": "擬似ランダムネスからの理解",
     "content": "$\\delta$-困難な関数$f\\colon\\binset^n\\to\\binset$を考えます. この困難性は, 一様ランダムな$x\\sim\\binset^n$に対して確率変数$f(x)$は確率$\\delta$で表が出るコイントス$\\mathrm{Ber}(\\delta)$と(計算量的に)識別できないことを意味し, 特に$\\delta\\approx 1/2$のときはフェアなコイントスと識別できません. さて, $\\delta$-困難な関数$f$に対してハードコア補題により保証されるハードコア集合を$H\\subseteq\\binset^n$とします. $H$上では関数$f$は$(1/2-\\varepsilon)$-困難ですので, ($\\varepsilon\\approx 0$のとき)一様ランダムな$x\\sim H$に対して$f(x)$は$\\mathrm{Ber}(1/2)$と識別できません. これを鑑みて, ランダム関数$f_H$を . \\[\\begin{align*} f_H(x) = \\begin{cases} \\mathrm{Ber}(1/2) &amp; \\text{if } x\\in H, \\\\ f(x) &amp; \\text{otherwise} \\end{cases} \\end{align*}\\] と定義します (各$x\\in H$ごとに独立ランダムに$f(x)$の値を定める). すると$f$と$f_H$は識別不可能性が成り立つことが期待されます. この直感は実際に成り立ち, 一様ランダムな$x\\sim\\binset^n$に対して二つの確率変数 . \\[\\begin{align*} (x,f(x)),\\quad (x,f_H(x)) \\end{align*}\\] の識別困難性がハードコア補題から証明することができます (cf. [Healy, Vadhan, Viola, SICOMP(2006)], Lemma 3.2). ",
     "url": "/nobunote/docs/average_case_complexity/hardcore/#%E6%93%AC%E4%BC%BC%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%83%8D%E3%82%B9%E3%81%8B%E3%82%89%E3%81%AE%E7%90%86%E8%A7%A3",
     
     "relUrl": "/docs/average_case_complexity/hardcore/#擬似ランダムネスからの理解"
-  },"32": {
+  },"37": {
     "doc": "ハードコア補題",
     "title": "パラメータの改善",
     "content": "ハードコア補題では, ハードコア集合$H$上で困難性を議論する回路のサイズは$O(\\delta^2\\varepsilon^2 s)$になっていましたが, このバウンドを改善し, より大きなサイズ$s\\cdot O(\\varepsilon^2/\\log(1/\\delta))$回路に対する困難性を主張することができます [Krivans, Servedio, Machine Learning(2003)], [Barak, Hardt, Kale, SODA(2009)]. 定理 (Informal; Barak, Hardt, Kale(1995)) . 任意の$\\delta,\\varepsilon&gt;0$および$s$に対して以下が成り立つ: 関数$f\\colon \\binset^n\\to\\binset$がサイズ$s$に対して$\\delta$-困難ならば, ある$\\delta$-密な集合$H\\subseteq\\binset^n$と十分小さな定数$c&gt;0$が存在して, 全ての回路$C \\in \\SIZE( s\\cdot c\\varepsilon^2/\\log(1/\\delta) )$に対して . \\[\\begin{align*} \\Pr_{x\\sim H}\\left[ C(x) = f(x) \\right] \\le \\frac{1}{2} + \\varepsilon. \\end{align*}\\] . ",
     "url": "/nobunote/docs/average_case_complexity/hardcore/#%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%AE%E6%94%B9%E5%96%84",
     
     "relUrl": "/docs/average_case_complexity/hardcore/#パラメータの改善"
-  },"33": {
+  },"38": {
     "doc": "ハードコア補題",
     "title": "ハードコア補題の証明",
     "content": "ハードコア補題はブースティングに基づく証明とvon-Neumannのminimax定理に基づく証明の二通りの証明が有名ですが, ここでは前者の証明を解説します. ",
     "url": "/nobunote/docs/average_case_complexity/hardcore/#%E3%83%8F%E3%83%BC%E3%83%89%E3%82%B3%E3%82%A2%E8%A3%9C%E9%A1%8C%E3%81%AE%E8%A8%BC%E6%98%8E",
     
     "relUrl": "/docs/average_case_complexity/hardcore/#ハードコア補題の証明"
-  },"34": {
+  },"39": {
     "doc": "ハードコア補題",
     "title": "概要",
     "content": "対偶を証明します. つまり, 任意の$\\delta$-密な部分集合$H\\subseteq \\binset^n$に対してあるサイズ$s_0$の回路$C_H$が存在して . \\[\\begin{align*} \\Pr_{x\\sim H} \\left[ C_H(x) = f(x) \\right] \\ge \\frac{1}{2} + \\varepsilon \\tag{1} \\end{align*}\\] を満たすならば, あるサイズ$O(s_0\\cdot \\delta^{-2}\\varepsilon^{-2})$の回路$C’$が存在して . \\[\\begin{align*} \\Pr_{x\\sim\\binset^n} \\left[ C'(x) = f(x) \\right] \\ge 1-\\delta \\end{align*}\\] を満たすことを示します. 実は所望の回路$C’$は幾つかの$\\delta$-密な部分集合$H_1,\\dots,H_\\ell\\subseteq\\binset^n$を選び, それぞれに対し(1)を満たす回路$C_{H_1},\\dots,C_{H_\\ell}$の出力値の多数決を出力する回路となります (ここで$\\ell=O(\\delta^{-2}\\delta^{-2})$). それぞれの回路$C_{H_1},\\dots,C_{H_\\ell}$のサイズは高々$s_0$なので最終的な回路$C’$のサイズは$O(s_0\\cdot \\delta^{-2}\\varepsilon^{-2})$で上から抑えられます. 以下ではそれらの$H_1,\\dots,H_\\ell$を選ぶアルゴリズムを記述します. 強調しておきますが, このアルゴリズムの計算量は最終的な回路$C’$の複雑性に影響を与えません. どのように$H_1,\\dots,H_\\ell$を選んでも最終的に得られる回路$C’$のサイズは$O(s_0\\cdot \\ell)$です. イメージとしては, 局所的($H$上)にそこそこ$f$の値を推測できる機械があったとき, それらをうまく繋げて大域的($\\binset^n$上)に$f$を高精度で計算せよ, という問題を考えています. このように弱い学習器をうまく用いて強い学習器を構成する方法を機械学習の分野ではブースティング(boosting)と呼びます. ",
     "url": "/nobunote/docs/average_case_complexity/hardcore/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/average_case_complexity/hardcore/#概要"
-  },"35": {
+  },"40": {
     "doc": "ハードコア補題",
     "title": "準備",
     "content": "証明を述べるためにいくつかの概念を導入します. 部分集合$H\\subseteq \\binset^n$の指示関数を$\\indicator_H\\colon\\binset^n\\to\\binset$と表し, 値域を$\\binset$から$[0,1]$に緩和した関数 . \\[\\begin{align*} M\\colon \\binset^n\\to[0,1] \\end{align*}\\] を測度(measure)と呼びます. 集合のサイズ$\\abs{H}=\\sum_{x\\in\\binset^n}\\indicator_H(x)$の類推で測度のサイズを$\\abs{M}=\\sum_{x\\in\\binset^n}M(x)$で定義し, 密度を$\\frac{\\abs{M}}{2^n}$で定義します. 密度が$\\delta$以上であるような測度$M$は$\\delta$-密であるといいます. 特に, $M=\\indicator_H$が部分集合$H$の指示関数であるとき, $\\indicator_H$と$H$の$\\delta$-密性は一致します. 正の密度を持つ測度$M$に付随する$\\binset^n$上の分布$\\calL_M$を . \\[\\begin{align*} \\Pr_{x\\sim \\calL_M}[ x = a] = \\frac{M(a)}{\\abs{M}} \\end{align*}\\] で定めます. 例えば$M=\\indicator_H$と表せるとき, $\\calL_M$は$H$上の一様分布と一致します. ",
     "url": "/nobunote/docs/average_case_complexity/hardcore/#%E6%BA%96%E5%82%99",
     
     "relUrl": "/docs/average_case_complexity/hardcore/#準備"
-  },"36": {
+  },"41": {
     "doc": "ハードコア補題",
     "title": "ステップ1. ブースティング",
     "content": "ハードコア補題では任意の$\\delta$-密な集合$H$上である程度$f$を計算する回路$C_H$の存在性を仮定していましたが, まず最初にハードコア補題の主張において集合を測度に緩めた次の主張を証明します. 補題(ハードコア測度). 任意の$\\delta,\\varepsilon&gt;0$に対して以下が成り立つ: 関数$f\\colon \\binset^n\\to\\binset$がサイズ$s$に対して$\\delta$-困難ならば, ある$\\delta$-密な測度$M\\colon \\binset^n\\to[0,1]$と十分小さな定数$c&gt;0$が存在して, 全ての回路$C \\in \\SIZE(c\\delta^2\\varepsilon^2 s)$に対して . \\[\\begin{align*} \\Pr_{x\\sim \\calL_M}\\left[ C(x) = f(x) \\right] \\le \\frac{1}{2} + \\varepsilon. \\end{align*}\\] 対偶を証明します. 任意の$\\delta$-密な測度$M$に対してあるサイズ$s$の回路$C_M$が存在して . \\[\\begin{align*} \\Pr_{x\\sim \\calL_M} \\left[ C_M(x) = f(x) \\right] \\ge \\frac{1}{2} + \\varepsilon \\tag{2} \\end{align*}\\] が成り立つとします. 以下の手続きに従って回路の列$C_1,C_2,\\dots$を定義していきます: . ブースティングアルゴリズム . | 測度$M_1$を$M_1\\equiv 1$ (定数関数) とし, $i=1$とする. | 測度$M_i$が$\\delta$-密でないならば終了する. そうでなければ, 各$x\\in\\binset^n$と$j\\le i$に対して$b_j(x)\\in\\binset$を以下で定める: . \\[\\begin{align*} b_j(x) = \\begin{cases} \\tag{3} 1 &amp; \\if C_{j}(x)= f(x),\\\\ -1 &amp; \\if C_{j}(x) \\ne f(x). \\end{cases} \\end{align*}\\] ここで$C_j=C_{M_j}$は測度$M=M_j$に対して(2)を満たす回路である. また, $R_i(x) = \\sum_{j\\le i}b_j(x)$をインスタンス$x$におけるこれまでの得失点とする. | パラメータ$\\gamma:=\\delta\\varepsilon$に対して次の測度$M_{i+1}$を以下で定める: . \\[\\begin{align*} M_{i+1}(x) = \\begin{cases} \\tag{4} 1 &amp; \\if R_i(x)\\le 0,\\\\ 1-\\gamma R_i(x) &amp; \\if 0&lt;R_i(x)&lt;1/\\gamma,\\\\ 0 &amp; \\if R_i(x)\\ge 1/\\gamma. \\end{cases} \\end{align*}\\] その後, $i\\leftarrow i+1$に更新し, ステップ2に戻る. | . イメージとしては, $i$に関する各反復において, これまで選んできた回路$C_1,\\dots,C_i$にとって「苦手な」インスタンスが選ばれ易くなるように次の測度$M_{i+1}$を選んでいます. 実際, 得失点$R_i(x)$が小さい(すなわち$C_1,\\dots,C_i$にとって$x$が「苦手な」インスタンスである)場合, $M_{i+1}(x)$は大きい値をとりやすいです. 上の手続きによって得られる回路を$C_1,\\dots,C_\\ell$とし, . \\[\\begin{align*} C' = \\maj(C_1,\\dots,C_\\ell) \\tag{5} \\end{align*}\\] とします. まず, 各$C_i$のサイズが高々$s_0$なので回路$C’$のサイズは高々$O(\\ell s_0)$となります (多数決$\\maj$は入力の個数に関する線形サイズの回路で実装できる). まず回路$C’$の性能を評価します. ブースティングアルゴリズムによって得られた回路$C_1,\\dots,C_\\ell$に対して(5)で得られる回路$C’$は . \\[\\begin{align*} \\Pr_{x\\sim\\binset^n} \\left[ C'(x) = f(x)\\right] \\ge 1-\\delta \\end{align*}\\] を満たす. 証明 インスタンス$x\\in\\binset^n$に対して$C’(x)\\ne f(x)$とすると, $C_1,\\dots,C_\\ell$のうち少なくとも$\\ell/2$個の回路は入力$x$に対して間違えた値を出力するはずです. 従って$R_\\ell(x)\\le 0$となるので, $M_{\\ell+1}(x)=1$となります. 一方で, ブースティングアルゴリズムはステップ2において$i=\\ell+1$のとき終了するはずなので, $M_{\\ell+1}$は$\\delta$-密でない, すなわち$\\E[M_{\\ell+1}]&lt; \\delta$となります. 一方で . \\[\\begin{align*} \\delta &amp;&gt; \\E[M_{\\ell+1}] \\\\ &amp;= 2^{-n}\\sum_{x\\in\\binset^n} M_{\\ell+1}(x) \\\\ &amp;\\ge 2^{-n} \\abs*{ \\left\\{x\\in\\binset^n\\colon C'(x)\\ne f(x)\\right\\} } \\\\ &amp;=\\Pr_{x\\sim\\binset^n} \\left[C'(x)\\ne f(x)\\right] \\end{align*}\\] より主張を得ます. 最後に$\\ell$の上界を評価します. ここが証明のうち最も技巧的な部分です. ブースティングアルゴリズムで得られる回路の個数は高々$O(\\delta^{-2}\\varepsilon^{-2})$である. 証明 不変量 . \\[\\begin{align*} \\Phi = \\sum_{i\\in[\\ell]}\\sum_{x\\in\\binset^n} M_i(x) b_i(x) \\end{align*}\\] の上下界をそれぞれ求めます. ここで$b_j(x)$は式(3)で定義される関数です. まず, 各$i\\in[\\ell]$に対して$C_i$に関する仮定(2)より . \\[\\begin{align*} \\E_{x\\sim\\calL_{M_i}} \\left[ b_i(x) \\right] &amp;= \\Pr_{x\\sim\\calL_{M_i}} \\left[C_i(x) = f(x)\\right] - \\Pr \\left[ C_i(x) \\ne f(x)\\right] \\\\ &amp;= 2\\Pr \\left[C_i(x) = f(x)\\right] - 1 \\\\ &amp;\\ge 2\\varepsilon \\end{align*}\\] より, 両辺の$i\\sim[\\ell]$について総和をとると . \\[\\begin{align*} \\Psi &amp;= \\sum_{i\\in[\\ell]} \\abs{M_i}\\cdot\\E_{x\\sim\\calL_{M_i}} [b_i(x)] \\\\ &amp;\\ge \\sum_{i\\in[\\ell]} \\delta 2^n\\cdot 2\\varepsilon &amp; &amp; \\because\\text{各$M_i$は$\\delta$-密} \\\\ &amp;= 2\\ell\\delta\\varepsilon\\cdot 2^n. \\tag{6} \\end{align*}\\] 次にインスタンス$x\\in\\binset^n$を固定して$\\sum_{i\\in[\\ell]}M_i(x)b_i(x)$を上から抑えます. 関数$m\\colon \\Int\\to[0,1]$を . \\[\\begin{align*} m(z) = \\begin{cases} 1 &amp; \\if z\\le 0,\\\\ 1-\\gamma z &amp; \\if 0&lt;z&lt;1/\\gamma,\\\\ 0 &amp; \\if z\\ge1/\\gamma \\end{cases} \\end{align*}\\] とします. つまり, 測度$M_i$の更新式(4)を$M_{i+1}(x) = m(R_i(x))$と表します. ここで, 次の補助的な有向路を考えます: . | 頂点集合は$\\{ R_i(x)\\colon i=0,1,\\dots,\\ell\\} \\subseteq\\Int$ (ただし$R_0(x)=0$と定める). | 各$i\\in[\\ell]$に対してこの有向路は有向辺$(R_{i-1}(x),R_{i}(x))$をこの順番で辿る. さらに, $i$番目の辺を辿ったときに重み$M_{i}(x)b_i(x)$を課す. | . 要するに, 新たに選んだ回路$C_i$がインスタンス$x$上で$f(x)$を計算できたら右側, そうでなければ左側に移動する路を考えています. この有向路が課される重みの総和 . \\[\\begin{align*} \\sum_{i\\in[\\ell]} M_{i}(x) b_{i}(x) \\tag{7} \\end{align*}\\] を上から評価すれば$\\Phi$の上界に繋がります. | まず, 頂点$a=R_{i-1}(x)\\ge 1/\\gamma$から出発する辺についてはその重みの絶対値は$M_i(x)=m(R_{i-1}(x))=0$となるため, 総和に寄与しません. | 次に, 有向パスが辺$(a,a+1)$と$(a+1,a)$を辿ったとします. 辺$(a,a+1)$に課される重みとその逆順$(a+1,a)$に課される重みは符号が異なっており, これら二つの和の絶対値は適当な$a\\in\\Int$を用いて$\\abs{m(a)-m(a+1)}$と表せます. 関数$m$は$0&lt;a&lt;1/\\gamma$の範囲では傾き$\\gamma$, それ以外では傾き$0$の直線なので, この絶対値は高々$\\gamma$となります. このような往復のペアは有向路全体の中でも高々$\\ell/2$個しかないので, 往復に課される重みの総和(7)に対する寄与は高々$\\gamma\\ell/2$となります. | 有向路から全ての往復を除去すると, 閉路がなくなるため単なるパスとなります. 左に行き続ける有向路$0\\to -1 \\to -2\\to \\dots$については辺重みが$0$以下なので, 総和(7)に寄与しません. 一方で下図のように右に行き続ける有向路$0\\to 1\\to 2\\to \\dots$は, 座標$\\ge1/\\gamma$から出発する辺の重みは$0$になるので, 総和(7)に寄与する部分の路長は高々$1/\\gamma$です. 重みは常に$1$以下であることを踏まえると, このパス全体の寄与は高々$1/\\gamma$となります. | . 以上の議論より, 総和(7)は高々$\\frac{\\gamma\\ell}{2} + \\frac{1}{\\gamma}$となり, これは任意のインスタンス$x$について成り立つことから . \\[\\begin{align*} \\Phi \\le 2^n\\cdot \\left(\\frac{\\gamma\\ell}{2} + \\frac{1}{\\gamma}\\right) \\tag{8} \\end{align*}\\] を得ます. 最後に, (6)(8)を$\\ell$について解くと$\\ell=O(\\delta^{-2}\\varepsilon^{-2})$を得ます. $\\square$ . 以上よりハードコア測度の補題を証明できます. ハードコア測度補題 の証明 関数$f$が$\\SIZE(s)$に対して$\\delta$-困難であるとし, 任意の$\\delta$-密な測度$M$に対して(2)を満たす回路$C_M$が存在し, そのサイズは$c\\delta^2\\varepsilon^2 s$となることを(背理法として)仮定します (ここで$c&gt;0$は十分小さな定数). ブースティングアルゴリズムによって得られる回路$C_1,\\dots,C_\\ell$は, 各$C_i$のサイズが高々$c\\delta^2\\varepsilon^2 s$なので, (5)で定義される$C’$のサイズは, 二つ目の補題より高々$O(s\\ell)=O(s\\delta^{-2}\\varepsilon^{-2}) \\le s$となります (最後の不等号では$c$が十分小さい定数であることを用いた). 一方, 最初の補題より, $C’$は$\\Pr_{x\\sim\\binset^n}[C’(x)=f(x)] \\ge 1-\\delta$となり, 関数$f$が$\\SIZE(s)$に対して$\\delta$-困難であることに矛盾します. $\\square$ . ",
     "url": "/nobunote/docs/average_case_complexity/hardcore/#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-%E3%83%96%E3%83%BC%E3%82%B9%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0",
     
     "relUrl": "/docs/average_case_complexity/hardcore/#ステップ1-ブースティング"
-  },"37": {
+  },"42": {
     "doc": "ハードコア補題",
     "title": "ステップ2: ハードコア測度からハードコア集合へ",
     "content": "ハードコア測度補題 ではハードコア測度の存在性を示しましたが, これを確率論的手法に基づいて離散化してハードコア集合の存在性を簡単に証明できます. ハードコア補題におけるパラメータ$\\delta,\\varepsilon$のロス分$o(1)$や$s\\le 2^{o(n)}$という条件はこのステップに由来します. ハードコア補題の証明 ハードコア測度補題により存在性が保証されるハードコア測度を$M$とします. この測度$M\\colon\\binset^n\\to[0,1]$は$\\delta$-密であり, (十分小さな定数$c&gt;0$に対して)任意のサイズ$c\\delta^2\\varepsilon^2 s$の回路$C$に対して . \\[\\begin{align*} \\Pr_{x\\sim\\calL_M} \\left[C(x) = f(x)\\right] \\le \\frac{1}{2} + \\varepsilon \\end{align*}\\] を満たします. 集合$H\\subseteq\\binset^n$を, 各$x\\in\\binset^n$に対して独立に確率$M(x)\\in[0,1]$で$H$に含めて得られるランダムな集合とします. このランダムな集合$H$が正の確率で所望の性質を満たすことを示すことによって, 所望の集合の存在性を証明します. 密性の証明 . ランダム集合$H$の要素数の期待値は \\(\\E[\\abs{H}]=\\sum_{x\\in\\binset^n} M(x) = \\abs{M}\\ge \\delta\\) であり, $\\abs{H}=\\sum_{x\\in\\binset^n} \\indicator_{x\\in H}$は独立な確率変数の和なので, Hoeffdingの不等式より確率$0.99$で$\\abs{H}\\ge (1-o(1))\\delta 2^n$を満たします. 従って$H$は$(1-o(1))\\delta$-密です. なお, ここでも以降でも$o(1)$の項はHoeffdingの不等式に由来するものであり, $n^{-\\omega(1)}$ととることができます. ハードコア性の証明 . ランダム集合$H$が正の確率でハードコア性を持つことを示します. 具体的には . \\[\\begin{align*} \\Pr_{H} \\qty[ \\tinyforall C \\in \\SIZE(c\\delta^2\\varepsilon^2 s),\\,\\Pr_{x\\sim H} \\qty[ C(x) = f(x) ] \\le \\frac{1}{2} + \\varepsilon ] \\ge 1-o(1) \\tag{9} \\end{align*}\\] を示します. まず, 内部の確率 . \\[\\begin{align*} \\Pr_{x\\sim H} \\qty[ C(x) = f(x) ] &amp;= \\frac{\\sum_{x\\in H} \\indicator_{C(x)=f(x)}}{|H|} \\end{align*}\\] の分子と分母を評価します. 密性の証明の議論から, 集合$H$は確率$0.99$で$\\abs{H}\\ge(1-o(1))\\abs{M}$となります. 一方で, 任意に固定した回路$C \\in \\SIZE(c\\delta^2\\varepsilon^2 s)$に対して, 分子を評価します. 集合$A_C=\\qty{ x\\in\\binset^n\\colon C(x) = f(x)}$を$C$が正解するインスタンスの集合とすると . \\[\\begin{align*} \\sum_{x\\in H} \\indicator_{C(x)=f(x)} = \\sum_{x\\in A_C} \\indicator_{x\\in H} \\end{align*}\\] は($H$の選び方のランダムネスに関して)独立な$\\abs{A_C}$個の確率変数の和となり, しかもその期待値は . \\[\\begin{align*} \\sum_{x\\in A_C} \\Pr\\qty[ x\\in H ] &amp;= \\sum_{x\\in A_C} M(x) \\\\ &amp;= \\abs{M} \\sum_{x\\in \\binset^n} \\frac{M(x)}{\\abs{M}}\\cdot \\indicator_{C(x)=f(x)} \\\\ &amp;= \\abs{M} \\Pr_{x\\sim \\calL_M} \\qty[ C(x)=f(x) ] \\\\ &amp;\\le \\abs{M} \\qty( \\frac{1}{2} + \\varepsilon ) \\end{align*}\\] を満たします (最後の不等号で測度$M$のハードコア性を用いた). 従って Hoeffdingの不等式より, 確率$1-2^{-\\Omega(2^n)}$で$\\abs{A_C\\cap H} \\le (1+o(1))\\abs{M}\\qty(\\frac{1}{2}+\\varepsilon)$を満たします. 考える回路$C$のサイズが高々$s\\le 2^{o(n)}$なので, $C$としてありうる回路の個数は高々$2^{\\poly(s)}=2^{2^{o(n)}}$個ですので, $C$に関するunion boundより . \\[\\begin{align*} \\Pr_H \\qty[ \\tinyforall C\\in\\SIZE(c\\delta^2\\varepsilon^2 s), \\sum_{x\\in H} \\indicator_{C(x)=f(x)} \\le (1+o(1))\\abs{M}\\qty(\\frac{1}{2}+\\varepsilon) ] \\ge 0.99 \\end{align*}\\] となるので, $H$が確率$0.99$で$\\delta$-密であることも踏まえると, 確率$0.98$で . \\[\\begin{align*} \\tinyforall C\\in \\SIZE(c\\delta^2\\varepsilon^2s), \\Pr_{x\\sim H} \\qty[C(x)=f(x)] \\le \\frac{1}{2} + \\varepsilon - o(1) \\end{align*}\\] となり, (9)を得ます. $\\square$ . ",
     "url": "/nobunote/docs/average_case_complexity/hardcore/#%E3%82%B9%E3%83%86%E3%83%83%E3%83%972-%E3%83%8F%E3%83%BC%E3%83%89%E3%82%B3%E3%82%A2%E6%B8%AC%E5%BA%A6%E3%81%8B%E3%82%89%E3%83%8F%E3%83%BC%E3%83%89%E3%82%B3%E3%82%A2%E9%9B%86%E5%90%88%E3%81%B8",
     
     "relUrl": "/docs/average_case_complexity/hardcore/#ステップ2-ハードコア測度からハードコア集合へ"
-  },"38": {
+  },"43": {
     "doc": "Home",
     "title": "Home",
     "content": "理論計算機科学, 特に平均時計算量(average-case complexity)に関する様々な手法やアルゴリズム, そしてその基となる道具について出来るだけ分かり易く解説していきます. ",
     "url": "/nobunote/",
     
     "relUrl": "/"
-  },"39": {
-    "doc": "よく使う道具",
-    "title": "よく使う道具",
-    "content": "ここでは様々な場面でよく出てくる道具をまとめて紹介していきます. ",
-    "url": "/nobunote/docs/tools/",
-    
-    "relUrl": "/docs/tools/"
-  },"40": {
-    "doc": "Learning with Error",
-    "title": "Learning with Error (LWE) とは?",
-    "content": "Learning with Error (LWE) とはノイズが乗った線形方程式を解けという非常にシンプルな問題です. ノイズが乗っていない場合はガウスの消去法などを用いて簡単に解けますが, ノイズが乗った設定では適切なパラメータ下では . | 情報理論的には最尤推定 (全探索) で解ける. | しかし, 多項式時間で解けるかどうかは不明 | . という状況になっています. そして, これが情報論的なtractabilityと計算量的なtractabilityの間の非自明なギャップであろうと広く信じられています. LWEの計算量的困難性を仮定すると学習理論や暗号などの分野において様々な計算量的下界が成り立ち, 以下に挙げる様々な利点から次世代の暗号技術(特に耐量子暗号)の核になることが期待されている重要な問題です: . | 擬似乱数生成器[Blum, Furst, Kearns, Lipton(CRYPTO1993)], [Goldreich, Krawczyk, Luby(SICOMP1993)]や公開鍵暗号方式[Alekhnovich(FOCS2003)]など様々な暗号学的プリミティブを設計できる. | 格子上の問題(最短ベクトル問題など)の最悪時困難性を仮定するとLWEの平均時困難性が成り立つという結果が知られている [Regev(JACM2009)]. | 上記の格子上の問題を解く効率的な量子アルゴリズムの存在性は長年未解決. | . 詳細はRegevによるサーベイ論文(2010)を参照. ",
-    "url": "/nobunote/docs/learning_with_error/#learning-with-error-lwe-%E3%81%A8%E3%81%AF",
-    
-    "relUrl": "/docs/learning_with_error/#learning-with-error-lwe-とは"
-  },"41": {
-    "doc": "Learning with Error",
-    "title": "問題の定義",
-    "content": "行列$A \\in \\mathbb{F}^{m\\times d}$とベクトル $b = As \\in \\mathbb{F}^m$ (ただし $s \\in \\mathbb{F}^d$は秘密のベクトル) が入力として与えられたときに $s $ を復元することはできるでしょうか? この問題は単に連立一時方程式 . \\[\\begin{align} As = b \\end{align}\\] を解くだけですので, ガウスの消去法などを用いて多項式時間で解けます. では, 与えられるベクトル$b$が小さいノイズを含む場合はどうでしょうか? 具体的には, 入力として与えられるベクトル$b$がノイズベクトル$e \\in \\mathbb{F}^m$に対して$b=As + e$を満たす場合を考えます. ここで$e$はランダムなベクトルであり, 各成分が独立に$\\mathbb{F}$上の同じ分布に従って生成されるものとします. このような設定は線形関数の学習を考えると(有限体であることを除けば)非常にありふれた自然な設定であろうことがわかります. つまり, 様々な評価点とその点におけるラベルが与えられたときに, 未知の線形関数 $ \\mathbb{F}^d \\ni x \\mapsto s^\\top x $ を学習する際, ラベルにノイズが乗る設定を考えると上記のような問題が自然に現れます. Learning with Error (以下, LWE問題) は平均時の問題, すなわち入力が何かしらの分布に従って生成される問題であり, ここでは秘密のベクトル $s \\in \\mathbb{F}^d$ と係数行列 $A \\in \\mathbb{F}^{m\\times d}$ が一様ランダムに選ばれたとき, 行列$A$と$b=As+e$が入力として与えられます. $\\mathbb{F}$を有限体, $m,d\\in \\mathbb{N}$をパラメータ, そして$\\chi$を$\\mathbb{F}$上の分布とする. 一様ランダムな$A\\sim \\mathbb{F}^{m\\times d}$, $s\\sim \\mathbb{F}^d$, およびノイズベクトル$e \\sim \\chi^m$に対し, 三つ組$(A,As+e,s)$の周辺分布を$\\mathsf{LWE}_{\\mathbb{F},m,d,\\chi}$で表す. ここで, $\\chi^m$は$\\mathbb{F}^m$上の分布であり, 各成分が$\\chi$から独立に選ばれたベクトルの分布を表す. パラメータ$\\mathbb{F},m,d,\\chi$が明らかな場合は単に$\\mathsf{LWE}$で表す. パラメータ$m$をサンプル数, $d$を次元, $\\chi^m$をノイズ分布, $s$を秘密のベクトル, $b$をラベルと呼ぶ. 代表的なノイズ分布としては以下の二つが挙げられます: . | ランダムスパースベクトル: 体として$\\mathbb{F}=\\mathbb{F}_2$を考え, $\\chi$はパラメータ$\\theta\\in[0,1]$に対して$\\Pr[\\chi=1]=\\theta$を満たすもの. パラメータ$\\theta$が小さければ, ノイズベクトル$e\\sim\\chi^m$は非ゼロ要素数の個数がおおよそ$m\\theta$となる. | 離散ガウス分布: 位数が素数$p$であるような有限体$\\mathbb{F}_p$に対し$\\chi$は$\\mathbb{F}_p$上の分布であり, パラメータ$\\sigma$に対し, $\\chi$は$\\Pr[\\chi = x] \\propto \\exp\\left(-\\frac{x^2}{2\\sigma^2}\\right)$で定まる分布を考える (ここの右辺では$x\\in{0,1,\\dots,p-1}$を非負整数として扱って確率を計算する). | . また, 特殊ケース$\\mathbb{F} = \\mathbb{F}_2$におけるLWE問題は特にLPN(Learning Parity with Noise)問題と呼ばれます. LWE問題では$(A,b,s) \\sim \\mathsf{LWE}$に対し, $(A,b)$の情報から$s$を復元せよという問題を考えます. 実際には様々な問題設定があり, 代表的なものとして探索問題 (search), 判定問題 (decision)などが考えられています. ",
-    "url": "/nobunote/docs/learning_with_error/#%E5%95%8F%E9%A1%8C%E3%81%AE%E5%AE%9A%E7%BE%A9",
-    
-    "relUrl": "/docs/learning_with_error/#問題の定義"
-  },"42": {
-    "doc": "Learning with Error",
-    "title": "探索問題",
-    "content": "探索問題とは, その名の通り, 秘密のベクトル$s$を復元せよという問題です. 分布$\\mathsf{LWE}_{\\mathbb{F},m,d,\\chi}$に従って選ばれた$(A,b,s)$に対し, $(A,b)$を入力として受け取って$s$を出力せよという問題を探索LWE問題という. アルゴリズム$\\mathcal{A}$は . \\[\\begin{align*} \\Pr_{(A,b,s) \\sim \\mathsf{LWE}} \\left[ \\mathcal{A}(A,b) = s \\right] \\ge \\gamma \\end{align*}\\] を満たすとき, 探索LWE問題を成功確率$\\gamma$で解くという. サンプル数$m$が小さいと, 与えられた$(A,b)$に対して $As \\approx b$を満たす$s$は複数存在しえるため, 秘密のベクトル$s$を復元することはできません. これを情報理論的に解けないと言うことがあります. 一方で$m$が十分大きいとき, 全てのありうる$s$を試して$As\\approx b$を見れば, $(A,b,s) \\sim \\mathsf{LWE}$に関して非常に高確率で秘密のベクトル$s$を復元できます. これを, サンプル数$m$が十分大きいときは情報理論的に解けるという言い方をします. もちろん, 情報理論的に解けるからといってそれが効率的に解けるかどうかは分かりません. ",
-    "url": "/nobunote/docs/learning_with_error/#%E6%8E%A2%E7%B4%A2%E5%95%8F%E9%A1%8C",
-    
-    "relUrl": "/docs/learning_with_error/#探索問題"
-  },"43": {
-    "doc": "Learning with Error",
-    "title": "判定問題",
-    "content": "アルゴリズムは$(A,b) \\in \\mathbb{F}^{m\\times d}\\times \\mathbb{F}^m$を与えられます. ただし入力$(A,b)$は以下の二つどちらかの分布に従って生成されます: . | $(A,b,s) \\sim \\mathsf{LWE}$に対して$(A,b)$の周辺分布. | $\\mathbb{F}^{m\\times d}\\times \\mathbb{F}^m$上の一様分布. | . 判定問題では, 入力が上記どちらの分布に従って生成されたかを判別する問題です. 出力値が0または1のアルゴリズム $\\mathcal{A}$ は . \\[\\begin{align*} \\left| \\Pr_{(A,b,s) \\sim \\mathsf{LWE}} \\left[ \\mathcal{A}(A,b)=1 \\right] - \\Pr_{\\substack{A\\sim \\mathbb{F}^{m\\times d} \\\\ b \\sim \\mathbb{F}^m}} \\left[ \\mathcal{A}(A,b) = 1 \\right] \\right| \\ge \\gamma \\end{align*}\\] を満たすとき, 判定LWE問題をアドバンテージ$\\gamma$で解くという. サンプル数$m$が十分大きいとき, 一様ランダムな$A\\sim \\mathbb{F}^{m\\times d},b\\sim \\mathbb{F}^m$に対して$As\\approx b$を満たす$s\\in \\mathbb{F}^d$は存在しない. 一方で$(A,b)$が$\\mathsf{LWE}$の分布から生成された場合はそのような$s$は必ず存在する. 従って与えられた$(A,b)$が$\\mathsf{LWE}$から来たのか, 一様分布から来たのかは秘密のベクトルの存在性を解けば判定できることになる. このような背景で, $\\mathsf{LWE}$と一様分布の識別を判定問題と呼んでいる. ",
-    "url": "/nobunote/docs/learning_with_error/#%E5%88%A4%E5%AE%9A%E5%95%8F%E9%A1%8C",
-    
-    "relUrl": "/docs/learning_with_error/#判定問題"
   },"44": {
-    "doc": "Learning with Error",
-    "title": "学習としてのLWE問題",
-    "content": "LWE問題はなぜLearningなのでしょうか? 実は, LWE問題は線形関数をノイズ下で学習するタスクとみなすこともできます. 大雑把に言えば学習とは, 何かしら未知の関数 $f\\colon \\mathcal{X} \\to \\mathcal{L}$ があって, サンプルと呼ばれる幾つかの点の集合$(x_1,f(x_1)),\\dots,(x_m,f(x_m))$が与えられたとき, この関数$f$を模倣する関数$\\tilde{f}$を構成せよというタスクを意味し, このタスクを行うアルゴリズムを学習アルゴリズムといいます. 基本的には任意の関数を扱うことはせず, $f$は何かしらの性質(例えば線形性)を持つことを仮定します. ここでは学習の概念については深掘りせず, ひとまずLWE問題を学習タスクとして捉えられることを説明します. LWE問題では未知のベクトル$s\\in \\mathbb{F}^n$に対して, 一様ランダムな$A \\sim \\mathbb{F}^{m\\times n}$とノイズベクトル$e \\in \\mathbb{F}^m$に対して$b=As+e$および$A$が入力として与えられ, $s$を求めることを目標としていました. そこで$a_1,\\dots,a_m$を$A$の行ベクトルとすると, この問題は未知の線形関数$f\\colon x \\mapsto s^\\top x$のノイズ付きのサンプル$(a_1,f(a_1)+e_1),\\dots,(a_m,f(a_m)+e_m)$が与えられたときに, 未知の線形関数$f$を復元せよという問題と捉えることができます. ",
-    "url": "/nobunote/docs/learning_with_error/#%E5%AD%A6%E7%BF%92%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AElwe%E5%95%8F%E9%A1%8C",
-    
-    "relUrl": "/docs/learning_with_error/#学習としてのlwe問題"
-  },"45": {
-    "doc": "Learning with Error",
-    "title": "Learning with Error",
-    "content": " ",
-    "url": "/nobunote/docs/learning_with_error/",
-    
-    "relUrl": "/docs/learning_with_error/"
-  },"46": {
-    "doc": "メモ",
-    "title": "読んだ論文などのメモ",
-    "content": " ",
-    "url": "/nobunote/docs/memo/#%E8%AA%AD%E3%82%93%E3%81%A0%E8%AB%96%E6%96%87%E3%81%AA%E3%81%A9%E3%81%AE%E3%83%A1%E3%83%A2",
-    
-    "relUrl": "/docs/memo/#読んだ論文などのメモ"
-  },"47": {
-    "doc": "メモ",
-    "title": "メモ",
-    "content": " ",
-    "url": "/nobunote/docs/memo/",
-    
-    "relUrl": "/docs/memo/"
-  },"48": {
-    "doc": "平均時計算量理論",
-    "title": "平均時計算量理論の概要",
-    "content": "平均時計算量とは, 計算問題に対してそれが効率的に解ける入力の割合を研究する分野です. 研究対象の性質上, 問題と入力分布のペア(しばし分布問題と呼ばれる)を考えます. 効率的なアルゴリズム(例えば多項式時間アルゴリズム)が, 入力分布に従って生成された入力に対して正解する確率(成功確率)を考え, 成功確率が最大となるようなアルゴリズムやその限界について理解することが目標となります. 具体的な問題としては埋め込みクリーク問題やLWE問題などを考えます. 大まかに分けて平均時計算量は二つの文脈で研究されています. | 計算量的擬似ランダムネスとその応用. 効率的に解ける入力が少なければ少ないほど, その問題の困難性は強いとみなし, 強い困難性を持つ判定問題は計算量的擬似ランダム性を通じて暗号学的プリミティブの構成や乱択アルゴリズムの脱乱択化といった応用を持ちます. 統計的には, $ \\{0,1\\}^n $ 上で一様ランダムに選ばれた$x$と任意の関数$f\\colon \\{0,1\\}^n\\to \\{0,1\\}$に対して, $(x,f(x))$の情報論的エントロピーは$n$ビットです (つまり, ランダム文字列に$f$を適用してもエントロピーは増えない). しかし, $f\\colon \\{0,1\\}^n\\to \\{0,1\\}$が強い困難性を持つ関数ならば, 任意の効率的なアルゴリズムにとって, $x$から$f(x)$を推定するのは難しいので, $f(x)$は$x$とは独立なランダムビットに見えます. 従って$(x,f(x))$の計算量的エントロピーは$n+1$ビットとなります. このように, 驚くべきことに, 強い困難性を持つ問題があれば, 計算量的なエントロピーを増幅させられます. そして, そのような問題を構成するための手法として誤り訂正符号やエクスパンダーグラフなどの組合わせ的, 代数的な概念が積極的に応用されています. | 求解における情報理論と計算量理論のギャップ. 高次元統計学の文脈では最尤推定法で解ける具体的な問題に対し, それが計算量的の意味で効率的に解けるかどうかが議論されます. 例えば埋め込みクリーク問題では, $n$頂点ランダムグラフのランダムな位置に埋め込まれた$k$-クリークを探し出せという問題を考えます. クリークサイズが$k\\gg \\log n$であれば, 高確率でランダムグラフが$k$-クリークを含まないので, $k$頂点部分集合を列挙することにより探索することができます. しかしながら現在のところ, 埋め込みクリーク問題を解く多項式時間アルゴリズムは$k\\ge \\sqrt{n}$の範囲でしか見つかっておらず, $\\log n \\ll k \\ll \\sqrt{n}$の範囲でこの問題が解けるかどうかは重要な未解決問題とされています. また, 埋め込みクリーク問題の計算量的下界を仮定すると, 圧縮センシング, 分布の性質検査, あるゲームのナッシュ均衡の近似, 主成分分析など様々な実用的な問題に対する計算量下界が導出できることが知られています. | . ",
-    "url": "/nobunote/docs/average_case_complexity/#%E5%B9%B3%E5%9D%87%E6%99%82%E8%A8%88%E7%AE%97%E9%87%8F%E7%90%86%E8%AB%96%E3%81%AE%E6%A6%82%E8%A6%81",
-    
-    "relUrl": "/docs/average_case_complexity/#平均時計算量理論の概要"
-  },"49": {
-    "doc": "平均時計算量理論",
-    "title": "平均時計算量理論",
-    "content": " ",
-    "url": "/nobunote/docs/average_case_complexity/",
-    
-    "relUrl": "/docs/average_case_complexity/"
-  },"50": {
     "doc": "埋め込みクリーク問題",
     "title": "埋め込みクリーク問題",
     "content": "グラフ$G=(V,E)$に対し, 頂点部分集合$C\\subseteq V$は$\\binom{C}{2}\\subseteq E$を満たすときクリークと呼び, 特に頂点数$k$のクリークを$k$-クリークと呼びます. 入力として与えられたグラフ$G=(V,E)$のクリークのうち頂点数最大のものを求める問題を最大クリーク問題と呼び, 古典的なNP困難問題の一つです. 埋め込みクリーク問題 (Planted Clique Problem)とは, 最大クリーク問題の平均時計算量解析の文脈で現れる問題で, 端的に言うとランダムな場所に大きいクリーク$C$を埋め込まれたランダムグラフが入力として与えられたときに, クリーク$C$を求めよという問題です. この問題の計算量的困難性は, 高次元統計学など幅広い分野の問題の計算量的下界を導くのみならず, 暗号学的プリミティブの構成(一方向性関数)などにも応用されています. 暗号学的プリミティブの安全性は素因数分解やLearning with Errorやその他の代数的な問題の困難性に依拠していますが, 一方で最大クリークといった組み合わせ的な問題の困難性に依拠したプリミティブ(特に公開鍵暗号方式)の構成は知られておらず, 重要な研究テーマと認識されています. ",
     "url": "/nobunote/docs/planted_clique/",
     
     "relUrl": "/docs/planted_clique/"
-  },"51": {
+  },"45": {
     "doc": "埋め込みクリーク問題",
     "title": "背景",
     "content": "最大クリーク問題はNP完全なので最悪時の意味では広くその困難性が信じられています. 実はそれだけではなく, 平均時計算量の意味でも最大クリークは多項式時間で解けないであろうと予想されています. 具体的にはグラフ$G$がErdős–Rényiグラフ からサンプリングされた時に最大クリークを見つけられるかを議論します. 本ページでは$\\calG(n,1/2)$を主に考えます (他の$p$でも似たような議論は適用できます). ランダムグラフ$G\\sim \\mathcal{G}(n,1/2)$は確率$1-o(1)$で最大クリークのサイズが$\\approx 2\\log_2 n$となることが知られています. 一方, 適当な単一頂点からスタートして一つずつ頂点を追加していくと極大クリークが得られますが, このようにして得られる極大クリークの頂点数は高確率で$\\approx \\log_2 n$となることが知られています (ここでの「高確率」とは$G\\sim \\mathcal{G}(n,1/2)$の選択に関する確率). したがって単純な貪欲法は$\\mathcal{G}(n,1/2)$上では最大クリーク問題を近似率$1/2$で解くことになりますが, 実は近似率$0.501$達成する多項式時間アルゴリズムは知られていません. ",
     "url": "/nobunote/docs/planted_clique/#%E8%83%8C%E6%99%AF",
     
     "relUrl": "/docs/planted_clique/#背景"
-  },"52": {
+  },"46": {
     "doc": "埋め込みクリーク問題",
     "title": "問題の定義",
     "content": "$\\mathcal{G}(n,1/2)$上の最大クリーク問題では本質的に, サイズ$2\\log_2 n$のクリークが含まれていることがわかっているグラフが与えられたときにそのクリークを見つけ出せるかが問われていました. そこで, より一般にサイズ$k \\gg \\log n$のクリークが含まれていることがわかっているグラフが与えられたときにその$k$-クリークを見つけ出せるかという問題を考えます. パラメータ$n,k\\in \\mathbb{N}$, $p\\in [0,1]$ (ただし$k\\le n$) に対し, $\\mathsf{PC}(n,p,k)$を以下の手続きによって定まる分布とする. | $G \\sim \\mathcal{G}(n,p)$を生成する. 頂点集合を$V(G)=[n]$とする. | 一様ランダムな$k$-頂点部分集合$C\\sim \\binom{[n]}{k}$を選ぶ. | グラフ$G’=\\left([n],E(G)\\cup \\binom{C}{2}\\right)$に対し, $(G’,C)$を$\\mathsf{PC}(n,p,k)$のサンプルとして出力する. | . また, 上記で得られるグラフ$G’$の分布を$\\calG(n,p,k)$で表す. 特に$p=1/2$の時は$\\mathsf{PC}(n,p,k)$を省略して$\\mathsf{PC}(n,k)$で表す (なお, $\\calG(n,1/2,k)$は略さない). LWE問題と同様に, 埋め込みクリーク問題においても探索や判定などの問題設定が考えられています. ",
     "url": "/nobunote/docs/planted_clique/#%E5%95%8F%E9%A1%8C%E3%81%AE%E5%AE%9A%E7%BE%A9",
     
     "relUrl": "/docs/planted_clique/#問題の定義"
-  },"53": {
+  },"47": {
     "doc": "埋め込みクリーク問題",
     "title": "埋め込みクリーク探索問題",
     "content": "探索問題では埋め込まれたクリークを復元せよという問題を考えます. パラメータ$n,k\\in \\mathbb{N}$ (ただし$k\\le n$) に対し, 分布$\\mathsf{PC}(n,k)$に従って選ばれた$(G’,C)$を考える. 入力として$G’$を受け取り, $C$を出力せよという問題を埋め込みクリーク探索問題という. アルゴリズム$\\mathcal{A}$は . \\[\\begin{align*} \\Pr_{(G',C) \\sim \\mathsf{PC}(n,k)}\\left[ \\mathcal{A}(G') = C \\right] \\ge \\gamma \\end{align*}\\] を満たすとき, 埋め込みクリーク探索問題を成功確率$\\gamma$で解くという (もしくは単に成功確率$\\gamma$で埋め込みクリークを探すという). ここでは考えるランダムグラフの辺密度を$1/2$に固定していますが, より一般に$p \\in [0,1]$でパラメタライズされた設定も考えることができます. ",
     "url": "/nobunote/docs/planted_clique/#%E5%9F%8B%E3%82%81%E8%BE%BC%E3%81%BF%E3%82%AF%E3%83%AA%E3%83%BC%E3%82%AF%E6%8E%A2%E7%B4%A2%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/planted_clique/#埋め込みクリーク探索問題"
-  },"54": {
+  },"48": {
     "doc": "埋め込みクリーク問題",
     "title": "埋め込みクリーク判定問題",
     "content": "判定問題ではクリークが埋め込まれたグラフ$G’$をErdős–Rényiグラフ$G(n,1/2)$と識別する問題を考えます. もう少し詳しくいうと, 埋め込みクリーク判定問題ではアルゴリズムの入力として一つのグラフが与えられます. ただしこのグラフは次のどちらかの分布に従って生成されるとします: . | $(G,C) \\sim \\mathsf{PC}(n,k)$に対して$G$. | $G \\sim \\mathcal{G}(n,1/2)$. このとき, アルゴリズムの入力はどちらの分布から生成されたかを当てる問題が判定問題です. | . 出力値が0または1のアルゴリズム$\\mathcal{A}$は . \\[\\begin{align*} \\left| \\Pr_{(G,C) \\sim \\mathsf{PC}(n,k)}[\\mathcal{A}(G) = 1] - \\Pr_{G\\sim \\mathcal{G}(n,1/2)}[\\mathcal{A}(G) = 1] \\right| \\ge \\gamma \\end{align*}\\] を満たすとき, 埋め込みクリーク判定問題をアドバンテージ$\\gamma$で解くという. ",
     "url": "/nobunote/docs/planted_clique/#%E5%9F%8B%E3%82%81%E8%BE%BC%E3%81%BF%E3%82%AF%E3%83%AA%E3%83%BC%E3%82%AF%E5%88%A4%E5%AE%9A%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/planted_clique/#埋め込みクリーク判定問題"
+  },"49": {
+    "doc": "よく使う道具",
+    "title": "よく使う道具",
+    "content": "ここでは様々な場面でよく出てくる道具をまとめて紹介していきます. ",
+    "url": "/nobunote/docs/tools/",
+    
+    "relUrl": "/docs/tools/"
+  },"50": {
+    "doc": "Learning with Error",
+    "title": "Learning with Error (LWE) とは?",
+    "content": "Learning with Error (LWE) とはノイズが乗った線形方程式を解けという非常にシンプルな問題です. ノイズが乗っていない場合はガウスの消去法などを用いて簡単に解けますが, ノイズが乗った設定では適切なパラメータ下では . | 情報理論的には最尤推定 (全探索) で解ける. | しかし, 多項式時間で解けるかどうかは不明 | . という状況になっています. そして, これが情報論的なtractabilityと計算量的なtractabilityの間の非自明なギャップであろうと広く信じられています. LWEの計算量的困難性を仮定すると学習理論や暗号などの分野において様々な計算量的下界が成り立ち, 以下に挙げる様々な利点から次世代の暗号技術(特に耐量子暗号)の核になることが期待されている重要な問題です: . | 擬似乱数生成器[Blum, Furst, Kearns, Lipton(CRYPTO1993)], [Goldreich, Krawczyk, Luby(SICOMP1993)]や公開鍵暗号方式[Alekhnovich(FOCS2003)]など様々な暗号学的プリミティブを設計できる. | 格子上の問題(最短ベクトル問題など)の最悪時困難性を仮定するとLWEの平均時困難性が成り立つという結果が知られている [Regev(JACM2009)]. | 上記の格子上の問題を解く効率的な量子アルゴリズムの存在性は長年未解決. | . 詳細はRegevによるサーベイ論文(2010)を参照. ",
+    "url": "/nobunote/docs/learning_with_error/#learning-with-error-lwe-%E3%81%A8%E3%81%AF",
+    
+    "relUrl": "/docs/learning_with_error/#learning-with-error-lwe-とは"
+  },"51": {
+    "doc": "Learning with Error",
+    "title": "問題の定義",
+    "content": "行列$A \\in \\mathbb{F}^{m\\times d}$とベクトル $b = As \\in \\mathbb{F}^m$ (ただし $s \\in \\mathbb{F}^d$は秘密のベクトル) が入力として与えられたときに $s $ を復元することはできるでしょうか? この問題は単に連立一時方程式 . \\[\\begin{align} As = b \\end{align}\\] を解くだけですので, ガウスの消去法などを用いて多項式時間で解けます. では, 与えられるベクトル$b$が小さいノイズを含む場合はどうでしょうか? 具体的には, 入力として与えられるベクトル$b$がノイズベクトル$e \\in \\mathbb{F}^m$に対して$b=As + e$を満たす場合を考えます. ここで$e$はランダムなベクトルであり, 各成分が独立に$\\mathbb{F}$上の同じ分布に従って生成されるものとします. このような設定は線形関数の学習を考えると(有限体であることを除けば)非常にありふれた自然な設定であろうことがわかります. つまり, 様々な評価点とその点におけるラベルが与えられたときに, 未知の線形関数 $ \\mathbb{F}^d \\ni x \\mapsto s^\\top x $ を学習する際, ラベルにノイズが乗る設定を考えると上記のような問題が自然に現れます. Learning with Error (以下, LWE問題) は平均時の問題, すなわち入力が何かしらの分布に従って生成される問題であり, ここでは秘密のベクトル $s \\in \\mathbb{F}^d$ と係数行列 $A \\in \\mathbb{F}^{m\\times d}$ が一様ランダムに選ばれたとき, 行列$A$と$b=As+e$が入力として与えられます. $\\mathbb{F}$を有限体, $m,d\\in \\mathbb{N}$をパラメータ, そして$\\chi$を$\\mathbb{F}$上の分布とする. 一様ランダムな$A\\sim \\mathbb{F}^{m\\times d}$, $s\\sim \\mathbb{F}^d$, およびノイズベクトル$e \\sim \\chi^m$に対し, 三つ組$(A,As+e,s)$の周辺分布を$\\mathsf{LWE}_{\\mathbb{F},m,d,\\chi}$で表す. ここで, $\\chi^m$は$\\mathbb{F}^m$上の分布であり, 各成分が$\\chi$から独立に選ばれたベクトルの分布を表す. パラメータ$\\mathbb{F},m,d,\\chi$が明らかな場合は単に$\\mathsf{LWE}$で表す. パラメータ$m$をサンプル数, $d$を次元, $\\chi^m$をノイズ分布, $s$を秘密のベクトル, $b$をラベルと呼ぶ. 代表的なノイズ分布としては以下の二つが挙げられます: . | ランダムスパースベクトル: 体として$\\mathbb{F}=\\mathbb{F}_2$を考え, $\\chi$はパラメータ$\\theta\\in[0,1]$に対して$\\Pr[\\chi=1]=\\theta$を満たすもの. パラメータ$\\theta$が小さければ, ノイズベクトル$e\\sim\\chi^m$は非ゼロ要素数の個数がおおよそ$m\\theta$となる. | 離散ガウス分布: 位数が素数$p$であるような有限体$\\mathbb{F}_p$に対し$\\chi$は$\\mathbb{F}_p$上の分布であり, パラメータ$\\sigma$に対し, $\\chi$は$\\Pr[\\chi = x] \\propto \\exp\\left(-\\frac{x^2}{2\\sigma^2}\\right)$で定まる分布を考える (ここの右辺では$x\\in{0,1,\\dots,p-1}$を非負整数として扱って確率を計算する). | . また, 特殊ケース$\\mathbb{F} = \\mathbb{F}_2$におけるLWE問題は特にLPN(Learning Parity with Noise)問題と呼ばれます. LWE問題では$(A,b,s) \\sim \\mathsf{LWE}$に対し, $(A,b)$の情報から$s$を復元せよという問題を考えます. 実際には様々な問題設定があり, 代表的なものとして探索問題 (search), 判定問題 (decision)などが考えられています. ",
+    "url": "/nobunote/docs/learning_with_error/#%E5%95%8F%E9%A1%8C%E3%81%AE%E5%AE%9A%E7%BE%A9",
+    
+    "relUrl": "/docs/learning_with_error/#問題の定義"
+  },"52": {
+    "doc": "Learning with Error",
+    "title": "探索問題",
+    "content": "探索問題とは, その名の通り, 秘密のベクトル$s$を復元せよという問題です. 分布$\\mathsf{LWE}_{\\mathbb{F},m,d,\\chi}$に従って選ばれた$(A,b,s)$に対し, $(A,b)$を入力として受け取って$s$を出力せよという問題を探索LWE問題という. アルゴリズム$\\mathcal{A}$は . \\[\\begin{align*} \\Pr_{(A,b,s) \\sim \\mathsf{LWE}} \\left[ \\mathcal{A}(A,b) = s \\right] \\ge \\gamma \\end{align*}\\] を満たすとき, 探索LWE問題を成功確率$\\gamma$で解くという. サンプル数$m$が小さいと, 与えられた$(A,b)$に対して $As \\approx b$を満たす$s$は複数存在しえるため, 秘密のベクトル$s$を復元することはできません. これを情報理論的に解けないと言うことがあります. 一方で$m$が十分大きいとき, 全てのありうる$s$を試して$As\\approx b$を見れば, $(A,b,s) \\sim \\mathsf{LWE}$に関して非常に高確率で秘密のベクトル$s$を復元できます. これを, サンプル数$m$が十分大きいときは情報理論的に解けるという言い方をします. もちろん, 情報理論的に解けるからといってそれが効率的に解けるかどうかは分かりません. ",
+    "url": "/nobunote/docs/learning_with_error/#%E6%8E%A2%E7%B4%A2%E5%95%8F%E9%A1%8C",
+    
+    "relUrl": "/docs/learning_with_error/#探索問題"
+  },"53": {
+    "doc": "Learning with Error",
+    "title": "判定問題",
+    "content": "アルゴリズムは$(A,b) \\in \\mathbb{F}^{m\\times d}\\times \\mathbb{F}^m$を与えられます. ただし入力$(A,b)$は以下の二つどちらかの分布に従って生成されます: . | $(A,b,s) \\sim \\mathsf{LWE}$に対して$(A,b)$の周辺分布. | $\\mathbb{F}^{m\\times d}\\times \\mathbb{F}^m$上の一様分布. | . 判定問題では, 入力が上記どちらの分布に従って生成されたかを判別する問題です. 出力値が0または1のアルゴリズム $\\mathcal{A}$ は . \\[\\begin{align*} \\left| \\Pr_{(A,b,s) \\sim \\mathsf{LWE}} \\left[ \\mathcal{A}(A,b)=1 \\right] - \\Pr_{\\substack{A\\sim \\mathbb{F}^{m\\times d} \\\\ b \\sim \\mathbb{F}^m}} \\left[ \\mathcal{A}(A,b) = 1 \\right] \\right| \\ge \\gamma \\end{align*}\\] を満たすとき, 判定LWE問題をアドバンテージ$\\gamma$で解くという. サンプル数$m$が十分大きいとき, 一様ランダムな$A\\sim \\mathbb{F}^{m\\times d},b\\sim \\mathbb{F}^m$に対して$As\\approx b$を満たす$s\\in \\mathbb{F}^d$は存在しない. 一方で$(A,b)$が$\\mathsf{LWE}$の分布から生成された場合はそのような$s$は必ず存在する. 従って与えられた$(A,b)$が$\\mathsf{LWE}$から来たのか, 一様分布から来たのかは秘密のベクトルの存在性を解けば判定できることになる. このような背景で, $\\mathsf{LWE}$と一様分布の識別を判定問題と呼んでいる. ",
+    "url": "/nobunote/docs/learning_with_error/#%E5%88%A4%E5%AE%9A%E5%95%8F%E9%A1%8C",
+    
+    "relUrl": "/docs/learning_with_error/#判定問題"
+  },"54": {
+    "doc": "Learning with Error",
+    "title": "学習としてのLWE問題",
+    "content": "LWE問題はなぜLearningなのでしょうか? 実は, LWE問題は線形関数をノイズ下で学習するタスクとみなすこともできます. 大雑把に言えば学習とは, 何かしら未知の関数 $f\\colon \\mathcal{X} \\to \\mathcal{L}$ があって, サンプルと呼ばれる幾つかの点の集合$(x_1,f(x_1)),\\dots,(x_m,f(x_m))$が与えられたとき, この関数$f$を模倣する関数$\\tilde{f}$を構成せよというタスクを意味し, このタスクを行うアルゴリズムを学習アルゴリズムといいます. 基本的には任意の関数を扱うことはせず, $f$は何かしらの性質(例えば線形性)を持つことを仮定します. ここでは学習の概念については深掘りせず, ひとまずLWE問題を学習タスクとして捉えられることを説明します. LWE問題では未知のベクトル$s\\in \\mathbb{F}^n$に対して, 一様ランダムな$A \\sim \\mathbb{F}^{m\\times n}$とノイズベクトル$e \\in \\mathbb{F}^m$に対して$b=As+e$および$A$が入力として与えられ, $s$を求めることを目標としていました. そこで$a_1,\\dots,a_m$を$A$の行ベクトルとすると, この問題は未知の線形関数$f\\colon x \\mapsto s^\\top x$のノイズ付きのサンプル$(a_1,f(a_1)+e_1),\\dots,(a_m,f(a_m)+e_m)$が与えられたときに, 未知の線形関数$f$を復元せよという問題と捉えることができます. ",
+    "url": "/nobunote/docs/learning_with_error/#%E5%AD%A6%E7%BF%92%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AElwe%E5%95%8F%E9%A1%8C",
+    
+    "relUrl": "/docs/learning_with_error/#学習としてのlwe問題"
   },"55": {
+    "doc": "Learning with Error",
+    "title": "Learning with Error",
+    "content": " ",
+    "url": "/nobunote/docs/learning_with_error/",
+    
+    "relUrl": "/docs/learning_with_error/"
+  },"56": {
+    "doc": "メモ",
+    "title": "読んだ論文などのメモ",
+    "content": " ",
+    "url": "/nobunote/docs/memo/#%E8%AA%AD%E3%82%93%E3%81%A0%E8%AB%96%E6%96%87%E3%81%AA%E3%81%A9%E3%81%AE%E3%83%A1%E3%83%A2",
+    
+    "relUrl": "/docs/memo/#読んだ論文などのメモ"
+  },"57": {
+    "doc": "メモ",
+    "title": "メモ",
+    "content": " ",
+    "url": "/nobunote/docs/memo/",
+    
+    "relUrl": "/docs/memo/"
+  },"58": {
+    "doc": "平均時計算量理論",
+    "title": "平均時計算量理論の概要",
+    "content": "平均時計算量とは, 計算問題に対してそれが効率的に解ける入力の割合を研究する分野です. 研究対象の性質上, 問題と入力分布のペア(しばし分布問題と呼ばれる)を考えます. 効率的なアルゴリズム(例えば多項式時間アルゴリズム)が, 入力分布に従って生成された入力に対して正解する確率(成功確率)を考え, 成功確率が最大となるようなアルゴリズムやその限界について理解することが目標となります. 具体的な問題としては埋め込みクリーク問題やLWE問題などを考えます. 大まかに分けて平均時計算量は二つの文脈で研究されています. | 計算量的擬似ランダムネスとその応用. 効率的に解ける入力が少なければ少ないほど, その問題の困難性は強いとみなし, 強い困難性を持つ判定問題は計算量的擬似ランダム性を通じて暗号学的プリミティブの構成や乱択アルゴリズムの脱乱択化といった応用を持ちます. 統計的には, $ \\{0,1\\}^n $ 上で一様ランダムに選ばれた$x$と任意の関数$f\\colon \\{0,1\\}^n\\to \\{0,1\\}$に対して, $(x,f(x))$の情報論的エントロピーは$n$ビットです (つまり, ランダム文字列に$f$を適用してもエントロピーは増えない). しかし, $f\\colon \\{0,1\\}^n\\to \\{0,1\\}$が強い困難性を持つ関数ならば, 任意の効率的なアルゴリズムにとって, $x$から$f(x)$を推定するのは難しいので, $f(x)$は$x$とは独立なランダムビットに見えます. 従って$(x,f(x))$の計算量的エントロピーは$n+1$ビットとなります. このように, 驚くべきことに, 強い困難性を持つ問題があれば, 計算量的なエントロピーを増幅させられます. そして, そのような問題を構成するための手法として誤り訂正符号やエクスパンダーグラフなどの組合わせ的, 代数的な概念が積極的に応用されています. | 求解における情報理論と計算量理論のギャップ. 高次元統計学の文脈では最尤推定法で解ける具体的な問題に対し, それが計算量的の意味で効率的に解けるかどうかが議論されます. 例えば埋め込みクリーク問題では, $n$頂点ランダムグラフのランダムな位置に埋め込まれた$k$-クリークを探し出せという問題を考えます. クリークサイズが$k\\gg \\log n$であれば, 高確率でランダムグラフが$k$-クリークを含まないので, $k$頂点部分集合を列挙することにより探索することができます. しかしながら現在のところ, 埋め込みクリーク問題を解く多項式時間アルゴリズムは$k\\ge \\sqrt{n}$の範囲でしか見つかっておらず, $\\log n \\ll k \\ll \\sqrt{n}$の範囲でこの問題が解けるかどうかは重要な未解決問題とされています. また, 埋め込みクリーク問題の計算量的下界を仮定すると, 圧縮センシング, 分布の性質検査, あるゲームのナッシュ均衡の近似, 主成分分析など様々な実用的な問題に対する計算量下界が導出できることが知られています. | . ",
+    "url": "/nobunote/docs/average_case_complexity/#%E5%B9%B3%E5%9D%87%E6%99%82%E8%A8%88%E7%AE%97%E9%87%8F%E7%90%86%E8%AB%96%E3%81%AE%E6%A6%82%E8%A6%81",
+    
+    "relUrl": "/docs/average_case_complexity/#平均時計算量理論の概要"
+  },"59": {
+    "doc": "平均時計算量理論",
+    "title": "平均時計算量理論",
+    "content": " ",
+    "url": "/nobunote/docs/average_case_complexity/",
+    
+    "relUrl": "/docs/average_case_complexity/"
+  },"60": {
     "doc": "記法",
     "title": "よく使う記法",
     "content": ". | 自然数$n\\in \\mathbb{N}$に対して$[n]={1,\\dots,n}$とします. | 有限集合$S$に対し, $x\\sim S$と書いたとき, 要素$x$は$S$上一様ランダムに選ばれることを意味します. | 例えば$\\Pr_{x\\sim S}[\\cdot]$と書くと, $S$上一様ランダムに選ばれた$x$に関する確率を考えることを意味します. | . | より一般に, 有限集合上の分布$\\nu$に対し, $x\\sim \\nu$と書くと$x$は分布$\\nu$に従って選ばれたことを意味します. | 確率変数$X$に対して$\\supp(X) = \\{ x\\colon \\Pr[X=x]&gt;0 \\}$を$X$の台(サポート)といいます (基本的には$X$として離散的な値をとるもののみを考えます). | アルゴリズム$\\mathcal{A}$と入力$x$に対し, $\\mathcal{A}(x)$はアルゴリズム$\\mathcal{A}$の入力$x$に対する出力を表すことにします. | $\\mathcal{A}$が乱択アルゴリズムの場合は$\\mathcal{A}(x)$は確率変数として扱われます. | . | グラフ$G=(V,E)$とは有限集合$V$と$E\\subseteq\\binom{V}{2}$のペアです. | 頂点$u\\in V$の隣接点集合を$N(u)\\subseteq V$で表します. | . | . ",
     "url": "/nobunote/docs/tools/notation/#%E3%82%88%E3%81%8F%E4%BD%BF%E3%81%86%E8%A8%98%E6%B3%95",
     
     "relUrl": "/docs/tools/notation/#よく使う記法"
-  },"56": {
+  },"61": {
     "doc": "記法",
     "title": "記法",
     "content": " ",
     "url": "/nobunote/docs/tools/notation/",
     
     "relUrl": "/docs/tools/notation/"
-  },"57": {
+  },"62": {
     "doc": "ペア独立性",
     "title": "確率変数族のペア独立性",
     "content": "確率変数族のペア独立性 (pairwise independence)は計算量理論の文脈では Goldreich-Levinの定理, set lower bound protocol, ハッシュ関数, 擬似ランダム生成器などの文脈でよく使われるテクニックです. 通常の意味での独立性を緩めた概念であり, 少ないランダムネスを用いて多くの確率変数を生成する手法としては典型的なものとなります. 確率変数の列$(X_1,\\dots,X_n)$が独立であるというのは「いくつかの$i$に対し$X_i=x_i$である」という事象が他の確率変数の分布に影響を与えないこととされます. ここでは今後の比較のために, 確率変数族の独立性を以下の形で定義しておきます: . 定義 (独立性) . 確率変数の列$(X_1,\\dots,X_n$)が独立であるとは, 任意のインデックスの部分集合$I= \\{i_1,\\dots,i_k\\}\\subseteq [n]$と$x_{i_1},\\dots,x_{i_k}$に対して以下が成り立つことである: . \\[\\begin{align*} \\Pr \\left[ X_{i_1} = x_{i_1}\\text{ and }\\dots\\text{ and }X_{i_k} = x_{i_k} \\right] = \\prod_{j\\in[k]} \\Pr[X_{i_j}=x_{i_j}]. \\tag{1} \\end{align*}\\] ペア独立性とは, 式(1)が成り立つ部分集合$I$の範囲を任意の部分集合ではなく要素数$2$の部分集合に制限することによって定まる概念です. 定義 (ペア独立性) . 確率変数の列$(X_1,\\dots,X_n$)がペア独立であるとは, 任意の要素数$2$のインデックスの部分集合$0\\le i &lt; j \\le n$と$x_i,x_j$に対して以下が成り立つことである: . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} X_{i} &amp;= x_{i} \\\\ X_{j} &amp;= x_{j} \\end{aligned} \\right] = \\Pr[X_{i}=x_{i}]\\cdot \\Pr[X_j = x_j]. \\tag{2} \\end{align*}\\] ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E7%A2%BA%E7%8E%87%E5%A4%89%E6%95%B0%E6%97%8F%E3%81%AE%E3%83%9A%E3%82%A2%E7%8B%AC%E7%AB%8B%E6%80%A7",
     
     "relUrl": "/docs/tools/pairwise_independent/#確率変数族のペア独立性"
-  },"58": {
+  },"63": {
     "doc": "ペア独立性",
     "title": "例1",
     "content": "$X_1,\\dots,X_n$を独立で$\\{0,1\\}$上一様ランダムな確率変数とし, 各$1\\le i &lt; j \\le n$に対して . \\[\\begin{align*} Y_{ij} = X_i + X_j \\bmod 2 \\end{align*}\\] で定まる確率変数族$(Y_{ij})_{1\\le i&lt;j\\le n}$はペア独立です. 証明 簡単のため$n=3$で考えます (一般の$n$についても同様). 任意の$y_{12},y_{23}\\in \\{0,1\\}$に対して . \\[\\begin{align*} \\Pr\\left[ \\begin{aligned} Y_{12}&amp;=y_{12} \\\\ Y_{23}&amp;=y_{23} \\end{aligned} \\right] &amp;= \\Pr\\left[ \\begin{aligned} X_1+X_2&amp;=y_{12} \\pmod 2 \\\\ X_2+X_3&amp;=y_{23} \\pmod 2 \\end{aligned} \\right] \\\\ &amp;= \\Pr\\left[ \\begin{aligned} X_1 &amp;= y_{12} + X_2 \\pmod 2 \\\\ X_3 &amp;= y_{23} + X_2 \\pmod 2 \\end{aligned} \\right] \\\\ &amp;= \\frac{1}{4} \\\\ &amp;= \\Pr[Y_{12}=y_{12}]\\cdot \\Pr[Y_{23}=y_{23}] \\end{align*}\\] を得ます. 三つ目の等式では$X_1,X_2,X_3$の独立性を用いています. 上記の例で$n$ビットのランダムな文字列$(X_1,\\dots,X_n) \\sim \\{0,1\\}^n$を$\\binom{n}{2}$ビットの文字列$(Y_{ij})$\\に変換しています (ただし変換で文字列を延ばす代わりに各ビットの独立性は損なわれるため, 得られる長い文字列を擬似ランダム文字列と呼ぶ). このように, ペア独立性の技法を用いると少ないエントロピーのランダムネスから長い擬似ランダム文字列を生成できます (このアイデアはより一般に擬似ランダム生成器の概念で一般化されます). 例えばこのように生成された長い擬似ランダム文字列を乱択アルゴリズムのランダムシードとして代用することでより少ないランダムネスを用いた乱択アルゴリズムの模倣が可能になります. この模倣の精度をペア独立性を用いて評価していくことになります. ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E4%BE%8B1",
     
     "relUrl": "/docs/tools/pairwise_independent/#例1"
-  },"59": {
+  },"64": {
     "doc": "ペア独立性",
     "title": "例2. ランダムビットの線形結合",
     "content": "例1と同様に独立に$X_1,\\dots,X_n \\sim \\{0,1\\}$を選びます. 例1では$X_i + X_j$という形を考えていましたが, より一般に$X_{i_1}+\\dots + X_{i_k}$という形を考えてもペア独立性が保たれることが同様にして証明できます. 非空な部分集合$I \\subseteq [n]$に対して . \\[\\begin{align*} Y_I = \\sum_{i\\in I} X_i \\bmod 2 \\end{align*}\\] とすることによって定まる確率変数族$(Y_I)_{I\\ne \\emptyset}$はペア独立性を持つ. 証明 任意の非空な$I \\subseteq[n]$に対して, $X_1,\\dots,X_n\\sim \\{0,1\\}$が独立一様ランダムなので, $Y_I$の周辺分布も$\\{0,1\\}$上で一様となります. また, 相異なる二つの非空な部分集合$I,J\\subseteq[n]$および$a,b \\in \\{0,1\\}$に対して . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} Y_I &amp;= a \\\\ Y_J &amp;= b \\end{aligned} \\right] &amp;= \\Pr \\left[ \\begin{aligned} Y_{I\\setminus J} + Y_{I\\cap J} &amp;= a \\\\ Y_{J\\setminus I} + Y_{I\\cap J} &amp;= b \\end{aligned} \\right] \\\\ &amp;= \\Pr \\left[ \\begin{aligned} Y_{I\\setminus J} &amp;= a - Y_{I\\cap J} \\\\ Y_{J\\setminus I} &amp;= b - Y_{I\\cap J} \\end{aligned} \\right] \\\\ &amp;= \\frac{1}{4} \\end{align*}\\] 証明 より, 確かにペア独立性を満たします. ここで最後の等式では, $X_i$たちの独立性より, $Y_{I\\setminus J}$と$Y_{J\\setminus I}$が独立であることを用いています ($I\\ne J$より$I\\setminus J$と$J\\setminus I$はどちらも非空であることに注意). $\\square$ . この方法を用いると$n$ビットのエントロピーから長さ$2^n-1$の擬似ランダム文字列を得られるので, 指数的に長さを延ばすことが可能となります. ランダム線形関数としての視点 . 例2の構成で得られる$(Y_I)_{I\\ne \\emptyset}$は, 一様ランダムなベクトル$c \\sim \\mathbb{F}_2^n$に対して線形関数$z \\mapsto \\inprod{c,z}$を考えて その($0$以外での)真理値表としてみなすことができます. この解釈は Goldreich-Levinの定理 の証明において本質的に効いてきます. ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E4%BE%8B2-%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%83%93%E3%83%83%E3%83%88%E3%81%AE%E7%B7%9A%E5%BD%A2%E7%B5%90%E5%90%88",
     
     "relUrl": "/docs/tools/pairwise_independent/#例2-ランダムビットの線形結合"
-  },"60": {
+  },"65": {
     "doc": "ペア独立性",
     "title": "例3. ランダムな直線",
     "content": "要素数$q$の有限体$\\mathbb{F}_q$に対して一様ランダムに$a,b\\sim \\mathbb{F}_q$を選び, 各$i\\in \\mathbb{F}_q$に対して . \\[\\begin{align*} X_i = a i + b \\end{align*}\\] として確率変数族$(X_i)_{i\\in \\mathbb{F}_q}$を定めると$(X_i)$はペア独立です. 証明 任意の相異なる$\\mathbb{F}_q$の元$i,j$および$c,d \\in \\mathbb{F}_q$に対して . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} X_i &amp;= c \\\\ X_j &amp;= d \\end{aligned} \\right] &amp;= \\Pr_{a,b\\sim \\mathbb{F}_q} \\left[ \\begin{aligned} ai+b &amp;= c \\\\ aj+b &amp;= d \\end{aligned} \\right] \\\\ &amp;= \\Pr_{a,b\\sim \\mathbb{F}_q} \\left[ \\begin{bmatrix} i &amp; 1 \\\\ j &amp; 1 \\end{bmatrix} \\begin{bmatrix} a \\\\ b \\end{bmatrix} = \\begin{bmatrix} c \\\\ d \\end{bmatrix} \\right] \\end{align*}\\] ここで, $i\\ne j$より行列 . \\[\\begin{align*} \\begin{bmatrix} i &amp; 1 \\\\ j &amp; 1 \\end{bmatrix} \\end{align*}\\] は逆行列を持つ (Vandermonde行列の特殊ケース) ので, 最後の等式の確率の中身は$a=\\ast,b=\\ast$の形で書けます. $a,b$は一様ランダムなので, この確率は$1/q^2$です. 一方で, ランダムな$a,b\\sim \\mathbb{F}_q$と固定した$i\\in \\mathbb{F}_q$に対し$X_i=ai+b$の周辺分布は$\\mathbb{F}_q$上一様なので, 確かに$(X_i)$はペア独立です. ランダムな直線に基づく生成はランダムな$a,b\\sim \\mathbb{F}_q$を受け取って$q$個の$\\mathbb{F}_q$の元を出力しています. ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E4%BE%8B3-%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%81%AA%E7%9B%B4%E7%B7%9A",
     
     "relUrl": "/docs/tools/pairwise_independent/#例3-ランダムな直線"
-  },"61": {
+  },"66": {
     "doc": "ペア独立性",
     "title": "性質",
     "content": "独立な確率変数の和の分散はそれぞれの確率変数の分散の和に等しいことが知られていますが, この性質はペア独立な確率変数の和についても成り立ちます. $X_1,\\dots,X_n$をペア独立な確率変数とし, $S=\\sum_{i\\in[n]} X_i$とすると, $\\Var[S] = \\sum_{i\\in[n]} \\Var[X_i]$が成り立つ. 証明 確率変数はシフト(定数$a$に対して$X$を$X+a$に変換する操作)に対して分散は変わらないので, $X_i$の期待値を$0$にシフトしても一般性を失いません. このとき, $S$の期待値は$0$なので, その分散は$\\E[S^2]$に等しくなります. また, $X_i$たちはペア独立なので, $i\\ne j$に対して$\\E[X_iX_j]=\\E[X_i]\\E[X_j]=0$が成り立ちます. 実際, $i\\ne j$に対して$\\Pr[X_i=x_i \\text{ and }X_j=x_j]=\\Pr[X_i=x_i]\\Pr[X_j=x_j]$だから . \\[\\begin{align*} \\E[X_iX_j] &amp;= \\sum_{x_i,x_j} x_i x_j \\Pr[X_i=x_i \\text{ and }X_j=x_j] \\\\ &amp;= \\sum_{x_i,x_j} x_i x_j \\Pr[X_i=x_i]\\Pr[X_j=x_j] \\\\ &amp;= \\left( \\sum_{x_i} x_i \\Pr[X_i=x_i] \\right) \\left( \\sum_{x_j} x_j \\Pr[X_j=x_j] \\right) \\\\ &amp;= \\E[X_i]\\E[X_j] \\\\ &amp;= 0 \\end{align*}\\] となります. 従って, 期待値の線形性より . \\[\\begin{align*} \\E[S^2] &amp;= \\E\\left[ \\left( \\sum_{i\\in[n]} X_i \\right)^2 \\right] \\\\ &amp;= \\E\\left[ \\sum_{i\\in[n]} X_i^2 + \\sum_{i\\ne j} X_iX_j \\right] \\\\ &amp;= \\sum_{i\\in[n]} \\E[X_i^2] + \\sum_{i\\ne j} \\E[X_iX_j] \\\\ &amp;= \\sum_{i\\in[n]} \\E[X_i^2] \\\\ &amp;= \\sum_{i\\in[n]} \\Var[X_i] &amp; &amp; \\because\\text{ $X_i$の期待値は$0$} \\end{align*}\\] となり主張を得ます. $\\square$ . このことから和$S$の分散が簡単に計算できるため, チェビシェフの不等式より以下を得ます: . $X_1,\\dots,X_n$をペア独立な確率変数とし, $S=\\sum_{i\\in[n]} X_i$とすると, 任意の$a&gt;0$に対して . \\[\\begin{align*} \\Pr\\qty[\\abs{S-\\E[S]}\\ge a] \\le \\frac{\\sum_{i\\in[n]} \\Var[X_i]}{a^2}. \\end{align*}\\] ",
     "url": "/nobunote/docs/tools/pairwise_independent/#%E6%80%A7%E8%B3%AA",
     
     "relUrl": "/docs/tools/pairwise_independent/#性質"
-  },"62": {
+  },"67": {
     "doc": "ペア独立性",
     "title": "ペア独立性",
     "content": " ",
     "url": "/nobunote/docs/tools/pairwise_independent/",
     
     "relUrl": "/docs/tools/pairwise_independent/"
-  },"63": {
+  },"68": {
     "doc": "よく使う不等式",
     "title": "よく使う不等式",
     "content": "確率に関するよく使う不等式を紹介していきます. 基本的には様々な確率集中不等式 (concentration inequality)を紹介していきます. 確率集中不等式とは, 興味の対象となる確率変数が高確率でその期待値もしくは中央値付近の値をとることを主張する結果です. 例えば, 実数値をとり期待値が存在する確率変数$Y$に対して以下の確率 . \\[\\begin{align*} &amp;\\Pr[Y\\ge \\E[Y] + \\delta] \\\\ &amp;\\Pr[Y\\le \\E[Y] - \\delta] \\end{align*}\\] のできるだけ良い上界(もしくは下界)を与えることが目標です. このような確率集中不等式は様々な分野で利用されており, 確率論, 統計学, 情報理論, 機械学習, 理論計算機科学など幅広い分野で利用されています. ",
     "url": "/nobunote/docs/tools/prob_inequalities/",
     
     "relUrl": "/docs/tools/prob_inequalities/"
-  },"64": {
+  },"69": {
     "doc": "よく使う不等式",
     "title": "Markovの不等式",
     "content": "Markovの不等式は最も基本的な集中不等式です. Markovの不等式は非負値をとる任意の確率変数に対して成り立つため汎用性が高いのが特徴です. 一方でその汎用性が高いあまり, Markovの不等式単体で用いると弱い上界を与えることが多いのですが, 後述するChebyshevの不等式, Chernoff限界など様々な確率集中不等式の証明に利用されています. 補題 (Markovの不等式) 非負値をとり期待値が存在する任意の確率変数$X$と任意の$a&gt;0$に対して . \\[\\begin{align*} \\Pr[X\\ge a]\\le \\frac{\\E[X]}{a}. \\end{align*}\\] Markovの不等式とは期待値よりはるかに大きい値をとる確率を上から抑える不等式ですので, 集中不等式の一種といえるでしょう. 証明 ($X$が離散値をとる場合) 期待値の定義より, 任意の$a&gt;0$に対して . \\[\\begin{align*} \\E[X]&amp;=\\sum_{x\\in \\supp(X)}x\\cdot \\Pr[X=x] \\\\ &amp;\\ge \\sum_{x\\in\\supp(X),x\\ge a}x\\cdot \\Pr[X=x] \\\\ &amp;\\ge a\\cdot \\sum_{x\\in\\supp(X),x\\ge a} \\Pr[X=x] \\\\ &amp;= a\\cdot \\Pr[X\\ge a] \\end{align*}\\] より主張を得る. $\\square$ . $X$が連続値をとる場合についても, $\\sum$を$\\int$に置き換えて同様に示すことができます. マルコフの不等式は基本的に$X$が大きすぎないことを示すために使われますが, 逆に$X$が小さすぎないこ とを示すためにも用いることができます. $X$を$[0,1]$に値をとる確率変数とし, $\\mu = \\E[X] &gt; 0$とすると, 任意の$0\\le \\varepsilon \\le \\mu$に対して . \\[\\begin{align*} \\Pr[X &gt; \\mu-\\varepsilon] \\ge \\frac{\\varepsilon}{1-\\mu+\\varepsilon}\\ge \\varepsilon. \\end{align*}\\] 証明 確率変数$1-X$に対してMarkovの不等式を適用すると . \\[\\begin{align*} \\Pr[X \\le \\mu-\\varepsilon] &amp;= \\Pr[1-X\\ge 1-\\mu+\\varepsilon] \\\\ &amp;\\le \\frac{1-\\mu}{1-\\mu+\\varepsilon} \\\\ &amp;= 1-\\frac{\\varepsilon}{1-\\mu+\\varepsilon} \\end{align*}\\] より主張を得る. $\\square$ . また, Markovの不等式を用いるとunion boundと呼ばれる基本的な不等式を簡単に証明できます (意外とこのことを知らない人が多いような気がします). 系 (union bound). 事象$\\calE_1,\\dots,\\calE_m$のうち少なくとも一つが発生する確率は高々$\\Pr[\\calE_1]+\\dots+\\Pr[\\calE_m]$である. 証明 事象$\\calE_i$の指示確率変数を$\\indicator_i$とし, $X = \\indicator_1+\\dots+\\indicator_m$とします. つまり, $\\calE_i$が発生したら$\\indicator_i=1$, そうでなければ$\\indicator_i=0$で定まる確率変数を考えます. 少なくとも一つの事象が発生するということは$X\\ge 1$と等しいので, $X$に対するMarkovの不等式より . \\[\\begin{align*} \\Pr[\\calE_1 \\cup \\cdots \\cup \\calE_m] = \\Pr[X\\ge 1] \\le \\E[X] = \\Pr[\\calE_1] + \\cdots + \\Pr[\\calE_m] \\end{align*}\\] となり主張を得ます. ",
     "url": "/nobunote/docs/tools/prob_inequalities/#markov%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/tools/prob_inequalities/#markovの不等式"
-  },"65": {
+  },"70": {
     "doc": "よく使う不等式",
     "title": "Chebyshevの不等式",
     "content": "Chebyshevの不等式は分散が小さい確率変数に対する集中性を与える不等式です. Markovの不等式よりも強い上界を与えることができますが, 分散が大きい場合にはMarkovの不等式よりも弱い上界を与えることがあります. 補題 (Chebyshevの不等式) 実数値をとる確率変数$X$と任意の$a&gt;0$に対して . \\[\\begin{align} \\Pr[|X-\\E[X]|\\ge a]\\le \\frac{\\Var[X]}{a^2}. \\end{align}\\] 証明 非負の確率変数$(X-\\E[X])^2$に対してMarkovの不等式を適用すると . \\[\\begin{align*} \\Pr[|X-\\E[X]|\\ge a] &amp;= \\Pr[(X-\\E[X])^2\\ge a^2] \\\\ &amp;\\le \\frac{\\E[(X-\\E[X])^2]}{a^2} \\\\ &amp;= \\frac{\\Var[X]}{a^2} \\end{align*}\\] より主張を得る. $\\square$ . ",
     "url": "/nobunote/docs/tools/prob_inequalities/#chebyshev%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/tools/prob_inequalities/#chebyshevの不等式"
-  },"66": {
+  },"71": {
     "doc": "よく使う不等式",
     "title": "Hoeffdingの不等式",
     "content": "Hoeffdingの不等式は独立な確率変数の和の集中性を与える基本的だが非常に有用な不等式です. 補題 (Hoeffdingの不等式) $X_1,\\dots,X_n$を独立な確率変数, $S=\\sum_{i\\in[n]}X_i$とし, 任意の$i\\in[n]$に対して$0\\le X_i\\le 1$とする. このとき, 任意の$c \\ge 0$に対して . \\[\\begin{align*} \\Pr[S \\ge \\E[S] + c] &amp;\\le \\exp\\left(-\\frac{2c^2}{n}\\right), \\\\ \\Pr[S \\le \\E[S] - c] &amp;\\le \\exp\\left(-\\frac{2c^2}{n}\\right). \\end{align*}\\] ",
     "url": "/nobunote/docs/tools/prob_inequalities/#hoeffding%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/tools/prob_inequalities/#hoeffdingの不等式"
-  },"67": {
+  },"72": {
     "doc": "よく使う不等式",
     "title": "Chernoffバウンド",
     "content": "Chernoffバウンド (Chernoff bound) はHoeffdingの不等式と同様に, 独立な確率変数の和の集中性を与える不等式です. Hoeffdingの不等式では各確率変数$X_i$が$[0,1]$区間に収まる場合に成り立ちます汎用的な不等式ですが, Chernoffバウンドではさらに$X_i$の期待値の情報を用いた上界を与えているため, 状況によってはHoeffdingの不等式よりも強い上界を与えることができます. 補題 (Chernoff限界) $X_1,\\dots,X_n$を独立な確率変数, $S=\\sum_{i\\in[n]}X_i$とし, 任意の$i\\in[n]$に対して$0\\le X_i\\le 1$とする. このとき, 任意の$c \\ge 0$に対して . \\[\\begin{align*} \\Pr[S \\ge \\E[S] + c] &amp;\\le \\exp\\left(-\\frac{c^2}{2\\E[S] + 2c/3}\\right), \\\\ \\Pr[S \\le \\E[S] - c] &amp;\\le \\exp\\left(-\\frac{c^2}{2\\E[S]}\\right). \\end{align*}\\] Hoeffdingの不等式と比較すると, 期待値$\\E[S]$が小さい場合にはChernoffバウンドの方が強い上界を与えることがわかります. ",
     "url": "/nobunote/docs/tools/prob_inequalities/#chernoff%E3%83%90%E3%82%A6%E3%83%B3%E3%83%89",
     
     "relUrl": "/docs/tools/prob_inequalities/#chernoffバウンド"
-  },"68": {
+  },"73": {
     "doc": "ランダムグラフ",
     "title": "ランダムグラフ",
     "content": "ランダムグラフとはその名の通り, ランダムに生成されたグラフであり, その分布をランダムグラフモデルと呼びます. ",
     "url": "/nobunote/docs/tools/random_graph/",
     
     "relUrl": "/docs/tools/random_graph/"
-  },"69": {
+  },"74": {
     "doc": "ランダムグラフ",
     "title": "Erdős–Rényiグラフ",
     "content": "Erdős–Rényiグラフとは最も基本的なランダムグラフで, 各頂点のペアそれぞれに対し独立にコイントスを行い, その結果に応じて辺で結んで得られるランダムグラフです. 定義 (Erdős–Rényiグラフ). パラメータ$n\\in\\Nat$, $p\\in[0,1]$に対し, Erdős–Rényiグラフとは頂点集合が$[n]= \\{1,\\dots,n\\}$で 各頂点ペアを独立に同じ確率$p$で辺で結んで得られるランダムなグラフで, そのようなランダムグラフの分布を$\\mathcal{G}(n,p)$と表します. すなわち $\\calG(n,p)$とは . \\[\\begin{align*} \\Pr_{G\\sim \\mathcal{G}(n,p)}[G=H] = p^{|E(H)|}\\cdot (1-p)^{\\binom{n}{2} - |E(H)|} \\tag{1} \\end{align*}\\] によって定まる$n$頂点グラフ上の分布です. 特に$p=1/2$のとき, 式(1)の右辺は$H$に依存しない値になるので, $G(n,1/2)$は$n$頂点グラフ全体の集合から一様ランダムに選ばれたグラフとなります. ",
     "url": "/nobunote/docs/tools/random_graph/#erd%C5%91sr%C3%A9nyi%E3%82%B0%E3%83%A9%E3%83%95",
     
     "relUrl": "/docs/tools/random_graph/#erdősrényiグラフ"
-  },"70": {
+  },"75": {
     "doc": "ランダムグラフ",
     "title": "ランダム正則グラフ",
     "content": "ランダム正則グラフとは次数を固定したときの一様ランダムな正則グラフです. 正則グラフとは全ての頂点の次数が等しいグラフのことを意味し, 特にその次数が$d$に等しいグラフを$d$-正則と呼びます. 定義 (ランダム正則グラフ). パラメータ$n,d\\in\\Nat$ (ただし$nd$は偶数)に対してランダム$d$-正則グラフ$G_{n,d}$とは, $n$頂点$d$-正則グラフ全体の中から一様ランダムに選ばれたグラフであり, その分布を$\\calG_{n,d}$で表す. ",
     "url": "/nobunote/docs/tools/random_graph/#%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E6%AD%A3%E5%89%87%E3%82%B0%E3%83%A9%E3%83%95",
     
     "relUrl": "/docs/tools/random_graph/#ランダム正則グラフ"
-  },"71": {
+  },"76": {
     "doc": "サンプラー",
     "title": "サンプラー",
     "content": "サンプラー(sampler)は平均時計算量理論の文脈において証明で提案した帰着の正当性の証明などでよく使われます. 二つの独立とは限らない確率変数の組$(X,Y)$を考え, これらの台$\\supp(X),\\supp(Y)$が有限集合とします. このとき, $(X,Y)$のサンプリングは, ある辺重みつき二部グラフの辺を(重みに比例した確率で)ランダムに選び, その端点を出力するというプロセスとして捉えることができます. この(辺重みつき)二部グラフを$(X,Y)$に付随する二部グラフと呼ぶことにします. 確率変数のペア$(X,Y)$がサンプラーであるとはこの二部グラフがある種のエクスパンダー性を持つことを意味します. 定義(サンプラー). 確率変数の組$(X,Y)$は以下を満たすとき$(\\delta,\\varepsilon)$-サンプラーという: 任意の関数$S \\colon \\supp(Y)\\to [0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X} \\left[ \\abs*{ \\E[S(Y)| X=x] - \\E[S(Y)]} \\ge \\varepsilon \\right] \\le \\delta. \\tag{1} \\end{align*}\\] 同様に, $(X,Y)$は以下を満たすとき乗法的$(\\delta,\\varepsilon)$-サンプラーという: $\\E[S(Y)]\\ge \\varepsilon$を満たす任意の関数$S\\colon \\supp(Y)\\to[0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X}\\left[\\mathbb{E}[S(Y)|X=x] \\le \\frac{\\mathbb{E}[S(Y)]}{2}\\right] \\le \\delta. \\tag{2} \\end{align*}\\] 確率変数のペア$(X,Y)$に付随する二部グラフ$G=(\\supp(X),\\supp(Y),E)$を考えます. 簡単のため辺は重みなしだが多重辺は許すとします (ですので$E$は多重集合となります). つまり, $(X,Y)$をサンプリングするには, 一様ランダムな辺$(x,y)\\sim E$を選び, その両端点$(x,y)$を出力すればよいです. 関数$S\\colon \\supp(Y)\\to \\binset$を任意に一つ固定します(本来, サンプラーの定義では$[0,1]$値関数を考えますがここでは簡単のため$\\binset$値関数としています). このとき$S$は部分集合$S\\subseteq \\supp(Y)$と同一視でき, $\\E[S(Y)]=\\Pr[Y\\in S]$は部分集合$S$の(大域的な)密度となります. 各$x\\in U$に対して$N(x)$を$x$の隣接頂点の多重集合とすると . \\[\\begin{align*} \\E \\left[S(Y) \\vert X=x\\right] = \\Pr_{y \\sim N(x)} \\left[y \\in S\\right] = \\frac{|N(x)\\cap S|}{|N(x)|} \\end{align*}\\] は$N(x)$のうち$S$に属するものの割合, すなわち$x$の周辺における$S$の局所的な密度を表します. $(X,Y)$がサンプラーであるとは, ほとんどの$x$に対して$S$の局所的な密度$\\frac{\\abs{N(x)\\cap S}}{\\abs{N(x)}}$が$S$の大域的な密度$\\E[S(Y)]$に近いということを意味します. また, $x\\sim X$をランダムに選んだときの確率変数$\\E[S(Y) \\vert X=x]$がその期待値$\\E_{x\\sim X} \\left[ \\E[S(Y) \\vert X=x]\\right] = \\E[S(Y)]$に集中するという性質とも言えます. ",
     "url": "/nobunote/docs/tools/sampler/",
     
     "relUrl": "/docs/tools/sampler/"
-  },"72": {
+  },"77": {
     "doc": "サンプラー",
     "title": "交換補題",
     "content": "実はサンプラー性は対称であり, $(Y,X)$がサンプラーならば$(X,Y)$もまたサンプラーとなります. 補題(交換補題). 確率変数のペア$(Y,X)$が$\\left(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8}\\right)$-サンプラーならば$(X,Y)$は$(\\delta,\\varepsilon)$-サンプラーである. 同様に, $(Y,X)$が乗法的$\\left(\\frac{\\varepsilon}{4},\\delta\\right)$-サンプラーならば, $(X,Y)$は乗法的$(\\delta,\\varepsilon)$-サンプラーである. 一つ目の主張の証明 $(Y,X)$を$\\left(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8}\\right)$-サンプラーとします. 記号の簡単のため, $\\delta’=\\frac{\\varepsilon}{2},\\varepsilon’=\\frac{\\delta\\varepsilon}{8}$とし, $(Y,X)$が$(\\delta’,\\varepsilon’)$-サンプラーであるとします. まず, $(X,Y)$の片側サンプラー性, 具体的には任意の関数$S\\colon \\supp(Y)\\to[0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X} \\left[ \\E[S(Y) \\vert X=x] - \\E[S(Y)] \\le -\\varepsilon \\right] \\le \\frac{\\delta}{2} \\tag{3} \\end{align*}\\] が成り立つことを示します. 関数$S\\colon \\supp(Y)\\to[0,1]$に対して関数$H\\colon\\supp(X)\\to\\binset$を . \\[\\begin{align*} H(x)=1 \\iff \\E[S(Y)\\vert X=x] - \\E[S(Y)] \\le -\\varepsilon \\end{align*}\\] で定めます. $H$の定義より . \\[\\begin{align*} \\E[H(X)S(Y)] &amp;= \\E[S(Y) \\vert H(X)=1]\\cdot \\E[H(X)] \\\\ &amp;\\le \\left(\\E[S(Y)] - \\varepsilon\\right)\\cdot \\E[H(X)] \\tag{4} \\end{align*}\\] を得ます. 一方で, $(Y,X)$は$(\\delta’,\\varepsilon’)$-サンプラーなので, $1-\\delta’$の割合の$y\\sim Y$に対して $\\E[H(X)\\vert Y=y] &gt; \\E[H(X)] - \\varepsilon’$が成り立ちます. このような$y$の集合を$T \\subseteq \\supp(Y)$とします. このとき, . \\[\\begin{align*} \\E[H(X)S(Y)] &amp;\\ge \\sum_{y\\in T} \\E[H(X)\\vert Y=y]\\cdot S(y) \\cdot \\Pr[Y=y] \\\\ &amp;\\ge \\left(\\E[H(X)] - \\varepsilon'\\right) \\left( \\E[S(Y)] - \\Pr[Y\\in T] \\right) \\\\ &amp;\\ge \\left(\\E[H(X)] - \\varepsilon'\\right) \\left( \\E[S(Y)] - \\delta'\\right) \\tag{5} \\end{align*}\\] より, 式(4)(5)を組み合わせると . \\[\\begin{align*} \\E[H(X)]\\left(\\E[S(Y)]-\\varepsilon\\right) &gt; \\left(\\E[H(X)]- \\varepsilon'\\right)\\left(\\E[S(Y)] - \\delta'\\right) \\end{align*}\\] となります. 主張(3)を示すには$\\E[H(X)]\\le \\frac{\\delta}{2}$を示せばよいですが, これを背理法で示すため, $\\E[H(X)]\\ge \\frac{\\delta}{2}$を仮定します. ここで, $\\E[S(Y)]\\ge\\varepsilon$が成り立つことに注意してください ($\\E[S(Y)]&lt;\\varepsilon$ならば主張(3)は自明に成り立つ). | もし$\\E[S(Y)] = \\varepsilon$ならば, (5)に代入すると　 | . \\[\\begin{align*} \\left(\\E[H(X)] - \\frac{\\delta\\varepsilon}{8}\\right)\\left(\\E[S(Y)] - \\frac{\\varepsilon}{2}\\right) &lt; 0 \\end{align*}\\] となり, これは$\\E[H(X)]\\ge \\frac{\\delta}{2}$に矛盾します. | もし$\\E[S(Y)]&gt;\\varepsilon$ならば | . \\[\\begin{align*} \\frac{ \\left(\\E[H(X)] - \\varepsilon'\\right) \\left(\\E[S(Y)] - \\delta'\\right) }{\\E[H(X)]\\left(\\E[S(Y)]-\\varepsilon\\right)} &amp;= \\left(1-\\frac{\\delta\\varepsilon}{8\\E[H(X)]}\\right)\\left(1+\\frac{\\varepsilon/2}{\\E[S(Y)]-\\varepsilon}\\right) \\\\ &amp;\\ge \\left(1-\\frac{\\varepsilon}{4}\\right)\\left(1+\\frac{\\varepsilon}{2}\\right) \\\\ &amp;\\ge 1 \\end{align*}\\] となり, これは(5)に矛盾します. 以上より主張(3)が示されました. 最後に主張(3)を使って$(X,Y)$が$(\\delta,\\varepsilon)$-サンプラーであることを示します. 任意に関数$S\\colon \\supp(Y)\\to[0,1]$を固定し, $S$と$1-S$それぞれに対して(3)を適用すると . \\[\\begin{align*} &amp;\\Pr_{x\\sim X} \\left[ \\E[S(Y) \\vert X=x] - \\E[S(Y)] \\le -\\varepsilon \\right] \\le \\frac{\\delta}{2},\\\\ &amp;\\Pr_{x\\sim X} \\left[ -\\E[S(Y) \\vert X=x] + \\E[S(Y)] \\le -\\varepsilon \\right] \\le \\frac{\\delta}{2} \\end{align*}\\] となるため, union boundより主張を得ます. ",
     "url": "/nobunote/docs/tools/sampler/#%E4%BA%A4%E6%8F%9B%E8%A3%9C%E9%A1%8C",
     
     "relUrl": "/docs/tools/sampler/#交換補題"
-  },"73": {
+  },"78": {
     "doc": "サンプラー",
     "title": "直積サンプラー",
     "content": "平均時計算量の文脈では以下に定義する直積サンプラーと呼ばれるペア$(X,Y)$をよく考えます. 定義(直積サンプラー). パラメータ$k\\in\\Nat$と確率変数$X$に対し, 以下で与えられる確率変数$Y$を考える: 確率変数$X$の独立なコピーを$k$個作成し, $X_1,\\dots,X_k$とする. 一様ランダムに$i\\sim[k]$を選び, $Y=(X_1,\\dots,X_{i-1},X,X_{i+1},\\dots,X_k)$とする. このようにして得られる$(X,Y)$を$k$-直積サンプラーと呼ぶ. 直積サンプラーに付随する二部グラフでは, 左側の頂点集合$\\supp(X)$に対して$\\supp(Y)=\\supp(X)^k$となり, 頂点$x\\in\\supp(X)$と$(x_1,\\dots,x_k)\\in\\supp(Y)$の間には, $(x_1,\\dots,x_k)$の中に登場する$x$の回数だけ多重辺を引いて得られます (下図参照) . 補題(直積サンプラーのサンプラー性). 十分大きな定数$C&gt;0$が存在し, 任意のパラメータ$\\delta,\\varepsilon&gt;0$に対し, $k\\ge \\frac{C\\log(1/\\varepsilon)}{\\varepsilon^2\\delta^2}$ならば, $k$-直積サンプラーは$(\\delta,\\varepsilon)$-サンプラーである. 証明 まず$(Y,X)$が$\\qty(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8})$-サンプラーであることを示し, その後に交換補題を使って$(X,Y)$が$(\\delta,\\varepsilon)$-サンプラーであることを示します. 任意の関数$S\\colon \\supp(X)\\to[0,1]$を固定します. 式(1)を($X$と$Y$が入れ替わっていることに注意)示すために, $y\\sim Y$をランダムに選んだときの確率変数$\\E[S(X)|Y=y]$を考えます. $Y=(x_1,\\dots,x_k)$で条件つけたときの$X$の条件付き分布は(多重)集合$\\set{x_1,\\dots,x_k}$上の一様分布となります(実際これは$(X,Y)$の分布を計算すれば確かめられます). また, $Y=(x_1,\\dots,x_k)$をランダムに選んだとき, $x_1,\\dots,x_k$は$\\binset^n$上で独立一様ランダムに分布しているため, 従って . \\[\\begin{align*} \\E[S(X)|Y=(x_1,\\dots,x_k)]=\\frac{1}{k}\\sum_{i\\in[k]} S(x_i) \\end{align*}\\] は$k$個の独立な確率変数の和となります. Hoeffdingの不等式より, . \\[\\begin{align*} \\Pr_{x_1,\\dots,x_k}\\qty[ \\left|\\frac{1}{k}\\sum_{i\\in[k]}S(x_k) - \\E_X[S(X)] \\right| \\ge \\frac{\\delta\\varepsilon}{8} ] \\le 2\\exp\\qty(-\\frac{k\\delta^2\\varepsilon^2}{32}) \\le \\frac{\\varepsilon}{2} \\end{align*}\\] を得ます (最後の不等号では$k$に関する条件を利用). すなわち, $(Y,X)$は$\\qty(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8})$-サンプラーとなるので, 交換補題より$(X,Y)$は$(\\delta,\\varepsilon)$-サンプラーとなります. ",
     "url": "/nobunote/docs/tools/sampler/#%E7%9B%B4%E7%A9%8D%E3%82%B5%E3%83%B3%E3%83%97%E3%83%A9%E3%83%BC",
     
     "relUrl": "/docs/tools/sampler/#直積サンプラー"
-  },"74": {
+  },"79": {
     "doc": "行列のスペクトル",
     "title": "行列のスペクトル",
     "content": "行列の固有値や固有ベクトルに関するよく知られる事実を(証明なしで)紹介します. ",
     "url": "/nobunote/docs/tools/spectra/",
     
     "relUrl": "/docs/tools/spectra/"
-  },"75": {
+  },"80": {
     "doc": "行列のスペクトル",
     "title": "Courant-Fischerの定理 (ミニマックス定理)",
     "content": "対称行列$A \\in \\Real^{n\\times n}$の固有値を$\\lambda_1 \\ge \\dots \\ge \\lambda_n$とすると . \\[\\begin{align*} \\lambda_i = \\max_{S\\colon \\dim S=i} \\min_{x\\in S\\setminus\\{0\\}} \\frac{\\inprod{x,A x}}{\\inprod{x,x}}. \\end{align*}\\] ここで$S$は次元$i$の部分空間で動く. 例えば最大固有値は$\\lambda_1=\\max_{x\\ne 0}\\frac{\\inprod{x,Ax}}{\\inprod{x,x}}$, 最小固有値は$\\lambda_n = \\min_{x\\ne 0}\\frac{\\inprod{x,Ax}}{\\inprod{x,x}}$となります. また, 関数$x\\mapsto \\frac{\\inprod{x,Ax}}{\\inprod{x,x}}$を$A$に関するRayleigh商といいます. 対称行列$A\\in\\Real^{n\\times n}$の最大固有値$\\lambda_1$に対応する固有ベクトルを$x_1$とする. このとき, 第二固有値$\\lambda_2$は . \\[\\begin{align*} \\lambda_2 = \\max_{x \\colon x\\bot x_1} \\frac{\\inprod{x,Ax}}{\\inprod{x,x}}. \\end{align*}\\] ここで$x$は固有ベクトル$x_1$に直交するベクトル全てを動く. 注釈 (一般の内積に対するCourant-Fischerの定理) . Courant-Fischerの定理の定理は通常の$\\Real^n$の内積 . \\[\\begin{align*} \\inprod{x,y} = \\sum_{i\\in[n]} x(i)y(i) \\end{align*}\\] を考えていましたが, もう少し一般に, 全ての成分が正であるベクトル$\\pi\\in \\Real_{&gt;0}^n$に対し . \\[\\begin{align*} \\inprod{x,y}_\\pi = \\sum_{i\\in[n]} \\pi(i)x(i)y(i) \\end{align*}\\] を考えてもCourant-Fischerの定理やその系が成り立ちます. この一般化は可逆性を持つマルコフ連鎖の固有値の議論を行う際に必要になります (本当は正定値行列$B$に対して$\\inprod{x,y}_B = \\inprod{x,By}$という内積でも成り立つのですが, ここまでの一般化はあまり使うことがないので割愛しています). ",
     "url": "/nobunote/docs/tools/spectra/#courant-fischer%E3%81%AE%E5%AE%9A%E7%90%86-%E3%83%9F%E3%83%8B%E3%83%9E%E3%83%83%E3%82%AF%E3%82%B9%E5%AE%9A%E7%90%86",
     
     "relUrl": "/docs/tools/spectra/#courant-fischerの定理-ミニマックス定理"
-  },"76": {
+  },"81": {
     "doc": "統計距離",
     "title": "統計距離",
     "content": "統計距離(または全変動距離)は確率分布間の距離の一つです. 有限集合$V$上に値をとる二つの分布$\\mu,\\nu\\in[0,1]^V$の統計距離(statistical distance)を . \\[\\begin{align*} \\dtv(\\mu,\\nu) = \\frac{1}{2} \\sum_{v \\in V} |\\mu(v) - \\nu(v)| \\end{align*}\\] で定める. 同様に, 二つの確率変数$X,Y$の間の統計距離$\\dtv(X,Y)$を, それらの確率変数の分布の統計距離として定義します. ",
     "url": "/nobunote/docs/tools/statistical_distance/",
     
     "relUrl": "/docs/tools/statistical_distance/"
-  },"77": {
+  },"82": {
     "doc": "統計距離",
     "title": "性質",
     "content": "台集合$V$上の二つの確率変数$X,Y$および$V$上の任意の事象$\\calE\\subseteq V$に対して . \\[\\begin{align*} \\abs{\\Pr[X\\in\\calE] - \\Pr[Y\\in\\calE]} \\le \\dtv(X,Y). \\end{align*}\\] より一般に, 任意の関数$f\\colon V \\to [0,1]$に対して . \\[\\begin{align*} \\abs{\\E[f(X)] - \\E[f(Y)]} \\le \\varepsilon. \\end{align*}\\] $V$上の二つの分布$\\mu,\\nu$のカップリング(coupling) $\\pi$とは, $V^2$上の分布であって, それぞれの周辺分布が$\\mu,\\nu$であるようなものです. すなわち, $\\pi\\in [0,1]^{V^2}$が . \\[\\begin{align*} &amp;{}^{\\forall} u\\in V,\\, \\sum_{v\\in V} \\pi(u,v) = \\mu(u), \\\\ &amp;{}^{\\forall} v\\in V,\\, \\sum_{u\\in V} \\pi(u,v) = \\nu(v) \\end{align*}\\] を満たすとき, $\\pi$は$\\mu$と$\\nu$のカップリングです. 命題(カップリング不等式). 二つの分布$\\mu,\\nu$の統計距離は . \\[\\begin{align*} \\dtv(\\mu,\\nu) = \\inf_{\\pi} \\Pr_{(X,Y)\\sim \\pi}[X\\ne Y] \\end{align*}\\] で表される. ここで$\\pi$は$\\mu$と$\\nu$のカップリングを動く. ",

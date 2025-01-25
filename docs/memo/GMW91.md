@@ -1,5 +1,5 @@
 ---
-title:  Zero-Knowledge Proofs and the Complexity of Interactive Proof Systems
+title:  GMW91
 parent: メモ
 nav_order: 1
 ---
@@ -8,7 +8,7 @@ nav_order: 1
 
 ## Info
 - authors: Oded Goldreich, Silvio Micali, Avi Wigderson
-- publication: [JACM91](https://dl.acm.org/doi/abs/10.1145/116825.116852)
+- publication: [JACM(1991)](https://dl.acm.org/doi/abs/10.1145/116825.116852)
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item">全体の要約</summary>
   ゼロ知識証明系とは, ある命題が真であることを証明する際に, その証明それ自体以外の情報を一切漏らさない証明方法です. 論文の結果は以下の通り:
