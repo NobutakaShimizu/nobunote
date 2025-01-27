@@ -62,3 +62,27 @@ $$
 すなわち, 一様な直積定理により, $\mathrm{Code}(f)$からのハミング距離が$1-\varepsilon$であるような文字列$C$へのオラクルアクセスが与えられたとき, 文字列$f$からのハミング距離が高々$\delta$であるような文字列$C'$へのオラクルアクセスを提供するアルゴリズム$A$が存在することが保証される.
 このように, ノイズが付与された符号語へのオラクルアクセスを, 元のメッセージに非常に近い文字列へのオラクルアクセスに変換するタスクを**近似局所復号 (approximate local list-decoding)**と呼ぶ.
 
+## アルゴリズムの記述
+
+一様な直積定理のアルゴリズム$A$は以下のように記述される.
+まず, $\binset^n$内の$k/2$個の元からなる集合$S\subseteq\binset^n$と
+$v\in\binset^{k/2}$を固定して次の回路$C_{S,v}$を考える:
+
+{: .corollary-title }
+> **回路$C_{S,v}$**
+>
+> 入力: $x\in\binset^n$
+> 1. 入力$x\in\binset^n$に対して以下を$100\cdot\log(1/\delta)/\varepsilon$回繰り返す:
+>    1. 集合$S\cup\set{x}$を含む集合$T=\set{x_1,\dots,x_k}\subseteq\binset^n$ をランダムに選ぶ.
+>    2. 回路$C$を使って$w=C(x_1,\dots,x_k)\in\binset^k$を計算し, $w\restr{S} = v$ならば$w\restr{x}$を出力して終了する.
+> 2. ステップ1で一度も成功しなかった場合, $\bot$を出力する.
+
+直積定理のアルゴリズム$A$は, 以下のように記述される.
+
+{: .corollary-title }
+> **アルゴリズム$A$**
+>
+> 入力: $C\colon\binset^{nk}\to\binset^k$
+> 1. 一様ランダムに$k$個の入力$T=\set{x_1,\dots,x_k}\subseteq\binset^n$を選ぶ. さらに$S\subseteq T$を$T$の一様ランダムな部分集合であって$\abs{S}=k/2$となるよう選ぶ.
+> 2. $w=C(x_1,\dots,x_k)$に対して$v=w\restr{S}$として, $C_{S,v}$を出力する.
+

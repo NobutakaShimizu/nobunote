@@ -158,7 +158,7 @@ Chernoffバウンド (Chernoff bound) はHoeffdingの不等式と同様に, 独�
 
 <div id="chernoffbound" markdown="1">
 {: .lemma-title }
-> **補題 (Chernoff限界)**
+> **補題 (Chernoffバウンド)**
 > $X_1,\dots,X_n$を独立な確率変数, $S=\sum_{i\in[n]}X_i$とし, 任意の$i\in[n]$に対して$0\le X_i\le 1$とする.
 > このとき, 任意の$c \ge 0$に対して
 >  
