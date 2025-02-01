@@ -42,3 +42,35 @@ NP困難性などの最悪時困難性では困難な入力の存在性を議論
 > $$
 >
 > を意味する. 引数$n$は常に入力長なので, しばし省略して**$\gamma$-困難**と表す.
+
+## 相関に基づく定義
+
+平均時困難性の定義は, ある関数$f$と関数族$\calA$に対して, 任意の$A\in\calA$に対して$f$と$A$の出力の相関が小さいことを要求しています.
+相関に基づく定義では, Boolean関数$f$は$x\mapsto (-1)^{f(x)}$を考えることによって, $\pmone$値をとる関数として扱います.
+
+{: .definition-title }
+> **定義 (アルゴリズムの相関)**
+>
+> 二つの関数$f,g\colon\binset^n\to\pmone$の**相関(correlation)**を
+>
+>$$
+  \begin{align*}
+    \E_{x\sim\binset^n}[f(x)\cdot g(x)] = \Pr[f(x)=g(x)] - \Pr[f(x)\neq g(x)]
+  \end{align*}
+>$$
+>
+> で定義する. また, 関数族$\calA=\set{ A\colon \binset^n\to\pmone }$に対する$f$の相関を
+> 
+> $$
+  \begin{align*}
+    \min_{A\in\calA} \E_{x\sim\binset^n}[f(x)\cdot A(x)]
+  \end{align*}
+> $$
+>
+> で定める.
+
+関数$f$が$\calA$に対して$\delta$-困難であることと, $f$の$\calA$との相関が$1-2\delta$以下であることは同値です.
+従って, 困難性が強いことと相関が小さいことが同じ意味を持ちます.
+
+
+

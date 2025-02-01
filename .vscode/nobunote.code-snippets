@@ -36,7 +36,7 @@
 	"link":{
 		"prefix": "link",
 		"body":[
-			"[${1:text}]({{site.baseurl}}/docs/$2)"
+			"{{site.baseurl}}/docs/"
 		]
 	},
 	"ref":{
