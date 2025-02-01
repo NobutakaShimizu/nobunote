@@ -177,7 +177,8 @@ YaoのXOR補題には様々な証明方法が知られています.
 
 ## Levinによる証明
 
-$k$に関する帰納法で証明します.
+Levinによる直接的な証明を紹介します [[Lev87]](#Lev87).
+この証明は$k$に関する帰納法に基づきます.
 
 {: .lemma-title }
 > **補題 (informal)**
@@ -404,6 +405,9 @@ $$
 
 <div id="GNW11" markdown="1">
 [[GNW11]](http://127.0.0.1:4000/nobunote/docs/average_case_complexity/Yao_XOR/) O. Goldreich, N. Nisan, A. Wigderson. On Yao's XOR-Lemma, Studies in Complexity and Cryptography. Miscellanea on the Interplay between Randomness and Computation, Springer (2011)
+</div>
+<div id="Lev87" markdown="1">
+[[Lev87]](https://link.springer.com/article/10.1007/BF02579323) L. A. Levin, One-way functions and pseudorandom generators, Combinatorica (1987).
 </div>
 <div id="HVV06" markdown="1">
 [[HVV06]](https://epubs.siam.org/doi/10.1137/S0097539705447281) A. Healy, S. Vadhan, E. Viola, Using Nondeterminism to Amplify Hardness, SICOMP (2006).
