@@ -246,7 +246,27 @@ XOR補題の証明は上の補題を繰り返し適用することによって�
 
 ハードコア補題に基づくXOR補題の証明は, Nisan-Wigderson Generatorに基づく脱乱択化されたXOR補題など様々な問題設定に拡張できるという利点があります [[HVV06]](#HVV06).
 この証明は[関数の擬似ランダムネス]({{site.baseurl}}/docs/average_case_complexity/function_pseudorandomness)の視点から咀嚼すると非常に理解しやすいです.
+議論の分かり易さのため, 二つの確率変数$X,Y$に対し, それらの[統計距離]({{site.baseurl}}/docs/tools/statistical_distance)が小さいとき,
 
+$$
+  \begin{align*}
+    X \approx_{\mathrm{tv}} Y
+  \end{align*}
+$$
+
+と書き, さらに$X$と$Y$が小さい回路にとって識別できないとき,
+
+$$
+  \begin{align*}
+    X \approx_c Y
+  \end{align*}
+$$
+
+と記すことにします.
+
+<details markdown="1" style="background-color: #eee;">
+<summary style="display: list-item">証明の概要</summary>
+  
 [ハードコア補題]({{site.baseurl}}/docs/average_case_complexity/hardcore)は, 関数$f\colon\binset^n\to\binset$が$\SIZE(s)$に対して$\delta$-困難であるとき, **ハードコア集合**と呼ばれるある集合 $H \subseteq \binset^n$が存在して, $\abs{H}\gtrsim \delta 2^n$かつ$f$の$H$への制限$f\restr{H}\colon H\to\binset$が, 適当な$s'\lesssim s$を用いて$\SIZE(s')$に対し$(1/2-\varepsilon)$-困難であることを主張する定理です.
 [擬似ランダムネスからの理解]({{site.baseurl}}/docs/average_case_complexity/hardcore#ハードコア補題)で述べたように, ハードコア集合$H$に対し, ランダム関数
 
@@ -259,7 +279,7 @@ $$
   \end{align*}
 $$
 
-と定義すると, $x\sim \binset^n$に対し, 二つの分布$(x,f(x))$と$(x,f_H(x))$が識別でません.
+と定義すると, $x\sim \binset^n$に対し, $(x,f(x))\approx_c (x,f_H(x))$が成り立ちます.
 では, 式(\ref{def:xor})で定まる関数$f^{\oplus k}$および$f_H^{\oplus k}$を考えてみましょう.
 後者の関数に対し$k$-wise XORを適用して定まる関数
 
@@ -282,27 +302,101 @@ $$
   \end{align*}
 $$
 
-となり, 特にランダムビット$\Ber(1/2)$との統計距離は$2^{-\Omega(k\delta)} \ll \varepsilon$となります (ここで$k$の条件$k\gg\log(1/\varepsilon)/\delta$を用いた). 特にこれは
+となり, 特にランダムビット$\Ber(1/2)$との統計距離は$2^{-\Omega(k\delta)} $となるため, $k\gg\log(1/\varepsilon)/\delta$ならば
 
 $$
   \begin{align*}
-    (x_1,\dots,x_k,f_H^{\oplus k}(x_1,\dots,x_k)) \approx_{\varepsilon} (x_1,\dots,x_k,\Ber(1/2))
+    (x_1,\dots,x_k,f_H^{\oplus k}(x_1,\dots,x_k)) \approx_{\mathrm{tv}} (x_1,\dots,x_k,\Ber(1/2)) \tag{4} \label{eq:f_H xor tv}
   \end{align*}
 $$
 
-を意味します.
+が成り立ちます.
 
 さて, XOR補題の対偶を示すために, $f^{\oplus x}$が$(1/2-\varepsilon)$-困難でないと仮定しましょう.
-このとき, [平均時困難性と擬似ランダム性の等価性]({{site.baseurl}}/docs/average_case_complexity/function_pseudorandomness#関数の平均時困難性と擬似ランダム性)により, 二つの分布
+このとき, [平均時困難性と擬似ランダム性の等価性]({{site.baseurl}}/docs/average_case_complexity/function_pseudorandomness#関数の平均時困難性と擬似ランダム性)および式(\ref{eq:f_H xor tv})により,
 
 $$
   \begin{align*}
-    (x_1,\dots,x_k,f^{\oplus k}(x_1,\dots,x_k)) \quad \text{and} \quad (x_1,\dots,x_k,\Ber(1/2))
+    (x_1,\dots,x_k,f^{\oplus k}(x_1,\dots,x_k)) \not\approx_c (x_1,\dots,x_k,\Ber(1/2)) \approx_{\mathrm{tv}} (x_1,\dots,x_k,f_H^{\oplus k}(x_1,\dots,x_k))
   \end{align*}
 $$
 
-を$\Omega(\varepsilon)$-識別するサイズ$\approx s'$の回路が存在します.
+を満たし, 特にこれは
 
+
+$$
+  \begin{align*}
+    (x_1,\dots,x_k,f^{\oplus k}(x_1,\dots,x_k))\quad\text{and}\quad (x_1,\dots,x_k,f_H^{\oplus k}(x_1,\dots,x_k)) \tag{5} \label{eq:f f_H xor distinguish}
+  \end{align*}
+$$
+
+が成り立つことを意味します.
+ここで, 各$i=0,1,\dots,k$に対して$\binset^{kn+1}$上の分布$H_i$を
+
+$$
+  \begin{align*}
+    H_i = (x_1,\dots,x_k,f(x_1)\oplus \dots \oplus f(x_{i})\oplus f_H(x_{i+1}) \oplus \dots \oplus f_H(x_k))
+  \end{align*}
+$$
+
+と定義しましょう. 特に(\ref{eq:f f_H xor distinguish})より, $H_0$と$H_k$は区別可能であることがわかります.
+すなわち, ある小さい回路$C\colon\binset^{kn+1}\to\binset$が存在して
+
+$$
+  \begin{align*}
+    \Omega(\varepsilon) &\le \Pr_{z\sim H_0}[C(z)=1] - \Pr_{z\sim H_k}[C(z)=1] \\
+    &\le \sum_{i=0}^{k} \Pr_{z\sim H_i}[C(z)=1] - \Pr_{z\sim H_{i+1}}[C(z)=1]
+  \end{align*}
+$$
+
+となるため, ある$i\in\set{0,1,\dots,k-1}$が存在して
+
+$$
+  \begin{align*}
+    \Pr_{z\sim H_i,f_H}[C(z)=1] - \Pr_{z\sim H_{i+1},f_H}[C(z)=1] \ge \Omega(\varepsilon/k)
+  \end{align*}
+$$
+
+が成り立ちます. なお, 上記の確率には入力$z$の他に, $f_H$のランダムネスも考えます.
+ここで, 分布$H_i$と$H_{i+1}$の中身は一つの成分だけ異なっています:
+
+$$
+  \begin{align*}
+    &(x_1,\dots,x_k,f(x_1)\oplus \dots \oplus f(x_{i})\oplus \textcolor{red}{f_H(x_{i+1})} \oplus \dots \oplus f_H(x_k)) \\
+    &(x_1,\dots,x_k,f(x_1)\oplus \dots \oplus f(x_{i})\oplus \textcolor{red}{f(x_{i+1})} \oplus \dots \oplus f_H(x_k)).
+  \end{align*}
+$$
+
+そこで, $x_{i+1}$以外の全ての$x_j$と$f(x_j)$ ($j\ne i+1$), および$f_H$のランダムネスを適当に固定して回路$C$に与えてを走らせると
+$(x_{i+1},f(x_{i+1})) \not\approx_c (x_{i+1},f_H(x_{i+1}))$となります. $x_{i+1}$を$x$に書き換えると, ある小さい回路$C'$が存在して
+
+$$
+  \begin{align*}
+    \Pr_{x\sim \binset^n}[C'(x,f(x))=1] - \Pr_{x\sim \binset^n}[C'(x,f_H(x))=1] \ge \Omega(\varepsilon/k)
+  \end{align*}
+$$
+
+が成り立ちます.
+この式の左辺を考えます.
+全ての$x\not\in H$に対して$f(x)=f_H(x)$なので左辺に寄与せず, $x\in H$のときは$f_H(x)=\Ber(1/2)$なので,
+
+$$
+  \begin{align*}
+    \Pr_{x\sim H}[C'(x,f(x))=1] - \Pr_{x\sim H}[C'(x,\Ber(1/2))=1] \ge \Omega(\varepsilon/k)
+  \end{align*}
+$$
+
+となります. ここで[Yaoのnext-bit predictor]({{site.baseurl}}/docs/average_case_complexity/function_pseudorandomness#prop:yao-next-bit-predictor)より, $H$上で$f$をある程度のアドバンテージで計算する小さい回路$C''$, すなわち
+
+$$
+  \begin{align*}
+    \Pr_{x\sim H}[C''(x)=f(x)] \ge \frac{1}{2}+\Omega(\varepsilon/k)
+  \end{align*}
+$$
+
+が存在します. これはハードコア補題に反するため, $f^{\oplus k}$が$(1/2-\varepsilon)$-困難であることが示されました.
+
+</details>
 
 ## 直積定理とGoldreich-Levinの定理に基づく証明
 

@@ -111,6 +111,7 @@ $$
 
 逆方向の主張(の対偶)はYaoのnext-bit predictorという結果を用いて証明されます.
 
+<div id="prop:yao-next-bit-predictor">
 {: .proposition-title }
 > **命題 (Yaoのnext-bit predictor)**
 >
@@ -121,6 +122,7 @@ $$
     \Pr_{x\sim\binset^n}[C'(x)=f(x)] \ge 1/2 + \varepsilon.
   \end{align*}
 > $$
+</div>
 
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item">証明</summary>
