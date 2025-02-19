@@ -454,145 +454,145 @@
     
     "relUrl": "/docs/average_case_complexity/hardcore/#ステップ2-ハードコア測度からハードコア集合へ"
   },"65": {
-    "doc": "Home",
-    "title": "Home",
-    "content": "理論計算機科学, 特に平均時計算量(average-case complexity)に関する様々な手法やアルゴリズム, そしてその基となる道具について出来るだけ分かり易く解説していきます. ",
-    "url": "/nobunote/",
-    
-    "relUrl": "/"
-  },"66": {
-    "doc": "よく使う道具",
-    "title": "よく使う道具",
-    "content": "ここでは様々な場面でよく出てくる道具をまとめて紹介していきます. ",
-    "url": "/nobunote/docs/tools/",
-    
-    "relUrl": "/docs/tools/"
-  },"67": {
     "doc": "Learning with Error",
     "title": "Learning with Error (LWE) とは?",
     "content": "Learning with Error (LWE) とはノイズが乗った線形方程式を解けという非常にシンプルな問題です. ノイズが乗っていない場合はガウスの消去法などを用いて簡単に解けますが, ノイズが乗った設定では適切なパラメータ下では . | 情報理論的には最尤推定 (全探索) で解ける. | しかし, 多項式時間で解けるかどうかは不明 | . という状況になっています. そして, これが情報論的なtractabilityと計算量的なtractabilityの間の非自明なギャップであろうと広く信じられています. LWEの計算量的困難性を仮定すると学習理論や暗号などの分野において様々な計算量的下界が成り立ち, 以下に挙げる様々な利点から次世代の暗号技術(特に耐量子暗号)の核になることが期待されている重要な問題です: . | 擬似乱数生成器[Blum, Furst, Kearns, Lipton(CRYPTO1993)], [Goldreich, Krawczyk, Luby(SICOMP1993)]や公開鍵暗号方式[Alekhnovich(FOCS2003)]など様々な暗号学的プリミティブを設計できる. | 格子上の問題(最短ベクトル問題など)の最悪時困難性を仮定するとLWEの平均時困難性が成り立つという結果が知られている [Regev(JACM2009)]. | 上記の格子上の問題を解く効率的な量子アルゴリズムの存在性は長年未解決. | . 詳細はRegevによるサーベイ論文(2010)を参照. ",
     "url": "/nobunote/docs/learning_with_error/#learning-with-error-lwe-%E3%81%A8%E3%81%AF",
     
     "relUrl": "/docs/learning_with_error/#learning-with-error-lwe-とは"
-  },"68": {
+  },"66": {
     "doc": "Learning with Error",
     "title": "問題の定義",
     "content": "行列$A \\in \\mathbb{F}^{m\\times d}$とベクトル $b = As \\in \\mathbb{F}^m$ (ただし $s \\in \\mathbb{F}^d$は秘密のベクトル) が入力として与えられたときに $s $ を復元することはできるでしょうか? この問題は単に連立一時方程式 . \\[\\begin{align} As = b \\end{align}\\] を解くだけですので, ガウスの消去法などを用いて多項式時間で解けます. では, 与えられるベクトル$b$が小さいノイズを含む場合はどうでしょうか? 具体的には, 入力として与えられるベクトル$b$がノイズベクトル$e \\in \\mathbb{F}^m$に対して$b=As + e$を満たす場合を考えます. ここで$e$はランダムなベクトルであり, 各成分が独立に$\\mathbb{F}$上の同じ分布に従って生成されるものとします. このような設定は線形関数の学習を考えると(有限体であることを除けば)非常にありふれた自然な設定であろうことがわかります. つまり, 様々な評価点とその点におけるラベルが与えられたときに, 未知の線形関数 $ \\mathbb{F}^d \\ni x \\mapsto s^\\top x $ を学習する際, ラベルにノイズが乗る設定を考えると上記のような問題が自然に現れます. Learning with Error (以下, LWE問題) は平均時の問題, すなわち入力が何かしらの分布に従って生成される問題であり, ここでは秘密のベクトル $s \\in \\mathbb{F}^d$ と係数行列 $A \\in \\mathbb{F}^{m\\times d}$ が一様ランダムに選ばれたとき, 行列$A$と$b=As+e$が入力として与えられます. $\\mathbb{F}$を有限体, $m,d\\in \\mathbb{N}$をパラメータ, そして$\\chi$を$\\mathbb{F}$上の分布とする. 一様ランダムな$A\\sim \\mathbb{F}^{m\\times d}$, $s\\sim \\mathbb{F}^d$, およびノイズベクトル$e \\sim \\chi^m$に対し, 三つ組$(A,As+e,s)$の周辺分布を$\\mathsf{LWE}_{\\mathbb{F},m,d,\\chi}$で表す. ここで, $\\chi^m$は$\\mathbb{F}^m$上の分布であり, 各成分が$\\chi$から独立に選ばれたベクトルの分布を表す. パラメータ$\\mathbb{F},m,d,\\chi$が明らかな場合は単に$\\mathsf{LWE}$で表す. パラメータ$m$をサンプル数, $d$を次元, $\\chi^m$をノイズ分布, $s$を秘密のベクトル, $b$をラベルと呼ぶ. 代表的なノイズ分布としては以下の二つが挙げられます: . | ランダムスパースベクトル: 体として$\\mathbb{F}=\\mathbb{F}_2$を考え, $\\chi$はパラメータ$\\theta\\in[0,1]$に対して$\\Pr[\\chi=1]=\\theta$を満たすもの. パラメータ$\\theta$が小さければ, ノイズベクトル$e\\sim\\chi^m$は非ゼロ要素数の個数がおおよそ$m\\theta$となる. | 離散ガウス分布: 位数が素数$p$であるような有限体$\\mathbb{F}_p$に対し$\\chi$は$\\mathbb{F}_p$上の分布であり, パラメータ$\\sigma$に対し, $\\chi$は$\\Pr[\\chi = x] \\propto \\exp\\left(-\\frac{x^2}{2\\sigma^2}\\right)$で定まる分布を考える (ここの右辺では$x\\in{0,1,\\dots,p-1}$を非負整数として扱って確率を計算する). | . また, 特殊ケース$\\mathbb{F} = \\mathbb{F}_2$におけるLWE問題は特にLPN(Learning Parity with Noise)問題と呼ばれます. LWE問題では$(A,b,s) \\sim \\mathsf{LWE}$に対し, $(A,b)$の情報から$s$を復元せよという問題を考えます. 実際には様々な問題設定があり, 代表的なものとして探索問題 (search), 判定問題 (decision)などが考えられています. ",
     "url": "/nobunote/docs/learning_with_error/#%E5%95%8F%E9%A1%8C%E3%81%AE%E5%AE%9A%E7%BE%A9",
     
     "relUrl": "/docs/learning_with_error/#問題の定義"
-  },"69": {
+  },"67": {
     "doc": "Learning with Error",
     "title": "探索問題",
     "content": "探索問題とは, その名の通り, 秘密のベクトル$s$を復元せよという問題です. 分布$\\mathsf{LWE}_{\\mathbb{F},m,d,\\chi}$に従って選ばれた$(A,b,s)$に対し, $(A,b)$を入力として受け取って$s$を出力せよという問題を探索LWE問題という. アルゴリズム$\\mathcal{A}$は . \\[\\begin{align*} \\Pr_{(A,b,s) \\sim \\mathsf{LWE}} \\left[ \\mathcal{A}(A,b) = s \\right] \\ge \\gamma \\end{align*}\\] を満たすとき, 探索LWE問題を成功確率$\\gamma$で解くという. サンプル数$m$が小さいと, 与えられた$(A,b)$に対して $As \\approx b$を満たす$s$は複数存在しえるため, 秘密のベクトル$s$を復元することはできません. これを情報理論的に解けないと言うことがあります. 一方で$m$が十分大きいとき, 全てのありうる$s$を試して$As\\approx b$を見れば, $(A,b,s) \\sim \\mathsf{LWE}$に関して非常に高確率で秘密のベクトル$s$を復元できます. これを, サンプル数$m$が十分大きいときは情報理論的に解けるという言い方をします. もちろん, 情報理論的に解けるからといってそれが効率的に解けるかどうかは分かりません. ",
     "url": "/nobunote/docs/learning_with_error/#%E6%8E%A2%E7%B4%A2%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/learning_with_error/#探索問題"
-  },"70": {
+  },"68": {
     "doc": "Learning with Error",
     "title": "判定問題",
     "content": "アルゴリズムは$(A,b) \\in \\mathbb{F}^{m\\times d}\\times \\mathbb{F}^m$を与えられます. ただし入力$(A,b)$は以下の二つどちらかの分布に従って生成されます: . | $(A,b,s) \\sim \\mathsf{LWE}$に対して$(A,b)$の周辺分布. | $\\mathbb{F}^{m\\times d}\\times \\mathbb{F}^m$上の一様分布. | . 判定問題では, 入力が上記どちらの分布に従って生成されたかを判別する問題です. 出力値が0または1のアルゴリズム $\\mathcal{A}$ は . \\[\\begin{align*} \\left| \\Pr_{(A,b,s) \\sim \\mathsf{LWE}} \\left[ \\mathcal{A}(A,b)=1 \\right] - \\Pr_{\\substack{A\\sim \\mathbb{F}^{m\\times d} \\\\ b \\sim \\mathbb{F}^m}} \\left[ \\mathcal{A}(A,b) = 1 \\right] \\right| \\ge \\gamma \\end{align*}\\] を満たすとき, 判定LWE問題をアドバンテージ$\\gamma$で解くという. サンプル数$m$が十分大きいとき, 一様ランダムな$A\\sim \\mathbb{F}^{m\\times d},b\\sim \\mathbb{F}^m$に対して$As\\approx b$を満たす$s\\in \\mathbb{F}^d$は存在しない. 一方で$(A,b)$が$\\mathsf{LWE}$の分布から生成された場合はそのような$s$は必ず存在する. 従って与えられた$(A,b)$が$\\mathsf{LWE}$から来たのか, 一様分布から来たのかは秘密のベクトルの存在性を解けば判定できることになる. このような背景で, $\\mathsf{LWE}$と一様分布の識別を判定問題と呼んでいる. ",
     "url": "/nobunote/docs/learning_with_error/#%E5%88%A4%E5%AE%9A%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/learning_with_error/#判定問題"
-  },"71": {
+  },"69": {
     "doc": "Learning with Error",
     "title": "学習としてのLWE問題",
     "content": "LWE問題はなぜLearningなのでしょうか? 実は, LWE問題は線形関数をノイズ下で学習するタスクとみなすこともできます. 大雑把に言えば学習とは, 何かしら未知の関数 $f\\colon \\mathcal{X} \\to \\mathcal{L}$ があって, サンプルと呼ばれる幾つかの点の集合$(x_1,f(x_1)),\\dots,(x_m,f(x_m))$が与えられたとき, この関数$f$を模倣する関数$\\tilde{f}$を構成せよというタスクを意味し, このタスクを行うアルゴリズムを学習アルゴリズムといいます. 基本的には任意の関数を扱うことはせず, $f$は何かしらの性質(例えば線形性)を持つことを仮定します. ここでは学習の概念については深掘りせず, ひとまずLWE問題を学習タスクとして捉えられることを説明します. LWE問題では未知のベクトル$s\\in \\mathbb{F}^n$に対して, 一様ランダムな$A \\sim \\mathbb{F}^{m\\times n}$とノイズベクトル$e \\in \\mathbb{F}^m$に対して$b=As+e$および$A$が入力として与えられ, $s$を求めることを目標としていました. そこで$a_1,\\dots,a_m$を$A$の行ベクトルとすると, この問題は未知の線形関数$f\\colon x \\mapsto s^\\top x$のノイズ付きのサンプル$(a_1,f(a_1)+e_1),\\dots,(a_m,f(a_m)+e_m)$が与えられたときに, 未知の線形関数$f$を復元せよという問題と捉えることができます. ",
     "url": "/nobunote/docs/learning_with_error/#%E5%AD%A6%E7%BF%92%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AElwe%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/learning_with_error/#学習としてのlwe問題"
-  },"72": {
+  },"70": {
     "doc": "Learning with Error",
     "title": "Learning with Error",
     "content": " ",
     "url": "/nobunote/docs/learning_with_error/",
     
     "relUrl": "/docs/learning_with_error/"
-  },"73": {
+  },"71": {
     "doc": "誤り訂正符号",
     "title": "誤り訂正符号とは",
     "content": "誤り訂正符号とは, 文字列に冗長性を持たせることによって, 通信路上で生じるノイズに対する頑健性を高める手法のことである. データ通信の多くの場面(QRコード, 地上波デジタル放送, データストレージなど)で利用されている実用上重要な技術であるのみならず, 計算量理論の文脈でも重要な定理の証明の道具として使われることが多い. 近年では量子計算に付随する誤り訂正符号(量子誤り訂正符号)の研究も盛んである. このページでは線形符号と呼ばれる誤り訂正符号の特殊ケースのみを扱うので, 線形符号を指して単に符号と呼ぶことにする. 誤り訂正符号は組合せ論などの純粋数学の文脈においても球の最密充填の決定に関連する問題として研究されている. このページでは符号の組合せ論的な性質についてはそれほど深掘りせず, 代わりに符号の計算量的な性質に焦点を当てる. 私は便宜上これを計算量的符号理論と呼ぶことしている. ",
     "url": "/nobunote/docs/error-correcting_code/#%E8%AA%A4%E3%82%8A%E8%A8%82%E6%AD%A3%E7%AC%A6%E5%8F%B7%E3%81%A8%E3%81%AF",
     
     "relUrl": "/docs/error-correcting_code/#誤り訂正符号とは"
-  },"74": {
+  },"72": {
     "doc": "誤り訂正符号",
     "title": "定義と基本的な概念",
     "content": "定義 (符号). 有限体$\\F_q$とパラメート$n\\in \\Nat$に対し, 部分空間$\\calC\\subseteq \\F_q^n$を符号 (code)もしくは線形符号 (linear code)と呼ぶ. 符号$\\calC$の元を符号語 (codeword)と呼び, 符号語の個数を符号長 (code length)と呼ぶ. 符号の基本的な概念として, 符号の距離がある. 空間$\\F_q^n$に対し, $n$で正規化されたハミング距離を導入する. すなわち, $x,y\\in\\F_q^n$の間の距離$\\dist(x,y)$は . \\[\\begin{align*} \\dist(x,y) = \\frac{1}{n}\\sum_{i=1}^n \\indicator_{x_i\\ne y_i} \\end{align*}\\] で与えられる. 定義 (距離,レート). 符号$\\calC\\subseteq \\F_q^n$の距離 (distance)は . \\[\\begin{align*} \\delta = \\min_{x\\ne y\\in \\calC} \\dist(x,y) \\end{align*}\\] で定義される. 次元$d$の符号$\\calC\\subseteq\\F_q^n$のレート (rate)は$r = d/n$で定義される. ここでは線形符号に限定しているが, 一般の符号に対しても同様に定義できる. この際, レートは$\\log_q|\\calC|/n$として定義される. 距離は符号語間がどれだけ離れているかを表しているため, 直感的には距離が大きい符号は全体空間$\\F_q^n$内に符号語が均等に分散しているような符号である. 一方でレートが大きいとき, 符号語の個数が大きいことを意味する. 従ってレートと距離の間にはトレードオフがあり, その最適なトレードオフを求めることが符号設計の重要な課題である. これらのトレードオフには様々な限界が知られている. 誤り訂正符号を実際に用いる際は符号化と復号化という手続きが肝要である. 符号化は情報を符号語に変換する手続きである. ここでは符号は単に線形部分空間として定義しているため, その基底を与えると必然的に定まるわけだが, 符号化の手続きを明示的に与えることによって符号を定めることもできる. この符号化の手続きを与える写像を符号化関数 (encoding function)と呼ぶ. ",
     "url": "/nobunote/docs/error-correcting_code/#%E5%AE%9A%E7%BE%A9%E3%81%A8%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A6%82%E5%BF%B5",
     
     "relUrl": "/docs/error-correcting_code/#定義と基本的な概念"
-  },"75": {
+  },"73": {
     "doc": "誤り訂正符号",
     "title": "誤り訂正符号",
     "content": " ",
     "url": "/nobunote/docs/error-correcting_code/",
     
     "relUrl": "/docs/error-correcting_code/"
-  },"76": {
+  },"74": {
+    "doc": "よく使う道具",
+    "title": "よく使う道具",
+    "content": "ここでは様々な場面でよく出てくる道具をまとめて紹介していきます. ",
+    "url": "/nobunote/docs/tools/",
+    
+    "relUrl": "/docs/tools/"
+  },"75": {
     "doc": "メモ",
     "title": "読んだ論文などのメモ",
     "content": " ",
     "url": "/nobunote/docs/memo/#%E8%AA%AD%E3%82%93%E3%81%A0%E8%AB%96%E6%96%87%E3%81%AA%E3%81%A9%E3%81%AE%E3%83%A1%E3%83%A2",
     
     "relUrl": "/docs/memo/#読んだ論文などのメモ"
-  },"77": {
+  },"76": {
     "doc": "メモ",
     "title": "メモ",
     "content": " ",
     "url": "/nobunote/docs/memo/",
     
     "relUrl": "/docs/memo/"
-  },"78": {
+  },"77": {
     "doc": "平均時計算量理論",
     "title": "平均時計算量理論の概要",
     "content": "平均時計算量とは, 計算問題に対してそれが効率的に解ける入力の割合を研究する分野です. 研究対象の性質上, 問題と入力分布のペア(しばし分布問題と呼ばれる)を考えます. 効率的なアルゴリズム(例えば多項式時間アルゴリズム)が, 入力分布に従って生成された入力に対して正解する確率(成功確率)を考え, 成功確率が最大となるようなアルゴリズムやその限界について理解することが目標となります. 具体的な問題としては埋め込みクリーク問題やLWE問題などを考えます. 大まかに分けて平均時計算量は二つの文脈で研究されています. | 計算量的擬似ランダムネスとその応用. 効率的に解ける入力が少なければ少ないほど, その問題の困難性は強いとみなし, 強い困難性を持つ判定問題は計算量的擬似ランダム性を通じて暗号学的プリミティブの構成や乱択アルゴリズムの脱乱択化といった応用を持ちます. 統計的には, $ \\{0,1\\}^n $ 上で一様ランダムに選ばれた$x$と任意の関数$f\\colon \\{0,1\\}^n\\to \\{0,1\\}$に対して, $(x,f(x))$の情報論的エントロピーは$n$ビットです (つまり, ランダム文字列に$f$を適用してもエントロピーは増えない). しかし, $f\\colon \\{0,1\\}^n\\to \\{0,1\\}$が強い困難性を持つ関数ならば, 任意の効率的なアルゴリズムにとって, $x$から$f(x)$を推定するのは難しいので, $f(x)$は$x$とは独立なランダムビットに見えます. 従って$(x,f(x))$の計算量的エントロピーは$n+1$ビットとなります. このように, 驚くべきことに, 強い困難性を持つ問題があれば, 計算量的なエントロピーを増幅させられます. そして, そのような問題を構成するための手法として誤り訂正符号やエクスパンダーグラフなどの組合わせ的, 代数的な概念が積極的に応用されています. | 求解における情報理論と計算量理論のギャップ. 高次元統計学の文脈では最尤推定法で解ける具体的な問題に対し, それが計算量的の意味で効率的に解けるかどうかが議論されます. 例えば埋め込みクリーク問題では, $n$頂点ランダムグラフのランダムな位置に埋め込まれた$k$-クリークを探し出せという問題を考えます. クリークサイズが$k\\gg \\log n$であれば, 高確率でランダムグラフが$k$-クリークを含まないので, $k$頂点部分集合を列挙することにより探索することができます. しかしながら現在のところ, 埋め込みクリーク問題を解く多項式時間アルゴリズムは$k\\ge \\sqrt{n}$の範囲でしか見つかっておらず, $\\log n \\ll k \\ll \\sqrt{n}$の範囲でこの問題が解けるかどうかは重要な未解決問題とされています. また, 埋め込みクリーク問題の計算量的下界を仮定すると, 圧縮センシング, 分布の性質検査, あるゲームのナッシュ均衡の近似, 主成分分析など様々な実用的な問題に対する計算量下界が導出できることが知られています. | . ",
     "url": "/nobunote/docs/average_case_complexity/#%E5%B9%B3%E5%9D%87%E6%99%82%E8%A8%88%E7%AE%97%E9%87%8F%E7%90%86%E8%AB%96%E3%81%AE%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/average_case_complexity/#平均時計算量理論の概要"
-  },"79": {
+  },"78": {
     "doc": "平均時計算量理論",
     "title": "平均時計算量理論",
     "content": " ",
     "url": "/nobunote/docs/average_case_complexity/",
     
     "relUrl": "/docs/average_case_complexity/"
-  },"80": {
+  },"79": {
     "doc": "埋め込みクリーク問題",
     "title": "埋め込みクリーク問題",
     "content": "グラフ$G=(V,E)$に対し, 頂点部分集合$C\\subseteq V$は$\\binom{C}{2}\\subseteq E$を満たすときクリークと呼び, 特に頂点数$k$のクリークを$k$-クリークと呼びます. 入力として与えられたグラフ$G=(V,E)$のクリークのうち頂点数最大のものを求める問題を最大クリーク問題と呼び, 古典的なNP困難問題の一つです. 埋め込みクリーク問題 (Planted Clique Problem)とは, 最大クリーク問題の平均時計算量解析の文脈で現れる問題で, 端的に言うとランダムな場所に大きいクリーク$C$を埋め込まれたランダムグラフが入力として与えられたときに, クリーク$C$を求めよという問題です. この問題の計算量的困難性は, 高次元統計学など幅広い分野の問題の計算量的下界を導くのみならず, 暗号学的プリミティブの構成(一方向性関数)などにも応用されています. 暗号学的プリミティブの安全性は素因数分解やLearning with Errorやその他の代数的な問題の困難性に依拠していますが, 一方で最大クリークといった組み合わせ的な問題の困難性に依拠したプリミティブ(特に公開鍵暗号方式)の構成は知られておらず, 重要な研究テーマと認識されています. ",
     "url": "/nobunote/docs/planted_clique/",
     
     "relUrl": "/docs/planted_clique/"
-  },"81": {
+  },"80": {
     "doc": "埋め込みクリーク問題",
     "title": "背景",
     "content": "最大クリーク問題はNP完全なので最悪時の意味では広くその困難性が信じられています. 実はそれだけではなく, 平均時計算量の意味でも最大クリークは多項式時間で解けないであろうと予想されています. 具体的にはグラフ$G$がErdős–Rényiグラフ からサンプリングされた時に最大クリークを見つけられるかを議論します. 本ページでは$\\calG(n,1/2)$を主に考えます (他の$p$でも似たような議論は適用できます). ランダムグラフ$G\\sim \\mathcal{G}(n,1/2)$は確率$1-o(1)$で最大クリークのサイズが$\\approx 2\\log_2 n$となることが知られています. 一方, 適当な単一頂点からスタートして一つずつ頂点を追加していくと極大クリークが得られますが, このようにして得られる極大クリークの頂点数は高確率で$\\approx \\log_2 n$となることが知られています (ここでの「高確率」とは$G\\sim \\mathcal{G}(n,1/2)$の選択に関する確率). したがって単純な貪欲法は$\\mathcal{G}(n,1/2)$上では最大クリーク問題を近似率$1/2$で解くことになりますが, 実は近似率$0.501$達成する多項式時間アルゴリズムは知られていません. ",
     "url": "/nobunote/docs/planted_clique/#%E8%83%8C%E6%99%AF",
     
     "relUrl": "/docs/planted_clique/#背景"
-  },"82": {
+  },"81": {
     "doc": "埋め込みクリーク問題",
     "title": "問題の定義",
     "content": "$\\mathcal{G}(n,1/2)$上の最大クリーク問題では本質的に, サイズ$2\\log_2 n$のクリークが含まれていることがわかっているグラフが与えられたときにそのクリークを見つけ出せるかが問われていました. そこで, より一般にサイズ$k \\gg \\log n$のクリークが含まれていることがわかっているグラフが与えられたときにその$k$-クリークを見つけ出せるかという問題を考えます. パラメータ$n,k\\in \\mathbb{N}$, $p\\in [0,1]$ (ただし$k\\le n$) に対し, $\\mathsf{PC}(n,p,k)$を以下の手続きによって定まる分布とする. | $G \\sim \\mathcal{G}(n,p)$を生成する. 頂点集合を$V(G)=[n]$とする. | 一様ランダムな$k$-頂点部分集合$C\\sim \\binom{[n]}{k}$を選ぶ. | グラフ$G’=\\left([n],E(G)\\cup \\binom{C}{2}\\right)$に対し, $(G’,C)$を$\\mathsf{PC}(n,p,k)$のサンプルとして出力する. | . また, 上記で得られるグラフ$G’$の分布を$\\calG(n,p,k)$で表す. 特に$p=1/2$の時は$\\mathsf{PC}(n,p,k)$を省略して$\\mathsf{PC}(n,k)$で表す (なお, $\\calG(n,1/2,k)$は略さない). LWE問題と同様に, 埋め込みクリーク問題においても探索や判定などの問題設定が考えられています. ",
     "url": "/nobunote/docs/planted_clique/#%E5%95%8F%E9%A1%8C%E3%81%AE%E5%AE%9A%E7%BE%A9",
     
     "relUrl": "/docs/planted_clique/#問題の定義"
-  },"83": {
+  },"82": {
     "doc": "埋め込みクリーク問題",
     "title": "埋め込みクリーク探索問題",
     "content": "探索問題では埋め込まれたクリークを復元せよという問題を考えます. パラメータ$n,k\\in \\mathbb{N}$ (ただし$k\\le n$) に対し, 分布$\\mathsf{PC}(n,k)$に従って選ばれた$(G’,C)$を考える. 入力として$G’$を受け取り, $C$を出力せよという問題を埋め込みクリーク探索問題という. アルゴリズム$\\mathcal{A}$は . \\[\\begin{align*} \\Pr_{(G',C) \\sim \\mathsf{PC}(n,k)}\\left[ \\mathcal{A}(G') = C \\right] \\ge \\gamma \\end{align*}\\] を満たすとき, 埋め込みクリーク探索問題を成功確率$\\gamma$で解くという (もしくは単に成功確率$\\gamma$で埋め込みクリークを探すという). ここでは考えるランダムグラフの辺密度を$1/2$に固定していますが, より一般に$p \\in [0,1]$でパラメタライズされた設定も考えることができます. ",
     "url": "/nobunote/docs/planted_clique/#%E5%9F%8B%E3%82%81%E8%BE%BC%E3%81%BF%E3%82%AF%E3%83%AA%E3%83%BC%E3%82%AF%E6%8E%A2%E7%B4%A2%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/planted_clique/#埋め込みクリーク探索問題"
-  },"84": {
+  },"83": {
     "doc": "埋め込みクリーク問題",
     "title": "埋め込みクリーク判定問題",
     "content": "判定問題ではクリークが埋め込まれたグラフ$G’$をErdős–Rényiグラフ$G(n,1/2)$と識別する問題を考えます. もう少し詳しくいうと, 埋め込みクリーク判定問題ではアルゴリズムの入力として一つのグラフが与えられます. ただしこのグラフは次のどちらかの分布に従って生成されるとします: . | $(G,C) \\sim \\mathsf{PC}(n,k)$に対して$G$. | $G \\sim \\mathcal{G}(n,1/2)$. このとき, アルゴリズムの入力はどちらの分布から生成されたかを当てる問題が判定問題です. | . 出力値が0または1のアルゴリズム$\\mathcal{A}$は . \\[\\begin{align*} \\left| \\Pr_{(G,C) \\sim \\mathsf{PC}(n,k)}[\\mathcal{A}(G) = 1] - \\Pr_{G\\sim \\mathcal{G}(n,1/2)}[\\mathcal{A}(G) = 1] \\right| \\ge \\gamma \\end{align*}\\] を満たすとき, 埋め込みクリーク判定問題をアドバンテージ$\\gamma$で解くという. ",
     "url": "/nobunote/docs/planted_clique/#%E5%9F%8B%E3%82%81%E8%BE%BC%E3%81%BF%E3%82%AF%E3%83%AA%E3%83%BC%E3%82%AF%E5%88%A4%E5%AE%9A%E5%95%8F%E9%A1%8C",
     
     "relUrl": "/docs/planted_clique/#埋め込みクリーク判定問題"
+  },"84": {
+    "doc": "Home",
+    "title": "Home",
+    "content": "理論計算機科学, 特に平均時計算量(average-case complexity)に関する様々な手法やアルゴリズム, そしてその基となる道具について出来るだけ分かり易く解説していきます. ",
+    "url": "/nobunote/",
+    
+    "relUrl": "/"
   },"85": {
     "doc": "記法",
     "title": "よく使う記法",
@@ -706,48 +706,69 @@
     
     "relUrl": "/docs/tools/random_graph/#ランダム正則グラフ"
   },"101": {
+    "doc": "ランダム線形符号",
+    "title": "ランダム線形符号",
+    "content": "誤り訂正符号の文脈ではランダムに構成した符号がしばし非常に良いパラメータを持つことが知られている. 定義 (ランダム線形符号). 有限体$\\F_q$上の符号長$n$, 次元$k$の部分空間のうち一様ランダムに選ばれたものをランダム線形符号という. ",
+    "url": "/nobunote/docs/error-correcting_code/random_linear/",
+    
+    "relUrl": "/docs/error-correcting_code/random_linear/"
+  },"102": {
+    "doc": "ランダム線形符号",
+    "title": "リスト復号",
+    "content": "アルファベットサイズ$q$とレート$r=\\frac{k}{n}$を固定して$n\\to\\infty$におけるランダム線形符号の(組合せ的)リスト復号性能を評価する. ここで, 符号$\\calC\\subseteq\\F_q^n$が$(R,L)$-リスト復号可能であるとは, 任意の$x\\in\\F_q^n$に対して$\\abs{ \\calC \\cap \\ball(x,R) } \\le L$が成り立つことをいう. 有限体$\\F_q$を考え, $r\\in[0,1]$に対し, $q$進エントロピー関数を . \\[\\begin{align*} H_q(R)=R\\log_q \\frac{1}{R}+(1-R)\\log_q\\frac{1}{1-R} \\end{align*}\\] で定義する. Stirling近似により, $\\F_q^n$上の半径$R$の球の体積がおよそ$q^{nH_q(R)}$で与えられる. 命題(list-decoding capacity). 有限体$\\F_q$を考え, $R\\in (0,1-1/q)$と$\\varepsilon&gt;0$を任意の定数とする. | レート$1-H_q(R)-\\varepsilon$かつ$(R,\\lceil 1/\\varepsilon\\rceil)$-リスト復号可能な符号$\\mathcal{C}\\subseteq\\mathbb{F}^n$が存在する. | レート$1-H_q(R)+\\varepsilon$の符号$\\mathcal{C}\\subseteq\\mathbb{F}^n$が$(R,L)$-リスト復号可能であるためには、$L \\ge q^{\\Omega(\\varepsilon n)}$を満たさなければならない. | . ポジティブな結果1はランダム線形符号を考えることによって得られる. 2の結果は単純な数え上げによって得られる. 以下にランダム線形符号のリスト復号性能に関する関連研究を述べる. | Zyablov and Pinsker(1982)は, $q=2$のとき, レート$r=1-H_2(R)-\\varepsilon$のランダム線形符号は高確率で$(R,2^{O(1/\\varepsilon)})$-リスト復号可能であることを示した.1 この結果は一般のアルファベットサイズ$q$に一般化でき, そのときのリストサイズは$q^{O(1/\\varepsilon)}$となる. | Guruswami, Hastad, Sudan, Zuckerman (2002)はランダム線形符号に基づく確率論的手法によって, $q=2$の符号であって, レートが$r=H(R)-\\varepsilon$かつ$(r,O(1/\\varepsilon))$-リスト復号可能である符号が存在することを示した.2 彼らの証明はポテンシャル関数に基づく議論であり, ランダム線形符号そのものが所望の性質を満たすことは示していない (単に存在性のみを示した). また, $q=2$という性質に依拠している. | Guruswami, Håstad, Kopparty(2011)は, $\\F_q$上のレート$1-H_q(R)-\\varepsilon$のランダム線形符号は$(R,O_{q,R}(1/\\varepsilon))$-リスト復号可能であることを示した.3 | Rudra (2011)は, ランダム線形符号のリストサイズ$\\lceil 1/\\varepsilon\\rceil$が定数枚を除いてタイトであることを示した. すなわち, ある定数$0&lt;c&lt;1$が存在して, レート$1-H_q(R)+\\varepsilon$のランダム線形符号は高確率で$(R,c/\\varepsilon)$-リスト復号可能でないことを示した.4 | . ",
+    "url": "/nobunote/docs/error-correcting_code/random_linear/#%E3%83%AA%E3%82%B9%E3%83%88%E5%BE%A9%E5%8F%B7",
+    
+    "relUrl": "/docs/error-correcting_code/random_linear/#リスト復号"
+  },"103": {
+    "doc": "ランダム線形符号",
+    "title": "参考文献",
+    "content": ". | V. V. Zyablov and M. S. Pinsker, “List cascade decoding,” (in Russian), Probl. Inf. Transm., vol. 17, no. 4, pp. 29–34 (1982). &#8617; . | V. Guruswami, J. Håstad, M. Sudan, and D. Zuckerman, “Combinatorial bounds for list decoding,” IEEE Transactions on Information Theory, 2002. &#8617; . | V. Guruswami, J. Håstad, and S. Kopparty, “On the list-decodability of random linear codes,” IEEE Transactions on Information Theory, 2011. &#8617; . | M. Rudra, “Limits to List Decoding of Random Codes,” IEEE Transactions on Information Theory, 2011. &#8617; . | . ",
+    "url": "/nobunote/docs/error-correcting_code/random_linear/#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE",
+    
+    "relUrl": "/docs/error-correcting_code/random_linear/#参考文献"
+  },"104": {
     "doc": "サンプラー",
     "title": "サンプラー",
     "content": "サンプラー(sampler)は平均時計算量理論の文脈において証明で提案した帰着の正当性の証明などでよく使われます. 二つの独立とは限らない確率変数の組$(X,Y)$を考え, これらの台$\\supp(X),\\supp(Y)$が有限集合とします. このとき, $(X,Y)$のサンプリングは, ある辺重みつき二部グラフの辺を(重みに比例した確率で)ランダムに選び, その端点を出力するというプロセスとして捉えることができます. この(辺重みつき)二部グラフを$(X,Y)$に付随する二部グラフと呼ぶことにします. 確率変数のペア$(X,Y)$がサンプラーであるとはこの二部グラフがある種のエクスパンダー性を持つことを意味します. 定義(サンプラー). 確率変数の組$(X,Y)$は以下を満たすとき$(\\delta,\\varepsilon)$-サンプラーという: 任意の関数$S \\colon \\supp(Y)\\to [0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X} \\left[ \\abs*{ \\E[S(Y)| X=x] - \\E[S(Y)]} \\ge \\varepsilon \\right] \\le \\delta. \\tag{1} \\end{align*}\\] 同様に, $(X,Y)$は以下を満たすとき乗法的$(\\delta,\\varepsilon)$-サンプラーという: $\\E[S(Y)]\\ge \\varepsilon$を満たす任意の関数$S\\colon \\supp(Y)\\to[0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X}\\left[\\mathbb{E}[S(Y)|X=x] \\le \\frac{\\mathbb{E}[S(Y)]}{2}\\right] \\le \\delta. \\tag{2} \\end{align*}\\] 確率変数のペア$(X,Y)$に付随する二部グラフ$G=(\\supp(X),\\supp(Y),E)$を考えます. 簡単のため辺は重みなしだが多重辺は許すとします (ですので$E$は多重集合となります). つまり, $(X,Y)$をサンプリングするには, 一様ランダムな辺$(x,y)\\sim E$を選び, その両端点$(x,y)$を出力すればよいです. 関数$S\\colon \\supp(Y)\\to \\binset$を任意に一つ固定します(本来, サンプラーの定義では$[0,1]$値関数を考えますがここでは簡単のため$\\binset$値関数としています). このとき$S$は部分集合$S\\subseteq \\supp(Y)$と同一視でき, $\\E[S(Y)]=\\Pr[Y\\in S]$は部分集合$S$の(大域的な)密度となります. 各$x\\in U$に対して$N(x)$を$x$の隣接頂点の多重集合とすると . \\[\\begin{align*} \\E \\left[S(Y) \\vert X=x\\right] = \\Pr_{y \\sim N(x)} \\left[y \\in S\\right] = \\frac{|N(x)\\cap S|}{|N(x)|} \\end{align*}\\] は$N(x)$のうち$S$に属するものの割合, すなわち$x$の周辺における$S$の局所的な密度を表します. $(X,Y)$がサンプラーであるとは, ほとんどの$x$に対して$S$の局所的な密度$\\frac{\\abs{N(x)\\cap S}}{\\abs{N(x)}}$が$S$の大域的な密度$\\E[S(Y)]$に近いということを意味します. また, $x\\sim X$をランダムに選んだときの確率変数$\\E[S(Y) \\vert X=x]$がその期待値$\\E_{x\\sim X} \\left[ \\E[S(Y) \\vert X=x]\\right] = \\E[S(Y)]$に集中するという性質とも言えます. ",
     "url": "/nobunote/docs/tools/sampler/",
     
     "relUrl": "/docs/tools/sampler/"
-  },"102": {
+  },"105": {
     "doc": "サンプラー",
     "title": "交換補題",
     "content": "実はサンプラー性は対称であり, $(Y,X)$がサンプラーならば$(X,Y)$もまたサンプラーとなります. 補題(交換補題). 確率変数のペア$(Y,X)$が$\\left(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8}\\right)$-サンプラーならば$(X,Y)$は$(\\delta,\\varepsilon)$-サンプラーである. 同様に, $(Y,X)$が乗法的$\\left(\\frac{\\varepsilon}{4},\\delta\\right)$-サンプラーならば, $(X,Y)$は乗法的$(\\delta,\\varepsilon)$-サンプラーである. 一つ目の主張の証明 $(Y,X)$を$\\left(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8}\\right)$-サンプラーとします. 記号の簡単のため, $\\delta’=\\frac{\\varepsilon}{2},\\varepsilon’=\\frac{\\delta\\varepsilon}{8}$とし, $(Y,X)$が$(\\delta’,\\varepsilon’)$-サンプラーであるとします. まず, $(X,Y)$の片側サンプラー性, 具体的には任意の関数$S\\colon \\supp(Y)\\to[0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X} \\left[ \\E[S(Y) \\vert X=x] - \\E[S(Y)] \\le -\\varepsilon \\right] \\le \\frac{\\delta}{2} \\tag{3} \\end{align*}\\] が成り立つことを示します. 関数$S\\colon \\supp(Y)\\to[0,1]$に対して関数$H\\colon\\supp(X)\\to\\binset$を . \\[\\begin{align*} H(x)=1 \\iff \\E[S(Y)\\vert X=x] - \\E[S(Y)] \\le -\\varepsilon \\end{align*}\\] で定めます. $H$の定義より . \\[\\begin{align*} \\E[H(X)S(Y)] &amp;= \\E[S(Y) \\vert H(X)=1]\\cdot \\E[H(X)] \\\\ &amp;\\le \\left(\\E[S(Y)] - \\varepsilon\\right)\\cdot \\E[H(X)] \\tag{4} \\end{align*}\\] を得ます. 一方で, $(Y,X)$は$(\\delta’,\\varepsilon’)$-サンプラーなので, $1-\\delta’$の割合の$y\\sim Y$に対して $\\E[H(X)\\vert Y=y] &gt; \\E[H(X)] - \\varepsilon’$が成り立ちます. このような$y$の集合を$T \\subseteq \\supp(Y)$とします. このとき, . \\[\\begin{align*} \\E[H(X)S(Y)] &amp;\\ge \\sum_{y\\in T} \\E[H(X)\\vert Y=y]\\cdot S(y) \\cdot \\Pr[Y=y] \\\\ &amp;\\ge \\left(\\E[H(X)] - \\varepsilon'\\right) \\left( \\E[S(Y)] - \\Pr[Y\\in T] \\right) \\\\ &amp;\\ge \\left(\\E[H(X)] - \\varepsilon'\\right) \\left( \\E[S(Y)] - \\delta'\\right) \\tag{5} \\end{align*}\\] より, 式(4)(5)を組み合わせると . \\[\\begin{align*} \\E[H(X)]\\left(\\E[S(Y)]-\\varepsilon\\right) &gt; \\left(\\E[H(X)]- \\varepsilon'\\right)\\left(\\E[S(Y)] - \\delta'\\right) \\end{align*}\\] となります. 主張(3)を示すには$\\E[H(X)]\\le \\frac{\\delta}{2}$を示せばよいですが, これを背理法で示すため, $\\E[H(X)]\\ge \\frac{\\delta}{2}$を仮定します. ここで, $\\E[S(Y)]\\ge\\varepsilon$が成り立つことに注意してください ($\\E[S(Y)]&lt;\\varepsilon$ならば主張(3)は自明に成り立つ). | もし$\\E[S(Y)] = \\varepsilon$ならば, (5)に代入すると　 | . \\[\\begin{align*} \\left(\\E[H(X)] - \\frac{\\delta\\varepsilon}{8}\\right)\\left(\\E[S(Y)] - \\frac{\\varepsilon}{2}\\right) &lt; 0 \\end{align*}\\] となり, これは$\\E[H(X)]\\ge \\frac{\\delta}{2}$に矛盾します. | もし$\\E[S(Y)]&gt;\\varepsilon$ならば | . \\[\\begin{align*} \\frac{ \\left(\\E[H(X)] - \\varepsilon'\\right) \\left(\\E[S(Y)] - \\delta'\\right) }{\\E[H(X)]\\left(\\E[S(Y)]-\\varepsilon\\right)} &amp;= \\left(1-\\frac{\\delta\\varepsilon}{8\\E[H(X)]}\\right)\\left(1+\\frac{\\varepsilon/2}{\\E[S(Y)]-\\varepsilon}\\right) \\\\ &amp;\\ge \\left(1-\\frac{\\varepsilon}{4}\\right)\\left(1+\\frac{\\varepsilon}{2}\\right) \\\\ &amp;\\ge 1 \\end{align*}\\] となり, これは(5)に矛盾します. 以上より主張(3)が示されました. 最後に主張(3)を使って$(X,Y)$が$(\\delta,\\varepsilon)$-サンプラーであることを示します. 任意に関数$S\\colon \\supp(Y)\\to[0,1]$を固定し, $S$と$1-S$それぞれに対して(3)を適用すると . \\[\\begin{align*} &amp;\\Pr_{x\\sim X} \\left[ \\E[S(Y) \\vert X=x] - \\E[S(Y)] \\le -\\varepsilon \\right] \\le \\frac{\\delta}{2},\\\\ &amp;\\Pr_{x\\sim X} \\left[ -\\E[S(Y) \\vert X=x] + \\E[S(Y)] \\le -\\varepsilon \\right] \\le \\frac{\\delta}{2} \\end{align*}\\] となるため, union boundより主張を得ます. ",
     "url": "/nobunote/docs/tools/sampler/#%E4%BA%A4%E6%8F%9B%E8%A3%9C%E9%A1%8C",
     
     "relUrl": "/docs/tools/sampler/#交換補題"
-  },"103": {
+  },"106": {
     "doc": "サンプラー",
     "title": "直積サンプラー",
     "content": "平均時計算量の文脈では以下に定義する直積サンプラーと呼ばれるペア$(X,Y)$をよく考えます. 定義(直積サンプラー). パラメータ$k\\in\\Nat$と確率変数$X$に対し, 以下で与えられる確率変数$Y$を考える: 確率変数$X$の独立なコピーを$k$個作成し, $X_1,\\dots,X_k$とする. 一様ランダムに$i\\sim[k]$を選び, $Y=(X_1,\\dots,X_{i-1},X,X_{i+1},\\dots,X_k)$とする. このようにして得られる$(X,Y)$を$k$-直積サンプラーと呼ぶ. 直積サンプラーに付随する二部グラフでは, 左側の頂点集合$\\supp(X)$に対して$\\supp(Y)=\\supp(X)^k$となり, 頂点$x\\in\\supp(X)$と$(x_1,\\dots,x_k)\\in\\supp(Y)$の間には, $(x_1,\\dots,x_k)$の中に登場する$x$の回数だけ多重辺を引いて得られます (下図参照) . 補題(直積サンプラーのサンプラー性). 十分大きな定数$C&gt;0$が存在し, 任意のパラメータ$\\delta,\\varepsilon&gt;0$に対し, $k\\ge \\frac{C\\log(1/\\varepsilon)}{\\varepsilon^2\\delta^2}$ならば, $k$-直積サンプラーは$(\\delta,\\varepsilon)$-サンプラーである. 証明 まず$(Y,X)$が$\\qty(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8})$-サンプラーであることを示し, その後に交換補題を使って$(X,Y)$が$(\\delta,\\varepsilon)$-サンプラーであることを示します. 任意の関数$S\\colon \\supp(X)\\to[0,1]$を固定します. 式(1)を($X$と$Y$が入れ替わっていることに注意)示すために, $y\\sim Y$をランダムに選んだときの確率変数$\\E[S(X)|Y=y]$を考えます. $Y=(x_1,\\dots,x_k)$で条件つけたときの$X$の条件付き分布は(多重)集合$\\set{x_1,\\dots,x_k}$上の一様分布となります(実際これは$(X,Y)$の分布を計算すれば確かめられます). また, $Y=(x_1,\\dots,x_k)$をランダムに選んだとき, $x_1,\\dots,x_k$は$\\binset^n$上で独立一様ランダムに分布しているため, 従って . \\[\\begin{align*} \\E[S(X)|Y=(x_1,\\dots,x_k)]=\\frac{1}{k}\\sum_{i\\in[k]} S(x_i) \\end{align*}\\] は$k$個の独立な確率変数の和となります. Hoeffdingの不等式より, . \\[\\begin{align*} \\Pr_{x_1,\\dots,x_k}\\qty[ \\left|\\frac{1}{k}\\sum_{i\\in[k]}S(x_k) - \\E_X[S(X)] \\right| \\ge \\frac{\\delta\\varepsilon}{8} ] \\le 2\\exp\\qty(-\\frac{k\\delta^2\\varepsilon^2}{32}) \\le \\frac{\\varepsilon}{2} \\end{align*}\\] を得ます (最後の不等号では$k$に関する条件を利用). すなわち, $(Y,X)$は$\\qty(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8})$-サンプラーとなるので, 交換補題より$(X,Y)$は$(\\delta,\\varepsilon)$-サンプラーとなります. ",
     "url": "/nobunote/docs/tools/sampler/#%E7%9B%B4%E7%A9%8D%E3%82%B5%E3%83%B3%E3%83%97%E3%83%A9%E3%83%BC",
     
     "relUrl": "/docs/tools/sampler/#直積サンプラー"
-  },"104": {
+  },"107": {
     "doc": "行列のスペクトル",
     "title": "行列のスペクトル",
     "content": "行列の固有値や固有ベクトルに関するよく知られる事実を(証明なしで)紹介します. ",
     "url": "/nobunote/docs/tools/spectra/",
     
     "relUrl": "/docs/tools/spectra/"
-  },"105": {
+  },"108": {
     "doc": "行列のスペクトル",
     "title": "Courant-Fischerの定理 (ミニマックス定理)",
     "content": "対称行列$A \\in \\Real^{n\\times n}$の固有値を$\\lambda_1 \\ge \\dots \\ge \\lambda_n$とすると . \\[\\begin{align*} \\lambda_i = \\max_{S\\colon \\dim S=i} \\min_{x\\in S\\setminus\\{0\\}} \\frac{\\inprod{x,A x}}{\\inprod{x,x}}. \\end{align*}\\] ここで$S$は次元$i$の部分空間で動く. 例えば最大固有値は$\\lambda_1=\\max_{x\\ne 0}\\frac{\\inprod{x,Ax}}{\\inprod{x,x}}$, 最小固有値は$\\lambda_n = \\min_{x\\ne 0}\\frac{\\inprod{x,Ax}}{\\inprod{x,x}}$となります. また, 関数$x\\mapsto \\frac{\\inprod{x,Ax}}{\\inprod{x,x}}$を$A$に関するRayleigh商といいます. 対称行列$A\\in\\Real^{n\\times n}$の最大固有値$\\lambda_1$に対応する固有ベクトルを$x_1$とする. このとき, 第二固有値$\\lambda_2$は . \\[\\begin{align*} \\lambda_2 = \\max_{x \\colon x\\bot x_1} \\frac{\\inprod{x,Ax}}{\\inprod{x,x}}. \\end{align*}\\] ここで$x$は固有ベクトル$x_1$に直交するベクトル全てを動く. 注釈 (一般の内積に対するCourant-Fischerの定理) . Courant-Fischerの定理の定理は通常の$\\Real^n$の内積 . \\[\\begin{align*} \\inprod{x,y} = \\sum_{i\\in[n]} x(i)y(i) \\end{align*}\\] を考えていましたが, もう少し一般に, 全ての成分が正であるベクトル$\\pi\\in \\Real_{&gt;0}^n$に対し . \\[\\begin{align*} \\inprod{x,y}_\\pi = \\sum_{i\\in[n]} \\pi(i)x(i)y(i) \\end{align*}\\] を考えてもCourant-Fischerの定理やその系が成り立ちます. この一般化は可逆性を持つマルコフ連鎖の固有値の議論を行う際に必要になります (本当は正定値行列$B$に対して$\\inprod{x,y}_B = \\inprod{x,By}$という内積でも成り立つのですが, ここまでの一般化はあまり使うことがないので割愛しています). ",
     "url": "/nobunote/docs/tools/spectra/#courant-fischer%E3%81%AE%E5%AE%9A%E7%90%86-%E3%83%9F%E3%83%8B%E3%83%9E%E3%83%83%E3%82%AF%E3%82%B9%E5%AE%9A%E7%90%86",
     
     "relUrl": "/docs/tools/spectra/#courant-fischerの定理-ミニマックス定理"
-  },"106": {
+  },"109": {
     "doc": "統計距離",
     "title": "統計距離",
     "content": "統計距離(または全変動距離)は確率分布間の距離の一つです. 有限集合$V$上に値をとる二つの分布$\\mu,\\nu\\in[0,1]^V$の統計距離(statistical distance)を . \\[\\begin{align*} \\dtv(\\mu,\\nu) = \\frac{1}{2} \\sum_{v \\in V} |\\mu(v) - \\nu(v)| \\end{align*}\\] で定める. 同様に, 二つの確率変数$X,Y$の間の統計距離$\\dtv(X,Y)$を, それらの確率変数の分布の統計距離として定義します. ",
     "url": "/nobunote/docs/tools/statistical_distance/",
     
     "relUrl": "/docs/tools/statistical_distance/"
-  },"107": {
+  },"110": {
     "doc": "統計距離",
     "title": "性質",
     "content": "台集合$V$上の二つの確率変数$X,Y$および$V$上の任意の事象$\\calE\\subseteq V$に対して . \\[\\begin{align*} \\abs{\\Pr[X\\in\\calE] - \\Pr[Y\\in\\calE]} \\le \\dtv(X,Y). \\end{align*}\\] より一般に, 任意の関数$f\\colon V \\to [0,1]$に対して . \\[\\begin{align*} \\abs{\\E[f(X)] - \\E[f(Y)]} \\le \\varepsilon. \\end{align*}\\] $V$上の二つの分布$\\mu,\\nu$のカップリング(coupling) $\\pi$とは, $V^2$上の分布であって, それぞれの周辺分布が$\\mu,\\nu$であるようなものです. すなわち, $\\pi\\in [0,1]^{V^2}$が . \\[\\begin{align*} &amp;{}^{\\forall} u\\in V,\\, \\sum_{v\\in V} \\pi(u,v) = \\mu(u), \\\\ &amp;{}^{\\forall} v\\in V,\\, \\sum_{u\\in V} \\pi(u,v) = \\nu(v) \\end{align*}\\] を満たすとき, $\\pi$は$\\mu$と$\\nu$のカップリングです. 命題(カップリング不等式). 二つの分布$\\mu,\\nu$の統計距離は . \\[\\begin{align*} \\dtv(\\mu,\\nu) = \\inf_{\\pi} \\Pr_{(X,Y)\\sim \\pi}[X\\ne Y] \\end{align*}\\] で表される. ここで$\\pi$は$\\mu$と$\\nu$のカップリングを動く. ",
