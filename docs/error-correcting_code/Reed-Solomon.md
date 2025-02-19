@@ -35,7 +35,8 @@ $$
 >
 > を**Reed-Solomon符号**といいます. 特に断りがない場合は, $\F_q=\set{\alpha_1,\dots,\alpha_m}$とします (特に$q=m$). 
 
-ここで, 点$\alpha_1,\dots,\alpha_m \in \F_q$を**評価点**といいます. Reed-Solomon符号の符号化は次数$k$未満の多項式に対し, その係数を並べた長さ$k$のベクトルを, 評価点における評価値を並べた長さ$m$のベクトルに移す写像であるため, アルファベットサイズ$q$, 符号長$m$, レート$r=k/m$です. 
+ここで, 点$\alpha_1,\dots,\alpha_m \in \F_q$を**評価点**といいます. Reed-Solomon符号の符号化は次数$k$未満の多項式に対し, その係数を並べた長さ$k$のベクトルを, 評価点における評価値を並べた長さ$m$のベクトルに移す写像であるため, アルファベットサイズ$q$, 符号長$m$, レート$r=k/m$です.
+文脈によっては, 評価点の集合を$\mathbb{F}_q$とするものをReed-Solomon符号と呼び, 上記の定義のように, 一般の評価点の集合を考えるものを**一般化Reed-Solomon符号 (generalized Reed-Solomon code)**と呼ぶことがあります.
 
 任意の多項式$f\in \calP_{<k}$は根($f(x)=0$を満たす$x$)の個数が高々$k$個であるため, 二つの相異なる多項式$f,g\in \calP_{\le d}$に対して, $f(x)=g(x)$を満たす$x$の個数もまた高々$k$個です. 従って, 一様ランダムな点$x\sim\F_q$に対して確率$1-k/m$で$f(x)\ne g(x)$を満たすため, Reed-Solomon符号の距離は$1-k/m$です. 
 
@@ -43,11 +44,22 @@ $$
 
 理論的な応用ではアルファベットサイズを定数にしたい場合が多々あり, そのような状況ではReed-Solomon符号を直接使うことはできません. よくある手法としては, Reed-Solomon符号と他の符号との連節(concatenation)を考えることによってアルファベットサイズを減少させる方法があります. その際, 連節によって誤り訂正能力やレートといったパラメータも変化するので注意が必要です. 
 
-## 一意復号 (Berlekamp-Welchアルゴリズム)
+## Reed-Solomon符号の復号
 
-Reed-Solomon符号の一意復号では, 与えられたベクトル$y\in \F_q^m$に対して, $\delta(y,z) < 1/2$を満たす$z\in \calC$を求める問題を考えます. より詳細には, レートを$r=k/m$としたとき, [Singleton限界]({{site.baseurl}}/docs/error-correcting_code/code_bounds#Singleton限界)より, $\delta(y,z)\le \frac{1-r}{2}$を満たす$z\in \calC$を求めたいです. 
+Reed-Solomon符号の復号では, 以下の問題を考えます:
 
-## リスト復号
+{: .definition-title }
+> **問題（多項式フィッチング問題).**
+>
+> 有限体$\F_q$に対して平面上の点$(x_1,y_1),\dots,(x_m,y_m)\in\F_q^2$およびパラメータ$k,t\in\Nat$が与えられたとき, 次数$k$未満の多項式$f\colon\F_q\to\F_q$であって, 少なくとも$t$個の点$(x_i,y_i)$を通るものを全て列挙せよ.
+
+
+### 一意復号
+
+一意復号では, 与えられたベクトル$y\in \F_q^m$に対して, $\delta(y,z) < 1/2$を満たす$z\in \calC$を求める問題を考えます. より詳細には, レートを$r=k/m$としたとき, [Singleton限界]({{site.baseurl}}/docs/error-correcting_code/code_bounds#Singleton限界)より, $\delta(y,z)\le \frac{1-r}{2}$を満たす$z\in \calC$を求めたいです. 
+
+
+### リスト復号
 
 半径$R$のリスト復号では, 与えられたベクトル$y\in \F_q^m$に対して, $\dist(y,z)\le R$を満たす$z\in \calC$を列挙する問題を考えます. すなわち, $y$を中心とした半径$R$のボール内に存在する符号語を列挙する問題を考えます. 通常, $R$は, 一意復号の限界$\frac{1-r}{2}$よりも大きく, 符号の距離$1-k/m = 1-r$より小さい値を考えます. 多くの場合, 列挙すべき符号語の個数は$\varepsilon$のみに依存する定数, もしくは符号長$m$に関して多項式であることが保証されます. 
 
@@ -64,3 +76,4 @@ Reed-Solomon符号の一意復号では, 与えられたベクトル$y\in \F_q^m
 なお, Reed-Solomon符号を少し変形した**folded Reed-Solomon符号**は半径$R<1-r$のリスト復号が多項式時間で可能であることが知られています[^GR08]. すなわちfolded Reed-Solomon符号はJohnson限界より良いリスト復号性能を持つ符号です. 
 
 [^GR08]: V. Guruswami and M. Rudra, "Explicit codes achieving list decoding capacity: Error-correction with optimal redundancy". IEEE Trans. Inform. Theory, 2008.
+
