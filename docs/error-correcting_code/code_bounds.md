@@ -25,4 +25,49 @@ MDS符号の例として代表的なものは[Reed-Solomon符号]({{site.baseurl
 
 ## Johnson限界
 
+「任意の符号$\calC\subseteq\F_q^n$であって距離$\delta$であるようなものを考えたとき, 任意の半径$R$のボールとの共通部分が$L$個以下である」という形のバウンドをリスト復号半径に対するJohnson限界という.
+より詳細な設定を述べる.
+パラメータ$n\in\Nat$, $\delta>0$, $R\in[0,1]$に対し, 半径$R$の球に含まれる点集合$S\subseteq\F_q^n$であって, 相異なる各二点の距離が$\delta$以上であるようなもののうち, 要素数最大のときの$\abs{S}$を$A'_q(n,\delta,R)$とする.
+すなわち
+
+$$
+  \begin{align*}
+    A'_q(n,\delta,R) = \max\set{\abs{S}\colon \exists x\in\F_q^n,\,S\subseteq\ball(x,R), \forall a,b\in S, a\neq b\Rightarrow \dist(a,b)\ge R}.
+  \end{align*}
+$$
+
+距離$\delta$の符号$\calC\subseteq\F_q^n$は, (情報理論的には)半径$R$のボール内に高々$A'_q(n,\delta,R)$個の符号語を持つ.
+従って$A'_q(n,\delta,R)$を上から抑えると, 符号の構成によらずリスト復号可能性に関するポジティブな結果が得られる.
+
+{: .theorem-title }
+> **定理（Johnson限界）.**
+>
+> 有限体$\F_q$を考える. 自然数$L\in\Nat$に対し, 
+> 
+> $$
+  \begin{align*}
+    J(\delta,L) := \qty(1-\frac{1}{q})\qty( 1-\sqrt{1-\frac{q}{q-1}\frac{L-1}{L}\delta} )
+  \end{align*}
+> $$
+>
+> とする. このとき, 任意の$R\le J(\delta,L)$に対して, $A'_q(n,\delta,R)\le L$が成り立つ.
+
+つまり, リストサイズを$L$で抑えたいときには半径を$R_J$にすれば良いということになる.
+また, $L$や$q$が十分大きく$\delta\approx 1$のとき, $R_J\approx 1$となるため, 
+符号の距離が大きければリスト復号半径を大きくできることがわかる.
+
+リストサイズ$L$を$L\to \infty$とした時の極限
+
+$$
+  \begin{align*}
+    J(\delta) := \lim_{L\to\infty} R_J(n,\delta,L) = \qty(1-\frac{1}{q})\qty( 1-\sqrt{1-\frac{q}{q-1}\delta} )
+  \end{align*}
+$$
+
+をJohnson限界ということもある. また, $q$が非常に大きいときは$q\to\infty$における$J(\delta)$をJohnson限界ということもある. 例えば[Reed-Solomon符号]({{site.baseurl}}/docs/error-correcting_code/Reed-Solomon)の場合, Johnson限界は$1-\sqrt{1-\delta} = 1-\sqrt{r}$となる ($r$はレート).
+このように「Johnson限界」という言葉は文脈によって異なる意味で使われることがあるので注意が必要である.
+
+
+符号によってはこのバウンドがタイトになることもあるし, リスト復号半径がもっと大きくなりうることもある.
+
 ## Gilbert-Varshamov限界 (GV限界)

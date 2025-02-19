@@ -68,7 +68,8 @@ $\delta(y,z) < 1/2$を満たす$z\in \calC$を求める問題を考える.
 
 [^AGL23]: O. Alrabiah, V. Guruswami, and R. Li, "Randomly Punctured Reed–Solomon Codes Achieve List-Decoding Capacity over Linear-Sized Fields," in Symposium on Theory of Computing, 2024.
 
-一方, 半径が$R<1-\sqrt{r}$のときは多項式時間でReed-Solomon符号をリスト復号できることが知られている.
+[Johnson限界]({{site.baseurl}}/docs/error-correcting_code/code_bounds#Johnson限界)により, Reed-Solomon符号のリスト復号は$R<1-\sqrt{r}$の時は
+組合せ論的には可能であることがわかっており, 実際にこの範囲の$R$に対しては多項式時間でReed-Solomon符号をリスト復号できることが知られている.
 Sudan(1997)は$R<1-\sqrt{2r}$のときに多項式時間でリスト復号するアルゴリズムを与え[^Sud97], GuruswamiとSudan(1999)は$R<1-\sqrt{r}$のときに多項式時間でリスト復号するアルゴリズムを与えている[^GS99].
 なお, Alekhnovich(2005)により, この領域の$R$のリスト復号はほぼ線形時間で可能であることが示されている[^Ale05].
 
@@ -76,7 +77,8 @@ Sudan(1997)は$R<1-\sqrt{2r}$のときに多項式時間でリスト復号する
 [^GS99]: V. Guruswami and M. Sudan, "Improved Decoding of Reed-Solomon and Algebraic-Geometry Codes," IEEE Trans. Inform. Theory, 1999.
 [^Ale05]: D. Alekhnovich, "Linear Diophantine Equations Over Polynomials and Soft Decoding of Reed–Solomon Codes," in IEEE Trans. Inf. Theory, 2005.
 
-なお, Reed-Solomon符号を少し変形した**folded Reed-Solomon符号**は, 任意の定数$\varepsilon>0$に対して半径$1-r-\varepsilon$のリスト復号が多項式時間で可能であることが知られている[^GR08].
+なお, Reed-Solomon符号を少し変形した**folded Reed-Solomon符号**は半径$R<1-r$のリスト復号が多項式時間で可能であることが知られている[^GR08].
+すなわちfolded Reed-Solomon符号はJohnson限界より良いリスト復号性能を持つ符号である.
 
 [^GR08]: V. Guruswami and M. Rudra, "Explicit codes achieving list decoding capacity: Error-correction with optimal redundancy". IEEE Trans. Inform. Theory, 2008.
 
