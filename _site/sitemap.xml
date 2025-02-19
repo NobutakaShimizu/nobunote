@@ -31,6 +31,9 @@
 <loc>http://localhost:4000/nobunote/docs/average_case_complexity/Yao_XOR/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/nobunote/docs/memo/GMW91/Zero-Knowledge%20Proofs%20and%20the%20Complexity%20of%20Interactive%20Proof%20Systems/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/nobunote/docs/average_case_complexity/average_case_hardness/</loc>
 </url>
 <url>
@@ -38,6 +41,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/error-correcting_code/code_bounds/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/nobunote/docs/error-correcting_code/concatenate/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/error-correcting_code/decoding/</loc>
@@ -55,7 +61,7 @@
 <loc>http://localhost:4000/nobunote/docs/average_case_complexity/hardcore/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/nobunote/docs/learning_with_error/</loc>
+<loc>http://localhost:4000/nobunote/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/error-correcting_code/</loc>
@@ -73,7 +79,7 @@
 <loc>http://localhost:4000/nobunote/docs/planted_clique/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/nobunote/</loc>
+<loc>http://localhost:4000/nobunote/docs/learning_with_error/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/tools/notation/</loc>

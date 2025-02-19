@@ -6,6 +6,10 @@ parent: 平均時計算量理論
 
 # Goldreich-Levinの定理
 
+* TOC
+{:toc}
+
+
 Goldreich-Levinの定理とは, [Goldreich, Levin (1989)](https://dl.acm.org/doi/10.1145/73007.73010)による定理です.
 様々な文脈で解釈できる有名な定理で, 主に
 - 任意の一方向性置換(one-way permutation)からハードコア述語を構成する定理

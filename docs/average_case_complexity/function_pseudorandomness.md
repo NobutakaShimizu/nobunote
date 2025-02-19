@@ -6,6 +6,10 @@ parent: 平均時計算量理論
 
 # 関数の擬似ランダム性
 
+* TOC
+{:toc}
+
+
 擬似ランダム性とは端的にいうと「ランダムに見える」という性質を意味します.
 この「ランダムに見える」という性質を定義するには, 二つの分布の識別不可能性の概念を導入します.
 
@@ -111,7 +115,7 @@ $$
 
 逆方向の主張(の対偶)はYaoのnext-bit predictorという結果を用いて証明されます.
 
-<div id="prop:yao-next-bit-predictor">
+<div id="prop:yao-next-bit-predictor" markdown="1">
 {: .proposition-title }
 > **命題 (Yaoのnext-bit predictor)**
 >

@@ -6,6 +6,10 @@ nav_order: 2
 
 # UNIFORM DIRECT PRODUCT THEOREMS: SIMPLIFIED, OPTIMIZED, AND DERANDOMIZED
 
+* TOC
+{:toc}
+
+
 ## Info
 - authors: Russel Impagliazzo, Ragesh Jaiswal, Valentine Kabanets, Avi Wigderson
 - publication: [SICOMP(2010)](https://epubs.siam.org/doi/10.1137/080734030)

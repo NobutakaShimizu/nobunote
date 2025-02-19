@@ -4,6 +4,11 @@ parent: よく使う道具
 nav_order: 3
 ---
 # 便利な不等式
+
+* TOC
+{:toc}
+
+
 [よく使う不等式]({{site.baseurl}}/docs/tools/prob_inequalities)ほど頻繁に登場しないものの, 知っていると便利な不等式を紹介していきます.
 
 ## リード-$k$族の和の集中不等式

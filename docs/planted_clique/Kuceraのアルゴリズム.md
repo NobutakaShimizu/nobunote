@@ -5,6 +5,10 @@ parent: 埋め込みクリーク問題
 ---
 # Kučeraのアルゴリズム
 
+* TOC
+{:toc}
+
+
 Kučeraのアルゴリズムとは$k\ge \sqrt{n\log n}$に対して[埋め込みクリーク探索問題]({{site.baseurl}}/docs/planted_clique/index#埋め込みクリーク探索問題)を解くアルゴリズムです.
 アルゴリズム自体は非常にシンプルで, 
 次数の大きい順に$k$個の頂点を出力するだけです.
