@@ -27,6 +27,10 @@ parent: 埋め込みクリーク問題
   各頂点$u\in V$に対し, $G$上の$u$とその隣接頂点からなる集合を$N(u)$とします.
   グラフ$G$から頂点集合$N(u)$を除去して得られるグラフ$G_u$を考えましょう.
 
+  {: align="center"}
+  ![text]({{site.baseurl}}/docs/planted_clique/images/search_to_decision.svg)
+  {: width=70%}
+
   - もし$u\in C$ならば, 隣接頂点はクリークを含むので, $N(u)\supseteq C$となります. グラフ$G_u$は$G$に埋め込まれたクリークをもたないため, その周辺分布はおおまかにいうと$G(n/2,1/2)$となります.
   - もし$u \not\in C$ならば, クリーク$C$と$u$の間には平均的に$k/2$本の辺が存在するため, $\abs{N(u)\cap C}\approx C$となり, 残った$G_u$にはサイズおよそ$k/2$のクリークを持つことになるため, 周辺分布は大体$\PC(n/2,k/2)$となります.
 
@@ -49,5 +53,12 @@ parent: 埋め込みクリーク問題
 
 {: .remark }
 > 厳密には上記の定理の仮定は少し違っていて, クリークサイズ$k$が二項分布$\Bin(n,k/n)$に従うときの埋め込みクリーク判定問題を考えています.
+
+なお, 任意の$k = o(\sqrt{n})$に対して埋め込みクリーク判定問題はアドバンテージ$\Omega\qty(\frac{k^2}{n})$で解くことができます.
+実際, 
+辺の本数が$\frac{1}{2}\binom{n}{2}$より大きければ$1$, そうでなければ$0$を出力するアルゴリズムを考えれば,
+$G(n,1/2)$上では確率$1/2$で$0$または$1$を出力する一方, $\PC(n,k)$上で$0$を出力する確率は, 辺の本数がその期待値から$k^2/4$程度ずれる確率となるので, 標準偏差$\Theta(n)$を鑑みると
+アドバンテージは$\Omega\qty(\frac{k^2}{n})$となることが簡単に示せます.
+
 
 [^HS24]: Hirahara, Shuichi, and Takayuki Shimizu. "Planted Clique Conjectures are Equivalent." Symposium on Theory of Computing (STOC), 2024.
