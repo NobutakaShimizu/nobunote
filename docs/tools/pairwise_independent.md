@@ -45,7 +45,7 @@ Goldreich-Levinの定理, set lower bound protocol, ハッシュ関数, 擬似�
   \end{align*}
 >$$
 
-## 例1
+## 例1 ペア毎の和
 
 $X_1,\dots,X_n$を独立で$\\{0,1\\}$上一様ランダムな確率変数とし, 各$1\le i < j \le n$に対して
 
@@ -224,6 +224,75 @@ $$
 
   は逆行列を持つ (Vandermonde行列の特殊ケース) ので, 最後の等式の確率の中身は$a=\ast,b=\ast$の形で書けます. $a,b$は一様ランダムなので, この確率は$1/q^2$です.
   一方で, ランダムな$a,b\sim \mathbb{F}_q$と固定した$i\in \mathbb{F}_q$に対し$X_i=ai+b$の周辺分布は$\mathbb{F}_q$上一様なので, 確かに$(X_i)$はペア独立です.  
+
+</details>
+
+ランダムな直線に基づく生成はランダムな$a,b\sim \mathbb{F}_q$を受け取って$q$個の$\mathbb{F}_q$の元を出力しています.
+
+
+## 例4. ランダムな二次曲線
+
+[例3](#例3-ランダムな直線)と同様に, ランダムな二次曲線上の点集合もまたペア独立性を持ちます.
+要素数$q$の有限体$\mathbb{F}_q$を考え, $a\in \F_q$を任意に固定し, 一様ランダムに$b,c\sim \mathbb{F}_q$を選び, 各$i\in \mathbb{F}_q$に対して
+
+$$
+  \begin{align*}
+    X_i = a + bi + ci^2
+  \end{align*}
+$$
+
+として確率変数族$(X_i)_{i\in \mathbb{F}_q\setminus\{0\}}$を定めると$(X_i)$はペア独立です.
+
+<details markdown="1" style="background-color: #eee;">
+<summary style="display: list-item">証明</summary>
+
+  任意の相異なる$\mathbb{F}_q$の元$i,j\ne 0$および$c,d \in \mathbb{F}_q$に対して
+  
+  $$
+    \begin{align*}
+      \Pr \left[
+          \begin{aligned}
+            X_i &= r \\
+            X_j &= s
+          \end{aligned}
+        \right] &=
+      \Pr_{b,c\sim \mathbb{F}_q} \left[
+          \begin{aligned}
+            bi+ci^2 &= r-a \\
+            bj+cj^2 &= s-a
+          \end{aligned}
+        \right] \\
+      &=
+      \Pr_{b,c\sim \mathbb{F}_q} \left[
+          \begin{bmatrix}
+            i & i^2 \\
+            j & j^2
+          \end{bmatrix}
+          \begin{bmatrix}
+            b \\
+            c
+          \end{bmatrix}
+          =
+          \begin{bmatrix}
+            r-a \\
+            s-a
+          \end{bmatrix}
+      \right]      
+    \end{align*}
+  $$
+
+  ここで, $i\ne j$より行列
+
+$$
+  \begin{align*}
+     \begin{bmatrix}
+            i & 1 \\
+            j & 1
+          \end{bmatrix}
+  \end{align*}
+$$
+
+  は逆行列を持つ (Vandermonde行列の特殊ケース) ので, 最後の等式の確率の中身は$b=\ast,c=\ast$の形で書けます. $b,c$は一様ランダムなので, この確率は$1/q^2$です.
 
 </details>
 
