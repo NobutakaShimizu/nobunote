@@ -97,7 +97,8 @@ $$
 - Essential Coding Theory, V. Guruswami, A. Rudra, M. Sudan, [link](https://cse.buffalo.edu/faculty/atri/courses/coding-theory/book/)
   > 出版はされていない本なのだが, 2023年に著者らがドラフトをwebページで公開している. 誤り訂正符号に関する比較的最近の成果も紹介している. どちらかというと広く浅い知識を得るのに適している.
 - List Decoding of Error-Correcting Codes, V. Guruswami, 2005 [link](https://link.springer.com/book/10.1007/b104335)
-  > リスト復号に関する詳細な解説がされているGuruswamiのD論(の修正版). Guruswamiは効率的なリスト復号アルゴリズムの設計において世界的に特に有名な研究者である.
+- Algorithmic Results in List Decoding, V. Guruswami, 2006 [link](https://dl.acm.org/doi/10.1561/0400000007)
+  > リスト復号に関する詳細な解説がされているGuruswamiのD論(の修正版)と計算量的結果にフォーカスを絞ったサーベイ本. Guruswamiは効率的なリスト復号アルゴリズムの設計において世界的に特に有名な研究者である.
 - Error-Correcting Codes in Complexity Theory, L. Trevisan, 2003 [link](https://dl.acm.org/doi/abs/10.5555/1757536.1757541), [arXiv](https://arxiv.org/abs/cs/0409044)
   > 計算量理論における誤り訂正符号の応用に関する解説. 主に符号の局所復号や局所検査と呼ばれる操作が行える符号に焦点を置き, その平均時計算量やPCP定理への応用について解説している.
 

@@ -74,3 +74,48 @@ $$
 符号によってはこのバウンドがタイトになることもありますし, リスト復号半径がもっと大きくなりうることもあります. 
 
 ## Gilbert-Varshamov限界 (GV限界)
+
+## リスト復号の限界
+
+符号$\calC\subseteq\F_q^n$が$(R,L)$-リスト復号可能であるとは, 任意の$x\in\F_q^n$に対して$\abs{ \calC \cap \ball(x,R) } \le L$が成り立つことをいいます. 
+有限体$\F_q$を考え, $r\in[0,1]$に対し, $q$進エントロピー関数を
+
+$$
+  \begin{align*}
+    H_q(R)=R\log_q \frac{1}{R}+(1-R)\log_q\frac{1}{1-R}
+  \end{align*}
+$$
+
+で定義します. Stirling近似により, $\F_q^n$上の半径$R$の球の体積がおよそ$q^{nH_q(R)}$で与えられます. 
+
+{: .proposition-title }
+> **命題(list-decoding capacity)**
+>
+> 有限体$\F_q$を考え, $R\in (0,1-1/q)$と$\varepsilon>0$を任意の定数とします. 
+>
+> 1. レート$1-H_q(R)-\varepsilon$かつ$(R,\lceil 1/\varepsilon\rceil)$-リスト復号可能な符号$\mathcal{C}\subseteq\mathbb{F}^n$が存在します. 
+>
+> 2. レート$1-H_q(R)+\varepsilon$の符号$\mathcal{C}\subseteq\mathbb{F}^n$が$(R,L)$-リスト復号可能であるためには, $L \ge q^{\Omega(\varepsilon n)}$を満たさなければなりません. 
+
+ポジティブな結果1はランダム線形符号を考えることによって得られます. 2の結果は単純な数え上げによって得られます. 
+
+<details markdown="1" style="background-color: #eee;">
+<summary style="display: list-item">二つ目の主張の証明</summary>
+  確率変数$X$を,
+  一様ランダムな点$x\sim\F_q^n$を中心とした半径$R$のボールに含まれる符号語の個数とします.
+  符号$\calC$の要素数は$\abs{\calC}=q^{n(1-H_q(R)+\varepsilon)}$なので,
+  $X$の期待値は
+
+  $$
+    \begin{align*}
+      \E[X] &= \sum_{z\in\calC}\Pr[x\in\ball(z,R)] \\
+      &= \abs{\calC}\Pr[x\in\ball(0,R)] \\
+      &\approx \abs{\calC}q^{-n+nH_q(R)} \\
+      &= q^{n(1-H_q(R)+\varepsilon)-n+nH_q(R)} \\
+      &= q^{n\varepsilon}
+    \end{align*}
+  $$
+  
+  となります. よって, ある点$x\in\F_q^n$に対して$\abs{\ball(x,R)\cap \calC}>q^{n\varepsilon} $となるので,
+  リストサイズは$L\ge q^{\varepsilon n}$でなければなりません.
+</details>
