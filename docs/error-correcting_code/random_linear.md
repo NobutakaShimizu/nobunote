@@ -1,6 +1,6 @@
 ---
 title: ランダム線形符号
-nav_order: 5
+nav_order: 9
 parent: 誤り訂正符号
 ---
 
