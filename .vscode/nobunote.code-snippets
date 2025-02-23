@@ -49,8 +49,7 @@
 		"prefix": "fig",
 		"body":[
 			"{: align=\"center\"}",
-			"![text]({{site.baseurl}}/docs/$1)",
-			"{: width=70%}",
+			"![text]({{site.baseurl}}/docs/$1){: width=70%}",
 			"",
 			"{: align=\"center\"}",
 			"<span style=\"font-size:smaller\">caption</span>"

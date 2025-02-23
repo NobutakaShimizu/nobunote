@@ -63,10 +63,10 @@ $C$の外側の頂点の次数は期待値が$n/2$ですがそこから標準偏
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item"><a href="#theorem">定理</a>の証明</summary>
 
-  入力を$G'\sim \calG(n,1/2,k)$とします.
+  入力を$G'\sim\PC(n,k)$とします.
   補題より, クリーク$C$を追加する前のランダムグラフの最大次数は確率$1-n^{1-2c^2}$で高々$\frac{n}{2} + c\sqrt{n\log n}$です.
 
-  リーク$C$の追加によってクリーク外$v \not\in C$の次数は変化しないため, グラフ$G'$においても頂点$v\not\in C$の次数は高々
+  クリーク$C$の追加によってクリーク外$v \not\in C$の次数は変化しないため, グラフ$G'$においても頂点$v\not\in C$の次数は高々
    
   $$
     \begin{align*}
