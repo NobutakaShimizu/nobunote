@@ -21,4 +21,17 @@ $$\ball(\tilde{y},R) = \set{x\in \F_q^n\colon \dist(\tilde{y},x)\le R}$$
 に対し, 符号との共通部分$\calC\cap \ball(\tilde{y},R)$を求める問題とみなせます. 
 半径のパラメータ$R$の取り方によってこの問題の性質は大きく異なります. 
 - 半径$R$が十分小さい場合は, $\calC\cap \ball(\tilde{y},R)$は高々一つの符号語しか含まない. この範囲の$R$に対して$y\in \calC\cap\ball(\tilde{y},R)$を求める問題を**一意復号(unique decoding)**といいます. 符号$\calC\subseteq\F_q^n$の距離を$\delta$とすると, 全ての符号語が少なくとも距離$\delta$だけ離れているため, 半径$\delta/2$未満の球の中には高々一つの符号語しか含まれません. 従って一意復号の文脈では常に$R<\delta/2$の領域を考えます. これを一意復号半径と呼び, 小さい実数$\varepsilon>0$に対し, $R=\delta/2-\varepsilon$のときにどれくらいの時間で一意復号できるかが議論されます. 
+
+{: align="center"}
+![text]({{site.baseurl}}/docs/error-correcting_code/images/unique_decoding.svg){: width=70%}
+{: align="center"}
+<span style="font-size:smaller">半径が$\delta/2$を超えた球は複数の符号語を含みうる.</span>
+
 - 一意復号ではどのような符号を考えたとしても必ず$R<1/2$を満たすため, 50%のエラーしか訂正できません. 当たり前ですが, 半径$R$が大きくなるにつれて, $\calC\cap \ball(\tilde{y},R)$のサイズは大きくなります. このときに$\calC\cap \ball(\tilde{y},R)$の元を列挙する問題を**リスト復号 (list-decoding)**といいます. しかし, 極端な例で$R=1$としてしまうと, 全ての符号語を列挙することになるため誤り訂正としての意味がなくなってしまうため, $\calC\cap\ball(\tilde{y},R)$が大きくなりすぎないような範囲の$R$を考えることになります. 基本的には$R\le \delta$程度の範囲を考えます. これをリスト復号半径と呼びます. 計算量的なリスト復号の文脈では, 小さい実数$\varepsilon>0$に対し, $R=\delta-\varepsilon$のときにどれくらいの時間でリスト復号できるか, またリストサイズ$\abs{\calC \cap \ball(\tilde{y},R)}$の上界が議論されます. 
+
+{: align="center"}
+![text]({{site.baseurl}}/docs/error-correcting_code/images/list_decoding.svg){: width=70%}
+
+{: align="center"}
+<span style="font-size:smaller">半径$R$の任意の球は高々$L$個のボールしか含まないようにしたい.</span>
+

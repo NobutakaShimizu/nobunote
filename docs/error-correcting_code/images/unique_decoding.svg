@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="187px" height="220px" viewBox="-0.5 -0.5 187 220" content="&lt;mxfile&gt;&lt;diagram id=&quot;LbHGYegAiRU9nEQo0-Pr&quot; name=&quot;ページ1&quot;&gt;5Vhtb+JGEP41SO0Hon3xGvsjEOi1aqRDZ+nS++bixaziF7osgfTXd2Z3jW1MLlGTqFJPQsn42Xmf8ezAiM/L0y863W3v6kwWI0ay04jfjhjjMYG/CDx5QEwckGuVOYi2wBf1t/Sgl8sPKpP7HqOp68KoXR9c11Ul16aHpVrXxz7bpi76VndpLgfAl3VaDNGvKjNbh0Zs0uKfpMq3jWUaxu6kTBtmr2K/TbP66CAbHF+M+FzXtXFUeZrLAnPX5MVlYPnM6dkxLSvzGoHACTymxcHH5v0yT02w4OIOyWP6tKsVqp3tH6RZYyAEH1x5QiDtudSLR7COKaYNZvMtZiNxC8hGFcW8LmoNYFVXIDzTErSkf1qTqFPXJjWd553UqpSgGp7XEm18bpHZvkp3Sf3ZOWeN+qikNvL0bGboOd/Qp7IGbfoJWBoB4ZvN9ygN/POxrbhPLtl2it1gqe+x/Ky5LQMQvhLXqxL+P6ty5v+yS9eqyr2adygWp/9dseKXiwUCMJowpcetMhLDt7WD4QjY1pSFz1C637l5tVEnmV2vygf0thCDbNFIDNN1Bt+Sr6ZU3fxkMF79o4+ykxQISj/dY7PcsOAM/GGBMAga4Pbk+8k9PXWfOn3p3g6TajPFmwBbt0j3e7Vu4KUqGst7o+uH84gnN/ycfvT4+8mHAOuDXsvenAX9uTSdl3xYIi2L1KjHvvY35ZteadCwsBPjMe8VIvzrgBfPDJtLwXU3TguVVyM+Ba4xuSGMY8vNWkZsqbKowLvpqVDVQ0/L1pidlV3C53g83hz5Ta3B4pLGMbw1SyfSVfao5HFWn3pqCBqfULhbSQDVZmSC92xHSNcX7qsy7zF0WrhBKXSOgGC6bG33t1yEXHL5eF8VJyMEvF/aNLcqwtz/tzXI5GZ/ie1wTYD1qGfmjsbw9pGQxCtPCWghwjAbJIzChBMsM2RqxWlsKTzngiJN4iQgljOeJAHnliKrwJ6GEUp6OmQNarMd8AhpFoG8laJsxS0/UKg/sOcBTVhkqQlQQWz9mySw2jnplaNEhDo5t5pDvgoIWuIT5Hc0i5lH7dYE+rEBIpKAMHYCJZ9oHK2oDXtM7SH6xSEBGC8VfGUJFrlHayBikDSkAorMTNiAebBqKNTNAmGbLAa3UW8QQSgUXRUMKOuUCMPkXIhvd9TmgHKycpR1hVr7QoAICrMJBG+tTqxpewj6rD+UUigcBkonUcJtyRiHFDsqRBF3zuIIZIRNSZCw0KWM/M6ETVMcrmCu21itXpeUgCWUe7MJpZG1Eydnt7/1eltddNxv92M6Thb341/H9DZcLp/vYuhy17QD+Fp/49QxOq32m1qXPZN7XLJ/ggDmY/pzzzc3i8fDl5T02DZuerfY+qBxMrtLdKjwVbxD7zNYhMZlWYwr+G7T01G6NPw7WfW85AH2B5g+bspOt1pueqIjxr9bLmd13R9vL9bUGh2g+RswNws9erEGwEJjLvYhd//47bJzM039QamyrLi2qw4X3PRgar8Vt3f7xW71MevW+fpvtlMWDfYtfmU75e+wnVI2vP0XYhTdjqIpErPFKAp+nEqQ/uLLrnxPEB9VCX5lDwvsJ0xL/CLg3goxz2RhUlwfmvMfpTr05epQ8j7lgcf2VxZ71vmpii/+AQ==&lt;/diagram&gt;&lt;/mxfile&gt;"><defs><style xmlns="http://www.w3.org/1999/xhtml" id="MJX-SVG-styles">
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] &gt; svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] &gt; svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] &gt; g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] &gt; rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] &gt; line[data-line], svg[data-table] &gt; g &gt; line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] &gt; rect[data-frame], svg[data-table] &gt; g &gt; rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] &gt; .mjx-dashed, svg[data-table] &gt; g &gt; .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] &gt; .mjx-dotted, svg[data-table] &gt; g &gt; .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] &gt; g &gt; svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool &gt; mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool &gt; mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+</style></defs><g><g><ellipse cx="10" cy="95" rx="3" ry="3" fill="#000000" stroke="none" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/><rect x="0" y="85" width="20" height="20" fill="none" stroke="none" pointer-events="all"/></g><g><ellipse cx="170" cy="95" rx="3" ry="3" fill="#000000" stroke="none" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/><rect x="160" y="85" width="20" height="20" fill="none" stroke="none" pointer-events="all"/></g><g><ellipse cx="92.5" cy="92.5" rx="92.5" ry="92.5" fill="none" stroke="#000000" pointer-events="all" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/></g><g><path d="M 15.06 95 L 164.94 95" fill="none" stroke="#000000" stroke-width="0.3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/><path d="M 10.34 95 L 16.64 91.85 L 15.06 95 L 16.64 98.15 Z" fill="#000000" stroke="#000000" stroke-width="0.3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/><path d="M 169.66 95 L 163.36 98.15 L 164.94 95 L 163.36 91.85 Z" fill="#000000" stroke="#000000" stroke-width="0.3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/></g><g><rect x="74" y="73" width="30" height="30" fill="none" stroke="none" pointer-events="all"/></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 88px; margin-left: 89px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; "><svg xmlns="http://www.w3.org/2000/svg" width="1.005ex" height="1.645ex" role="img" viewBox="0 -717 444 727" xmlns:xlink="http://www.w3.org/1999/xlink" style="vertical-align: -0.023ex;"><defs><path id="MJX-1-TEX-I-1D6FF" d="M195 609Q195 656 227 686T302 717Q319 716 351 709T407 697T433 690Q451 682 451 662Q451 644 438 628T403 612Q382 612 348 641T288 671T249 657T235 628Q235 584 334 463Q401 379 401 292Q401 169 340 80T205 -10H198Q127 -10 83 36T36 153Q36 286 151 382Q191 413 252 434Q252 435 245 449T230 481T214 521T201 566T195 609ZM112 130Q112 83 136 55T204 27Q233 27 256 51T291 111T309 178T316 232Q316 267 309 298T295 344T269 400L259 396Q215 381 183 342T137 256T118 179T112 130Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D6FF" xlink:href="#MJX-1-TEX-I-1D6FF"/></g></g></g></svg></div></div></div></foreignObject><text x="89" y="92" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="12px" text-anchor="middle"></text></switch></g></g><g><rect x="50" y="185" width="50" height="30" fill="none" stroke="none" pointer-events="all"/></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 200px; margin-left: 75px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; ">半径</div></div></div></foreignObject><text x="75" y="204" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="12px" text-anchor="middle">半径</text></switch></g></g><g><rect x="60" y="185" width="100" height="30" fill="none" stroke="none" pointer-events="all"/></g><g><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 200px; margin-left: 110px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; "><div style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; "><mjx-container class="MathJax" jax="SVG" display="true"><svg xmlns="http://www.w3.org/2000/svg" width="5.656ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2499.8 1000" xmlns:xlink="http://www.w3.org/1999/xlink" style="vertical-align: -0.566ex;"><defs><path id="MJX-4-TEX-N-3E" d="M84 520Q84 528 88 533T96 539L99 540Q106 540 253 471T544 334L687 265Q694 260 694 250T687 235Q685 233 395 96L107 -40H101Q83 -38 83 -20Q83 -19 83 -17Q82 -10 98 -1Q117 9 248 71Q326 108 378 132L626 250L378 368Q90 504 86 509Q84 513 84 520Z"/><path id="MJX-4-TEX-I-1D6FF" d="M195 609Q195 656 227 686T302 717Q319 716 351 709T407 697T433 690Q451 682 451 662Q451 644 438 628T403 612Q382 612 348 641T288 671T249 657T235 628Q235 584 334 463Q401 379 401 292Q401 169 340 80T205 -10H198Q127 -10 83 36T36 153Q36 286 151 382Q191 413 252 434Q252 435 245 449T230 481T214 521T201 566T195 609ZM112 130Q112 83 136 55T204 27Q233 27 256 51T291 111T309 178T316 232Q316 267 309 298T295 344T269 400L259 396Q215 381 183 342T137 256T118 179T112 130Z"/><path id="MJX-4-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"/><path id="MJX-4-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="3E" xlink:href="#MJX-4-TEX-N-3E"/></g><g data-mml-node="mi" transform="translate(1055.8,0)"><use data-c="1D6FF" xlink:href="#MJX-4-TEX-I-1D6FF"/></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1499.8,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-4-TEX-N-2F"/></g></g><g data-mml-node="mn" transform="translate(1999.8,0)"><use data-c="32" xlink:href="#MJX-4-TEX-N-32"/></g></g></g></svg></mjx-container></div></div></div></foreignObject><text x="110" y="204" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="12px" text-anchor="middle">$$&gt;\delta/2$$</text></switch></g></g></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text></a></switch></svg>
