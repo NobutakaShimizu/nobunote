@@ -9,6 +9,8 @@ nav_order: 2
 * TOC
 {:toc}
 
+## 概要
+
 
 確率に関するよく使う不等式を紹介していきます.
 基本的には様々な**確率集中不等式 (concentration inequality)**を紹介していきます.

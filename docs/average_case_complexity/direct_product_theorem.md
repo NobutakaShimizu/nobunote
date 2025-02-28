@@ -6,6 +6,9 @@ parent: 平均時計算量理論
 
 # 直積定理
 
+## 概要
+
+
 関数$f\colon\binset^n\to\binset$と$k\in\Nat$に対して, $f^k\colon\binset^{nk}\to\binset^k$を
 
 $$

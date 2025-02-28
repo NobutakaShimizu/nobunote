@@ -8,6 +8,7 @@ parent: 埋め込みクリーク問題
 * TOC
 {:toc}
 
+## 概要
 
 Kučeraのアルゴリズムとは$k\ge \sqrt{n\log n}$に対して[埋め込みクリーク探索問題]({{site.baseurl}}/docs/planted_clique/index#埋め込みクリーク探索問題)を解くアルゴリズムです.
 アルゴリズム自体は非常にシンプルで, 
@@ -30,6 +31,8 @@ $C$の外側の頂点の次数は期待値が$n/2$ですがそこから標準偏
 {: align="center"}
 ![次数によってクリークの位置がわかる]({{site.baseurl}}/docs/planted_clique/images/PCdegree_dist.svg)
 {: width=70%}
+
+## 定理の主張
 
 <div id="theorem" markdown="1">
 {: .theorem }

@@ -9,6 +9,9 @@ parent: 誤り訂正符号
 * TOC
 {:toc}
 
+## 概要
+
+
 folded Reed-Solomon符号はReed-Solomon符号の一般化であり, Reed-Solomon符号のリスト復号性能を改善するために提案されました.
 レート$r$のReed-Solomon符号は半径$R=1-\sqrt{r}$までのエラーを効率的に訂正できることが知られています.
 この$1-\sqrt{r}$という値は「レート$r$で最適な距離を持つ符号は**必ず**組合せ的には半径$1-\sqrt{r}$までのリスト復号が可能である」という[Johnson限界]({{site.baseurl}}/docs/error-correcting_code/code_bounds#Johnson限界)に一致しており, Reed-Solomon符号がこの限界を計算量的な意味でも達成していることを示しています.

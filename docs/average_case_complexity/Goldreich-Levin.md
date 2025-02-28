@@ -9,6 +9,8 @@ parent: 平均時計算量理論
 * TOC
 {:toc}
 
+## 概要
+
 
 Goldreich-Levinの定理とは, [Goldreich, Levin (1989)](https://dl.acm.org/doi/10.1145/73007.73010)による定理です.
 様々な文脈で解釈できる有名な定理で, 主に

@@ -8,6 +8,7 @@ nav_order: 8
 * TOC
 {:toc}
 
+## 概要
 
 確率変数族の**ペア独立性 (pairwise independence)**は計算量理論の文脈では
 Goldreich-Levinの定理, set lower bound protocol, ハッシュ関数, 擬似ランダム生成器などの文脈でよく使われるテクニックです.

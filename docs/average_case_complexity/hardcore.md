@@ -9,6 +9,8 @@ parent: 平均時計算量理論
 * TOC
 {:toc}
 
+## 概要
+
 
 ハードコア補題とは [Impagliazzo (1995)](https://ieeexplore.ieee.org/document/492584)の結果で, [XOR補題]({{site.baseurl}}/docs/average_case_complexity/Yao_XOR)など平均時計算量の様々な定理の証明に用いることができる非常に便利な定理です.
 

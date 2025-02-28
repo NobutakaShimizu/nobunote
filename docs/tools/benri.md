@@ -8,6 +8,7 @@ nav_order: 3
 * TOC
 {:toc}
 
+## 概要
 
 [よく使う不等式]({{site.baseurl}}/docs/tools/prob_inequalities)ほど頻繁に登場しないものの, 知っていると便利な不等式を紹介していきます.
 

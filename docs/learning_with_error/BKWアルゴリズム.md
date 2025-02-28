@@ -9,6 +9,7 @@ parent: Learning with Error
 * TOC
 {:toc}
 
+## 概要
 
 BKWアルゴリズムとは, $\mathbb{F}_2$上のLWE探索問題(LPN探索問題)を$2^{O(n/\log n)}$時間で解くアルゴリズムであり, その名は提案した論文[Blum, Kalai, Wasserman (2003)](https://dl.acm.org/doi/10.1145/792538.792543)の著者名の頭文字からとられています.
 
