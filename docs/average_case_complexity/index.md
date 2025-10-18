@@ -1,6 +1,6 @@
 ---
 title: 平均時計算量理論
-nav_order: 6
+nav_order: 7
 ---
 
 # 平均時計算量理論の概要

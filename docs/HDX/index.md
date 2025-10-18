@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 高次元エクスパンダー
-nav_order: 10
+nav_order: 12
 ---
 
 # 高次元エクスパンダー

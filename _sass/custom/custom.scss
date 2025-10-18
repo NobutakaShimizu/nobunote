@@ -1,1 +1,118 @@
 // custom SCSS (or CSS) goes here
+
+// サイドバーを緑系にカスタマイズ
+.side-bar {
+  background-color: $green-300 !important; // ダークグリーンの背景
+}
+
+// サイドバーの文字色をより明るく調整
+.nav-list-link {
+  color: $white !important; // 白文字で見やすく
+}
+
+.nav-list-link:hover,
+.nav-list-link.active {
+  color: $white !important; // ホバー時も白文字
+  background-image: linear-gradient(
+    -90deg,
+    rgba($green-200, 0.8) 0%,
+    rgba($green-200, 0.6) 80%,
+    rgba($green-200, 0) 100%
+  ) !important;
+}
+
+// 子要素のリンク色も調整
+.nav-list .nav-list .nav-list-link {
+  color: $green-000 !important; // 明るいグリーンで見やすく
+}
+
+.nav-list .nav-list .nav-list-link:hover {
+  color: $white !important;
+}
+
+// ナビゲーションカテゴリの色も調整
+.nav-category {
+  color: $white !important; // 白文字で見やすく
+  border-bottom-color: $green-200 !important;
+}
+
+// サイトタイトルの色も調整
+.site-title {
+  color: $white !important; // 白文字で見やすく
+}
+
+// サイトタイトルのホバーエフェクトをオフ
+.site-title:hover {
+  background-image: none !important;
+}
+
+// フッターの色も調整
+.site-footer {
+  color: $green-000 !important; // 明るいグリーンで見やすく
+}
+
+// リンクの色を紫から青に変更
+a {
+  color: $blue-000 !important; // 青いリンク色
+}
+
+a:hover {
+  color: $blue-100 !important; // ホバー時は少し暗い青
+}
+
+// サイドバー内のリンクは緑系を維持
+.side-bar a {
+  color: $white !important; // サイドバー内のリンクは白文字
+}
+
+.side-bar a:hover {
+  color: $green-000 !important; // ホバー時は明るいグリーン
+}
+
+
+// サイドバーのレイアウト調整
+.side-bar {
+  position: fixed !important; // 固定位置を維持
+  z-index: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  border-right: $border $border-color;
+  align-items: flex-end;
+  
+  // デフォルト幅を設定
+  width: 16.5rem;
+  min-width: 12rem;
+  
+  @include mq(md) {
+    width: 15.5rem;
+  }
+  
+  @include mq(lg) {
+    width: 16.5rem;
+  }
+}
+
+// メインコンテンツのマージン調整
+.main {
+  background-color: #fefefe !important; // ものすごく薄い黄色
+  @include mq(md) {
+    margin-left: 15.5rem !important;
+  }
+  
+  @include mq(lg) {
+    margin-left: 16.5rem !important;
+  }
+}
+
+// 本文コンテンツの背景色も薄い黄色に
+.main-content {
+  background-color: #fefefe !important; // ものすごく薄い黄色
+}
+
+// ページ全体の背景色も薄い黄色に
+body {
+  background-color: #fefefe !important; // ものすごく薄い黄色
+}
+
+

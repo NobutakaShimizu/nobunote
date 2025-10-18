@@ -7999,4 +7999,103 @@ blockquote.remark-title > p:last-child {
   margin-bottom: 0;
 }
 
+.side-bar {
+  background-color: #026e57 !important;
+}
+
+.nav-list-link {
+  color: #fff !important;
+}
+
+.nav-list-link:hover,
+.nav-list-link.active {
+  color: #fff !important;
+  background-image: linear-gradient(-90deg, rgba(0, 156, 123, 0.8) 0%, rgba(0, 156, 123, 0.6) 80%, rgba(0, 156, 123, 0) 100%) !important;
+}
+
+.nav-list .nav-list .nav-list-link {
+  color: #41d693 !important;
+}
+
+.nav-list .nav-list .nav-list-link:hover {
+  color: #fff !important;
+}
+
+.nav-category {
+  color: #fff !important;
+  border-bottom-color: #009c7b !important;
+}
+
+.site-title {
+  color: #fff !important;
+}
+
+.site-title:hover {
+  background-image: none !important;
+}
+
+.site-footer {
+  color: #41d693 !important;
+}
+
+a {
+  color: #2c84fa !important;
+}
+
+a:hover {
+  color: #2869e6 !important;
+}
+
+.side-bar a {
+  color: #fff !important;
+}
+
+.side-bar a:hover {
+  color: #41d693 !important;
+}
+
+.side-bar {
+  position: fixed !important;
+  z-index: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  border-right: 1px solid #44434d;
+  align-items: flex-end;
+  width: 16.5rem;
+  min-width: 12rem;
+}
+@media (min-width: 50rem) {
+  .side-bar {
+    width: 15.5rem;
+  }
+}
+@media (min-width: 66.5rem) {
+  .side-bar {
+    width: 16.5rem;
+  }
+}
+
+.main {
+  background-color: #fefefe !important;
+}
+@media (min-width: 50rem) {
+  .main {
+    margin-left: 15.5rem !important;
+  }
+}
+@media (min-width: 66.5rem) {
+  .main {
+    margin-left: 16.5rem !important;
+  }
+}
+
+.main-content {
+  background-color: #fefefe !important;
+}
+
+body {
+  background-color: #fefefe !important;
+}
+
 /*# sourceMappingURL=just-the-docs-dark.css.map */

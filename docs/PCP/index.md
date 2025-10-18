@@ -1,7 +1,7 @@
 ---
 layout: default
 title: PCP定理
-nav_order: 9
+nav_order: 10
 ---
 
 # PCP定理 (Probabilistically Checkable Proof)
@@ -48,6 +48,10 @@ PCP定理の最も重要な応用は, 多くのNP完全問題に対する近似�
 > 3. 独立集合問題とクリーク問題は, $n^{1-\varepsilon}$ の近似率でNP困難である (任意の定数 $\varepsilon > 0$ に対して).
 
 この結果は, $\mathrm{P} \neq \mathrm{NP}$ という仮定の下で, 効率的に解けない最適化問題の近似限界を明確に示すものであり, 理論計算機科学における最も深遠な成果の一つとして認識されている.
+
+## 証明
+
+- 2025年に清水が京都大学で行った集中講義の[講義資料](https://nobutakashimizu.github.io/PCP_lecture_2025/main.pdf)を参照
 
 ## 参考文献
 
