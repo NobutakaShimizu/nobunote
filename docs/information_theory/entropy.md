@@ -34,7 +34,7 @@ nav_order: 1
 ### KLダイバージェンス
 - **定義**: $\KL{X}{Y} = \sum_{x} \Pr[X=x] \ln \frac{\Pr[X=x]}{\Pr[Y=x]}$
 - **特徴**: 二つの確率変数の分布間の「距離」を測る
-- **詳細**: [KLダイバージェンス]({{site.baseurl}}/docs/information_theory/kl_divergence)
+- **詳細**: [KLダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/kl_divergence)
 
 ## 応用例
 

@@ -1,7 +1,7 @@
 ---
 title: 統計距離
-parent: 確率論
-nav_order: 2
+parent: f-ダイバージェンス
+nav_order: 3
 ---
 
 # 統計距離
@@ -11,7 +11,7 @@ nav_order: 2
 
 ## 概要
 
-統計距離(または全変動距離)は確率分布間の距離の一つです.
+統計距離(または全変動距離)は確率分布間の距離の一つです. 統計距離は[f-ダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence)の特殊な場合として表現できます. 具体的には, $f(t) = \frac{1}{2}|t-1|$とすると統計距離が得られます.
 
 {: .definition }
 > 有限集合$V$上に値をとる二つの分布$\mu,\nu\in[0,1]^V$の**統計距離(statistical distance)**を
@@ -72,5 +72,11 @@ $$
 >
 > で表される. ここで$\pi$は$\mu$と$\nu$のカップリングを動く.
 
+## 関連する不等式
 
+統計距離は他の重要な分布間距離指標と密接な関係があります:
+
+- [Pinskerの不等式]({{site.baseurl}}/docs/information_theory/pinsker): KLダイバージェンスと統計距離の関係
+- [KLダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/kl_divergence): 情報理論的な分布間距離
+- [χ²ダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/chi2_divergence): 統計学でよく用いられる分布間距離
 

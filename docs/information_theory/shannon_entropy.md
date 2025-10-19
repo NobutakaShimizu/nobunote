@@ -135,7 +135,7 @@ nav_order: 1
 
 ## 劣モジュラ性と劣加法性
 
-エントロピーは劣モジュラ性と劣加法性という重要な性質を持ちます. 本質的には[KLダイバージェンス]({{site.baseurl}}/docs/tools/kl_divergence)の優モジュラ性なのですが, これらの性質は様々な証明で重要な役割を果たします.
+エントロピーは劣モジュラ性と劣加法性という重要な性質を持ちます. 本質的には[KLダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/kl_divergence)の優モジュラ性なのですが, これらの性質は様々な証明で重要な役割を果たします.
 
 {: .proposition-title }
 > **命題 (劣モジュラ性)**
