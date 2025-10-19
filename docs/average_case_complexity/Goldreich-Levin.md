@@ -58,7 +58,7 @@ $$
 
 <div id="algorithm1" markdown="1">
 
-{: .corollary-title }
+{: .algorithm-title }
 > アルゴリズム1.
 >
 > 1. 各$i=1,\dots,n$ に対して以下を行う:
@@ -158,7 +158,7 @@ $\square$
 
 <div id="algorithm2" markdown="1">
 
-{: .corollary-title }
+{: .algorithm-title }
 > **アルゴリズム2.**
 >
 > 1. 各$i=1,\dots,n$に対して以下を行う:
@@ -350,7 +350,7 @@ $$
 
 <div id="algorithm3" markdown="1">
 
-{: .corollary-title }
+{: .algorithm-title }
 > **アルゴリズム3.**
 >
 > 1. パラメータ$T\in\Nat$を, $2^T > 10n/\varepsilon^2$を満たすように選ぶ.

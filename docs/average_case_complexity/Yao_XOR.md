@@ -118,7 +118,7 @@ YaoのXOR補題には様々な証明方法が知られています.
   を満たし, さらに$C^\calO$のサイズは(オラクルゲートのサイズを定数として)$O(kn\cdot \log(1/\delta)/\varepsilon^2)$となり, オラクルコールの回数は高々$O(\log(1/\delta)/\varepsilon^2)$となる.
   なお, ここではランダムな入力$x\sim\binset^n$と$C^\calO$の内部のランダムネスに関する確率を考えています.
 
-  {: .corollary-title }
+  {: .algorithm-title }
   > **オラクル回路$C^{\calO}$**
   > 
   > 入力: $f$のインスタンス$x\in\binset^n$, ランダムシード$r$, アドバイス$\alpha = \alpha(n,r)$

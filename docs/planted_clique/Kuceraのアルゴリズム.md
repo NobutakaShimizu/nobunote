@@ -14,7 +14,7 @@ Kučeraのアルゴリズムとは$k\ge \sqrt{n\log n}$に対して[埋め込み
 アルゴリズム自体は非常にシンプルで, 
 次数の大きい順に$k$個の頂点を出力するだけです.
 
-{: .corollary-title }
+{: .algorithm-title }
 > **Kučeraのアルゴリズム** 
 >
 > **入力**: グラフ$G=([n],E)\sim \calG(n,1/2,k)$.

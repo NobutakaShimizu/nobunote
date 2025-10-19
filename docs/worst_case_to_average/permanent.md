@@ -35,14 +35,16 @@ $$
 最悪時の場合, $p>n!$であれば, Valiantの結果よりパーマネントを多項式時間で計算することは $\\#\mathsf{P}$-困難ですが, 中国剰余定理を使うと, ある$p=n^{O(1)}$に対しても同様に困難であることが示されます.
 このとき, Lipton (1991) は, $p\ge 3(n+1)$に対し, パーマネントを高い成功確率で解くアルゴリズムが存在するならば, それを使って任意の入力に対してパーマネントを解くアルゴリズムを設計できることを示しました.[^Lip91]
 
-# Lipton (1991) の帰着
+## Lipton (1991) の帰着
 
 <div id="prop:Lipton" markdown="1">
 {: .theorem-title }
 > **定理1 (Lipton, 1991).**
 >
-> 有限体$\F_p$上で, ランダム行列上で成功確率$1-\frac{1}{3(n+1)}$でパーマネントを解く$T(n)$時間アルゴリズムが存在するならば, 全ての入力に対してパーマネントを確率$2/3$で計算する$O(T(n)n^2)$時間乱択アルゴリズムが存在する.
+> 有限体$\F_p$上で, ランダム行列上で成功確率$1-\frac{1}{3(n+1)}$でパーマネントを解く$T(n)$時間アルゴリズムが存在するならば, 全ての入力に対してパーマネントを確率$2/3$で計算する$O(n\cdot T(n)) + \poly(n)$時間乱択アルゴリズムが存在する.
 </div>
+
+ここで $\poly(n)$ は$\F_p$上の$n$次多項式の補間にかかる時間を表します.
 
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item">証明</summary>
@@ -83,6 +85,31 @@ $$
   よって確率$2/3$で$M'(A) = P(0) = \mathrm{perm}(A)$となる.
 </details>
 
+## Lipton(1991)の改善
+
+Liptonの帰着では, ランダム行列上で成功確率が $1 - \frac{1}{3(n+1)}$ であるアルゴリズムを仮定しました.
+では, **より小さい成功確率 $\alpha$ を持つアルゴリズムを仮定した場合に同様の帰着を得ることはできるでしょうか?**
+
+もしこれが可能であれば, パーマネントの最悪時困難性を仮定すると, $1-\alpha$の割合の行列に対して正しくパーマネントを計算するアルゴリズムが存在しないことが示せます.
+仮に$\alpha\approx 0$で示せたとすると, ほとんどの行列は非常にパーマネントを計算するのが難しいことになります.
+このように, 計算困難なインスタンスが非常に多いという性質は暗号学的応用や脱乱択の理論において極めて重要です.
+
+この方向に関してはいくつかの研究があります:
+- GemmellとSudan (1992) は, $\alpha=\frac{1}{2} + \frac{1}{\poly(n)}$ に対して最悪時から平均時への帰着を与えました[^GS92].
+- FeigeとLund (1992) は, sum-checkプロトコルのアイデアを使って, $\alpha=\frac{1}{2} - \frac{1}{n}$ に対して最悪時から平均時への帰着を与えました [^FL92].
+- Cai, Pavan, Sivakumar (1999) は, $\alpha=\frac{1}{\poly(n)}$ に対して最悪時から平均時への帰着を与えました [^CPS99].
+
+また, Liptonの帰着を含む上記全ての既存の手法は全て多項式補間に基づいた手法であるため, 本質的に考える体$\F_p$の要素数は大きくなければいけません.
+一般に$p=2$の場合は行列積と同値なので簡単に計算できますが, $3\le p\ll n$の範囲ではパーマネントの最悪時から平均時への帰着は知られていません.
+
+
+
+
+---
+# 参考文献
 
 [^Lip91]: R. J. Lipton. "New directions in testing," Distributed Computing and Cryptography, 1991.
 [^Val79]: L. G. Valiant. "The complexity of computing the permanent," Theoretical Computer Science, 1979.
+[^GS92]: P. Gemmell and M. Sudan. "Highly resilient correctors for polynomials," Information Processing Letters, 1992.
+[^FL92]: U. Feige and C. Lund. "On the hardness of computing the permanent of random matrices," Computational Complexity, 1996.
+[^CPS99]: J.-Y. Cai, A. Pavan, and D. Sivakumar. "On the Hardness of Permanent," STACS, 1999.

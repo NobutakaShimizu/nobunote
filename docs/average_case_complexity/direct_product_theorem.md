@@ -65,7 +65,7 @@ $$
 まず, $\binset^n$内の$k/2$個の元からなる集合$S\subseteq\binset^n$と
 $v\in\binset^{k/2}$を固定して次の回路$C_{S,v}$を考えます:
 
-{: .corollary-title }
+{: .algorithm-title }
 > **回路$C_{S,v}$**
 >
 > 入力: $x\in\binset^n$
@@ -76,7 +76,7 @@ $v\in\binset^{k/2}$を固定して次の回路$C_{S,v}$を考えます:
 
 直積定理のアルゴリズム$A$は, 以下のように記述される.
 
-{: .corollary-title }
+{: .algorithm-title }
 > **アルゴリズム$A$**
 >
 > 入力: $C\colon\binset^{nk}\to\binset^k$

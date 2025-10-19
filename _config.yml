@@ -183,6 +183,9 @@ callouts:
   problem:
     title: 問題.
     color: purple
+  algorithm:
+    title: アルゴリズム.
+    color: yellow
 
 # Google Analytics Tracking (optional)
 # Supports a CSV of tracking ID strings (eg. "UA-1234567-89,G-1AB234CDE5")
