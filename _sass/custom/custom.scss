@@ -15,8 +15,8 @@
   color: $white !important; // ホバー時も白文字
   background-image: linear-gradient(
     -90deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 80%,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0.01) 80%,
     rgba(255, 255, 255, 0) 100%
   ) !important;
 }
@@ -121,16 +121,18 @@ body {
 }
 
 .nav-list-expander:hover {
-  color: #e0e0e0 !important; // ホバー時は明るいグレー
+  color: #000000 !important; // ホバー時は黒
 }
 
-// 折りたたみ可能なナビゲーション項目の矢印
-.nav-list .nav-list-item .nav-list-expander {
-  color: $white !important;
-}
+  // 折りたたみ可能なナビゲーション項目の矢印
+  .nav-list .nav-list-item .nav-list-expander {
+    color: $white !important;
+    left: 0.2rem !important; // 左側に配置（文字との間隔を広げる）
+    right: auto !important; // 右側の配置を無効化
+  }
 
-.nav-list .nav-list-item .nav-list-expander:hover {
-  color: #e0e0e0 !important;
-}
+  .nav-list .nav-list-item .nav-list-expander:hover {
+    color: #000000 !important; // ホバー時は黒
+  }
 
 
