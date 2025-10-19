@@ -1,54 +1,196 @@
 // custom SCSS (or CSS) goes here
 
-// サイドバーを緑系にカスタマイズ
+// サイドバーをシックなグラデーション背景に
 .side-bar {
-  background-color: $green-300 !important; // ダークグリーンの背景
+  background: linear-gradient(135deg, 
+    rgba(45, 45, 65, 0.95) 0%,
+    rgba(60, 60, 80, 0.9) 25%,
+    rgba(75, 75, 95, 0.95) 50%,
+    rgba(90, 90, 110, 0.9) 75%,
+    rgba(105, 105, 125, 0.95) 100%
+  ) !important;
+  backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 2px 0 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow-y: auto !important; // 縦スクロールは許可
+  overflow-x: hidden !important; // 横スクロールは非表示
+  scrollbar-width: none !important; // Firefox用
+  -ms-overflow-style: none !important; // IE/Edge用
 }
 
-// サイドバーの文字色をより明るく調整
+// Webkit系ブラウザ（Chrome, Safari）用のスクロールバー完全非表示
+.side-bar::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+.side-bar::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+.side-bar::-webkit-scrollbar-thumb {
+  display: none !important;
+}
+
+.side-bar::-webkit-scrollbar-corner {
+  display: none !important;
+}
+
+// サイドバー内のすべての要素でスクロールバーを非表示
+.side-bar * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.side-bar *::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+.side-bar *::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+.side-bar *::-webkit-scrollbar-thumb {
+  display: none !important;
+}
+
+.side-bar *::-webkit-scrollbar-corner {
+  display: none !important;
+}
+
+// シックな動きのある背景パターン
+.side-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.025) 0%, transparent 50%);
+  animation: subtleFloat 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+    opacity: 1;
+  }
+  66% {
+    transform: translateY(5px) rotate(-0.5deg);
+    opacity: 0.9;
+  }
+}
+
+// サイドバーの文字色をより明るく調整（z-indexを調整）
 .nav-list-link {
   color: $white !important; // 白文字で見やすく
+  position: relative;
+  z-index: 2;
 }
 
 .nav-list-link:hover,
 .nav-list-link.active {
   color: $white !important; // ホバー時も白文字
-  background-image: linear-gradient(
-    -90deg,
-    rgba($green-200, 0.8) 0%,
-    rgba($green-200, 0.6) 80%,
-    rgba($green-200, 0) 100%
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 100%
   ) !important;
+  backdrop-filter: blur(8px);
+  border-radius: 6px;
+  transform: translateX(4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-// 子要素のリンク色も調整
+// 子要素のリンク色も調整（z-indexを調整）
 .nav-list .nav-list .nav-list-link {
-  color: $green-000 !important; // 明るいグリーンで見やすく
+  color: rgba(255, 255, 255, 0.9) !important; // 半透明の白文字
+  font-weight: 400;
+  position: relative;
+  z-index: 2;
 }
 
 .nav-list .nav-list .nav-list-link:hover {
   color: $white !important;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  ) !important;
+  backdrop-filter: blur(6px);
+  border-radius: 5px;
+  transform: translateX(3px);
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
 }
 
-// ナビゲーションカテゴリの色も調整
+// ナビゲーションカテゴリの色も調整（z-indexを調整）
 .nav-category {
-  color: $white !important; // 白文字で見やすく
-  border-bottom-color: $green-200 !important;
+  color: rgba(255, 255, 255, 0.8) !important; // 半透明の白文字
+  border-bottom-color: rgba(255, 255, 255, 0.3) !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8em;
+  position: relative;
+  z-index: 2;
 }
 
-// サイトタイトルの色も調整
+// サイトタイトルの色も調整（z-indexを調整）
 .site-title {
   color: $white !important; // 白文字で見やすく
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 2;
 }
 
-// サイトタイトルのホバーエフェクトをオフ
+// サイトタイトルのホバーエフェクト（統一されたスタイル）
 .site-title:hover {
-  background-image: none !important;
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-// フッターの色も調整
+// フッターの色も調整（z-indexを調整）
 .site-footer {
-  color: $green-000 !important; // 明るいグリーンで見やすく
+  color: rgba(255, 255, 255, 0.7) !important; // 半透明の白文字
+  font-size: 0.85em;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 // リンクの色を紫から青に変更
@@ -60,13 +202,137 @@ a:hover {
   color: $blue-100 !important; // ホバー時は少し暗い青
 }
 
-// サイドバー内のリンクは緑系を維持
+// サイドバー内のリンクの統一されたホバー効果
 .side-bar a {
   color: $white !important; // サイドバー内のリンクは白文字
+  transition: all 0.3s ease;
 }
 
 .side-bar a:hover {
-  color: $green-000 !important; // ホバー時は明るいグリーン
+  color: $white !important; // ホバー時も白文字を維持
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+// サイドバーの矢印の色を統一
+.side-bar .nav-list-link::after {
+  color: $white !important; // 矢印を白文字と同じ色に
+  transition: all 0.3s ease;
+}
+
+.side-bar .nav-list .nav-list .nav-list-link::after {
+  color: rgba(255, 255, 255, 0.8) !important; // 子要素の矢印も白文字に統一
+  transition: all 0.3s ease;
+}
+
+.side-bar .nav-list-link:hover::after,
+.side-bar .nav-list-link.active::after {
+  color: $white !important; // ホバー時の矢印も白文字に
+}
+
+.side-bar .nav-list .nav-list .nav-list-link:hover::after {
+  color: $white !important; // 子要素のホバー時の矢印も白文字に
+}
+
+// より具体的なセレクターで矢印の色を統一
+.side-bar .nav-list > .nav-list-item > .nav-list-link::after {
+  color: $white !important;
+  transition: all 0.3s ease;
+}
+
+.side-bar .nav-list .nav-list > .nav-list-item > .nav-list-link::after {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease;
+}
+
+.side-bar .nav-list > .nav-list-item > .nav-list-link:hover::after,
+.side-bar .nav-list > .nav-list-item > .nav-list-link.active::after {
+  color: $white !important;
+}
+
+.side-bar .nav-list .nav-list > .nav-list-item > .nav-list-link:hover::after {
+  color: $white !important;
+}
+
+// SVG矢印の色を統一（より強力なセレクター）
+.side-bar .nav-list-expander svg,
+.side-bar .nav-list-expander svg use,
+.side-bar .nav-list-expander svg path,
+.side-bar .nav-list-expander svg polyline {
+  stroke: $white !important;
+  fill: $white !important;
+  transition: all 0.3s ease;
+}
+
+.side-bar .nav-list .nav-list .nav-list-expander svg,
+.side-bar .nav-list .nav-list .nav-list-expander svg use,
+.side-bar .nav-list .nav-list .nav-list-expander svg path,
+.side-bar .nav-list .nav-list .nav-list-expander svg polyline {
+  stroke: rgba(255, 255, 255, 0.8) !important;
+  fill: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease;
+}
+
+.side-bar .nav-list-expander:hover svg,
+.side-bar .nav-list-expander:hover svg use,
+.side-bar .nav-list-expander:hover svg path,
+.side-bar .nav-list-expander:hover svg polyline {
+  stroke: $white !important;
+  fill: $white !important;
+}
+
+.side-bar .nav-list .nav-list .nav-list-expander:hover svg,
+.side-bar .nav-list .nav-list .nav-list-expander:hover svg use,
+.side-bar .nav-list .nav-list .nav-list-expander:hover svg path,
+.side-bar .nav-list .nav-list .nav-list-expander:hover svg polyline {
+  stroke: $white !important;
+  fill: $white !important;
+}
+
+// より具体的なセレクターで矢印の色を統一
+.side-bar .nav-list-expander .icon,
+.side-bar .nav-list-expander .icon svg,
+.side-bar .nav-list-expander .icon svg use {
+  stroke: $white !important;
+  fill: $white !important;
+  transition: all 0.3s ease;
+}
+
+.side-bar .nav-list .nav-list .nav-list-expander .icon,
+.side-bar .nav-list .nav-list .nav-list-expander .icon svg,
+.side-bar .nav-list .nav-list .nav-list-expander .icon svg use {
+  stroke: rgba(255, 255, 255, 0.8) !important;
+  fill: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease;
+}
+
+// currentColorを変更して矢印の色を統一
+.side-bar .nav-list-expander {
+  color: $white !important;
+  transition: all 0.3s ease;
+}
+
+.side-bar .nav-list .nav-list .nav-list-expander {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease;
+}
+
+.side-bar .nav-list-expander:hover {
+  color: $white !important;
+}
+
+.side-bar .nav-list .nav-list .nav-list-expander:hover {
+  color: $white !important;
+}
+
+// SVGシンボル内のcurrentColorを統一
+.side-bar .nav-list-expander svg use {
+  color: $white !important;
+  transition: all 0.3s ease;
+}
+
+.side-bar .nav-list .nav-list .nav-list-expander svg use {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease;
 }
 
 
@@ -113,6 +379,83 @@ a:hover {
 // ページ全体の背景色も薄い黄色に
 body {
   background-color: #fefefe !important; // ものすごく薄い黄色
+  position: relative;
+  overflow-x: hidden;
+}
+
+// 泡のようなアニメーション背景（より目立つバージョン）
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+  animation: bubbleFloat 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+// 追加の泡アニメーション（より目立つバージョン）
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 60% 70%, rgba(255, 200, 100, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 90% 30%, rgba(100, 200, 255, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 10% 50%, rgba(200, 100, 255, 0.25) 0%, transparent 40%);
+  animation: bubbleFloat 25s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+}
+
+// 泡の浮遊アニメーション（より動的）
+@keyframes bubbleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(-30px) rotate(2deg) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-15px) rotate(-2deg) scale(0.9);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-45px) rotate(1deg) scale(1.05);
+    opacity: 0.7;
+  }
+}
+
+// メインコンテンツの背景を白に戻す
+.main {
+  background-color: white !important;
+}
+
+.main-content {
+  background-color: white !important;
+}
+
+// より確実に泡アニメーションを表示するための追加スタイル
+html {
+  overflow-x: hidden;
+}
+
+// 泡アニメーションのデバッグ用（一時的）
+body::before,
+body::after {
+  display: block !important;
+  visibility: visible !important;
 }
 
 

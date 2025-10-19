@@ -1,6 +1,6 @@
 ---
 title: 行列積
-nav_order: 4
+nav_order: 1
 parent: 最悪時から平均時への帰着
 ---
 
