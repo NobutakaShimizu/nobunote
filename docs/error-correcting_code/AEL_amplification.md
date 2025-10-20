@@ -24,7 +24,7 @@ AEL距離増幅は, レートが高いが誤り訂正能力(=距離)の低い符
 例えばKoppartyら(2017)はこの増幅手法を用いて局所復号可能な符号を初めて構成しました.[^KMRS17]
 増幅に必要な道具は以下の二つです:
 - レートの高い符号$\calC\subseteq \F_q^n$
-- 平衡二部正則[エクスパンダーグラフ]({{site.baseurl}}/docs/tools/expander) $G=(L\cup R,E)$
+- 平衡二部正則[エクスパンダーグラフ]({{site.baseurl}}/docs/graph_theory/expander) $G=(L\cup R,E)$
   - 頂点数は$\abs{L}=\abs{R}=n$, 左右全ての頂点の次数は$d$であり, かつ$G$の正規化された隣接行列の非自明な固有値は絶対値$\lambda$以下であるとします.
 
 [^AEL02]: N. Alon, J. Edmonds, M. Luby. "Linear time erasure codes with nearly optimal recovery." Proceedings of IEEE 36th Annual Foundations of Computer Science, 2002.

@@ -33,7 +33,7 @@ nav_order: 1
 > 対話するチューリング機械の組$\langle A,B \rangle$に対し, $[A(x),B(y)]$を計算が終了した際の$B$の出力テープの内容とします ($A$の出力テープの内容は無視しています).
 
 {: align="center"}
-![対話チューリング機械]({{site.baseurl}}/docs/memo/images/ITM.svg){: width=70%}
+![対話チューリング機械]({{site.baseurl}}/docs/interactive_proofs/images/ITM.svg){: width=70%}
 
 {: align="center"}
 *図1: 対話チューリング機械の構造*
@@ -62,7 +62,7 @@ nav_order: 1
 > $$
 
 {: align="center"}
-![対話証明系]({{site.baseurl}}/docs/memo/images/IP.svg){: width=70%}
+![対話証明系]({{site.baseurl}}/docs/interactive_proofs/images/IP.svg){: width=70%}
 
 {: align="center"}
 *図2: 対話証明系の構造*
@@ -107,7 +107,7 @@ nav_order: 1
 入力$(G_1,G_2)$が非同型ならば証明者は受信したグラフ$H$が$G_0$と$G_1$のどちらと同型かを知ることができるので, このプロトコルは健全性を満たします. 一方で$G_0$と$G_1$が同型である場合, 一様ランダムな$\pi$に対して$\pi(G_0)$と$\pi(G_1)$の分布は同一なので, 特に証明者が(P1)で送信する$a\in\binset$が$b$と一致する確率は$1/2$です. 従ってこのプロトコルは(何度も繰り返すことによって)完全性を満たします.
 
 {: align="center"}
-![text]({{site.baseurl}}/docs/memo/images/GNI.svg)
+![text]({{site.baseurl}}/docs/interactive_proofs/images/GNI.svg)
 {: width=70%}
 
 {: align="center"}

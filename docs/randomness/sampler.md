@@ -17,7 +17,7 @@ nav_order: 2
 この(辺重みつき)二部グラフを$(X,Y)$に付随する二部グラフと呼ぶことにします.
 
 {: align="center"}
-  ![確率変数のペアのサンプリングは二部グラフのランダムな辺のサンプリングとみなせる]({{site.baseurl}}/docs/tools/images/sampler_bipartite_graph.svg)
+  ![確率変数のペアのサンプリングは二部グラフのランダムな辺のサンプリングとみなせる]({{site.baseurl}}/docs/randomness/images/sampler_bipartite_graph.svg)
 {: width=70%}
 
 確率変数のペア$(X,Y)$がサンプラーであるとはこの二部グラフがある種のエクスパンダー性を持つことを意味します.
@@ -59,7 +59,7 @@ $$
 は$N(x)$のうち$S$に属するものの割合, すなわち$x$の周辺における$S$の**局所的**な密度を表します.
 
 {: align="center"}
-  ![ランダムな隣接点のうちSに属するものの割合]({{site.baseurl}}/docs/tools/images/sampler_bipartite_graph_degree.svg)
+  ![ランダムな隣接点のうちSに属するものの割合]({{site.baseurl}}/docs/randomness/images/sampler_bipartite_graph_degree.svg)
 {: width=70%}
 
 $(X,Y)$がサンプラーであるとは, ほとんどの$x$に対して$S$の局所的な密度$\frac{\abs{N(x)\cap S}}{\abs{N(x)}}$が$S$の大域的な密度$\E[S(Y)]$に近いということを意味します.
@@ -192,7 +192,7 @@ $(X,Y)$がサンプラーであるとは, ほとんどの$x$に対して$S$の�
 左側の頂点集合$\supp(X)$に対して$\supp(Y)=\supp(X)^k$となり, 頂点$x\in\supp(X)$と$(x_1,\dots,x_k)\in\supp(Y)$の間には, $(x_1,\dots,x_k)$の中に登場する$x$の回数だけ多重辺を引いて得られます (下図参照)
 
 {: align="center"}
-![直積サンプラーに付随するグラフ]({{site.baseurl}}/docs/tools/images/direct_product_sampler.svg)
+![直積サンプラーに付随するグラフ]({{site.baseurl}}/docs/randomness/images/direct_product_sampler.svg)
 {: width=70%}
 
 <div id="direct-product-sampler" markdown="1">
@@ -218,7 +218,7 @@ $(X,Y)$がサンプラーであるとは, ほとんどの$x$に対して$S$の�
     \end{align*}
   $$
 
-  は$k$個の独立な確率変数の和となります. [Hoeffdingの不等式]({{site.baseurl}}/docs/tools/prob_inequalities#hoeffding-inequality)より,
+  は$k$個の独立な確率変数の和となります. [Hoeffdingの不等式]({{site.baseurl}}/docs/concentration_inequalities/hoeffding#hoeffding-inequality)より,
 
   $$
     \begin{align*}

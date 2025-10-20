@@ -23,27 +23,27 @@ $$
 
 ## 基本的な不等式
 
-### [Markovの不等式]({{site.baseurl}}/docs/probability_theory/concentration_inequalities/markov)
+### [Markovの不等式]({{site.baseurl}}/docs/concentration_inequalities/markov)
 
 最も基本的な集中不等式です. 非負値をとる任意の確率変数に対して成り立つため汎用性が高いのが特徴です. 他の多くの集中不等式の証明の基礎となります.
 
-### [Chebyshevの不等式]({{site.baseurl}}/docs/probability_theory/concentration_inequalities/chebyshev)
+### [Chebyshevの不等式]({{site.baseurl}}/docs/concentration_inequalities/chebyshev)
 
 分散が小さい確率変数に対する集中性を与える不等式です. Markovの不等式よりも強い上界を与えることができますが, 分散が大きい場合にはMarkovの不等式よりも弱い上界を与えることがあります.
 
 ## 独立な確率変数の和の集中不等式
 
-### [Hoeffdingの不等式]({{site.baseurl}}/docs/probability_theory/concentration_inequalities/hoeffding)
+### [Hoeffdingの不等式]({{site.baseurl}}/docs/concentration_inequalities/hoeffding)
 
 独立な確率変数の和の集中性を与える基本的だが非常に有用な不等式です. 各確率変数が有界区間に値をとる場合に適用でき, 指数関数的に減衰する上界を与えます.
 
-### [Chernoffバウンド]({{site.baseurl}}/docs/probability_theory/concentration_inequalities/chernoff)
+### [Chernoffバウンド]({{site.baseurl}}/docs/concentration_inequalities/chernoff)
 
 Hoeffdingの不等式と同様に, 独立な確率変数の和の集中性を与える不等式です. 各確率変数の期待値の情報を用いた上界を与えているため, 状況によってはHoeffdingの不等式よりも強い上界を与えることができます.
 
 ## 従属な確率変数の集中不等式
 
-### [リード-$k$族の和の集中不等式]({{site.baseurl}}/docs/probability_theory/concentration_inequalities/read_k)
+### [リード-$k$族の和の集中不等式]({{site.baseurl}}/docs/concentration_inequalities/read_k)
 
 必ずしも独立とは限らない確率変数の和の集中性を与える不等式です. ハイパーグラフの最大次数が小さい場合に集中性が成り立ちます.
 

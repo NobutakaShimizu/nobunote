@@ -46,7 +46,7 @@ Chernoffバウンド (Chernoff bound) はHoeffdingの不等式と同様に, 独�
 
 ## Hoeffdingの不等式との比較
 
-[Hoeffdingの不等式]({{site.baseurl}}/docs/probability_theory/concentration_inequalities/hoeffding)と比較すると, 期待値$\E[S]$が小さい場合にはChernoffバウンドの方が強い上界を与えることがわかります.
+[Hoeffdingの不等式]({{site.baseurl}}/docs/concentration_inequalities/hoeffding)と比較すると, 期待値$\E[S]$が小さい場合にはChernoffバウンドの方が強い上界を与えることがわかります.
 
 具体的には:
 - **Hoeffding**: $\Pr[S \ge \E[S] + c] \le \exp(-2c^2/n)$

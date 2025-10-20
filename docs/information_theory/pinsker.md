@@ -11,7 +11,7 @@ nav_order: 4
 
 ## 概要
 
-Pinskerの不等式(Pinsker's inequality)は, [KLダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/kl_divergence) $\KL{X}{Y}$ と[統計距離]({{site.baseurl}}/docs/probability_theory/statistical_distance) $\dtv(X,Y)$ の間の重要な関係を表す不等式です. この不等式は, 確率変数の分布の収束性の解析において重要な役割を果たします。
+Pinskerの不等式(Pinsker's inequality)は, [KLダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/kl_divergence) $\KL{X}{Y}$ と[統計距離]({{site.baseurl}}/docs/information_theory/f_divergence/statistical_distance) $\dtv(X,Y)$ の間の重要な関係を表す不等式です. この不等式は, 確率変数の分布の収束性の解析において重要な役割を果たします。
 
 ## 定理
 

@@ -188,7 +188,7 @@ $\frac{2\sqrt{d-1}}{d}$という値は任意の$d$に対して最も小さい第
 
 ## エクスパンダーChernoffバウンド
 
-[Chernoffバウンド]({{site.baseurl}}/docs/tools/prob_inequalities#chernoffbound)は, 独立な確率変数$Z_0,\dots,Z_k$の和$\sum_{i\in[k]}Z_i$の集中性を評価するための不等式です.　エクスパンダーChernoffバウンドとは, $Z_0,\dots,Z_k$としてエクスパンダーグラフ上の単純ランダムウォークによって得られるときの和の集中性を評価します.
+[Chernoffバウンド]({{site.baseurl}}/docs/concentration_inequalities/chernoff#chernoffbound)は, 独立な確率変数$Z_0,\dots,Z_k$の和$\sum_{i\in[k]}Z_i$の集中性を評価するための不等式です.　エクスパンダーChernoffバウンドとは, $Z_0,\dots,Z_k$としてエクスパンダーグラフ上の単純ランダムウォークによって得られるときの和の集中性を評価します.
 
 正則なエクスパンダー$G=(V,E)$を考え, $(X_0,\dots,X_k) \in V^k$を$G$上の単純ランダムウォークとします.
 すなわち, 初期頂点$X_0\sim V$を一様ランダムに選び, 各$X_i$は$X_{i-1}$の隣接頂点の中から一様ランダムに選んで$(X_0,\dots,X_k)$を構成します.

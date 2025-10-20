@@ -104,7 +104,7 @@ Hirahara and Shimizu(2023)の証明は[直積定理]({{site.baseurl}}/docs/avera
 
   上記の帰着ではステップ3で行列積の検算を行っていますがこれは$O(n^2)$時間でできることが知られているので[^Fre79], 全体の計算時間は$O(T(n))$となります.
 
-  任意の$A,B\in\F_q^{n\times n}$に対して, 一様ランダムな$R_1,R_2,S_1,S_2$を選んだとき, 確率変数族$(\overline{A}(t),\overline{B}(t))_{t\ne 0}$はペア独立になります([ペア独立の例4]({{site.baseurl}}/docs/tools/pairwise_independent#例4-ランダムな二次曲線)参照).
+  任意の$A,B\in\F_q^{n\times n}$に対して, 一様ランダムな$R_1,R_2,S_1,S_2$を選んだとき, 確率変数族$(\overline{A}(t),\overline{B}(t))_{t\ne 0}$はペア独立になります([ペア独立の例4]({{site.baseurl}}/docs/randomness/pairwise_independent#例4-ランダムな二次曲線)参照).
   確率変数$X_t\in\{0,1\}$を
 
   $$
@@ -120,7 +120,7 @@ Hirahara and Shimizu(2023)の証明は[直積定理]({{site.baseurl}}/docs/avera
   $(\overline{A}(t),\overline{B}(t))$
   の周辺分布は$t\ne 0$のとき, $\qty(\F_q^{n\times n})^2$上で一様なので,
   $\E[X_t]=\alpha$となります.
-  従って, [Chebyshevの不等式]({{site.baseurl}}/docs/tools/pairwise_independent#pairwise_independent_chebyshev)より, $q>\frac{100}{\alpha}$のとき, $\E[\sum_{t\ne 0}X_]\ge 100$となり, $\Pr[\sum_{t\ne 0}X_t]\ge 5$となります. すなわち5個の点$t\ne 0$で$\overline{A}(t)\overline{B}(t)$が計算できるので, ステップ3で$\overline{A}(0)\overline{B}(0)=AB$を計算できます.
+  従って, [Chebyshevの不等式]({{site.baseurl}}/docs/randomness/pairwise_independent#pairwise_independent_chebyshev)より, $q>\frac{100}{\alpha}$のとき, $\E[\sum_{t\ne 0}X_]\ge 100$となり, $\Pr[\sum_{t\ne 0}X_t]\ge 5$となります. すなわち5個の点$t\ne 0$で$\overline{A}(t)\overline{B}(t)$が計算できるので, ステップ3で$\overline{A}(0)\overline{B}(0)=AB$を計算できます.
 
 </details>
 

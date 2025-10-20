@@ -86,8 +86,7 @@ $$
           \right] \\
         &= \frac{1}{4} \\
         &= \Pr[Y_{12}=y_{12}]\cdot \Pr[Y_{23}=y_{23}]
-    \end{align*}
-  $$
+    \end{align*}  $$
 
   を得ます. 三つ目の等式では$X_1,X_2,X_3$の独立性を用いています.
   
@@ -139,8 +138,7 @@ $$
                   \end{aligned}
        \right] \\
        &= \frac{1}{4}
-    \end{align*}
-  $$
+    \end{align*}  $$
 
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item">証明</summary>
@@ -209,8 +207,7 @@ $$
             d
           \end{bmatrix}
       \right]      
-    \end{align*}
-  $$
+    \end{align*}  $$
 
   ここで, $i\ne j$より行列
 
@@ -220,8 +217,7 @@ $$
             i & 1 \\
             j & 1
           \end{bmatrix}
-  \end{align*}
-$$
+  \end{align*}$$
 
   は逆行列を持つ (Vandermonde行列の特殊ケース) ので, 最後の等式の確率の中身は$a=\ast,b=\ast$の形で書けます. $a,b$は一様ランダムなので, この確率は$1/q^2$です.
   一方で, ランダムな$a,b\sim \mathbb{F}_q$と固定した$i\in \mathbb{F}_q$に対し$X_i=ai+b$の周辺分布は$\mathbb{F}_q$上一様なので, 確かに$(X_i)$はペア独立です.  
@@ -279,8 +275,7 @@ $$
             s-a
           \end{bmatrix}
       \right]      
-    \end{align*}
-  $$
+    \end{align*}  $$
 
   ここで, $i\ne j$より行列
 
@@ -322,8 +317,7 @@ $$
       &= \left( \sum_{x_i} x_i \Pr[X_i=x_i] \right) \left( \sum_{x_j} x_j \Pr[X_j=x_j] \right) \\
       &= \E[X_i]\E[X_j] \\
       &= 0
-    \end{align*}
-  $$
+    \end{align*}  $$
   
   となります.
   従って, 期待値の線形性より
@@ -335,8 +329,7 @@ $$
       &= \sum_{i\in[n]} \E[X_i^2] + \sum_{i\ne j} \E[X_iX_j] \\
       &= \sum_{i\in[n]} \E[X_i^2] \\
       &= \sum_{i\in[n]} \Var[X_i] & & \because\text{ $X_i$の期待値は$0$}
-    \end{align*}
-  $$
+    \end{align*}  $$
   
   となり主張を得ます. $\square$
 </details>

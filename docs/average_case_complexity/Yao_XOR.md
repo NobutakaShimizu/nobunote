@@ -254,7 +254,7 @@ XOR補題の証明は上の補題を繰り返し適用することによって�
 
 ハードコア補題に基づくXOR補題の証明は, Nisan-Wigderson Generatorに基づく脱乱択化されたXOR補題など様々な問題設定に拡張できるという利点があります [[HVV06]](#HVV06).
 この証明は[関数の擬似ランダムネス]({{site.baseurl}}/docs/average_case_complexity/function_pseudorandomness)の視点から咀嚼すると非常に理解しやすいです.
-議論の分かり易さのため, 二つの確率変数$X,Y$に対し, それらの[統計距離]({{site.baseurl}}/docs/tools/statistical_distance)が小さいとき,
+議論の分かり易さのため, 二つの確率変数$X,Y$に対し, それらの[統計距離]({{site.baseurl}}/docs/information_theory/f_divergence/statistical_distance)が小さいとき,
 
 $$
   \begin{align*}
@@ -411,7 +411,7 @@ $$
 ## 参考文献
 
 <div id="GNW11" markdown="1">
-[[GNW11]](http://127.0.0.1:4000/nobunote/docs/average_case_complexity/Yao_XOR/) O. Goldreich, N. Nisan, A. Wigderson. On Yao's XOR-Lemma, Studies in Complexity and Cryptography. Miscellanea on the Interplay between Randomness and Computation, Springer (2011)
+[[GNW11]]({{site.baseurl}}/docs/average_case_complexity/Yao_XOR) O. Goldreich, N. Nisan, A. Wigderson. On Yao's XOR-Lemma, Studies in Complexity and Cryptography. Miscellanea on the Interplay between Randomness and Computation, Springer (2011)
 </div>
 <div id="Lev87" markdown="1">
 [[Lev87]](https://link.springer.com/article/10.1007/BF02579323) L. A. Levin, One-way functions and pseudorandom generators, Combinatorica (1987).

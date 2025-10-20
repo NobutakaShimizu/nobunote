@@ -424,7 +424,7 @@ $$
 $$\E[\abs{H}]=\sum_{x\in\binset^n} M(x) = \abs{M}\ge \delta$$
 であり,
 $\abs{H}=\sum_{x\in\binset^n} \indicator_{x\in H}$は独立な確率変数の和なので,
-[Hoeffdingの不等式]({{site.baseurl}}/docs/tools/prob_inequalities#hoeffding-inequality)より確率$0.99$で$\abs{H}\ge (1-o(1))\delta 2^n$を満たします.
+[Hoeffdingの不等式]({{site.baseurl}}/docs/concentration_inequalities/hoeffding#hoeffding-inequality)より確率$0.99$で$\abs{H}\ge (1-o(1))\delta 2^n$を満たします.
 従って$H$は$(1-o(1))\delta$-密です.
 
 なお, ここでも以降でも$o(1)$の項はHoeffdingの不等式に由来するものであり, $n^{-\omega(1)}$ととることができます.
@@ -471,7 +471,7 @@ $$
 $$
 
 を満たします (最後の不等号で測度$M$のハードコア性を用いた).
-従って [Hoeffdingの不等式]({{site.baseurl}}/docs/tools/prob_inequalities#hoeffding-inequality)より,
+従って [Hoeffdingの不等式]({{site.baseurl}}/docs/concentration_inequalities/hoeffding#hoeffding-inequality)より,
 確率$1-2^{-\Omega(2^n)}$で$\abs{A_C\cap H} \le (1+o(1))\abs{M}\qty(\frac{1}{2}+\varepsilon)$を満たします.
 
 考える回路$C$のサイズが高々$s\le 2^{o(n)}$なので, $C$としてありうる回路の個数は高々$2^{\poly(s)}=2^{2^{o(n)}}$個ですので, $C$に関するunion boundより

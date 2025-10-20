@@ -23,7 +23,7 @@ nav_order: 8
 最大クリーク問題はNP完全なので最悪時の意味では広くその困難性が信じられています.
 実はそれだけではなく, 平均時計算量の意味でも最大クリークは多項式時間で解けないであろうと予想されています.
 
-具体的にはグラフ$G$が[Erdős--Rényiグラフ]({{site.baseurl}}/docs/tools/random_graph#Erdős--Rényiグラフ)
+具体的にはグラフ$G$が[Erdős--Rényiグラフ]({{site.baseurl}}/docs/graph_theory/random_graph#Erdős--Rényiグラフ)
 である時, すなわち$G=G(n,1/2)$のときに最大クリークを見つけられるかを議論します.
 
 ランダムグラフ$G(n,1/2)$は確率$1-o(1)$で最大クリークのサイズが$\approx 2\log_2 n$となることが知られています.

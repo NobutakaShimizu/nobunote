@@ -18,7 +18,7 @@ nav_order: 1
 
 ランダムネス抽出器を定義するために, この文脈で用いられる[最小エントロピー]({{site.baseurl}}/docs/information_theory/min_entropy)の概念が必要です.
 
-ランダムネス抽出器は, 二つの乱数元$X,Y$を入力として受け取り, 一様分布に[統計距離]({{site.baseurl}}/docs/probability_theory/statistical_distance)の意味で近い新たな乱数を生成する関数として定義されます.
+ランダムネス抽出器は, 二つの乱数元$X,Y$を入力として受け取り, 一様分布に[統計距離]({{site.baseurl}}/docs/information_theory/f_divergence/statistical_distance)の意味で近い新たな乱数を生成する関数として定義されます.
 
 {: .definition-title }
 > **定義 (ランダムネス抽出器)**

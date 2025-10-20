@@ -31,7 +31,7 @@ parent: 平均時計算量理論
 
 {: .remark }
 > - 擬似ランダム性は確率変数$X,Y$の分布にのみに依存する性質なので, $(X,Y)$が独立かどうかは問いません.
-> - 特に, 関数族$\calF$が全ての$\binset$値関数からなる集合の場合, $\gamma$-識別不可能であることと$X$と$Y$の分布間の統計距離が$\gamma$以下であることは等価です (cf. [統計距離]({{site.baseurl}}/docs/tools/statistical_distance)).
+> - 特に, 関数族$\calF$が全ての$\binset$値関数からなる集合の場合, $\gamma$-識別不可能であることと$X$と$Y$の分布間の統計距離が$\gamma$以下であることは等価です (cf. [統計距離]({{site.baseurl}}/docs/information_theory/f_divergence/statistical_distance)).
 
 ある確率変数(または分布)$X$が擬似ランダムであるとは, 特定の関数族に対して一様分布と識別不可能であることを意味します.
 関数$f\colon\binset^n\to\binset$が擬似ランダムであるとは, 二つの分布

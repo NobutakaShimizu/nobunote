@@ -37,7 +37,7 @@ $$
 
 ## Lipton (1991) の帰着
 
-<div id="prop:Lipton" markdown="1">
+<div id="thm:Lipton" markdown="1">
 {: .theorem-title }
 > **定理1 (Lipton, 1991).**
 >
@@ -53,8 +53,7 @@ $$
   $$
     \begin{align*}
       \Pr_{R\sim \F_p^{n\times n}}\left[ M(R) = \mathrm{perm}(R) \right] \ge 1 - \frac{1}{3(n+1)}. \tag{1}
-    \end{align*}
-  $$
+    \end{align*}  $$
   
   任意の入力$A\in\F_p^{n\times n}$に対して, $M$を使ってパーマネントを計算するアルゴリズム$M'$を計算することが目標です.
   ランダムな行列 $R\sim\F_p^{\times n}$を選び, 多項式
@@ -62,8 +61,7 @@ $$
   $$
     \begin{align*}
       P(x) = \mathrm{perm}(A + xR)
-    \end{align*}
-  $$
+    \end{align*}  $$
   
   を考えます. この$x$に関する多項式は, $A,R$が固定されているので, 次数は高々$n$です.
   また, $P(0)=\mathrm{perm}(A)$ を計算したいわけですが, $x\ne 0$ に対して $A+xR$ は一様ランダムな行列となるので, (1)より確率 $1-\frac{1}{10n}$ で $M(A+xR) = \mathrm{perm}(A+xR)$ となります.
@@ -78,8 +76,7 @@ $$
   $$
     \begin{align*}
       \Pr_{R}\qty[ {}^{\forall}i\in[n+1],\quad M(A + x_i R) = \mathrm{perm}(A + x_i R) ] \ge 1 - \frac{n+1}{3(n+1)} = \frac{2}{3}.
-    \end{align*}
-  $$
+    \end{align*}  $$
 
   また, 多項式$P(x)$の次数は高々$n$なので, $x_1,x_2,\ldots,x_n$が互いに異なる限り, ラグランジュ補間により正しく求まる.
   よって確率$2/3$で$M'(A) = P(0) = \mathrm{perm}(A)$となる.
@@ -103,9 +100,83 @@ Liptonの帰着では, ランダム行列上で成功確率が $1 - \frac{1}{3(n
 一般に$p=2$の場合は行列積と同値なので簡単に計算できますが, $3\le p\ll n$の範囲ではパーマネントの最悪時から平均時への帰着は知られていません.
 
 
+## GemmellとSudan (1992) の帰着
+
+Lipton(1991)の帰着では, 高確率で成功するアルゴリズムを仮定することによって, $n+1$個**全ての点で**正しい評価を得て, これらを用いた多項式補間によって任意の入力に対してパーマネントを計算しました.
+仮定するアルゴリズムの成功確率を下げると, いくつかの点で誤った評価を得る可能性が出てきます.
+GemmellとSudan (1992) は, 多項式補間の過程で誤った評価が含まれていても, **半分以上の点で**正しい評価が得られているならば, Berlekamp-Welchアルゴリズムを用いて
+正しい多項式を復元できることを利用してLipton(1991)の帰着を改善し, 以下の結果を証明しました.
+
+<div id="thm:GS92" markdown="1">
+{: .theorem-title }
+> **定理2 (Gemmell and Sudan, 1992).**
+>
+> 有限体$\F_p$上で, ランダム行列上で成功確率$\frac{1}{2}+n^{-c}$でパーマネントを解く$T(n)$時間アルゴリズムが存在するならば, 全ての入力に対してパーマネントを確率$2/3$で計算する$O(n^{2c+1}\cdot T(n) + n^{6c+3})$時間乱択アルゴリズムが存在する. ただし, $p>n^{2c+1}$.
+</div>
+
+<details markdown="1" style="background-color: #eee;">
+<summary style="display: list-item">証明</summary>
+  
+与えられた任意の入力行列$A$に対して$\mathrm{perm}(A)$を次のようにして計算します:
+1. 一様ランダムな行列$R,S\sim\F_p^{n\times n}$を選ぶ.
+2. 一変数多項式 $P(x) = \mathrm{perm}(A+xR+x^2S)$ を考える (この多項式は次数$\le 2n$).
+3. 相異なる点 $x_1,\dots,x_M$ に対して $P(x_i)$ を $T(n)$ 時間アルゴリズムを使って計算する (ただし $M=n^{2c+1}$)
+4. [Berlekamp-Welchアルゴリズム]({{site.baseurl}}/docs/error-correcting_code/Berlekamp-Welch)を使って, 多項式 $P$ の全ての係数を求めて, $P(0)=\mathrm{perm}(A)$ を出力する.
+
+ステップ2で考えた多項式 $P$ について考えましょう.
+固定した各 $x_i$ に対して, 行列
+
+$$
+  \begin{align*}
+    P(x_i) = \mathrm{perm}(A + x_i R + x_i^2 S)
+  \end{align*}$$
+
+は一様ランダムな行列となります (ランダムネスは$R,S$) ので, アルゴリズムは確率 $\frac{1}{2} + n^{-c}$ で正しく計算します.
+この評価は固定した各$x_i$それぞれに対して成り立ちます.
+次に, 確率変数 $X_i\in\binset$ を, "アルゴリズムが $P(x_x)$ の値を正しく計算したら$1$, そうでなければ$0$" と定義し,
+$S=\sum_{i=1}^M X_i$ とします. すると
+
+$$
+  \begin{align*}
+    \Var[X_i] = \E[X_i] (1-\E[X_i]) \le \frac{1}{4}
+  \end{align*}
+$$
+
+および, 期待値の線形性より
+
+$$
+  \begin{align*}
+    \E\qty[S] = \sum_{i=1}^M \Pr\left[ \text{アルゴリズムが $P(x_i)$ を正しく計算} \right] \ge M\left(\frac{1}{2} + n^{-c}\right)
+  \end{align*}
+$$
+
+となります. また,
+[ペアワイズ独立な確率変数に対するChebyshevの不等式]({{site.baseurl}}/docs/randomness/pairwise_independent/#pairwise_independent_chebyshev)から
+
+$$
+  \begin{align*}
+    \Pr\left[ S \le \frac{1+n^{-c}}{2}\cdot M \right] &\le \Pr\qty[ \abs{S - \E[S]} \ge M n^{-c}/2 ] \\
+    &\le \frac{M/4}{(M n^{-c}/2)^2} \\
+    &\le \frac{n^{2c}}{M} \\
+    &= \frac{1}{n}. & & \because M=n^{2c+1}
+  \end{align*}$$
+
+すなわち, 確率$1/n$で, アルゴリズムは $P(x_i)$ の値を誤って評価した $x_i$ の個数は高々
+
+$$
+  \begin{align*}
+    \frac{1-n^{-c}}{2}\cdot M = \frac{M}{2} - \frac{n^{1+c}}{2}
+  \end{align*}$$
+
+となります.
+Berlekamp-Welchアルゴリズムは, $M$個の点のうち評価を誤った点の個数が$e<\frac{M-2n+1}{2}$個である場合に正しく動作し, 上記の評価はこの条件を満たすので
+確かにBerlekamp-Welchアルゴリズムを用いて多項式 $P$ を求めることができ, アルゴリズムは $P(0)=\mathrm{perm}(A)$ を出力します.
+Berlekamp-Welchアルゴリズムの計算量は, ガウス消去法を用いた実装だと評価点の個数の3乗に比例するので, $O((n^{2c+1})^3)=O(n^{6c+3})$ です.
+
+</details>
 
 
----
+
 # 参考文献
 
 [^Lip91]: R. J. Lipton. "New directions in testing," Distributed Computing and Cryptography, 1991.
