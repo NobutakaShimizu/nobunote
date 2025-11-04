@@ -25,7 +25,7 @@
 <loc>http://localhost:4000/nobunote/docs/planted_clique/Kucera%E3%81%AE%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/nobunote/docs/NPhard/</loc>
+<loc>http://localhost:4000/nobunote/docs/column/NPhard/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/error-correcting_code/Reed-Solomon/</loc>
@@ -107,6 +107,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/graph_theory/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/nobunote/docs/column/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/error-correcting_code/</loc>
@@ -253,6 +256,10 @@
 <url>
 <loc>http://localhost:4000/nobunote/footer_custom.html</loc>
 <lastmod>2024-12-31T03:56:51+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/nobunote/google70e8bbe96c496dee.html</loc>
+<lastmod>2025-11-04T13:33:59+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/head.html</loc>

@@ -1,6 +1,7 @@
 ---
-title: NP困難の定義と歴史(コラム)
-nav_order: 98
+title: NP困難の定義と歴史
+parent: コラム
+nav_order: 1
 ---
 
 
@@ -125,7 +126,7 @@ Karp帰着は判定問題にのみ定義できる帰着の概念であるため,
 >
 > - $R_1$が$R_2$に**Cook帰着できる**とは, ある多項式時間オラクルアルゴリズム $A^{\mathcal{O}}$ が存在して, $R_2$ を解く任意のオラクル$\mathcal{O}\colon\binset^{\ast}\to\binset^{\ast}$ に対して $A^{\mathcal{O}}$ は $R_1$ を解く.
 
-![Levin帰着のイメージ]({{site.baseurl}}/docs/images/levinreduction.png)
+![Levin帰着のイメージ]({{site.baseurl}}/docs/column/images/levinreduction.png)
 
 
 これらの帰着を用いれば, 判定問題と同様に探索問題 $R$ に対する二つのNP困難性を以下のように定義できる.
