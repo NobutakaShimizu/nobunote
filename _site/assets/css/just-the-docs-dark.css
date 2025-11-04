@@ -8185,18 +8185,17 @@ a:hover {
 }
 
 .side-bar {
-  position: fixed !important;
   z-index: 0;
   display: flex;
-  flex-flow: column nowrap;
-  height: 100%;
-  border-right: 1px solid #44434d;
-  align-items: flex-end;
-  width: 16.5rem;
-  min-width: 12rem;
+  flex-wrap: wrap;
 }
 @media (min-width: 50rem) {
   .side-bar {
+    position: fixed !important;
+    flex-flow: column nowrap;
+    height: 100%;
+    border-right: 1px solid #44434d;
+    align-items: flex-end;
     width: 15.5rem;
   }
 }
@@ -8208,6 +8207,7 @@ a:hover {
 
 .main {
   background-color: #fefefe !important;
+  margin-left: 0 !important;
 }
 @media (min-width: 50rem) {
   .main {
@@ -8244,6 +8244,86 @@ body {
 
 .nav-list .nav-list-item .nav-list-expander:hover {
   color: #000000 !important;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  background-color: rgba(200, 200, 200, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  transition: all 0.2s ease;
+}
+@media (min-width: 50rem) {
+  .sidebar-toggle:not(.sidebar-hidden) {
+    left: 12.75rem;
+  }
+}
+@media (min-width: 66.5rem) {
+  .sidebar-toggle:not(.sidebar-hidden) {
+    left: 13.75rem;
+  }
+}
+@media (min-width: 50rem) {
+  .sidebar-toggle.sidebar-hidden {
+    left: 1rem;
+    right: auto;
+  }
+}
+.sidebar-toggle:hover {
+  background-color: rgb(220, 220, 220);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+.sidebar-toggle:active {
+  transform: scale(0.95);
+}
+.sidebar-toggle svg {
+  width: 11px;
+  height: 11px;
+  transition: transform 0.2s ease;
+}
+.sidebar-toggle.sidebar-hidden svg {
+  transform: rotate(0deg);
+}
+.sidebar-toggle:not(.sidebar-hidden) svg {
+  transform: rotate(180deg);
+}
+
+@media (min-width: 50rem) {
+  .side-bar.sidebar-hidden {
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s ease;
+  }
+}
+
+@media (min-width: 50rem) {
+  .main.sidebar-hidden {
+    margin-left: 0 !important;
+    transition: margin-left 0.3s ease;
+  }
+}
+
+@media (min-width: 50rem) {
+  .side-bar {
+    transition: transform 0.3s ease;
+  }
+}
+
+@media (min-width: 50rem) {
+  .main {
+    transition: margin-left 0.3s ease;
+  }
 }
 
 /*# sourceMappingURL=just-the-docs-dark.css.map */
