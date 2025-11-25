@@ -2,12 +2,13 @@
 title: Home
 layout: home
 nav_order: 1
-description: "Mathematical Foundations of Theoretical Computer Science"
+description: "MathemaTCS (mathematcs) - Mathematical Foundations of Theoretical Computer Science. 理論計算機科学、平均時計算量、情報理論の解説サイト"
+keywords: "mathematcs, MathemaTCS, 理論計算機科学, average-case complexity, 平均時計算量, 情報理論, 確率論, グラフ理論"
 ---
 
 # MathemaTCS
 
-理論計算機科学, 特に平均時計算量(average-case complexity)に関する様々な手法やアルゴリズム, そしてその基となる道具について出来るだけ分かり易く解説していきます. いくつかのページは工事中で未完成ですが, 順次充実させていく予定です.
+**MathemaTCS** (mathematcs) は、理論計算機科学, 特に平均時計算量(average-case complexity)に関する様々な手法やアルゴリズム, そしてその基となる道具について出来るだけ分かり易く解説していきます. いくつかのページは工事中で未完成ですが, 順次充実させていく予定です.
 
 ## カバーしている分野
 
