@@ -1686,447 +1686,482 @@
     
     "relUrl": "/docs/interactive_proofs/np_zero_knowledge/#3彩色問題に対するゼロ知識対話証明系"
   },"241": {
+    "doc": "複数変数関数のビッグオー、考えたことありますか？",
+    "title": "コラム: 複数変数関数のビッグオー、考えたことありますか？",
+    "content": "アルゴリズムのほとんどの教科書では関数のビッグオー記法は以下のように定義される： . 定義（ビッグオー記法） . 二つの関数 $f,g\\colon \\Nat\\to\\Real_{&gt;0}$ に対し、以下が成り立つとき、$f(n)=O(g(n))$と表す： 二つの定数$c&gt;0,N\\in\\Nat$が存在して、任意の$n\\ge N$に対して . \\[\\begin{align*} f(n) \\le c\\cdot g(n). \\end{align*}\\] これは、十分大きな$n$では$f(n)$が$g(n)$の定数倍で抑えられることを意味し、二つの関数の増加速度を比較するために用いられる記法である。 他にも漸近評価を表す記法として$\\Omega(\\cdot),o(\\cdot),\\omega(\\cdot),\\Theta(\\cdot)$がよく用いられる。 . $f(n)=O(g(n))$における「$=$」は数学における等号ではない。一般に等号は反射率（$a=b$ならば$b=a$）が成り立つが、例えば$O(n^2)=n$は成り立たない。一つの解釈の仕方としては、「右辺」の $O(g(n))$ を集合とみなし、$f(n)\\in O(g(n))$とみなすことができる。しかしながら、アルゴリズムの計算量や確率不等式の文脈では、 . \\[n^{O(1)},\\quad \\exp(-\\Omega(n))\\] などのような表記を用いて時間計算量や集中不等式などの漸近的な評価を記述することも多々ある（厳密にはこれは記号の濫用ではあるが）ので、ビッグオー記法は集合を表すというスタンスで読み解くと不都合が生じることもある。 . 基本的には私はこういったことに関しては「こうであるべき」 という思想は持たず、その時々で便利な考え方を採用するようにしている。ビッグオー記法の場合、$O(g(n))$ といえば、$n$に依存しないある定数 $c&gt;0$ に対して$c\\cdot g(n)$ で上から抑えられるという何らかの一つの値を意味しており、文脈によって集合と解釈した方が便利なときはそうするようにしている。 . 本題に戻る。多くのアルゴリズムの教科書では上のように、一変数関数$f\\colon\\Nat\\to\\Real_{&gt;0}$に対してのみビッグオー記法を定義し、最短経路アルゴリズムあたりの章で、ヒープを用いたダイクストラ法の解説をするとなぜか突然 . \\[\\begin{align*} O((m+n)\\log n) \\end{align*}\\] のような記法が定義もなしに現れるのである。ここで$m,n$はそれぞれ考えるグラフの辺と頂点の個数を意味する。 . 我々はビッグオーは定数倍を除いた関数の増加スピードを図る指標であることをすでに知っているので、これを見ると脳内では、十分大きな定数$c&gt;0$に対して、アルゴリズムの計算ステップ数が . \\[\\begin{align*} c\\cdot (m+n)\\log n \\end{align*}\\] で抑えられると解釈して飲み込んでしまう。 もちろんこれは、一変数関数に対するオーダー記法を二変数に自然に拡張した概念であるのだが、その形式定義について気にしたことはあるだろうか？ . 本稿では、「一変数から複数変数への拡張」に焦点をあてているため、以降は簡単のため二変数関数に絞って議論を進めていく。 . ",
+    "url": "/nobunote/docs/column/order/#%E3%82%B3%E3%83%A9%E3%83%A0-%E8%A4%87%E6%95%B0%E5%A4%89%E6%95%B0%E9%96%A2%E6%95%B0%E3%81%AE%E3%83%93%E3%83%83%E3%82%B0%E3%82%AA%E3%83%BC%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8B",
+    
+    "relUrl": "/docs/column/order/#コラム-複数変数関数のビッグオー考えたことありますか"
+  },"242": {
+    "doc": "複数変数関数のビッグオー、考えたことありますか？",
+    "title": "最初に思いつく定義",
+    "content": "多くの人が最初に思いつくであろう定義は「全ての変数の値が十分大きいときに定数倍で抑えられる」という定義であろう。これを本稿では便宜上and型の定義と呼ぶことにする。 . 定義1（and型の定義） . 二つの関数$f,g\\colon\\Nat^2\\to\\Real_{&gt;0}$に対して、以下が成り立つとき、$f(n,m) = O_{\\land}(g(n,m))$であるという： ある定数$c&gt;0,N\\in\\Nat$が存在して、 . \\[\\begin{align*} n\\ge N\\text{ かつ }m\\ge N \\end{align*}\\] を満たす任意の $(n,m)$ に対して、$f(n,m)\\le c\\cdot g(n,m)$ が成り立つ。 . ところが、この定義だと . $n$が小さくて$m$が大きい場合は、定数倍で抑えられている必要がない . ということになる。例えば関数 . \\[\\begin{align*} f(n,m) = \\begin{cases} n+m &amp; \\text{if }\\min(n,m)\\le 100,\\\\ 1 &amp; \\text{otherwise} \\end{cases} \\tag{1} \\end{align*}\\] とすると、$n$と$m$が十分大きいときは必ず$f(n,m)=1$となるため、 $f(n,m)=O_{\\land}(1)$が成り立ってしまう。これは、$O(1)$ならば有界であってほしいというような我々の直感とは反してしまう。 . ",
+    "url": "/nobunote/docs/column/order/#%E6%9C%80%E5%88%9D%E3%81%AB%E6%80%9D%E3%81%84%E3%81%A4%E3%81%8F%E5%AE%9A%E7%BE%A9",
+    
+    "relUrl": "/docs/column/order/#最初に思いつく定義"
+  },"243": {
+    "doc": "複数変数関数のビッグオー、考えたことありますか？",
+    "title": "別の定義",
+    "content": "先ほどの例は、$n$と$m$の両方が十分大きい時に抑えられるという性質がよくなかったのであって、これを鑑みると「$n$と$m$の少なくとも一方が十分大きい時に抑えられる」とすれば良さそうに見える。これをor型の定義と呼ぶことにする。 . 定義2（or型の定義） . 二つの関数$f,g\\colon\\Nat^2\\to\\Real_{&gt;0}$に対して、以下が成り立つとき、$f(n,m) = O_{\\lor}(g(n,m))$であるという： ある定数$c&gt;0,N\\in\\Nat$が存在して、 . \\[\\begin{align*} n\\ge N\\text{ または }m\\ge N \\end{align*}\\] を満たす任意の $(n,m)$ に対して、$f(n,m)\\le c\\cdot g(n,m)$ が成り立つ。 . この定義に基づくと、式(1)で定義した関数は$f(n,m)=O_{\\lor}(1)$にはならず、$f(n,m)=O_{\\lor}(n+m)$が成り立つ。 . 私は今のところ、この定義で困ってしまう例が見つかっていないのでこの定義で満足している。 . しかしながら、$n$や$m$が$0$をとりうるような設定だと . \\[nm+1 = O_{\\lor}(nm)\\] が成り立たなくなってしまう！（一方の変数の値が十分大きくても、もう一方の変数を$0$に設定することで右辺は$0$にできるが、左辺は常に$1$以上だから）。 しかし、考える関数の引数に$0$を考えることはほぼなく、基本的に$n,m\\ge 1$とする場合がほとんどなので、私はこの例は気にしないことにしている。 . ",
+    "url": "/nobunote/docs/column/order/#%E5%88%A5%E3%81%AE%E5%AE%9A%E7%BE%A9",
+    
+    "relUrl": "/docs/column/order/#別の定義"
+  },"244": {
+    "doc": "複数変数関数のビッグオー、考えたことありますか？",
+    "title": "補足",
+    "content": "世界にはこの疑問について気にしていた人はそれなりにおり、stack exchangeで見るとこのような質問がいくつも見つかる。その中でRodney Howellによる . On Asymptotic Notation with Multiple Variables . という論文で細かく議論されているので、興味のある人はぜひ電車の中とかで読んでみてほしい。 . ",
+    "url": "/nobunote/docs/column/order/#%E8%A3%9C%E8%B6%B3",
+    
+    "relUrl": "/docs/column/order/#補足"
+  },"245": {
+    "doc": "複数変数関数のビッグオー、考えたことありますか？",
+    "title": "複数変数関数のビッグオー、考えたことありますか？",
+    "content": " ",
+    "url": "/nobunote/docs/column/order/",
+    
+    "relUrl": "/docs/column/order/"
+  },"246": {
     "doc": "ペア独立性",
     "title": "確率変数族のペア独立性",
     "content": ". | 確率変数族のペア独立性 . | 概要 | 例1 ペア毎の和 | 例2. ランダムビットの線形結合 . | ランダム線形関数としての視点 | . | 例3. ランダムな直線 | 例4. ランダムな二次曲線 | 性質 | . | . ",
     "url": "/nobunote/docs/randomness/pairwise_independent/#%E7%A2%BA%E7%8E%87%E5%A4%89%E6%95%B0%E6%97%8F%E3%81%AE%E3%83%9A%E3%82%A2%E7%8B%AC%E7%AB%8B%E6%80%A7",
     
     "relUrl": "/docs/randomness/pairwise_independent/#確率変数族のペア独立性"
-  },"242": {
+  },"247": {
     "doc": "ペア独立性",
     "title": "概要",
     "content": "確率変数族のペア独立性 (pairwise independence)は計算量理論の文脈では Goldreich-Levinの定理, set lower bound protocol, ハッシュ関数, 擬似ランダム生成器などの文脈でよく使われるテクニックです. 通常の意味での独立性を緩めた概念であり, 少ないランダムネスを用いて多くの確率変数を生成する手法としては典型的なものとなります. 確率変数の列$(X_1,\\dots,X_n)$が独立であるというのは「いくつかの$i$に対し$X_i=x_i$である」という事象が他の確率変数の分布に影響を与えないこととされます. ここでは今後の比較のために, 確率変数族の独立性を以下の形で定義しておきます: . 定義 (独立性) . 確率変数の列$(X_1,\\dots,X_n$)が独立であるとは, 任意のインデックスの部分集合$I= \\{i_1,\\dots,i_k\\}\\subseteq [n]$と$x_{i_1},\\dots,x_{i_k}$に対して以下が成り立つことである: . \\[\\begin{align*} \\Pr \\left[ X_{i_1} = x_{i_1}\\text{ and }\\dots\\text{ and }X_{i_k} = x_{i_k} \\right] = \\prod_{j\\in[k]} \\Pr[X_{i_j}=x_{i_j}]. \\tag{1} \\end{align*}\\] ペア独立性とは, 式(1)が成り立つ部分集合$I$の範囲を任意の部分集合ではなく要素数$2$の部分集合に制限することによって定まる概念です. 定義 (ペア独立性) . 確率変数の列$(X_1,\\dots,X_n$)がペア独立であるとは, 任意の要素数$2$のインデックスの部分集合$0\\le i &lt; j \\le n$と$x_i,x_j$に対して以下が成り立つことである: . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} X_{i} &amp;= x_{i} \\\\ X_{j} &amp;= x_{j} \\end{aligned} \\right] = \\Pr[X_{i}=x_{i}]\\cdot \\Pr[X_j = x_j]. \\tag{2} \\end{align*}\\] ",
     "url": "/nobunote/docs/randomness/pairwise_independent/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/randomness/pairwise_independent/#概要"
-  },"243": {
+  },"248": {
     "doc": "ペア独立性",
     "title": "例1 ペア毎の和",
     "content": "$X_1,\\dots,X_n$を独立で$\\{0,1\\}$上一様ランダムな確率変数とし, 各$1\\le i &lt; j \\le n$に対して . \\[\\begin{align*} Y_{ij} = X_i + X_j \\bmod 2 \\end{align*}\\] で定まる確率変数族$(Y_{ij})_{1\\le i&lt;j\\le n}$はペア独立です. 証明 簡単のため$n=3$で考えます (一般の$n$についても同様). 任意の$y_{12},y_{23}\\in \\{0,1\\}$に対して . \\[\\begin{align*} \\Pr\\left[ \\begin{aligned} Y_{12}&amp;=y_{12} \\\\ Y_{23}&amp;=y_{23} \\end{aligned} \\right] &amp;= \\Pr\\left[ \\begin{aligned} X_1+X_2&amp;=y_{12} \\pmod 2 \\\\ X_2+X_3&amp;=y_{23} \\pmod 2 \\end{aligned} \\right] \\\\ &amp;= \\Pr\\left[ \\begin{aligned} X_1 &amp;= y_{12} + X_2 \\pmod 2 \\\\ X_3 &amp;= y_{23} + X_2 \\pmod 2 \\end{aligned} \\right] \\\\ &amp;= \\frac{1}{4} \\\\ &amp;= \\Pr[Y_{12}=y_{12}]\\cdot \\Pr[Y_{23}=y_{23}] \\end{align*}\\] を得ます. 三つ目の等式では$X_1,X_2,X_3$の独立性を用いています. 上記の例で$n$ビットのランダムな文字列$(X_1,\\dots,X_n) \\sim \\{0,1\\}^n$を$\\binom{n}{2}$ビットの文字列$(Y_{ij})$\\に変換しています (ただし変換で文字列を延ばす代わりに各ビットの独立性は損なわれるため, 得られる長い文字列を擬似ランダム文字列と呼ぶ). このように, ペア独立性の技法を用いると少ないエントロピーのランダムネスから長い擬似ランダム文字列を生成できます (このアイデアはより一般に擬似ランダム生成器の概念で一般化されます). 例えばこのように生成された長い擬似ランダム文字列を乱択アルゴリズムのランダムシードとして代用することでより少ないランダムネスを用いた乱択アルゴリズムの模倣が可能になります. この模倣の精度をペア独立性を用いて評価していくことになります. ",
     "url": "/nobunote/docs/randomness/pairwise_independent/#%E4%BE%8B1-%E3%83%9A%E3%82%A2%E6%AF%8E%E3%81%AE%E5%92%8C",
     
     "relUrl": "/docs/randomness/pairwise_independent/#例1-ペア毎の和"
-  },"244": {
+  },"249": {
     "doc": "ペア独立性",
     "title": "例2. ランダムビットの線形結合",
     "content": "例1と同様に独立に$X_1,\\dots,X_n \\sim \\{0,1\\}$を選びます. 例1では$X_i + X_j$という形を考えていましたが, より一般に$X_{i_1}+\\dots + X_{i_k}$という形を考えてもペア独立性が保たれることが同様にして証明できます. 非空な部分集合$I \\subseteq [n]$に対して . \\[\\begin{align*} Y_I = \\sum_{i\\in I} X_i \\bmod 2 \\end{align*}\\] とすることによって定まる確率変数族$(Y_I)_{I\\ne \\emptyset}$はペア独立性を持つ. 証明 任意の非空な$I \\subseteq[n]$に対して, $X_1,\\dots,X_n\\sim \\{0,1\\}$が独立一様ランダムなので, $Y_I$の周辺分布も$\\{0,1\\}$上で一様となります. また, 相異なる二つの非空な部分集合$I,J\\subseteq[n]$および$a,b \\in \\{0,1\\}$に対して . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} Y_I &amp;= a \\\\ Y_J &amp;= b \\end{aligned} \\right] &amp;= \\Pr \\left[ \\begin{aligned} Y_{I\\setminus J} + Y_{I\\cap J} &amp;= a \\\\ Y_{J\\setminus I} + Y_{I\\cap J} &amp;= b \\end{aligned} \\right] \\\\ &amp;= \\Pr \\left[ \\begin{aligned} Y_{I\\setminus J} &amp;= a - Y_{I\\cap J} \\\\ Y_{J\\setminus I} &amp;= b - Y_{I\\cap J} \\end{aligned} \\right] \\\\ &amp;= \\frac{1}{4} \\end{align*}\\] 証明 より, 確かにペア独立性を満たします. ここで最後の等式では, $X_i$たちの独立性より, $Y_{I\\setminus J}$と$Y_{J\\setminus I}$が独立であることを用いています ($I\\ne J$より$I\\setminus J$と$J\\setminus I$はどちらも非空であることに注意). $\\square$ . この方法を用いると$n$ビットのエントロピーから長さ$2^n-1$の擬似ランダム文字列を得られるので, 指数的に長さを延ばすことが可能となります. ランダム線形関数としての視点 . 例2の構成で得られる$(Y_I)_{I\\ne \\emptyset}$は, 一様ランダムなベクトル$c \\sim \\mathbb{F}_2^n$に対して線形関数$z \\mapsto \\inprod{c,z}$を考えて その($0$以外での)真理値表としてみなすことができます. この解釈は Goldreich-Levinの定理 の証明において本質的に効いてきます. ",
     "url": "/nobunote/docs/randomness/pairwise_independent/#%E4%BE%8B2-%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%83%93%E3%83%83%E3%83%88%E3%81%AE%E7%B7%9A%E5%BD%A2%E7%B5%90%E5%90%88",
     
     "relUrl": "/docs/randomness/pairwise_independent/#例2-ランダムビットの線形結合"
-  },"245": {
+  },"250": {
     "doc": "ペア独立性",
     "title": "例3. ランダムな直線",
     "content": "要素数$q$の有限体$\\mathbb{F}_q$に対して一様ランダムに$a,b\\sim \\mathbb{F}_q$を選び, 各$i\\in \\mathbb{F}_q$に対して . \\[\\begin{align*} X_i = a i + b \\end{align*}\\] として確率変数族$(X_i)_{i\\in \\mathbb{F}_q}$を定めると$(X_i)$はペア独立です. 証明 任意の相異なる$\\mathbb{F}_q$の元$i,j$および$c,d \\in \\mathbb{F}_q$に対して . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} X_i &amp;= c \\\\ X_j &amp;= d \\end{aligned} \\right] &amp;= \\Pr_{a,b\\sim \\mathbb{F}_q} \\left[ \\begin{aligned} ai+b &amp;= c \\\\ aj+b &amp;= d \\end{aligned} \\right] \\\\ &amp;= \\Pr_{a,b\\sim \\mathbb{F}_q} \\left[ \\begin{bmatrix} i &amp; 1 \\\\ j &amp; 1 \\end{bmatrix} \\begin{bmatrix} a \\\\ b \\end{bmatrix} = \\begin{bmatrix} c \\\\ d \\end{bmatrix} \\right] \\end{align*}\\] ここで, $i\\ne j$より行列 . \\[\\begin{align*} \\begin{bmatrix} i &amp; 1 \\\\ j &amp; 1 \\end{bmatrix} \\end{align*}\\] は逆行列を持つ (Vandermonde行列の特殊ケース) ので, 最後の等式の確率の中身は$a=\\ast,b=\\ast$の形で書けます. $a,b$は一様ランダムなので, この確率は$1/q^2$です. 一方で, ランダムな$a,b\\sim \\mathbb{F}_q$と固定した$i\\in \\mathbb{F}_q$に対し$X_i=ai+b$の周辺分布は$\\mathbb{F}_q$上一様なので, 確かに$(X_i)$はペア独立です. ランダムな直線に基づく生成はランダムな$a,b\\sim \\mathbb{F}_q$を受け取って$q$個の$\\mathbb{F}_q$の元を出力しています. ",
     "url": "/nobunote/docs/randomness/pairwise_independent/#%E4%BE%8B3-%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%81%AA%E7%9B%B4%E7%B7%9A",
     
     "relUrl": "/docs/randomness/pairwise_independent/#例3-ランダムな直線"
-  },"246": {
+  },"251": {
     "doc": "ペア独立性",
     "title": "例4. ランダムな二次曲線",
     "content": "例3と同様に, ランダムな二次曲線上の点集合もまたペア独立性を持ちます. 要素数$q$の有限体$\\mathbb{F}_q$を考え, $a\\in \\F_q$を任意に固定し, 一様ランダムに$b,c\\sim \\mathbb{F}_q$を選び, 各$i\\in \\mathbb{F}_q$に対して . \\[\\begin{align*} X_i = a + bi + ci^2 \\end{align*}\\] として確率変数族$(X_i)_{i\\in \\mathbb{F}_q\\setminus{0}}$を定めると$(X_i)$はペア独立です. 証明 任意の相異なる$\\mathbb{F}_q$の元$i,j\\ne 0$および$c,d \\in \\mathbb{F}_q$に対して . \\[\\begin{align*} \\Pr \\left[ \\begin{aligned} X_i &amp;= r \\\\ X_j &amp;= s \\end{aligned} \\right] &amp;= \\Pr_{b,c\\sim \\mathbb{F}_q} \\left[ \\begin{aligned} bi+ci^2 &amp;= r-a \\\\ bj+cj^2 &amp;= s-a \\end{aligned} \\right] \\\\ &amp;= \\Pr_{b,c\\sim \\mathbb{F}_q} \\left[ \\begin{bmatrix} i &amp; i^2 \\\\ j &amp; j^2 \\end{bmatrix} \\begin{bmatrix} b \\\\ c \\end{bmatrix} = \\begin{bmatrix} r-a \\\\ s-a \\end{bmatrix} \\right] \\end{align*}\\] ここで, $i\\ne j$より行列 . \\[\\begin{align*} \\begin{bmatrix} i &amp; 1 \\\\ j &amp; 1 \\end{bmatrix} \\end{align*}\\] は逆行列を持つ (Vandermonde行列の特殊ケース) ので, 最後の等式の確率の中身は$b=\\ast,c=\\ast$の形で書けます. $b,c$は一様ランダムなので, この確率は$1/q^2$です. ランダムな直線に基づく生成はランダムな$a,b\\sim \\mathbb{F}_q$を受け取って$q$個の$\\mathbb{F}_q$の元を出力しています. ",
     "url": "/nobunote/docs/randomness/pairwise_independent/#%E4%BE%8B4-%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%81%AA%E4%BA%8C%E6%AC%A1%E6%9B%B2%E7%B7%9A",
     
     "relUrl": "/docs/randomness/pairwise_independent/#例4-ランダムな二次曲線"
-  },"247": {
+  },"252": {
     "doc": "ペア独立性",
     "title": "性質",
     "content": "独立な確率変数の和の分散はそれぞれの確率変数の分散の和に等しいことが知られていますが, この性質はペア独立な確率変数の和についても成り立ちます. $X_1,\\dots,X_n$をペア独立な確率変数とし, $S=\\sum_{i\\in[n]} X_i$とすると, $\\Var[S] = \\sum_{i\\in[n]} \\Var[X_i]$が成り立つ. 証明 確率変数はシフト(定数$a$に対して$X$を$X+a$に変換する操作)に対して分散は変わらないので, $X_i$の期待値を$0$にシフトしても一般性を失いません. このとき, $S$の期待値は$0$なので, その分散は$\\E[S^2]$に等しくなります. また, $X_i$たちはペア独立なので, $i\\ne j$に対して$\\E[X_iX_j]=\\E[X_i]\\E[X_j]=0$が成り立ちます. 実際, $i\\ne j$に対して$\\Pr[X_i=x_i \\text{ and }X_j=x_j]=\\Pr[X_i=x_i]\\Pr[X_j=x_j]$だから . \\[\\begin{align*} \\E[X_iX_j] &amp;= \\sum_{x_i,x_j} x_i x_j \\Pr[X_i=x_i \\text{ and }X_j=x_j] \\\\ &amp;= \\sum_{x_i,x_j} x_i x_j \\Pr[X_i=x_i]\\Pr[X_j=x_j] \\\\ &amp;= \\left( \\sum_{x_i} x_i \\Pr[X_i=x_i] \\right) \\left( \\sum_{x_j} x_j \\Pr[X_j=x_j] \\right) \\\\ &amp;= \\E[X_i]\\E[X_j] \\\\ &amp;= 0 \\end{align*}\\] となります. 従って, 期待値の線形性より . \\[\\begin{align*} \\E[S^2] &amp;= \\E\\left[ \\left( \\sum_{i\\in[n]} X_i \\right)^2 \\right] \\\\ &amp;= \\E\\left[ \\sum_{i\\in[n]} X_i^2 + \\sum_{i\\ne j} X_iX_j \\right] \\\\ &amp;= \\sum_{i\\in[n]} \\E[X_i^2] + \\sum_{i\\ne j} \\E[X_iX_j] \\\\ &amp;= \\sum_{i\\in[n]} \\E[X_i^2] \\\\ &amp;= \\sum_{i\\in[n]} \\Var[X_i] &amp; &amp; \\because\\text{ $X_i$の期待値は$0$} \\end{align*}\\] となり主張を得ます. $\\square$ . このことから和$S$の分散が簡単に計算できるため, チェビシェフの不等式より以下を得ます: . $X_1,\\dots,X_n$をペア独立な確率変数とし, $S=\\sum_{i\\in[n]} X_i$とすると, 任意の$a&gt;0$に対して . \\[\\begin{align*} \\Pr\\qty[\\abs{S-\\E[S]}\\ge a] \\le \\frac{\\sum_{i\\in[n]} \\Var[X_i]}{a^2}. \\end{align*}\\] ",
     "url": "/nobunote/docs/randomness/pairwise_independent/#%E6%80%A7%E8%B3%AA",
     
     "relUrl": "/docs/randomness/pairwise_independent/#性質"
-  },"248": {
+  },"253": {
     "doc": "ペア独立性",
     "title": "ペア独立性",
     "content": " ",
     "url": "/nobunote/docs/randomness/pairwise_independent/",
     
     "relUrl": "/docs/randomness/pairwise_independent/"
-  },"249": {
+  },"254": {
     "doc": "パーマネント",
     "title": "パーマネント",
     "content": ". | パーマネント . | 概要 | Lipton (1991) の帰着 | Lipton(1991)の改善 | GemmellとSudan (1992) の帰着 | . | 参考文献 | . ",
     "url": "/nobunote/docs/worst_case_to_average/permanent/",
     
     "relUrl": "/docs/worst_case_to_average/permanent/"
-  },"250": {
+  },"255": {
     "doc": "パーマネント",
     "title": "概要",
     "content": "$n\\times n$ 行列 $A$ のパーマネント (permanent) とは, 次のように定義される量です: . \\[\\begin{align*} \\mathrm{perm}(A) = \\sum_{\\sigma\\in S_n} \\prod_{i=1}^n A_{i,\\sigma(i)}. \\end{align*}\\] ここで, $S_n$ は $[n] = \\qty{1,2,\\ldots,n}$ 上の全ての順列の集合です. パーマネントは行列式に似ていますが, 順列の符号を考慮しない点が異なります. しかし, 驚くべきことに, 符号を考慮するかどうかによって計算量に非常に大きな違いが生まれます. 行列式は掃き出し法などを使えば多項式時間で計算可能です. 一方でパーマネントを計算する問題は非常に難しいと広く信じられています. Valiant (1979) は, $\\{0,1\\}$成分を持つ行列のパーマネントを($\\mathbb{Z}$上で)計算する問題が $\\#\\mathsf{P}$-完全であることを示しました.1 ここで $\\#\\mathsf{P}$ は数え上げ問題のクラスであり, NP証明の個数の数え上げになっている問題のクラスです. ここでは$A$は有限体$\\F_p$上の行列であると仮定し, 平均時の問題として次の問題を考えます: . 入力として有限体$\\F_p$上の一様ランダムな行列 $A\\sim\\F_p^{n\\times n}$ を受け取り, $\\mathrm{perm}(A)$ を出力せよ. 最悪時の場合, $p&gt;n!$であれば, Valiantの結果よりパーマネントを多項式時間で計算することは $\\#\\mathsf{P}$-困難ですが, 中国剰余定理を使うと, ある$p=n^{O(1)}$に対しても同様に困難であることが示されます. このとき, Lipton (1991) は, $p\\ge 3(n+1)$に対し, パーマネントを高い成功確率で解くアルゴリズムが存在するならば, それを使って任意の入力に対してパーマネントを解くアルゴリズムを設計できることを示しました.2 . ",
     "url": "/nobunote/docs/worst_case_to_average/permanent/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/worst_case_to_average/permanent/#概要"
-  },"251": {
+  },"256": {
     "doc": "パーマネント",
     "title": "Lipton (1991) の帰着",
     "content": "定理1 (Lipton, 1991). 有限体$\\F_p$上で, ランダム行列上で成功確率$1-\\frac{1}{3(n+1)}$でパーマネントを解く$T(n)$時間アルゴリズムが存在するならば, 全ての入力に対してパーマネントを確率$2/3$で計算する$O(n\\cdot T(n)) + \\poly(n)$時間乱択アルゴリズムが存在する. ここで $\\poly(n)$ は$\\F_p$上の$n$次多項式の補間にかかる時間を表します. 証明 ランダム行列のパーマネントを成功確率$1-\\frac{1}{3(n+1)}$で解くアルゴリズムを$M$とします. すなわちこのアルゴリズムは以下を満たします: . \\[\\begin{align*} \\Pr_{R\\sim \\F_p^{n\\times n}}\\left[ M(R) = \\mathrm{perm}(R) \\right] \\ge 1 - \\frac{1}{3(n+1)}. \\tag{1} \\end{align*}\\] 任意の入力$A\\in\\F_p^{n\\times n}$に対して, $M$を使ってパーマネントを計算するアルゴリズム$M’$を計算することが目標です. ランダムな行列 $R\\sim\\F_p^{\\times n}$を選び, 多項式 . \\[\\begin{align*} P(x) = \\mathrm{perm}(A + xR) \\end{align*}\\] を考えます. この$x$に関する多項式は, $A,R$が固定されているので, 次数は高々$n$です. また, $P(0)=\\mathrm{perm}(A)$ を計算したいわけですが, $x\\ne 0$ に対して $A+xR$ は一様ランダムな行列となるので, (1)より確率 $1-\\frac{1}{10n}$ で $M(A+xR) = \\mathrm{perm}(A+xR)$ となります. そこで$n+1$個の異なる点$x_1,\\dots,x_{n+1}\\in\\F_p$において $P(x_i)$ を $M(A+x_i R)$ を使って計算し, ラグランジュ補間により $P(0)$ を求めることで $\\mathrm{perm}(A)$ を計算するアルゴリズムを考えます. 具体的には, 次のようにアルゴリズム$M’$を定義します: . | 一様ランダムな行列$R\\sim\\F_p^{n\\times n}$を選ぶ. また, 相異なる$n+1$個の点$x_1,x_2,\\ldots,x_{n+1}\\in\\F_p$を選ぶ. | 各$i=1,\\dots,n+1$ について$y_i = M(A + x_i R)$を計算する. | 得られた点$(x_i,y_i)$全てを通る$n$次多項式$P\\colon\\F_p\\to\\F_p$を多項式補間を用いて求め, $P(0)$を出力する. | . (1)および$i$に関するunion boundより, . \\[\\begin{align*} \\Pr_{R}\\qty[ {}^{\\forall}i\\in[n+1],\\quad M(A + x_i R) = \\mathrm{perm}(A + x_i R) ] \\ge 1 - \\frac{n+1}{3(n+1)} = \\frac{2}{3}. \\end{align*}\\] また, 多項式$P(x)$の次数は高々$n$なので, $x_1,x_2,\\ldots,x_n$が互いに異なる限り, ラグランジュ補間により正しく求まる. よって確率$2/3$で$M’(A) = P(0) = \\mathrm{perm}(A)$となる. ",
     "url": "/nobunote/docs/worst_case_to_average/permanent/#lipton-1991-%E3%81%AE%E5%B8%B0%E7%9D%80",
     
     "relUrl": "/docs/worst_case_to_average/permanent/#lipton-1991-の帰着"
-  },"252": {
+  },"257": {
     "doc": "パーマネント",
     "title": "Lipton(1991)の改善",
     "content": "Liptonの帰着では, ランダム行列上で成功確率が $1 - \\frac{1}{3(n+1)}$ であるアルゴリズムを仮定しました. では, より小さい成功確率 $\\alpha$ を持つアルゴリズムを仮定した場合に同様の帰着を得ることはできるでしょうか? . もしこれが可能であれば, パーマネントの最悪時困難性を仮定すると, $1-\\alpha$の割合の行列に対して正しくパーマネントを計算するアルゴリズムが存在しないことが示せます. 仮に$\\alpha\\approx 0$で示せたとすると, ほとんどの行列は非常にパーマネントを計算するのが難しいことになります. このように, 計算困難なインスタンスが非常に多いという性質は暗号学的応用や脱乱択の理論において極めて重要です. この方向に関してはいくつかの研究があります: . | GemmellとSudan (1992) は, $\\alpha=\\frac{1}{2} + \\frac{1}{\\poly(n)}$ に対して最悪時から平均時への帰着を与えました3. | FeigeとLund (1992) は, sum-checkプロトコルのアイデアを使って, $\\alpha=\\frac{1}{2} - \\frac{1}{n}$ に対して最悪時から平均時への帰着を与えました 4. | Cai, Pavan, Sivakumar (1999) は, $\\alpha=\\frac{1}{\\poly(n)}$ に対して最悪時から平均時への帰着を与えました 5. | . また, Liptonの帰着を含む上記全ての既存の手法は全て多項式補間に基づいた手法であるため, 本質的に考える体$\\F_p$の要素数は大きくなければいけません. 一般に$p=2$の場合は行列積と同値なので簡単に計算できますが, $3\\le p\\ll n$の範囲ではパーマネントの最悪時から平均時への帰着は知られていません. ",
     "url": "/nobunote/docs/worst_case_to_average/permanent/#lipton1991%E3%81%AE%E6%94%B9%E5%96%84",
     
     "relUrl": "/docs/worst_case_to_average/permanent/#lipton1991の改善"
-  },"253": {
+  },"258": {
     "doc": "パーマネント",
     "title": "GemmellとSudan (1992) の帰着",
     "content": "Lipton(1991)の帰着では, 高確率で成功するアルゴリズムを仮定することによって, $n+1$個全ての点で正しい評価を得て, これらを用いた多項式補間によって任意の入力に対してパーマネントを計算しました. 仮定するアルゴリズムの成功確率を下げると, いくつかの点で誤った評価を得る可能性が出てきます. GemmellとSudan (1992) は, 多項式補間の過程で誤った評価が含まれていても, 半分以上の点で正しい評価が得られているならば, Berlekamp-Welchアルゴリズムを用いて 正しい多項式を復元できることを利用してLipton(1991)の帰着を改善し, 以下の結果を証明しました. 定理2 (Gemmell and Sudan, 1992). 有限体$\\F_p$上で, ランダム行列上で成功確率$\\frac{1}{2}+n^{-c}$でパーマネントを解く$T(n)$時間アルゴリズムが存在するならば, 全ての入力に対してパーマネントを確率$2/3$で計算する$O(n^{2c+1}\\cdot T(n) + n^{6c+3})$時間乱択アルゴリズムが存在する. ただし, $p&gt;n^{2c+1}$. 証明 与えられた任意の入力行列$A$に対して$\\mathrm{perm}(A)$を次のようにして計算します: . | 一様ランダムな行列$R,S\\sim\\F_p^{n\\times n}$を選ぶ. | 一変数多項式 $P(x) = \\mathrm{perm}(A+xR+x^2S)$ を考える (この多項式は次数$\\le 2n$). | 相異なる点 $x_1,\\dots,x_M$ に対して $P(x_i)$ を $T(n)$ 時間アルゴリズムを使って計算する (ただし $M=n^{2c+1}$) | Berlekamp-Welchアルゴリズムを使って, 多項式 $P$ の全ての係数を求めて, $P(0)=\\mathrm{perm}(A)$ を出力する. | . ステップ2で考えた多項式 $P$ について考えましょう. 固定した各 $x_i$ に対して, 行列 . \\[\\begin{align*} P(x_i) = \\mathrm{perm}(A + x_i R + x_i^2 S) \\end{align*}\\] は一様ランダムな行列となります (ランダムネスは$R,S$) ので, アルゴリズムは確率 $\\frac{1}{2} + n^{-c}$ で正しく計算します. この評価は固定した各$x_i$それぞれに対して成り立ちます. 次に, 確率変数 $X_i\\in\\binset$ を, “アルゴリズムが $P(x_x)$ の値を正しく計算したら$1$, そうでなければ$0$” と定義し, $S=\\sum_{i=1}^M X_i$ とします. すると . \\[\\begin{align*} \\Var[X_i] = \\E[X_i] (1-\\E[X_i]) \\le \\frac{1}{4} \\end{align*}\\] および, 期待値の線形性より . \\[\\begin{align*} \\E\\qty[S] = \\sum_{i=1}^M \\Pr\\left[ \\text{アルゴリズムが $P(x_i)$ を正しく計算} \\right] \\ge M\\left(\\frac{1}{2} + n^{-c}\\right) \\end{align*}\\] となります. また, ペアワイズ独立な確率変数に対するChebyshevの不等式から . \\[\\begin{align*} \\Pr\\left[ S \\le \\frac{1+n^{-c}}{2}\\cdot M \\right] &amp;\\le \\Pr\\qty[ \\abs{S - \\E[S]} \\ge M n^{-c}/2 ] \\\\ &amp;\\le \\frac{M/4}{(M n^{-c}/2)^2} \\\\ &amp;\\le \\frac{n^{2c}}{M} \\\\ &amp;= \\frac{1}{n}. &amp; &amp; \\because M=n^{2c+1} \\end{align*}\\] すなわち, 確率$1/n$で, アルゴリズムは $P(x_i)$ の値を誤って評価した $x_i$ の個数は高々 . \\[\\begin{align*} \\frac{1-n^{-c}}{2}\\cdot M = \\frac{M}{2} - \\frac{n^{1+c}}{2} \\end{align*}\\] となります. Berlekamp-Welchアルゴリズムは, $M$個の点のうち評価を誤った点の個数が$e&lt;\\frac{M-2n+1}{2}$個である場合に正しく動作し, 上記の評価はこの条件を満たすので 確かにBerlekamp-Welchアルゴリズムを用いて多項式 $P$ を求めることができ, アルゴリズムは $P(0)=\\mathrm{perm}(A)$ を出力します. Berlekamp-Welchアルゴリズムの計算量は, ガウス消去法を用いた実装だと評価点の個数の3乗に比例するので, $O((n^{2c+1})^3)=O(n^{6c+3})$ です. ",
     "url": "/nobunote/docs/worst_case_to_average/permanent/#gemmell%E3%81%A8sudan-1992-%E3%81%AE%E5%B8%B0%E7%9D%80",
     
     "relUrl": "/docs/worst_case_to_average/permanent/#gemmellとsudan-1992-の帰着"
-  },"254": {
+  },"259": {
     "doc": "パーマネント",
     "title": "参考文献",
     "content": ". | L. G. Valiant. “The complexity of computing the permanent,” Theoretical Computer Science, 1979. &#8617; . | R. J. Lipton. “New directions in testing,” Distributed Computing and Cryptography, 1991. &#8617; . | P. Gemmell and M. Sudan. “Highly resilient correctors for polynomials,” Information Processing Letters, 1992. &#8617; . | U. Feige and C. Lund. “On the hardness of computing the permanent of random matrices,” Computational Complexity, 1996. &#8617; . | J.-Y. Cai, A. Pavan, and D. Sivakumar. “On the Hardness of Permanent,” STACS, 1999. &#8617; . | . ",
     "url": "/nobunote/docs/worst_case_to_average/permanent/#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE",
     
     "relUrl": "/docs/worst_case_to_average/permanent/#参考文献"
-  },"255": {
+  },"260": {
     "doc": "Pinskerの不等式",
     "title": "Pinskerの不等式",
     "content": ". | Pinskerの不等式 . | 概要 | 定理 | 証明 | . | . ",
     "url": "/nobunote/docs/information_theory/pinsker/",
     
     "relUrl": "/docs/information_theory/pinsker/"
-  },"256": {
+  },"261": {
     "doc": "Pinskerの不等式",
     "title": "概要",
     "content": "Pinskerの不等式(Pinsker’s inequality)は, KLダイバージェンス $\\KL{X}{Y}$ と統計距離 $\\dtv(X,Y)$ の間の重要な関係を表す不等式です. この不等式は, 確率変数の分布の収束性の解析において重要な役割を果たします。 . ",
     "url": "/nobunote/docs/information_theory/pinsker/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/information_theory/pinsker/#概要"
-  },"257": {
+  },"262": {
     "doc": "Pinskerの不等式",
     "title": "定理",
     "content": "定理 (Pinskerの不等式) . 確率変数$X,Y$に対して . \\[\\begin{align*} 2\\dtv(X,Y)^2 \\le \\KL{X}{Y}. \\end{align*}\\] ",
     "url": "/nobunote/docs/information_theory/pinsker/#%E5%AE%9A%E7%90%86",
     
     "relUrl": "/docs/information_theory/pinsker/#定理"
-  },"258": {
+  },"263": {
     "doc": "Pinskerの不等式",
     "title": "証明",
     "content": "Pinskerの不等式の証明は, 以下の主要なステップから構成されます: . | データ処理不等式の適用: 関数$f(x) = \\indicator_{x \\in S}$を用いて, データ処理不等式を適用 | 二値KLダイバージェンスの評価: $\\binset$値確率変数のKLダイバージェンスを解析的に評価する | . ",
     "url": "/nobunote/docs/information_theory/pinsker/#%E8%A8%BC%E6%98%8E",
     
     "relUrl": "/docs/information_theory/pinsker/#証明"
-  },"259": {
+  },"264": {
     "doc": "ランダムグラフ",
     "title": "ランダムグラフ",
     "content": ". | ランダムグラフ . | Erdős–Rényiグラフ | ランダム正則グラフ | . | . ランダムグラフとはその名の通り, ランダムに生成されたグラフであり, その分布をランダムグラフモデルと呼びます. ",
     "url": "/nobunote/docs/graph_theory/random_graph/",
     
     "relUrl": "/docs/graph_theory/random_graph/"
-  },"260": {
+  },"265": {
     "doc": "ランダムグラフ",
     "title": "Erdős–Rényiグラフ",
     "content": "Erdős–Rényiグラフとは最も基本的なランダムグラフで, 各頂点のペアそれぞれに対し独立にコイントスを行い, その結果に応じて辺で結んで得られるランダムグラフです. 定義 (Erdős–Rényiグラフ). パラメータ$n\\in\\Nat$, $p\\in[0,1]$に対し, Erdős–Rényiグラフとは頂点集合が$[n]= \\{1,\\dots,n\\}$で 各頂点ペアを独立に同じ確率$p$で辺で結んで得られるランダムなグラフで, そのようなランダムグラフの分布を$\\mathcal{G}(n,p)$と表します. すなわち $\\calG(n,p)$とは . \\[\\begin{align*} \\Pr_{G\\sim \\mathcal{G}(n,p)}[G=H] = p^{|E(H)|}\\cdot (1-p)^{\\binom{n}{2} - |E(H)|} \\tag{1} \\end{align*}\\] によって定まる$n$頂点グラフ上の分布です. 特に$p=1/2$のとき, 式(1)の右辺は$H$に依存しない値になるので, $G(n,1/2)$は$n$頂点グラフ全体の集合から一様ランダムに選ばれたグラフとなります. ",
     "url": "/nobunote/docs/graph_theory/random_graph/#erd%C5%91sr%C3%A9nyi%E3%82%B0%E3%83%A9%E3%83%95",
     
     "relUrl": "/docs/graph_theory/random_graph/#erdősrényiグラフ"
-  },"261": {
+  },"266": {
     "doc": "ランダムグラフ",
     "title": "ランダム正則グラフ",
     "content": "ランダム正則グラフとは次数を固定したときの一様ランダムな正則グラフです. 正則グラフとは全ての頂点の次数が等しいグラフのことを意味し, 特にその次数が$d$に等しいグラフを$d$-正則と呼びます. 定義 (ランダム正則グラフ). パラメータ$n,d\\in\\Nat$ (ただし$nd$は偶数)に対してランダム$d$-正則グラフ$G_{n,d}$とは, $n$頂点$d$-正則グラフ全体の中から一様ランダムに選ばれたグラフであり, その分布を$\\calG_{n,d}$で表す. ",
     "url": "/nobunote/docs/graph_theory/random_graph/#%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E6%AD%A3%E5%89%87%E3%82%B0%E3%83%A9%E3%83%95",
     
     "relUrl": "/docs/graph_theory/random_graph/#ランダム正則グラフ"
-  },"262": {
+  },"267": {
     "doc": "ランダム線形符号",
     "title": "ランダム線形符号",
     "content": ". | ランダム線形符号 . | 概要 | リスト復号 | 参考文献 | . | . ",
     "url": "/nobunote/docs/error-correcting_code/random_linear/",
     
     "relUrl": "/docs/error-correcting_code/random_linear/"
-  },"263": {
+  },"268": {
     "doc": "ランダム線形符号",
     "title": "概要",
     "content": "誤り訂正符号の文脈ではランダムに構成した符号がしばし非常に良いパラメータを持つことが知られています. 定義 (ランダム線形符号) . 有限体$\\F_q$上の符号長$n$, 次元$k$の部分空間のうち一様ランダムに選ばれたものをランダム線形符号といいます. ",
     "url": "/nobunote/docs/error-correcting_code/random_linear/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/error-correcting_code/random_linear/#概要"
-  },"264": {
+  },"269": {
     "doc": "ランダム線形符号",
     "title": "リスト復号",
     "content": "アルファベットサイズ$q$とレート$r=\\frac{k}{n}$を固定して$n\\to\\infty$におけるランダム線形符号の(組合せ的)リスト復号性能を評価します. ここで, 符号$\\calC\\subseteq\\F_q^n$が$(R,L)$-リスト復号可能であるとは, 任意の$x\\in\\F_q^n$に対して$\\abs{ \\calC \\cap \\ball(x,R) } \\le L$が成り立つことをいいます. 有限体$\\F_q$を考え, $r\\in[0,1]$に対し, $q$進エントロピー関数を . \\[\\begin{align*} H_q(R)=R\\log_q \\frac{1}{R}+(1-R)\\log_q\\frac{1}{1-R} \\end{align*}\\] で定義します. Stirling近似により, $\\F_q^n$上の半径$R$の球の体積がおよそ$q^{nH_q(R)}$で与えられます. 以下にランダム線形符号のリスト復号性能に関する関連研究を述べます. | Zyablov and Pinsker(1982)は, $q=2$のとき, レート$r=1-H_2(R)-\\varepsilon$のランダム線形符号は高確率で$(R,2^{O(1/\\varepsilon)})$-リスト復号可能であることを示しました1. この結果は一般のアルファベットサイズ$q$に一般化でき, そのときのリストサイズは$q^{O(1/\\varepsilon)}$となります. | Guruswami, Hastad, Sudan, Zuckerman (2002)はランダム線形符号に基づく確率論的手法によって, $q=2$の符号であって, レートが$r=H(R)-\\varepsilon$かつ$(r,O(1/\\varepsilon))$-リスト復号可能である符号が存在することを示しました2. 彼らの証明はポテンシャル関数に基づく議論であり, ランダム線形符号そのものが所望の性質を満たすことは示していません（単に存在性のみを示しました）. また, $q=2$という性質に依拠しています. | Guruswami, Håstad, Kopparty(2011)は, $\\F_q$上のレート$1-H_q(R)-\\varepsilon$のランダム線形符号は$(R,O_{q,R}(1/\\varepsilon))$-リスト復号可能であることを示しました3. | Rudra (2011)は, ランダム線形符号のリストサイズ$\\lceil 1/\\varepsilon\\rceil$が定数枚を除いてタイトであることを示しました. すなわち, ある定数$0&lt;c&lt;1$が存在して, レート$1-H_q(R)+\\varepsilon$のランダム線形符号は高確率で$(R,c/\\varepsilon)$-リスト復号可能でないことを示しました4. | . ",
     "url": "/nobunote/docs/error-correcting_code/random_linear/#%E3%83%AA%E3%82%B9%E3%83%88%E5%BE%A9%E5%8F%B7",
     
     "relUrl": "/docs/error-correcting_code/random_linear/#リスト復号"
-  },"265": {
+  },"270": {
     "doc": "ランダム線形符号",
     "title": "参考文献",
     "content": ". | V. V. Zyablov and M. S. Pinsker, “List cascade decoding,” (in Russian), Probl. Inf. Transm., vol. 17, no. 4, pp. 29–34 (1982). &#8617; . | V. Guruswami, J. Håstad, M. Sudan, and D. Zuckerman, “Combinatorial bounds for list decoding,” IEEE Transactions on Information Theory, 2002. &#8617; . | V. Guruswami, J. Håstad, and S. Kopparty, “On the list-decodability of random linear codes,” IEEE Transactions on Information Theory, 2011. &#8617; . | M. Rudra, “Limits to List Decoding of Random Codes,” IEEE Transactions on Information Theory, 2011. &#8617; . | . ",
     "url": "/nobunote/docs/error-correcting_code/random_linear/#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE",
     
     "relUrl": "/docs/error-correcting_code/random_linear/#参考文献"
-  },"266": {
+  },"271": {
     "doc": "リード-$k$族の和の集中不等式",
     "title": "リード-$k$族の和の集中不等式",
     "content": ". | リード-$k$族の和の集中不等式 . | 概要 | ハイパーグラフによる従属関係の表現 | リード-$k$族の定義 | 主定理 | 二値KLダイバージェンスの性質 | 参考文献 | . | . ",
     "url": "/nobunote/docs/concentration_inequalities/read_k/",
     
     "relUrl": "/docs/concentration_inequalities/read_k/"
-  },"267": {
+  },"272": {
     "doc": "リード-$k$族の和の集中不等式",
     "title": "概要",
     "content": "Gavinsky, Lovett, Saks, Srinivasan (2014)による集中不等式を紹介します. ChernoffバウンドやHoeffdingバウンドは独立な確率変数$Y_1,\\dots,Y_n$の和の集中性を保証します. これを, 必ずしも$Y_1,\\dots,Y_n$が独立とは限らない場合に拡張することを考えます. もちろん, どんな場合でも必ず集中性が保証されるわけではありませんが, $Y_1,\\dots,Y_n$たちの従属関係が何かしら良い構造を持つときにその性質を利用しようと思うわけです. ",
     "url": "/nobunote/docs/concentration_inequalities/read_k/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/concentration_inequalities/read_k/#概要"
-  },"268": {
+  },"273": {
     "doc": "リード-$k$族の和の集中不等式",
     "title": "ハイパーグラフによる従属関係の表現",
     "content": "ハイパーグラフによって従属関係が表現された確率変数族を考えます. ハイパーグラフ$\\calH=(V,\\calE)$を考え, 各ハイパー辺$e \\in \\calE$には関数$f_e \\colon [0,1]^{e} \\to [0,1]$が付随しているとします. 各頂点ごとに独立な$[0,1]$値の確率変数$X_v$を考えたとき, 各ハイパー辺$e\\in \\calE$に対し, . \\[\\begin{align*} Y_e = f_e(X\\restr{e}) \\end{align*}\\] によって定まる確率変数の族$(Y_e)_{e\\in \\calE}$を, $\\calH$-従属な確率変数族と呼ぶ. $\\calH$-従属という用語は一般的な用語ではなく, このノートで局所的に便宜上用いる用語です. ハイパーグラフ$\\calH$の構造的性質を和 $\\sum_{e\\in \\calE}Y_e$ の集中性に反映させることが目標です. この設定はChernoffバウンドやHoeffdingバウンドを特殊ケースとして含んでいます. 実際, 各ハイパー辺$e_i$がシングルトンで$e_i={v_i}$のようになっているとき, $(Y_e)$は独立な確率変数族となります. ",
     "url": "/nobunote/docs/concentration_inequalities/read_k/#%E3%83%8F%E3%82%A4%E3%83%91%E3%83%BC%E3%82%B0%E3%83%A9%E3%83%95%E3%81%AB%E3%82%88%E3%82%8B%E5%BE%93%E5%B1%9E%E9%96%A2%E4%BF%82%E3%81%AE%E8%A1%A8%E7%8F%BE",
     
     "relUrl": "/docs/concentration_inequalities/read_k/#ハイパーグラフによる従属関係の表現"
-  },"269": {
+  },"274": {
     "doc": "リード-$k$族の和の集中不等式",
     "title": "リード-$k$族の定義",
     "content": "Gavinsky, Lovett, Saks, Srinivasan (2014)は, ハイパーグラフ$\\calH$の最大次数が小さいときに集中性が成り立つことを証明しました. 定義(リード-$k$族). 最大次数が高々$k$であるハイパーグラフ$\\calH=(V,\\calE)$に対し, $\\calH$-従属な確率変数族をリード-$k$族 (read-$k$ family)という. ",
     "url": "/nobunote/docs/concentration_inequalities/read_k/#%E3%83%AA%E3%83%BC%E3%83%89-k%E6%97%8F%E3%81%AE%E5%AE%9A%E7%BE%A9",
     
     "relUrl": "/docs/concentration_inequalities/read_k/#リード-k族の定義"
-  },"270": {
+  },"275": {
     "doc": "リード-$k$族の和の集中不等式",
     "title": "主定理",
     "content": "定理 (Gavinsky, Lovett, Saks, Srinivasan (2014). 確率変数$Y_1,\\dots,Y_m$をリード-$k$族とし, 和を$S=\\sum_{e\\in \\calE} Y_e$, 期待値の平均を$\\mu = \\frac{\\E[S]}{m}$とする. 任意の$\\delta&gt;0$に対して以下が成り立つ: . \\[\\begin{align*} &amp;\\Pr \\qty[ S \\ge \\qty(\\mu + \\delta) ] \\le \\exp\\qty(- \\frac{m}{k}\\cdot \\KL {\\mu+\\delta} \\mu),\\\\ &amp;\\Pr \\qty[ S \\le \\qty(\\mu - \\delta) ] \\le \\exp\\qty(- \\frac{m}{k}\\cdot \\KL {\\mu-\\delta}{\\mu}). \\end{align*}\\] ここで, $\\KL{p}{q}=p\\log\\frac{p}{q} + (1-p)\\log\\frac{1-p}{1-q}$は二値KLダイバージェンス(もしくは二値相対エントロピー)と呼ばれる ($\\log$は自然対数). ",
     "url": "/nobunote/docs/concentration_inequalities/read_k/#%E4%B8%BB%E5%AE%9A%E7%90%86",
     
     "relUrl": "/docs/concentration_inequalities/read_k/#主定理"
-  },"271": {
+  },"276": {
     "doc": "リード-$k$族の和の集中不等式",
     "title": "二値KLダイバージェンスの性質",
     "content": "二値KLダイバージェンスについては以下の不等式が成り立ちます. 二値KLダイバージェンスについては以下の不等式が成り立つ. 任意の$p,q\\in[0,1]$に対して . \\[\\begin{align*} &amp;\\KL p q \\ge 2(p-q)^2 &amp; &amp; \\text{(Pinskerの不等式)} \\\\ &amp;\\KL p q \\ge \\frac{(p-q)^2}{\\max(p,q)}. \\end{align*}\\] ",
     "url": "/nobunote/docs/concentration_inequalities/read_k/#%E4%BA%8C%E5%80%A4kl%E3%83%80%E3%82%A4%E3%83%90%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%82%B9%E3%81%AE%E6%80%A7%E8%B3%AA",
     
     "relUrl": "/docs/concentration_inequalities/read_k/#二値klダイバージェンスの性質"
-  },"272": {
+  },"277": {
     "doc": "リード-$k$族の和の集中不等式",
     "title": "参考文献",
     "content": ". | Gavinsky, D., Lovett, S., Saks, M., &amp; Srinivasan, S. (2014). A tail bound for read-k families of functions. Random Structures &amp; Algorithms, 47(1), 99-108. | . ",
     "url": "/nobunote/docs/concentration_inequalities/read_k/#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE",
     
     "relUrl": "/docs/concentration_inequalities/read_k/#参考文献"
-  },"273": {
+  },"278": {
     "doc": "サンプラー",
     "title": "サンプラー",
     "content": ". | サンプラー . | 概要 | 交換補題 | 直積サンプラー | . | . ",
     "url": "/nobunote/docs/randomness/sampler/",
     
     "relUrl": "/docs/randomness/sampler/"
-  },"274": {
+  },"279": {
     "doc": "サンプラー",
     "title": "概要",
     "content": "サンプラー(sampler)は平均時計算量理論の文脈において証明で提案した帰着の正当性の証明などでよく使われます. 二つの独立とは限らない確率変数の組$(X,Y)$を考え, これらの台$\\supp(X),\\supp(Y)$が有限集合とします. このとき, $(X,Y)$のサンプリングは, ある辺重みつき二部グラフの辺を(重みに比例した確率で)ランダムに選び, その端点を出力するというプロセスとして捉えることができます. この(辺重みつき)二部グラフを$(X,Y)$に付随する二部グラフと呼ぶことにします. 確率変数のペア$(X,Y)$がサンプラーであるとはこの二部グラフがある種のエクスパンダー性を持つことを意味します. 定義(サンプラー). 確率変数の組$(X,Y)$は以下を満たすとき$(\\delta,\\varepsilon)$-サンプラーという: 任意の関数$S \\colon \\supp(Y)\\to [0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X} \\left[ \\abs*{ \\E[S(Y)| X=x] - \\E[S(Y)]} \\ge \\varepsilon \\right] \\le \\delta. \\tag{1} \\end{align*}\\] 同様に, $(X,Y)$は以下を満たすとき乗法的$(\\delta,\\varepsilon)$-サンプラーという: $\\E[S(Y)]\\ge \\varepsilon$を満たす任意の関数$S\\colon \\supp(Y)\\to[0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X}\\left[\\mathbb{E}[S(Y)|X=x] \\le \\frac{\\mathbb{E}[S(Y)]}{2}\\right] \\le \\delta. \\tag{2} \\end{align*}\\] 確率変数のペア$(X,Y)$に付随する二部グラフ$G=(\\supp(X),\\supp(Y),E)$を考えます. 簡単のため辺は重みなしだが多重辺は許すとします (ですので$E$は多重集合となります). つまり, $(X,Y)$をサンプリングするには, 一様ランダムな辺$(x,y)\\sim E$を選び, その両端点$(x,y)$を出力すればよいです. 関数$S\\colon \\supp(Y)\\to \\binset$を任意に一つ固定します(本来, サンプラーの定義では$[0,1]$値関数を考えますがここでは簡単のため$\\binset$値関数としています). このとき$S$は部分集合$S\\subseteq \\supp(Y)$と同一視でき, $\\E[S(Y)]=\\Pr[Y\\in S]$は部分集合$S$の(大域的な)密度となります. 各$x\\in U$に対して$N(x)$を$x$の隣接頂点の多重集合とすると . \\[\\begin{align*} \\E \\left[S(Y) \\vert X=x\\right] = \\Pr_{y \\sim N(x)} \\left[y \\in S\\right] = \\frac{|N(x)\\cap S|}{|N(x)|} \\end{align*}\\] は$N(x)$のうち$S$に属するものの割合, すなわち$x$の周辺における$S$の局所的な密度を表します. $(X,Y)$がサンプラーであるとは, ほとんどの$x$に対して$S$の局所的な密度$\\frac{\\abs{N(x)\\cap S}}{\\abs{N(x)}}$が$S$の大域的な密度$\\E[S(Y)]$に近いということを意味します. また, $x\\sim X$をランダムに選んだときの確率変数$\\E[S(Y) \\vert X=x]$がその期待値$\\E_{x\\sim X} \\left[ \\E[S(Y) \\vert X=x]\\right] = \\E[S(Y)]$に集中するという性質とも言えます. ",
     "url": "/nobunote/docs/randomness/sampler/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/randomness/sampler/#概要"
-  },"275": {
+  },"280": {
     "doc": "サンプラー",
     "title": "交換補題",
     "content": "実はサンプラー性は対称であり, $(Y,X)$がサンプラーならば$(X,Y)$もまたサンプラーとなります. 補題(交換補題). 確率変数のペア$(Y,X)$が$\\left(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8}\\right)$-サンプラーならば$(X,Y)$は$(\\delta,\\varepsilon)$-サンプラーである. 同様に, $(Y,X)$が乗法的$\\left(\\frac{\\varepsilon}{4},\\delta\\right)$-サンプラーならば, $(X,Y)$は乗法的$(\\delta,\\varepsilon)$-サンプラーである. 一つ目の主張の証明 $(Y,X)$を$\\left(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8}\\right)$-サンプラーとします. 記号の簡単のため, $\\delta’=\\frac{\\varepsilon}{2},\\varepsilon’=\\frac{\\delta\\varepsilon}{8}$とし, $(Y,X)$が$(\\delta’,\\varepsilon’)$-サンプラーであるとします. まず, $(X,Y)$の片側サンプラー性, 具体的には任意の関数$S\\colon \\supp(Y)\\to[0,1]$に対して . \\[\\begin{align*} \\Pr_{x\\sim X} \\left[ \\E[S(Y) \\vert X=x] - \\E[S(Y)] \\le -\\varepsilon \\right] \\le \\frac{\\delta}{2} \\tag{3} \\end{align*}\\] が成り立つことを示します. 関数$S\\colon \\supp(Y)\\to[0,1]$に対して関数$H\\colon\\supp(X)\\to\\binset$を . \\[\\begin{align*} H(x)=1 \\iff \\E[S(Y)\\vert X=x] - \\E[S(Y)] \\le -\\varepsilon \\end{align*}\\] で定めます. $H$の定義より . \\[\\begin{align*} \\E[H(X)S(Y)] &amp;= \\E[S(Y) \\vert H(X)=1]\\cdot \\E[H(X)] \\\\ &amp;\\le \\left(\\E[S(Y)] - \\varepsilon\\right)\\cdot \\E[H(X)] \\tag{4} \\end{align*}\\] を得ます. 一方で, $(Y,X)$は$(\\delta’,\\varepsilon’)$-サンプラーなので, $1-\\delta’$の割合の$y\\sim Y$に対して $\\E[H(X)\\vert Y=y] &gt; \\E[H(X)] - \\varepsilon’$が成り立ちます. このような$y$の集合を$T \\subseteq \\supp(Y)$とします. このとき, . \\[\\begin{align*} \\E[H(X)S(Y)] &amp;\\ge \\sum_{y\\in T} \\E[H(X)\\vert Y=y]\\cdot S(y) \\cdot \\Pr[Y=y] \\\\ &amp;\\ge \\left(\\E[H(X)] - \\varepsilon'\\right) \\left( \\E[S(Y)] - \\Pr[Y\\in T] \\right) \\\\ &amp;\\ge \\left(\\E[H(X)] - \\varepsilon'\\right) \\left( \\E[S(Y)] - \\delta'\\right) \\tag{5} \\end{align*}\\] より, 式(4)(5)を組み合わせると . \\[\\begin{align*} \\E[H(X)]\\left(\\E[S(Y)]-\\varepsilon\\right) &gt; \\left(\\E[H(X)]- \\varepsilon'\\right)\\left(\\E[S(Y)] - \\delta'\\right) \\end{align*}\\] となります. 主張(3)を示すには$\\E[H(X)]\\le \\frac{\\delta}{2}$を示せばよいですが, これを背理法で示すため, $\\E[H(X)]\\ge \\frac{\\delta}{2}$を仮定します. ここで, $\\E[S(Y)]\\ge\\varepsilon$が成り立つことに注意してください ($\\E[S(Y)]&lt;\\varepsilon$ならば主張(3)は自明に成り立つ). | もし$\\E[S(Y)] = \\varepsilon$ならば, (5)に代入すると　 | . \\[\\begin{align*} \\left(\\E[H(X)] - \\frac{\\delta\\varepsilon}{8}\\right)\\left(\\E[S(Y)] - \\frac{\\varepsilon}{2}\\right) &lt; 0 \\end{align*}\\] となり, これは$\\E[H(X)]\\ge \\frac{\\delta}{2}$に矛盾します. | もし$\\E[S(Y)]&gt;\\varepsilon$ならば | . \\[\\begin{align*} \\frac{ \\left(\\E[H(X)] - \\varepsilon'\\right) \\left(\\E[S(Y)] - \\delta'\\right) }{\\E[H(X)]\\left(\\E[S(Y)]-\\varepsilon\\right)} &amp;= \\left(1-\\frac{\\delta\\varepsilon}{8\\E[H(X)]}\\right)\\left(1+\\frac{\\varepsilon/2}{\\E[S(Y)]-\\varepsilon}\\right) \\\\ &amp;\\ge \\left(1-\\frac{\\varepsilon}{4}\\right)\\left(1+\\frac{\\varepsilon}{2}\\right) \\\\ &amp;\\ge 1 \\end{align*}\\] となり, これは(5)に矛盾します. 以上より主張(3)が示されました. 最後に主張(3)を使って$(X,Y)$が$(\\delta,\\varepsilon)$-サンプラーであることを示します. 任意に関数$S\\colon \\supp(Y)\\to[0,1]$を固定し, $S$と$1-S$それぞれに対して(3)を適用すると . \\[\\begin{align*} &amp;\\Pr_{x\\sim X} \\left[ \\E[S(Y) \\vert X=x] - \\E[S(Y)] \\le -\\varepsilon \\right] \\le \\frac{\\delta}{2},\\\\ &amp;\\Pr_{x\\sim X} \\left[ -\\E[S(Y) \\vert X=x] + \\E[S(Y)] \\le -\\varepsilon \\right] \\le \\frac{\\delta}{2} \\end{align*}\\] となるため, union boundより主張を得ます. ",
     "url": "/nobunote/docs/randomness/sampler/#%E4%BA%A4%E6%8F%9B%E8%A3%9C%E9%A1%8C",
     
     "relUrl": "/docs/randomness/sampler/#交換補題"
-  },"276": {
+  },"281": {
     "doc": "サンプラー",
     "title": "直積サンプラー",
     "content": "平均時計算量の文脈では以下に定義する直積サンプラーと呼ばれるペア$(X,Y)$をよく考えます. 定義(直積サンプラー). パラメータ$k\\in\\Nat$と確率変数$X$に対し, 以下で与えられる確率変数$Y$を考える: 確率変数$X$の独立なコピーを$k$個作成し, $X_1,\\dots,X_k$とする. 一様ランダムに$i\\sim[k]$を選び, $Y=(X_1,\\dots,X_{i-1},X,X_{i+1},\\dots,X_k)$とする. このようにして得られる$(X,Y)$を$k$-直積サンプラーと呼ぶ. 直積サンプラーに付随する二部グラフでは, 左側の頂点集合$\\supp(X)$に対して$\\supp(Y)=\\supp(X)^k$となり, 頂点$x\\in\\supp(X)$と$(x_1,\\dots,x_k)\\in\\supp(Y)$の間には, $(x_1,\\dots,x_k)$の中に登場する$x$の回数だけ多重辺を引いて得られます (下図参照) . 補題(直積サンプラーのサンプラー性). 十分大きな定数$C&gt;0$が存在し, 任意のパラメータ$\\delta,\\varepsilon&gt;0$に対し, $k\\ge \\frac{C\\log(1/\\varepsilon)}{\\varepsilon^2\\delta^2}$ならば, $k$-直積サンプラーは$(\\delta,\\varepsilon)$-サンプラーである. 証明 まず$(Y,X)$が$\\qty(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8})$-サンプラーであることを示し, その後に交換補題を使って$(X,Y)$が$(\\delta,\\varepsilon)$-サンプラーであることを示します. 任意の関数$S\\colon \\supp(X)\\to[0,1]$を固定します. 式(1)を($X$と$Y$が入れ替わっていることに注意)示すために, $y\\sim Y$をランダムに選んだときの確率変数$\\E[S(X)|Y=y]$を考えます. $Y=(x_1,\\dots,x_k)$で条件つけたときの$X$の条件付き分布は(多重)集合$\\set{x_1,\\dots,x_k}$上の一様分布となります(実際これは$(X,Y)$の分布を計算すれば確かめられます). また, $Y=(x_1,\\dots,x_k)$をランダムに選んだとき, $x_1,\\dots,x_k$は$\\binset^n$上で独立一様ランダムに分布しているため, 従って . \\[\\begin{align*} \\E[S(X)|Y=(x_1,\\dots,x_k)]=\\frac{1}{k}\\sum_{i\\in[k]} S(x_i) \\end{align*}\\] は$k$個の独立な確率変数の和となります. Hoeffdingの不等式より, . \\[\\begin{align*} \\Pr_{x_1,\\dots,x_k}\\qty[ \\left|\\frac{1}{k}\\sum_{i\\in[k]}S(x_k) - \\E_X[S(X)] \\right| \\ge \\frac{\\delta\\varepsilon}{8} ] \\le 2\\exp\\qty(-\\frac{k\\delta^2\\varepsilon^2}{32}) \\le \\frac{\\varepsilon}{2} \\end{align*}\\] を得ます (最後の不等号では$k$に関する条件を利用). すなわち, $(Y,X)$は$\\qty(\\frac{\\varepsilon}{2},\\frac{\\delta\\varepsilon}{8})$-サンプラーとなるので, 交換補題より$(X,Y)$は$(\\delta,\\varepsilon)$-サンプラーとなります. ",
     "url": "/nobunote/docs/randomness/sampler/#%E7%9B%B4%E7%A9%8D%E3%82%B5%E3%83%B3%E3%83%97%E3%83%A9%E3%83%BC",
     
     "relUrl": "/docs/randomness/sampler/#直積サンプラー"
-  },"277": {
+  },"282": {
     "doc": "探索から判定への帰着",
     "title": "探索から判定への帰着",
     "content": " ",
     "url": "/nobunote/docs/planted_clique/search_to_decision/",
     
     "relUrl": "/docs/planted_clique/search_to_decision/"
-  },"278": {
+  },"283": {
     "doc": "探索から判定への帰着",
     "title": "概要",
     "content": "探索から判定への帰着(search-to-decision reduction)とは, 判定問題を解くアルゴリズムを使って探索問題を解く方法全般を指す用語です. 埋め込みクリーク問題にもそのような帰着が存在し, 与えられたグラフが埋め込みクリークかErdős–Rényiグラフかを判定するアルゴリズムを使って, 埋め込みクリークを見つけるアルゴリズムを設計することができます.1 . ",
     "url": "/nobunote/docs/planted_clique/search_to_decision/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/planted_clique/search_to_decision/#概要"
-  },"279": {
+  },"284": {
     "doc": "探索から判定への帰着",
     "title": "主張",
     "content": "少し問題設定が複雑なので, ここではinformalな主張と証明のアイデアを与えます. 定理(informal; Alon et al. (2007)) . パラメータ$k\\in\\Nat$を考える. クリークサイズ$k/2$に対して埋め込みクリーク判定問題をアドバンテージ$1-1/n^2$で解く多項式時間アルゴリズムが存在するならば, クリークサイズ$k$に対して埋め込みクリーク探索問題を成功確率$1-1/n$で解く多項式時間アルゴリズムが存在する. 帰着のアイデア 仮定より, 判定問題を解くアルゴリズム$\\calA$は非常に高いアドバンテージを持つため, $G=\\PC(n,k/2)$ならば確率$1-1/n^2$で$\\calA(G)=1$, $G=G(n,1/2)$ならば確率$1-1/n^2$で$\\calA(G)=0$となります. さて, 探索問題の入力を$G=\\PC(n,k)$とし, その頂点集合$V=[n]$に対し, 埋め込まれたクリークを$C\\subseteq V$とします. 各頂点$u\\in V$に対し, $G$上の$u$とその隣接頂点からなる集合を$N(u)$とします. グラフ$G$から頂点集合$N(u)$を除去して得られるグラフ$G_u$を考えましょう. | もし$u\\in C$ならば, 隣接頂点はクリークを含むので, $N(u)\\supseteq C$となります. グラフ$G_u$は$G$に埋め込まれたクリークをもたないため, その周辺分布はおおまかにいうと$G(n/2,1/2)$となります. | もし$u \\not\\in C$ならば, クリーク$C$と$u$の間には平均的に$k/2$本の辺が存在するため, $\\abs{N(u)\\cap C}\\approx C$となり, 残った$G_u$にはサイズおよそ$k/2$のクリークを持つことになるため, 周辺分布は大体$\\PC(n/2,k/2)$となります. | . 判定問題を解くアルゴリズムを使うとこれらのケースを確率$1-1/n^2$で区別できるため, $u\\in C$かどうかを判定できます. これを全ての頂点$u\\in V$に対して行うと, $u\\in V$に関するunion boundにより, 確率$1-1/n$で$C$を見つけることができます. ",
     "url": "/nobunote/docs/planted_clique/search_to_decision/#%E4%B8%BB%E5%BC%B5",
     
     "relUrl": "/docs/planted_clique/search_to_decision/#主張"
-  },"280": {
+  },"285": {
     "doc": "探索から判定への帰着",
     "title": "最近の改善",
     "content": "Alonらの帰着では判定問題を解くアルゴリズムのアドバンテージが非常に高いことを仮定しており, この仮定を弱めることはできません. より弱い仮定, すなわち小さいアドバンテージで判定問題を解くアルゴリズムを使って高確率で探索問題を解く帰着はHirahara and Shimizu(2024)によって与えられました.2 . 定理(informal; Hirahara and Shimizu (2024)) . ある定数$\\gamma&gt;0$とあるクリークサイズ$k\\in\\Nat$が存在して埋め込みクリーク判定問題をアドバンテージ$\\frac{k^2}{n}\\cdot n^\\gamma$で解くアルゴリズムが存在するならば, ある定数$c,\\alpha&gt;0$が存在してクリークサイズ$n^{1/2-\\alpha}$に対して埋め込みクリーク探索問題を成功確率$1-\\exp(-n^{c})$で解くアルゴリズムが存在する. 厳密には上記の定理の仮定は少し違っていて, クリークサイズ$k$が二項分布$\\Bin(n,k/n)$に従うときの埋め込みクリーク判定問題を考えています. なお, 任意の$k = o(\\sqrt{n})$に対して埋め込みクリーク判定問題はアドバンテージ$\\Omega\\qty(\\frac{k^2}{n})$で解くことができます. 実際, 辺の本数が$\\frac{1}{2}\\binom{n}{2}$より大きければ$1$, そうでなければ$0$を出力するアルゴリズムを考えれば, $G(n,1/2)$上では確率$1/2$で$0$または$1$を出力する一方, $\\PC(n,k)$上で$0$を出力する確率は, 辺の本数がその期待値から$k^2/4$程度ずれる確率となるので, 標準偏差$\\Theta(n)$を鑑みると アドバンテージは$\\Omega\\qty(\\frac{k^2}{n})$となることが簡単に示せます. | Alon, Noga, et al. “Testing k-wise and almost k-wise independence.” Symposium on Theory of Computing (STOC), 2007. &#8617; . | Hirahara, Shuichi, and Takayuki Shimizu. “Planted Clique Conjectures are Equivalent.” Symposium on Theory of Computing (STOC), 2024. &#8617; . | . ",
     "url": "/nobunote/docs/planted_clique/search_to_decision/#%E6%9C%80%E8%BF%91%E3%81%AE%E6%94%B9%E5%96%84",
     
     "relUrl": "/docs/planted_clique/search_to_decision/#最近の改善"
-  },"281": {
+  },"286": {
     "doc": "シャノンエントロピー",
     "title": "シャノンエントロピー",
     "content": ". | シャノンエントロピー . | 概要 | 定義 | 基本的性質 | 条件付きエントロピー | 相互情報量 | チェインルール | データ処理不等式 | 劣モジュラ性と劣加法性 | . | . ",
     "url": "/nobunote/docs/information_theory/shannon_entropy/",
     
     "relUrl": "/docs/information_theory/shannon_entropy/"
-  },"282": {
+  },"287": {
     "doc": "シャノンエントロピー",
     "title": "概要",
     "content": "シャノンエントロピー(Shannon entropy)は情報理論における最も基本的なエントロピーの概念で, 確率変数の不確実性や情報量を測る指標です. 理論計算機科学においても, ランダムネス抽出器, プライバシー保護, 通信理論など様々な場面で重要な役割を果たします. ",
     "url": "/nobunote/docs/information_theory/shannon_entropy/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/information_theory/shannon_entropy/#概要"
-  },"283": {
+  },"288": {
     "doc": "シャノンエントロピー",
     "title": "定義",
     "content": "定義 (シャノンエントロピー) . 有限集合$\\calX$上に値をとる確率変数$X$に対して, 以下で定義される量$\\entropy(X)$を$X$のシャノンエントロピー (Shannon entropy)という: . \\[\\begin{align*} \\entropy(X) = \\E_{x\\sim X}\\qty[ \\ln\\frac{1}{\\Pr[X=x]} ] = \\sum_{x\\in\\calX} \\Pr[X=x] \\ln\\frac{1}{\\Pr[X=x]}. \\end{align*}\\] ここで, $\\ln$は自然対数であり, $0\\ln 0 = 0$と約束する. 情報科学の分野においては慣例として底を$2$とすることが多いが, 数学的にはPinskerの不等式などを見ると自然対数の方が都合が良いことが多いので, ここでは自然対数を用いている. シャノンエントロピーは確率変数$X$の不確実性を測る指標です. $\\entropy(X)$が大きいほど, $X$の値が予測しにくいことを意味します. ",
     "url": "/nobunote/docs/information_theory/shannon_entropy/#%E5%AE%9A%E7%BE%A9",
     
     "relUrl": "/docs/information_theory/shannon_entropy/#定義"
-  },"284": {
+  },"289": {
     "doc": "シャノンエントロピー",
     "title": "基本的性質",
     "content": "有限集合$\\calX$上に値をとる確率変数$X$に対して . \\[\\begin{align*} 0 \\le \\entropy(X) \\le \\ln \\vert\\calX\\vert. \\end{align*}\\] 特に, $\\entropy(X) = 0$となるのは$X$が一点分布のとき, $\\entropy(X) = \\ln \\vert\\calX\\vert$となるのは$X$が一様分布のときである. ",
     "url": "/nobunote/docs/information_theory/shannon_entropy/#%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%80%A7%E8%B3%AA",
     
     "relUrl": "/docs/information_theory/shannon_entropy/#基本的性質"
-  },"285": {
+  },"290": {
     "doc": "シャノンエントロピー",
     "title": "条件付きエントロピー",
     "content": "二つの確率変数の関係を表す条件付きエントロピーを定義します. 定義 (条件付きエントロピー) . 有限集合$\\calX,\\calY$上に値をとる確率変数$X,Y$に対して, 以下で定義される量$\\entropy(X\\mid Y)$を$X$の$Y$に関する条件付きエントロピー (conditional entropy)という: . \\[\\begin{align*} \\entropy(X\\mid Y) = \\E_{y\\sim Y}\\qty[ \\entropy(X\\mid Y=y) ] = \\sum_{y\\in\\calY} \\Pr[Y=y] \\entropy(X\\mid Y=y). \\end{align*}\\] ここで, $\\entropy(X\\mid Y=y) = \\sum_{x\\in\\calX} \\Pr[X=x\\mid Y=y] \\ln\\frac{1}{\\Pr[X=x\\mid Y=y]}$である. 条件付きエントロピーは, $Y$の値が既知である場合の$X$の不確実性を表します. 確率変数$X,Y$に対して . \\[\\begin{align*} \\entropy(X\\mid Y) \\le \\entropy(X). \\end{align*}\\] つまり, 追加の情報$Y$を得ることで$X$の不確実性は減少する. ",
     "url": "/nobunote/docs/information_theory/shannon_entropy/#%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AD%E3%83%94%E3%83%BC",
     
     "relUrl": "/docs/information_theory/shannon_entropy/#条件付きエントロピー"
-  },"286": {
+  },"291": {
     "doc": "シャノンエントロピー",
     "title": "相互情報量",
     "content": "二つの確率変数の間の依存関係を測る相互情報量を定義します. 定義 (相互情報量) . 有限集合$\\calX,\\calY$上に値をとる確率変数$X,Y$に対して, 以下で定義される量$I(X;Y)$を$X$と$Y$の相互情報量 (mutual information)という: . \\[\\begin{align*} I(X;Y) = \\entropy(X) - \\entropy(X\\mid Y) = \\entropy(Y) - \\entropy(Y\\mid X) = \\entropy(X) + \\entropy(Y) - \\entropy(X,Y). \\end{align*}\\] 相互情報量は$X$と$Y$の間の依存関係の強さを測ります. $I(X;Y) = 0$となるのは$X$と$Y$が独立なときです. ",
     "url": "/nobunote/docs/information_theory/shannon_entropy/#%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F",
     
     "relUrl": "/docs/information_theory/shannon_entropy/#相互情報量"
-  },"287": {
+  },"292": {
     "doc": "シャノンエントロピー",
     "title": "チェインルール",
     "content": "エントロピーに関する基本的な関係式であるチェインルールを紹介します. 命題 (チェインルール) . 確率変数$X_1,\\dots,X_n$に対して . \\[\\begin{align*} \\entropy(X_1,\\dots,X_n) = \\sum_{i=1}^n \\entropy(X_i\\mid X_1,\\dots,X_{i-1}). \\end{align*}\\] 特に, 二つの確率変数$X,Y$に対しては . \\[\\begin{align*} \\entropy(X,Y) = \\entropy(X) + \\entropy(Y\\mid X). \\end{align*}\\] ",
     "url": "/nobunote/docs/information_theory/shannon_entropy/#%E3%83%81%E3%82%A7%E3%82%A4%E3%83%B3%E3%83%AB%E3%83%BC%E3%83%AB",
     
     "relUrl": "/docs/information_theory/shannon_entropy/#チェインルール"
-  },"288": {
+  },"293": {
     "doc": "シャノンエントロピー",
     "title": "データ処理不等式",
     "content": "情報処理における基本的な不等式であるデータ処理不等式を紹介します. 命題 (データ処理不等式) . 確率変数$X,Y,Z$が$X \\to Y \\to Z$のマルコフ連鎖をなすとき (すなわち, $Z$は$Y$を通してのみ$X$に依存するとき) . \\[\\begin{align*} \\entropy(X\\mid Z) \\ge \\entropy(X\\mid Y). \\end{align*}\\] この不等式は, 情報を処理する過程で条件付きエントロピーが減少しないことを示しています. つまり, 情報処理によって$X$の不確実性は増加する可能性はあるが, 減少することはないことを意味します. ",
     "url": "/nobunote/docs/information_theory/shannon_entropy/#%E3%83%87%E3%83%BC%E3%82%BF%E5%87%A6%E7%90%86%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/information_theory/shannon_entropy/#データ処理不等式"
-  },"289": {
+  },"294": {
     "doc": "シャノンエントロピー",
     "title": "劣モジュラ性と劣加法性",
     "content": "エントロピーは劣モジュラ性と劣加法性という重要な性質を持ちます. 本質的にはKLダイバージェンスの優モジュラ性なのですが, これらの性質は様々な証明で重要な役割を果たします. 命題 (劣モジュラ性) . 確率変数$X,Y,Z$に対して . \\[\\begin{align*} \\entropy(X\\mid Y,Z) \\le \\entropy(X\\mid Y). \\end{align*}\\] つまり, 追加の情報$Z$を得ることで$X$の条件付きエントロピーは減少することを意味します. 劣モジュラ性(限界効用逓減性)とは, ある集合に要素を追加することによる効用の増加分が, 既に多くの要素が含まれている場合には小さくなるという性質です. 例えば物凄くお腹が空いているときに一口の食事を取ることは大きな効用をもたらしますが, 既に満腹状態である場合には同じ一口の食事はあまり効用をもたらしません. 上記の命題では, 「$Y$という情報を既に知っている状態で$X$の情報を知ったときの驚き度合い」が, 「$Y$と$Z$という情報を既に知っている状態で$X$の情報を知ったときの驚き度合い」以上であることを示しており, これはまさに劣モジュラ性の概念を反映しています. 命題 (劣加法性) . 確率変数$X,Y$に対して . \\[\\begin{align*} \\entropy(X,Y) \\le \\entropy(X) + \\entropy(Y). \\end{align*}\\] 等号が成り立つのは$X$と$Y$が独立なときである. 劣モジュラ性は, より多くの情報を得ることで不確実性が減少するという直感的な性質を数学的に表現したものです. 劣加法性は, 結合エントロピーが個別のエントロピーの和を超えないことを示しています. ",
     "url": "/nobunote/docs/information_theory/shannon_entropy/#%E5%8A%A3%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%A9%E6%80%A7%E3%81%A8%E5%8A%A3%E5%8A%A0%E6%B3%95%E6%80%A7",
     
     "relUrl": "/docs/information_theory/shannon_entropy/#劣モジュラ性と劣加法性"
-  },"290": {
+  },"295": {
     "doc": "行列のスペクトル",
     "title": "行列のスペクトル",
     "content": ". | 行列のスペクトル . | 概要 | Courant-Fischerの定理 (ミニマックス定理) | . | . ",
     "url": "/nobunote/docs/graph_theory/spectra/",
     
     "relUrl": "/docs/graph_theory/spectra/"
-  },"291": {
+  },"296": {
     "doc": "行列のスペクトル",
     "title": "概要",
     "content": "行列の固有値や固有ベクトルに関するよく知られる事実を(証明なしで)紹介します. ",
     "url": "/nobunote/docs/graph_theory/spectra/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/graph_theory/spectra/#概要"
-  },"292": {
+  },"297": {
     "doc": "行列のスペクトル",
     "title": "Courant-Fischerの定理 (ミニマックス定理)",
     "content": "対称行列$A \\in \\Real^{n\\times n}$の固有値を$\\lambda_1 \\ge \\dots \\ge \\lambda_n$とすると . \\[\\begin{align*} \\lambda_i = \\max_{S\\colon \\dim S=i} \\min_{x\\in S\\setminus\\{0\\}} \\frac{\\inprod{x,A x}}{\\inprod{x,x}}. \\end{align*}\\] ここで$S$は次元$i$の部分空間で動く. 例えば最大固有値は$\\lambda_1=\\max_{x\\ne 0}\\frac{\\inprod{x,Ax}}{\\inprod{x,x}}$, 最小固有値は$\\lambda_n = \\min_{x\\ne 0}\\frac{\\inprod{x,Ax}}{\\inprod{x,x}}$となります. また, 関数$x\\mapsto \\frac{\\inprod{x,Ax}}{\\inprod{x,x}}$を$A$に関するRayleigh商といいます. 対称行列$A\\in\\Real^{n\\times n}$の最大固有値$\\lambda_1$に対応する固有ベクトルを$x_1$とする. このとき, 第二固有値$\\lambda_2$は . \\[\\begin{align*} \\lambda_2 = \\max_{x \\colon x\\bot x_1} \\frac{\\inprod{x,Ax}}{\\inprod{x,x}}. \\end{align*}\\] ここで$x$は固有ベクトル$x_1$に直交するベクトル全てを動く. 注釈 (一般の内積に対するCourant-Fischerの定理) . Courant-Fischerの定理の定理は通常の$\\Real^n$の内積 . \\[\\begin{align*} \\inprod{x,y} = \\sum_{i\\in[n]} x(i)y(i) \\end{align*}\\] を考えていましたが, もう少し一般に, 全ての成分が正であるベクトル$\\pi\\in \\Real_{&gt;0}^n$に対し . \\[\\begin{align*} \\inprod{x,y}_\\pi = \\sum_{i\\in[n]} \\pi(i)x(i)y(i) \\end{align*}\\] を考えてもCourant-Fischerの定理やその系が成り立ちます. この一般化は可逆性を持つマルコフ連鎖の固有値の議論を行う際に必要になります (本当は正定値行列$B$に対して$\\inprod{x,y}_B = \\inprod{x,By}$という内積でも成り立つのですが, ここまでの一般化はあまり使うことがないので割愛しています). ",
     "url": "/nobunote/docs/graph_theory/spectra/#courant-fischer%E3%81%AE%E5%AE%9A%E7%90%86-%E3%83%9F%E3%83%8B%E3%83%9E%E3%83%83%E3%82%AF%E3%82%B9%E5%AE%9A%E7%90%86",
     
     "relUrl": "/docs/graph_theory/spectra/#courant-fischerの定理-ミニマックス定理"
-  },"293": {
+  },"298": {
     "doc": "統計距離",
     "title": "統計距離",
     "content": ". | 統計距離 . | 概要 | 性質 | 関連する不等式 | . | . ",
     "url": "/nobunote/docs/information_theory/f_divergence/statistical_distance/",
     
     "relUrl": "/docs/information_theory/f_divergence/statistical_distance/"
-  },"294": {
+  },"299": {
     "doc": "統計距離",
     "title": "概要",
     "content": "| 統計距離(または全変動距離)は確率分布間の距離の一つです. 統計距離はf-ダイバージェンスの特殊な場合として表現できます. 具体的には, $f(t) = \\frac{1}{2} | t-1 | $とすると統計距離が得られます. | . 有限集合$V$上に値をとる二つの分布$\\mu,\\nu\\in[0,1]^V$の統計距離(statistical distance)を . \\[\\begin{align*} \\dtv(\\mu,\\nu) = \\frac{1}{2} \\sum_{v \\in V} |\\mu(v) - \\nu(v)| \\end{align*}\\] で定める. 同様に, 二つの確率変数$X,Y$の間の統計距離$\\dtv(X,Y)$を, それらの確率変数の分布の統計距離として定義します. ",
     "url": "/nobunote/docs/information_theory/f_divergence/statistical_distance/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/information_theory/f_divergence/statistical_distance/#概要"
-  },"295": {
+  },"300": {
     "doc": "統計距離",
     "title": "性質",
     "content": "台集合$V$上の二つの確率変数$X,Y$および$V$上の任意の事象$\\calE\\subseteq V$に対して . \\[\\begin{align*} \\abs{\\Pr[X\\in\\calE] - \\Pr[Y\\in\\calE]} \\le \\dtv(X,Y). \\end{align*}\\] より一般に, 任意の関数$f\\colon V \\to [0,1]$に対して . \\[\\begin{align*} \\abs{\\E[f(X)] - \\E[f(Y)]} \\le \\varepsilon. \\end{align*}\\] $V$上の二つの分布$\\mu,\\nu$のカップリング(coupling) $\\pi$とは, $V^2$上の分布であって, それぞれの周辺分布が$\\mu,\\nu$であるようなものです. すなわち, $\\pi\\in [0,1]^{V^2}$が . \\[\\begin{align*} &amp;{}^{\\forall} u\\in V,\\, \\sum_{v\\in V} \\pi(u,v) = \\mu(u), \\\\ &amp;{}^{\\forall} v\\in V,\\, \\sum_{u\\in V} \\pi(u,v) = \\nu(v) \\end{align*}\\] を満たすとき, $\\pi$は$\\mu$と$\\nu$のカップリングです. 命題(カップリング不等式). 二つの分布$\\mu,\\nu$の統計距離は . \\[\\begin{align*} \\dtv(\\mu,\\nu) = \\inf_{\\pi} \\Pr_{(X,Y)\\sim \\pi}[X\\ne Y] \\end{align*}\\] で表される. ここで$\\pi$は$\\mu$と$\\nu$のカップリングを動く. ",
     "url": "/nobunote/docs/information_theory/f_divergence/statistical_distance/#%E6%80%A7%E8%B3%AA",
     
     "relUrl": "/docs/information_theory/f_divergence/statistical_distance/#性質"
-  },"296": {
+  },"301": {
     "doc": "統計距離",
     "title": "関連する不等式",
     "content": "統計距離は他の重要な分布間距離指標と密接な関係があります: . | Pinskerの不等式: KLダイバージェンスと統計距離の関係 | KLダイバージェンス: 情報理論的な分布間距離 | χ²ダイバージェンス: 統計学でよく用いられる分布間距離 | . ",
     "url": "/nobunote/docs/information_theory/f_divergence/statistical_distance/#%E9%96%A2%E9%80%A3%E3%81%99%E3%82%8B%E4%B8%8D%E7%AD%89%E5%BC%8F",
     
     "relUrl": "/docs/information_theory/f_divergence/statistical_distance/#関連する不等式"
-  },"297": {
+  },"302": {
     "doc": "タイトル",
     "title": "タイトル",
     "content": " ",
     "url": "/nobunote/docs/template/",
     
     "relUrl": "/docs/template/"
-  },"298": {
+  },"303": {
     "doc": "タイトル",
     "title": "概要",
     "content": "ここに概要を記述します。 . ",
     "url": "/nobunote/docs/template/#%E6%A6%82%E8%A6%81",
     
     "relUrl": "/docs/template/#概要"
-  },"299": {
+  },"304": {
     "doc": "タイトル",
     "title": "内容",
     "content": "セクション1 . 内容を記述します。 . セクション2 . 内容を記述します。 . ",
     "url": "/nobunote/docs/template/#%E5%86%85%E5%AE%B9",
     
     "relUrl": "/docs/template/#内容"
-  },"300": {
+  },"305": {
     "doc": "タイトル",
     "title": "参考文献",
     "content": ". | 参考文献1 | 参考文献2 | . ",
     "url": "/nobunote/docs/template/#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE",
     
     "relUrl": "/docs/template/#参考文献"
-  },"301": {
+  },"306": {
     "doc": "タイトル",
     "title": "更新履歴",
     "content": ". | YYYY-MM-DD: 初版作成 | . ",
     "url": "/nobunote/docs/template/#%E6%9B%B4%E6%96%B0%E5%B1%A5%E6%AD%B4",
     
     "relUrl": "/docs/template/#更新履歴"
-  },"302": {
+  },"307": {
     "doc": "ゼロ知識証明",
     "title": "ゼロ知識証明",
     "content": ". | ゼロ知識証明 . | ゼロ知識証明系の定義 | グラフ同型性問題に対するゼロ知識対話証明系 | . | . ",
     "url": "/nobunote/docs/interactive_proofs/zero_knowledge/",
     
     "relUrl": "/docs/interactive_proofs/zero_knowledge/"
-  },"303": {
+  },"308": {
     "doc": "ゼロ知識証明",
     "title": "ゼロ知識証明系の定義",
     "content": "ゼロ知識証明とは, 証明の有効性以外の情報を一切漏らさない対話証明系です。 . 定義（ゼロ知識証明系） . 言語$L$に対するゼロ知識証明系(zero-knowledge proof system)とは, 対話証明系$\\langle P,V \\rangle$であって, 以下の性質を満たすものです: . | (ゼロ知識性) 任意の乱択多項式時間機械$W$に対して, ある乱択多項式時間機械$M_{W}$が存在して, 二つの確率変数列 . \\[\\begin{align*} (M_{W}(x))_{x\\in L}, \\quad ([P(x),W(x)])_{x\\in L} \\end{align*}\\] の分布が任意の多項式時間アルゴリズムにとって識別不可能です. | . この機械$M_W$を$W$の模倣者(simulator)と呼びます. 出力値の識別不可能性の代わりに, 以下のようにメッセージ内容の識別不可能性で定義しても同値となります. 定義（ゼロ知識証明系） . 乱択多項式時間で動く対話チューリング機械$W$およびそれらの共通入力$x$に対して, $\\langle P,W\\rangle(x)$を機械$W$の全てのread-onlyテープの内容の分布とします. 言語$L$に対するゼロ知識証明系(zero-knowledge proof system)とは, 対話証明系$\\langle P,V \\rangle$であって, 任意の乱択多項式時間で動く対話チューリング機械$W$に対してある乱択多項式時間機械$M_{W}$が存在して, 二つの確率変数列 . \\[\\begin{align*} (M_{W}(x))_{x\\in L}, \\quad (\\langle P,W \\rangle (x))_{x\\in L} \\end{align*}\\] が任意の多項式時間アルゴリズムにとって識別不可能です. 要するに, 検証者の受信内容(=証明者の送信内容)が簡単に計算できることを意味します. 例えば充足可能性判定問題に対する素朴な対話証明系では, 証明者が充足割当の一つをメッセージとして提示しますが, 論理式$x$が与えられたときにその充足割当の一つを求めることはNP困難です. Remark (完全なゼロ知識) . ゼロ知識性では二つの分布の計算量的識別不可能性を要求していますが, さらに強めて二つの分布が統計距離の意味で一致するとき, これを完全なゼロ知識性(perfect zero-knowledge)と呼びます. ",
     "url": "/nobunote/docs/interactive_proofs/zero_knowledge/#%E3%82%BC%E3%83%AD%E7%9F%A5%E8%AD%98%E8%A8%BC%E6%98%8E%E7%B3%BB%E3%81%AE%E5%AE%9A%E7%BE%A9",
     
     "relUrl": "/docs/interactive_proofs/zero_knowledge/#ゼロ知識証明系の定義"
-  },"304": {
+  },"309": {
     "doc": "ゼロ知識証明",
     "title": "グラフ同型性問題に対するゼロ知識対話証明系",
     "content": "グラフ同型性判定問題はNPに属するため自明に対話証明系を構築できますが, 一方でゼロ知識性を持つ対話証明系を構築することは非自明です. この節では, そのようなグラフ同型性判定問題に対する非自明なゼロ知識性を持つ対話証明系を構築します. 対話証明系2 . 入力: 二つのグラフ $G_0=(V,E_0),G_2=(V,E_1)$ (これらは同型とする) . 補助入力: $G_1 = \\phi(G_0)$ (この写像$\\phi$は無限の計算能力を持つ証明者があらかじめ計算しておくことができるが, ゼロ知識性を保つため検証者には秘匿). | (P1). 頂点集合$V$上の順列$\\pi$を一様ランダムに選び, グラフ$H=\\pi(G_1)$を送信します. | (V1). 一様ランダムなビット$\\alpha \\in \\binset$を選び, このビットを送信します. | (P2). ビット$\\alpha$を受信し, 写像 . \\[\\begin{align*} \\psi = \\begin{cases} \\pi &amp; \\text{if } \\alpha = 1 \\\\ \\pi \\circ \\phi &amp; \\text{otherwise} \\end{cases} \\end{align*}\\] を送信します (ただし$\\circ$は写像の合成を表します). | (V2). 受信した写像$\\psi$が$G_\\alpha$と$H$の間の同型写像でない (i.e., $H\\ne\\psi (G_\\alpha)$)ならば検証者は拒否し, そうでなければ(P1)から繰り返します. | . ゼロ知識性の直感的説明 イメージとしては, 証明者は検証者に「二つのグラフ$G_0,G_1$いずれかを指定してください. 指定されたグラフから$G_1$への同型写像を探してご覧に入れましょう」と言っています. | 確かに$G_0$と$G_1$が同型ならば, その同型写像$\\phi$を使って証明者は確率$1$で検証者を受理させることができます. | 一方で$G_0$と$G_1$が同型でないならば, ステップ(V1)で$\\alpha=0$が選択された場合に$H=\\pi(G_1)$と$G_\\alpha=G_0$が同型ではないので検証者は拒否します. この事象は確率$1/2$で発生するので, 十分な回数を繰り返せば健全性を持つことが示せます. | . さて, 同型写像を渡してしまうとゼロ知識性を持たないので, 秘密の同型写像を一様ランダムな置換$\\pi$でマスクすることによって, 証明者は$\\phi$の情報を秘匿することができます. $\\pi$でマスクするのに伴って証明者は$H=\\pi(G_1)$を渡す必要があります. ステップ(V1)の$\\alpha$がどちらの値であろうともステップ(P2)で構成される写像$\\psi$は($\\pi$のランダムネスにおいて)周辺分布が一様分布となり, しかも$\\alpha$とは独立です. このため, 検証者が見るメッセージ$(\\alpha,\\pi)$の分布は独立一様ランダムとなるので, 確かにゼロ知識性を満たします (フォーマルな証明は割愛; 元論文のTheorem 2を参照). ",
