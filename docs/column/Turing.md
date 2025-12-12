@@ -148,7 +148,17 @@ Papadimitriouの本ではSection 2.1でチューリング機械の定義を与�
 最も印象に残ったものとして[Dieter van Melkebeekの講義資料](https://pages.cs.wisc.edu/~dieter/Courses/2011f-CS710/Scribes/PDF/lecture01.pdf)をあげておきます。
 この講義資料では複数テープチューリング機械の形式的な定義を与えた上に**ランダムアクセスチューリング機械**の定義も与えています。
 
-実はPapadimitriou本にもランダムアクセスを持つプログラムを定義してあるのですが、チューリング機械というよりはアセンブリのような、命令を縦に並べたプログラムを考えており、少し別の概念です。
+以下にそれぞれの講義でどのようにチューリング機械を定義したかをまとめています：
+
+| 講義 | 定義 |
+|------|------|
+| [Trevisan (2002)](https://lucatrevisan.github.io/notes/complexitynotes02.pdf) | 定義しない（既知とする） |
+| [Cai (2003)](https://pages.cs.wisc.edu/~jyc/810notes/book.pdf) | $(Q,\Sigma,q_0,\delta,F)$ ($F\subseteq Q$は受理状態の集合) |
+| [O'Donnell (2013)](https://www.cs.cmu.edu/~odonnell/toolkit13/lecture05.pdf) | informalな定義 |
+| [van Melkebeek (2011)](https://pages.cs.wisc.edu/~dieter/Courses/2011f-CS710/Scribes/PDF/lecture01.pdf) | $(Q,\Sigma,\Gamma,q_{\mathrm{start}},q_{\mathrm{halt}},\delta)$ |
+| [Aspnes (2020)](https://www.cs.yale.edu/homes/aspnes/classes/468/notes.pdf#page=23.24) | $\langle \Gamma,Q,\delta\rangle$ (Arora-Barak本とほぼ同じ)|
+| [Svensson (2018)](https://theory.epfl.ch/courses/complexity/Lecture1.pdf) | $(\Gamma,\mathcal{Q},\delta)$ (Arora-Barak本と同じ) |
+| [Montanaro (2012)](https://people.maths.bris.ac.uk/~csxam/teaching/cc-lecturenotes.pdf) | $(\Sigma,K,\delta)$ (Arora-Barak本と同じ) |
 
 ---
 
