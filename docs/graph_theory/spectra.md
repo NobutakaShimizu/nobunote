@@ -11,7 +11,7 @@ nav_order: 3
 
 ## 概要
 
-行列の固有値や固有ベクトルに関するよく知られる事実を(証明なしで)紹介します.
+行列の固有値や固有ベクトルに関するよく知られる事実を（証明なしで）紹介する。
 
 ## Courant-Fischerの定理 (ミニマックス定理)
 
@@ -26,8 +26,8 @@ nav_order: 3
 >
 > ここで$S$は次元$i$の部分空間で動く.
 
-例えば最大固有値は$\lambda_1=\max_{x\ne 0}\frac{\inprod{x,Ax}}{\inprod{x,x}}$, 最小固有値は$\lambda_n = \min_{x\ne 0}\frac{\inprod{x,Ax}}{\inprod{x,x}}$となります.
-また, 関数$x\mapsto \frac{\inprod{x,Ax}}{\inprod{x,x}}$を$A$に関する**Rayleigh商**といいます.
+例えば最大固有値は$\lambda_1=\max_{x\ne 0}\frac{\inprod{x,Ax}}{\inprod{x,x}}$、最小固有値は$\lambda_n = \min_{x\ne 0}\frac{\inprod{x,Ax}}{\inprod{x,x}}$となる。
+また、関数$x\mapsto \frac{\inprod{x,Ax}}{\inprod{x,x}}$を$A$に関する**Rayleigh商**という。
 
 {: .corollary }
 > 対称行列$A\in\Real^{n\times n}$の最大固有値$\lambda_1$に対応する固有ベクトルを$x_1$とする.

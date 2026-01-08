@@ -12,30 +12,30 @@ nav_order: 1
 
 ## 概要
 
-一般に「NP困難」とは, 「NPに属する任意の問題に対してそれ以上に難しい」という性質を指すが, 用いる帰着の種類によってその定義が変わってくる. このページでは, 様々な分野の標準的な教科書ではどの定義を採用しているかについて調査してまとめる. また, 「NP困難(NP-hard)」という用語の歴史について説明する. この内容はGarey & Johnson本 (1979) のSection 5.2に基づく. このSection 5.2の内容は計算量理論の歴史について非常に面白い内容なので, 興味がある人は是非原著を読んで欲しい.
+一般に「NP困難」とは、「NPに属する任意の問題に対してそれ以上に難しい」という性質を指すが、用いる帰着の種類によってその定義が変わってくる。このページでは、様々な分野の標準的な教科書ではどの定義を採用しているかについて調査してまとめる。また、「NP困難(NP-hard)」という用語の歴史について説明する。この内容はGarey & Johnson本 (1979) のSection 5.2に基づく。このSection 5.2の内容は計算量理論の歴史について非常に面白い内容なので、興味がある人は是非原著を読んで欲しい。
 
 本稿では具体的には
 
 - 判定問題を対象とする理論 (主に計算量理論)
 - 探索問題を対象とする理論 (組合せ最適化理論など)
 
-の二つの文脈におけるNP困難性の定義を, これらの分野における以下の標準的な教科書でどう扱っているかを調査した:
+の二つの文脈におけるNP困難性の定義を、これらの分野における以下の標準的な教科書でどう扱っているかを調査した：
 
-- *Computational Complexity: A Modern Approach*, Arora and Barak, 2007 (計算量理論).
-- *Computational Complexity: A Conceptual Perspective*, Goldreich, 2008 (計算量理論).
-- *Introduction to the Theory of Computation (3rd ed.)*, Sipser, 2012 (計算量理論).
-- *Computational Complexity*, Papadimitriou, 2003 (計算量理論).
-- *Computers and Intractability: A Guide to the Theory of NP-Completeness*, Garey and Johnson, 1979 (計算量理論).
+- *Computational Complexity: A Modern Approach*, Arora and Barak, 2007 (計算量理論)。
+- *Computational Complexity: A Conceptual Perspective*, Goldreich, 2008 (計算量理論)。
+- *Introduction to the Theory of Computation (3rd ed.)*, Sipser, 2012 (計算量理論)。
+- *Computational Complexity*, Papadimitriou, 2003 (計算量理論)。
+- *Computers and Intractability: A Guide to the Theory of NP-Completeness*, Garey and Johnson, 1979 (計算量理論)。
 - *Mathematics and Computation: A Theory Revolutionizing Technology and Science*, Wigdreson, 2019 (計算量理論)
-- *Combinatorial Optimization: Theory and Algorithms (6th ed.)*, Korte and Vygen, 2018 (組合せ最適化).
+- *Combinatorial Optimization: Theory and Algorithms (6th ed.)*, Korte and Vygen, 2018 (組合せ最適化)。
 
-計算量理論以外の分野の調査は不十分なので, 今後も新たに調査したらその都度文献を増やしていく.
+計算量理論以外の分野の調査は不十分なので、今後も新たに調査したらその都度文献を増やしていく。
 
 ---
 
 ## 帰着の種類
 
-Cook帰着とKarp帰着の定義をまとめる. 本来であればオラクルアルゴリズムの定義を示すべきだが, 本筋から外れるのでここでは省略する.
+Cook帰着とKarp帰着の定義をまとめる。本来であればオラクルアルゴリズムの定義を示すべきだが、本筋から外れるのでここでは省略する。
 
 {: .definition-title }
 > **定義1**
@@ -44,35 +44,35 @@ Cook帰着とKarp帰着の定義をまとめる. 本来であればオラクル�
 > - $L_1$ が $L_2$ に **Cook帰着できる** とは, $L_1$ を解く多項式時間オラクルアルゴリズム $A^{L_2}$ が存在することをいう.
 > - $L_1$ が $L_2$ に **Karp帰着できる** とは, ある多項式時間アルゴリズム $f\colon \binset^{\ast} \to \binset^{\ast}$ が存在して, 任意の $x \in \binset^{\ast}$ に対して $x \in L_1 \Leftrightarrow f(x) \in L_2$ が成り立つことをいう.
 
-なお, Cook帰着の定義においてオラクルアルゴリズムの計算量を多項式時間に限らないものを考えるときは Turing帰着 と呼ぶこともある. すなわち Cook帰着は多項式時間Turing帰着と同義である.
+なお、Cook帰着の定義においてオラクルアルゴリズムの計算量を多項式時間に限らないものを考えるときは Turing帰着 と呼ぶこともある。すなわち Cook帰着は多項式時間Turing帰着と同義である。
 
 {: .remark }
-> Karp帰着では$L_1$を解くオラクルに**1回しかアクセスできない**のに対してCook帰着では多項式回アクセスできるため, Cook帰着の方が一般的で強力な帰着である. 一方で帰着を用いて定義された計算量クラスの性質を調べるときは, 単純な構造を持つ帰着の方が扱いやすいため, Karp帰着のような制限的な帰着が好まれることが多い.
-> 後述するが, 探索問題に対してKarp帰着のような制限的な帰着としてLevin帰着を考えることができ, 探索問題の計算量の文脈(PPADなど)ではこの帰着が好まれている.
+> Karp帰着では$L_1$を解くオラクルに**1回しかアクセスできない**のに対してCook帰着では多項式回アクセスできるため、Cook帰着の方が一般的で強力な帰着である。一方で帰着を用いて定義された計算量クラスの性質を調べるときは、単純な構造を持つ帰着の方が扱いやすいため、Karp帰着のような制限的な帰着が好まれることが多い。
+> 後述するが、探索問題に対してKarp帰着のような制限的な帰着としてLevin帰着を考えることができ、探索問題の計算量の文脈(PPADなど)ではこの帰着が好まれている。
 
 
 ---
 
 ## およそ全ての文脈で共通する定義
-クラスNP や NP完全 は決定問題にのみ以下のように定義される.
+クラスNP や NP完全 は決定問題にのみ以下のように定義される。
 
 {: .definition-title }
 > **定義2**
 >
 > NPに属する任意の判定問題 $L'$ が 判定問題 $L$ にKarp帰着でき, さらに $L\in\mathsf{NP}$ であるとき, $L$ は **NP完全**という.
 
-Cook (1971) はNPに属する全ての問題が Cook帰着 の意味でSATに帰着できることを示した.
-翌年にKarp(1972)が現在の形でNP完全性を初めて明確に定義した. 彼はさらにCookの結果がKarp帰着の下でも成り立つことを示し, 様々な問題のNP完全性を示した. この論文で示された21個のNP完全問題は現在でも[Karpの21 NP完全問題](https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems)として知られている.
+Cook (1971) はNPに属する全ての問題が Cook帰着 の意味でSATに帰着できることを示した。
+翌年にKarp(1972)が現在の形でNP完全性を初めて明確に定義した。彼はさらにCookの結果がKarp帰着の下でも成り立つことを示し、様々な問題のNP完全性を示した。この論文で示された21個のNP完全問題は現在でも[Karpの21 NP完全問題](https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems)として知られている。
 
 {: .remark }
-> より一般の(判定問題とは限らない)問題のクラス $\calC$ を考えたとき, $\calC$ に属する任意の問題がある問題 $\Pi$ に帰着でき, さらに$\Pi$自身が$\calC$に属するとき, $\Pi$を$\calC$完全と呼ぶ. ここで考える帰着はKarp帰着のような「1回しかオラクルにアクセスできない」帰着であることがほとんどであり, Cook帰着のような「複数回オラクルにアクセスできる」帰着はあまり使われない.
+> より一般の(判定問題とは限らない)問題のクラス $\calC$ を考えたとき、$\calC$ に属する任意の問題がある問題 $\Pi$ に帰着でき、さらに$\Pi$自身が$\calC$に属するとき、$\Pi$を$\calC$完全と呼ぶ。ここで考える帰着はKarp帰着のような「1回しかオラクルにアクセスできない」帰着であることがほとんどであり、Cook帰着のような「複数回オラクルにアクセスできる」帰着はあまり使われない。
 
 ---
 
 ## 判定問題のNP困難性
 
-一般には判定問題 $L$ は, $\mathsf{NP}$ に属する任意の問題に対してそれ以上に難しいとき, NP困難であるといわれる. ここでの「それ以上に難しい」という性質を帰着の概念を用いて定義される.
-ここでKarp帰着を使うかCook帰着を使うかによって二つのNP困難性が定義できる. 前者を**Karp型**, 後者を**Cook型**と呼ぶことにする (これらの用語は本稿のローカルな呼称である).
+一般には判定問題 $L$ は、$\mathsf{NP}$ に属する任意の問題に対してそれ以上に難しいとき、NP困難であるといわれる。ここでの「それ以上に難しい」という性質を帰着の概念を用いて定義される。
+ここでKarp帰着を使うかCook帰着を使うかによって二つのNP困難性が定義できる。前者を**Karp型**、後者を**Cook型**と呼ぶことにする（これらの用語は本稿のローカルな呼称である）。
 
 {: .definition-title }
 > **定義3**
@@ -80,21 +80,21 @@ Cook (1971) はNPに属する全ての問題が Cook帰着 の意味でSATに帰
 > - NPに属する任意の判定問題 $L'$ が判定問題 $L$ にKarp帰着できるとき, $L$ は **Karp型NP困難**であるという.
 > - NPに属する任意の判定問題 $L'$ が判定問題 $L$ にCook帰着できるとき, $L$ は**Cook型NP困難**であるという.
 
-判定問題に対してNP完全性とは別にNP困難性を考える動機は, NPよりも上位の階層の判定問題のクラス (PSPACEやPHなど) に対して「NPと同じかそれ以上に難しい」という性質を捉えたいからである.
+判定問題に対してNP完全性とは別にNP困難性を考える動機は、NPよりも上位の階層の判定問題のクラス (PSPACEやPHなど) に対して「NPと同じかそれ以上に難しい」という性質を捉えたいからである。
 
-この定義に基づくと, 計算量理論では以下のとても重要な差異が発生する:
+この定義に基づくと、計算量理論では以下のとても重要な差異が発生する：
 
-> coNP完全な問題はCook型NP困難であるが, $\mathsf{NP}\ne\mathsf{coNP}$ (成り立つと広く信じられている予想) の下ではKarp型NP困難ではない.
+> coNP完全な問題はCook型NP困難であるが、$\mathsf{NP}\ne\mathsf{coNP}$ (成り立つと広く信じられている予想) の下ではKarp型NP困難ではない。
 
-すなわち, 「回路$C\colon\binset^n\to\binset$ に対して充足可能割り当てが存在**しない**ならYes, そうでないならNo」というcoNP完全な判定問題がNP困難かどうかが変わってしまう.
+すなわち、「回路$C\colon\binset^n\to\binset$ に対して充足可能割り当てが存在**しない**ならYes、そうでないならNo」というcoNP完全な判定問題がNP困難かどうかが変わってしまう。
 
-面白いことにKnuthは *The Art of Computer Programming (vol. 4)* の初版では判定問題のNP困難性をKarp型で定義していたが, 後にCook型で定義するべきであると主張している. これはcoNP完全な判定問題は任意のNPに属する問題以上に難しいためNP困難であるとするのが自然であると彼は捉えたからである (情報源: Garey & Johnson, Section 5.2).
+面白いことにKnuthは *The Art of Computer Programming (vol. 4)* の初版では判定問題のNP困難性をKarp型で定義していたが、後にCook型で定義するべきであると主張している。これはcoNP完全な判定問題は任意のNPに属する問題以上に難しいためNP困難であるとするのが自然であると彼は捉えたからである（情報源: Garey & Johnson, Section 5.2）。
 
 ---
 
 ## 探索問題のNP困難性
 
-探索問題とは, 関係 $R\subseteq\binset^{\ast}\times\binset^{\ast}$ によって定まる問題であり, 直感的には「入力 $x\in\binset^{\ast}$ が与えられたとき, $(x,y)\in R$ を満たす $y\in\binset^{\ast}$ を何でも良いから一つ出力せよ」という問題である. 一般にこれを**探索問題 $R$** と呼ぶ.
+探索問題とは、関係 $R\subseteq\binset^{\ast}\times\binset^{\ast}$ によって定まる問題であり、直感的には「入力 $x\in\binset^{\ast}$ が与えられたとき、$(x,y)\in R$ を満たす $y\in\binset^{\ast}$ を何でも良いから一つ出力せよ」という問題である。一般にこれを**探索問題 $R$** と呼ぶ。
 
 関数(アルゴリズム) $A\colon\binset^{\ast}\to\binset^{\ast}$ が $R$ を解くとは, 任意の $x\in\binset^{\ast}$ に対して
 
@@ -105,7 +105,7 @@ Cook (1971) はNPに属する全ての問題が Cook帰着 の意味でSATに帰
 
 以下に探索問題の主要なサブクラスを示す.
 
-- 任意の$x\in\binset^{\ast}$ に対して $(x,y)\in R$ を満たす $y$ が常に存在するとき, $R$を **全域探索問題 (total search problem)** と呼ぶ.
+- 任意の$x\in\binset^{\ast}$ に対して $(x,y)\in R$ を満たす $y$ が常に存在するとき、$R$を **全域探索問題** と呼ぶ。
 - 探索問題に対してもNPのような概念を定義できる. 端的に言えば, NPの証拠を見つけよという探索問題である. フォーマルには与えられた$(x,y)$が$(x,y)\in R$かどうかを多項式時間で判定できる探索問題のクラスを **FNP** と呼ぶ.
 - FNPに属する全域探索問題のクラスを **TFNP** と呼ぶ.
 

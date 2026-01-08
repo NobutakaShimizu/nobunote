@@ -12,10 +12,10 @@ parent: 平均時計算量理論
 ## 概要
 
 
-ハードコア補題とは [Impagliazzo (1995)](https://ieeexplore.ieee.org/document/492584)の結果で, [XOR補題]({{site.baseurl}}/docs/average_case_complexity/Yao_XOR)など平均時計算量の様々な定理の証明に用いることができる非常に便利な定理です.
+ハードコア補題とは [Impagliazzo (1995)](https://ieeexplore.ieee.org/document/492584)の結果で、[XOR補題]({{site.baseurl}}/docs/average_case_complexity/Yao_XOR)など平均時計算量の様々な定理の証明に用いることができる非常に便利な定理である。
 
-サイズ$s$以下の回路全体の集合を$\SIZE(s)$とします.
-部分集合$H\subseteq\binset^n$は$|H|\ge \delta 2^n$を満たすとき**$\delta$-密**であると呼ぶことにします.
+サイズ$s$以下の回路全体の集合を$\SIZE(s)$とする。
+部分集合$H\subseteq\binset^n$は$|H|\ge \delta 2^n$を満たすとき**$\delta$-密**であると呼ぶことにする。
 
 <div id="hardcore-set" markdown="1">
 {: .theorem-title }
@@ -34,8 +34,8 @@ parent: 平均時計算量理論
 > ここで$o(1)$の項は$n^{-\omega(1)}$にとれる.
 </div>
 
-弱い平均時困難性を持つ任意の関数$f$では, 任意の小さい回路はそこそこの割合の入力で誤った値を出力しますが, ハードコア補題はその関数$f$の困難性を凝縮したような入力部分集合$H\subset\binset^n$が存在して, $H$上では$f(x)$の計算が非常に困難になります.
-このような$H$を**ハードコア集合**といいます.
+弱い平均時困難性を持つ任意の関数$f$では、任意の小さい回路はそこそこの割合の入力で誤った値を出力するが、ハードコア補題はその関数$f$の困難性を凝縮したような入力部分集合$H\subset\binset^n$が存在して、$H$上では$f(x)$の計算が非常に困難になることを示す。
+このような$H$を**ハードコア集合**という。
 
 {: align="center"}
   ![ハードコア補題のイメージ]({{site.baseurl}}/docs/average_case_complexity/images/hardcore_image.svg)
@@ -43,10 +43,10 @@ parent: 平均時計算量理論
 
 ## 擬似ランダムネスからの理解
 
-$\delta$-困難な関数$f\colon\binset^n\to\binset$を考えます.
-この困難性は, 一様ランダムな$x\sim\binset^n$に対して確率変数$f(x)$は確率$\delta$で表が出るコイントス$\mathrm{Ber}(\delta)$と(計算量的に)識別できないことを意味し, 特に$\delta\approx 1/2$のときはフェアなコイントスと識別できません.
-さて, $\delta$-困難な関数$f$に対してハードコア補題により保証されるハードコア集合を$H\subseteq\binset^n$とします.
-$H$上では関数$f$は$(1/2-\varepsilon)$-困難ですので, ($\varepsilon\approx 0$のとき)一様ランダムな$x\sim H$に対して$f(x)$は$\mathrm{Ber}(1/2)$と識別できません.
+$\delta$-困難な関数$f\colon\binset^n\to\binset$を考える。
+この困難性は、一様ランダムな$x\sim\binset^n$に対して確率変数$f(x)$は確率$\delta$で表が出るコイントス$\mathrm{Ber}(\delta)$と(計算量的に)識別できないことを意味し、特に$\delta\approx 1/2$のときはフェアなコイントスと識別できない。
+さて、$\delta$-困難な関数$f$に対してハードコア補題により保証されるハードコア集合を$H\subseteq\binset^n$とする。
+$H$上では関数$f$は$(1/2-\varepsilon)$-困難であるので、($\varepsilon\approx 0$のとき)一様ランダムな$x\sim H$に対して$f(x)$は$\mathrm{Ber}(1/2)$と識別できない。
 
 これを鑑みて, ランダム関数$f_H$を
 

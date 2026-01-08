@@ -8,22 +8,22 @@ parent: 誤り訂正符号
 
 ## 概要
 
-Berlekamp-Welchアルゴリズムは、[Reed-Solomon符号]({{site.baseurl}}/docs/error-correcting_code/Reed-Solomon)に対する一意復号アルゴリズムであり、BerlekampとWelchによって提案されました.[^BW86]
+Berlekamp-Welchアルゴリズムは、[Reed-Solomon符号]({{site.baseurl}}/docs/error-correcting_code/Reed-Solomon)に対する一意復号アルゴリズムであり、BerlekampとWelchによって提案された。[^BW86]
 
 [^BW86]: E. R. Berlekamp and L. R. Welch. "Error correction of algebraic block codes." US Patent 4,633,470, 1986.
 
-Reed-Solomon符号では, 有限体$\F_q$上の長さ$k$のベクトル $(c_0,c_1,\dots,c_{k-1})\in\F_q^k$ をメッセージとして,
-$(k-1)$次多項式 $f(x) = c_0 + c_1 x + c_2 x^2 + \cdots + c_{k-1} x^{k-1}$ を構成し, これを有限体の異なる要素 $\alpha_0, \alpha_1, \ldots, \alpha_{n-1}$ で評価した値列 $(f(\alpha_0), f(\alpha_1), \ldots, f(\alpha_{n-1}))$ を符号語として送信します.
+Reed-Solomon符号では、有限体$\F_q$上の長さ$k$のベクトル $(c_0,c_1,\dots,c_{k-1})\in\F_q^k$ をメッセージとして、
+$(k-1)$次多項式 $f(x) = c_0 + c_1 x + c_2 x^2 + \cdots + c_{k-1} x^{k-1}$ を構成し、これを有限体の異なる要素 $\alpha_0, \alpha_1, \ldots, \alpha_{n-1}$ で評価した値列 $(f(\alpha_0), f(\alpha_1), \ldots, f(\alpha_{n-1}))$ を符号語として送信する。
 
-受信側はベクトル $r = (r_0, r_1, \ldots, r_{n-1})$ を受け取り, これが元の符号語から最大 $e$ 個の誤りを含んでいると仮定します. すなわち, $r_i \ne f(\alpha_i)$ を満たす$i$は高々$e$個です.
-Berlekamp-Welchアルゴリズムは, $e<\frac{n-k+1}{2}$ の場合に,
-この受信ベクトルから元のメッセージ多項式 $f(x)$ を復元する方法を提供します.
+受信側はベクトル $r = (r_0, r_1, \ldots, r_{n-1})$ を受け取り、これが元の符号語から最大 $e$ 個の誤りを含んでいると仮定する。すなわち、$r_i \ne f(\alpha_i)$ を満たす$i$は高々$e$個である。
+Berlekamp-Welchアルゴリズムは、$e<\frac{n-k+1}{2}$ の場合に、
+この受信ベクトルから元のメッセージ多項式 $f(x)$ を復元する方法を提供する。
 
 {: .theorem-title }
 > **定理1 (Berlekamp-Welchアルゴリズム).**
 >
-> $n,k,e\in\Nat$を, $k\le n, e< \frac{n-k+1}{2}$ を満たすパラメータとする. 有限体$\F_q$であって, $p=\abs{\F_q} \ge n$ を満たすものを考える. このとき, $\poly(n)$時間アルゴリズムであって以下を満たすものが存在する:
-> 入力として$n$個の点 $(\alpha_i,r_i)$ ($i=0,\dots,n-1$) を受け取り ( $\alpha_i$ は有限体 $\F_q$ の異なる要素), 出力は$(k-1)$次多項式 $p(x)$ であって
+> $n,k,e\in\Nat$を、$k\le n, e< \frac{n-k+1}{2}$ を満たすパラメータとする。有限体$\F_q$であって、$p=\abs{\F_q} \ge n$ を満たすものを考える。このとき、$\poly(n)$時間アルゴリズムであって以下を満たすものが存在する：
+> 入力として$n$個の点 $(\alpha_i,r_i)$ ($i=0,\dots,n-1$) を受け取り（$\alpha_i$ は有限体 $\F_q$ の異なる要素）、出力は$(k-1)$次多項式 $p(x)$ であって
 >
 >$$
   \begin{align*}
@@ -33,13 +33,13 @@ Berlekamp-Welchアルゴリズムは, $e<\frac{n-k+1}{2}$ の場合に,
 >
 >を満たす. もし条件を満たす多項式 $p$ が存在しない場合, アルゴリズムは $\bot$ を出力する.
 
-符号のレート $k/n$ が十分小さいとき, $e$はほぼ $n/2$ に近い値を取ることができ, これは符号長の約半分までの誤りを訂正可能であることを意味します.
+符号のレート $k/n$ が十分小さいとき、$e$はほぼ $n/2$ に近い値を取ることができ、これは符号長の約半分までの誤りを訂正可能であることを意味する。
 
 ---
 
 ## アルゴリズムのアイデア
 
-天下り的ですが, 多項式
+天下り的であるが、多項式
 
 $$
   \begin{align*}
@@ -47,7 +47,7 @@ $$
   \end{align*}
 $$
 
-を考えます. もちろん, この段階では $p$ はまだ分かっていないので $E(x)$ もわかりません.
+を考える。もちろん、この段階では $p$ はまだ分かっていないので $E(x)$ もわからない。
 また, $p(\alpha_i)\ne r_i$ を満たす $i$ の個数は高々 $e$ なので, $\deg(E) \le e$ です.
 
 さらに, 以下の事実が成り立ちます:

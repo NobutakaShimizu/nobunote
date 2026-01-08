@@ -11,8 +11,8 @@ nav_order: 2
 
 ## 概要
 
-$f$-ダイバージェンス(f-divergence)は, [KLダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/kl_divergence)や[$\chi^2$ダイバージェンス]( {{site.baseurl}}/docs/information_theory/f_divergence/chi2_divergence)を特殊ケースとして含む広いクラスの確率分布間の距離尺度です. これらのダイバージェンスが満たす重要な性質 (**非負性**や**凸性**など) はより一般に $f$-ダイバージェンスに対して成り立ちます.
-Bregmanダイバージェンスとは異なる概念であり, KLダイバージェンスは両者の唯一の交差点です.
+$f$-ダイバージェンスは、[KLダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/kl_divergence)や[$\chi^2$ダイバージェンス]( {{site.baseurl}}/docs/information_theory/f_divergence/chi2_divergence)を特殊ケースとして含む広いクラスの確率分布間の距離尺度である。これらのダイバージェンスが満たす重要な性質（**非負性**や**凸性**など）はより一般に $f$-ダイバージェンスに対して成り立つ。
+Bregmanダイバージェンスとは異なる概念であり、KLダイバージェンスは両者の唯一の交差点である。
 
 ## 定義
 
@@ -53,9 +53,9 @@ Bregmanダイバージェンスとは異なる概念であり, KLダイバージ
 
 ### 凸性
 
-$f$-ダイバージェンスは, 二つの確率単体上のベクトルを受け取り非負実数値を返す関数とみなすことができます.
-この関数は凸関数です.
-命題を述べる前に確率変数の凸結合を定義します (KLダイバージェンスのページでも定義していますが再掲)
+$f$-ダイバージェンスは、二つの確率単体上のベクトルを受け取り非負実数値を返す関数とみなすことができる。
+この関数は凸関数である。
+命題を述べる前に確率変数の凸結合を定義する（KLダイバージェンスのページでも定義しているが再掲）。
 
 {: .definition-title }
 > **定義 (確率変数の凸結合)**
@@ -66,8 +66,8 @@ $f$-ダイバージェンスは, 二つの確率単体上のベクトルを受�
 {: .proposition-title }
 > **命題 ($f$-ダイバージェンスの凸性)**
 >
-> $\fdiv{f}{\cdot}{\cdot}$は凸関数である. すなわち, 
-> 確率変数 $X_1,X_2$と$Y_1,Y_2$に対して, 任意の$\lambda \in [0,1]$に対し
+> $\fdiv{f}{\cdot}{\cdot}$は凸関数である。すなわち、
+> 確率変数 $X_1,X_2$と$Y_1,Y_2$に対して、任意の$\lambda \in [0,1]$に対し
 > 
 > $$
   \begin{align*}
@@ -77,7 +77,7 @@ $f$-ダイバージェンスは, 二つの確率単体上のベクトルを受�
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item">証明 (簡単のため $f$ は2回微分可能とする)</summary>
 
-関数 $g\colon (x,y)\mapsto yf(x/y)$ を考えます ($x\geq 0, y>0$). この関数$g$のヘシアンは
+関数 $g\colon (x,y)\mapsto yf(x/y)$ を考える（$x\geq 0, y>0$）。この関数$g$のヘシアンは
     
 $$\begin{align*}
           H = \frac{f''(x/y)}{y}
@@ -87,7 +87,7 @@ $$\begin{align*}
     \end{bmatrix} \succeq 0.
     \end{align*}  $$
     
-従って $g$ は凸関数ですので,
+従って $g$ は凸関数であるので、
 
 $$
   \begin{align*}
@@ -96,13 +96,13 @@ $$
   \end{align*}
 $$
 
-もまた凸です.
+もまた凸である。
   
 </details>
 
 ### データ処理不等式
 
-$f$-ダイバージェンスは, 確率変数に対する任意の関数(データ処理)に対して単調性を満たします.
+$f$-ダイバージェンスは、確率変数に対する任意の関数(データ処理)に対して単調性を満たす。
 
 {: .theorem-title }
 > **定理 (f-ダイバージェンスのデータ処理不等式)**

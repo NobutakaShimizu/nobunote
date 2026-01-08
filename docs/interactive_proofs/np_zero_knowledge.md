@@ -49,9 +49,9 @@ nav_order: 3
 {: .definition-title }
 > **定義（安全な暗号化関数）**
 >
-> - 関数$f\colon \set{0,1,2,3} \times \binset^{\ast} \to \binset^{\ast}$ は, 任意の$x\ne y\in\set{0,1,2,3}$と任意の$r,s\in\binset^{\ast}$に対して$f(x,r)\ne f(y,s)$を満たすとき, **暗号化関数(encryption function)**といいます.
-> - セキュリティパラメータ$n\in\Nat$に対し, $r\sim\binset^n$, $f_n(x)=f(x,r)$として得られる確率変数$f_n(x)$を**確率的な暗号化 (probabilistic encryption)**といいます.
-> - 暗号化関数$f\colon \set{0,1,2,3}\times\binset^\ast\to\binset^\ast$は, 全ての$x\ne y \in\set{0,1,2,3}$に対して, 二つの確率的な暗号化$(f_n(x))_n$と$(f_n(y))_n$が任意の多項式時間アルゴリズムにとって識別不可能なとき, **安全(secure)**という. つまり, 任意の多項式時間アルゴリズム$A$と十分大きな$n\in\Nat$に対して
+> - 関数$f\colon \set{0,1,2,3} \times \binset^{\ast} \to \binset^{\ast}$ は、任意の$x\ne y\in\set{0,1,2,3}$と任意の$r,s\in\binset^{\ast}$に対して$f(x,r)\ne f(y,s)$を満たすとき、**暗号化関数**という。
+> - セキュリティパラメータ$n\in\Nat$に対し、$r\sim\binset^n$、$f_n(x)=f(x,r)$として得られる確率変数$f_n(x)$を**確率的な暗号化**という。
+> - 暗号化関数$f\colon \set{0,1,2,3}\times\binset^\ast\to\binset^\ast$は、全ての$x\ne y \in\set{0,1,2,3}$に対して、二つの確率的な暗号化$(f_n(x))_n$と$(f_n(y))_n$が任意の多項式時間アルゴリズムにとって識別不可能なとき、**安全**という。つまり、任意の多項式時間アルゴリズム$A$と十分大きな$n\in\Nat$に対して
 >   
 >   $$
   \begin{align*}
