@@ -11,11 +11,11 @@ parent: 平均時計算量理論
 ## 概要
 
 
-平均時計算量において脱乱化などの応用を考える文脈では、**困難性の増幅**と呼ばれる、弱い平均時困難性を持つ関数$f$から強い平均時困難性を持つ関数$g$を構成する手法が研究されている。
+平均時計算量において脱乱化などの応用を考える文脈では、 **困難性の増幅** と呼ばれる、弱い平均時困難性を持つ関数 $f$ から強い平均時困難性を持つ関数 $g$ を構成する手法が研究されている。
 
-**XOR補題**はその中でも代表的なものの一つである。
+**XOR補題** はその中でも代表的なものの一つである。
 主張を述べるために準備をする。
-関数$f\colon \binset^n\to\binset$に対して関数$f^{\oplus k}\colon \binset^{kn} \to \binset$を, $y\in\binset^{kn}$を$n$ビットずつ区切って$y = (x_1,\dots,x_k)$としたとき
+関数 $f\colon \binset^n\to\binset$ に対して関数 $f^{\oplus k}\colon \binset^{kn} \to \binset$ を、 $y\in\binset^{kn}$ を $n$ ビットずつ区切って $y = (x_1,\dots,x_k)$ としたとき
 
 $$
   \begin{align*}
@@ -24,12 +24,12 @@ $$
 $$
 
 で定める。
-ここで$\oplus$はXORを表す。
-XOR補題とは、元の関数$f$がある簡潔な関数族$\calF$に対し$\delta$-困難であるとき、$k$が十分大きければ$f^{\oplus k}$はもう少し簡潔な関数族$\calF'$に対し
+ここで $\oplus$ はXORを表す。
+XOR補題とは、元の関数 $f$ がある簡潔な関数族 $\calF$ に対し $\delta$-困難であるとき、 $k$ が十分大きければ $f^{\oplus k}$ はもう少し簡潔な関数族 $\calF'$ に対し
 $(1/2-\varepsilon)$-困難となることを主張する。
-特に$\calF,\calF'$として小さい回路族を考えるものを**YaoのXOR補題**という。
+特に $\calF,\calF'$ として小さい回路族を考えるものを **YaoのXOR補題** という。
 
-なお, [相関]({{site.baseurl}}/docs/average_case_complexity/average_case_hardness#相関に基づく定義)の言葉で述べると, (1)の関数$f^{\oplus k}$は
+なお、[相関]({{site.baseurl}}/docs/average_case_complexity/average_case_hardness#相関に基づく定義)の言葉で述べると、 (1)の関数 $f^{\oplus k}$ は
 
 $$
   \begin{align*}
@@ -64,17 +64,17 @@ $$
 > となります. 最後の$\approx$は統計距離(total variation distance)の意味で近いことを意味し, 具体的には両者の間の統計距離は$2^{-\Omega(k\delta)}$となります.
 > ですので, $k \gg \log(1/\varepsilon)/\delta$のとき, $y\sim\binset^{kn}$に対し$f^{\oplus k}(y)\approx_c \Ber(1/2)$となり, これはすなわち$f^{\oplus k}$は$(1/2-\varepsilon)$-困難であることを意味します.
 
-ここではYaoのXOR補題を述べます.
-サイズ$s$以下の回路全体の集合を$\SIZE(s)$と表します. なお, ここで考える回路とはAND, OR, NOTゲートを繋げたものであり, ANDとORゲートの入力素子数(fan-in)は2です.
-回路のサイズはその回路に含まれるAND,OR,NOTゲートの個数とします.
+ここではYaoのXOR補題を述べる。
+サイズ $s$ 以下の回路全体の集合を $\SIZE(s)$ と表す。なお、ここで考える回路とはAND, OR, NOTゲートを繋げたものであり、ANDとORゲートの入力素子数（fan-in）は2である。
+回路のサイズはその回路に含まれるAND,OR,NOTゲートの個数とする。
 
 {: .theorem-title }
 > **定理 (YaoのXOR補題; informal).**
 >
-> ある定数$C>0$が存在して, パラメータ$n\in\Nat,\delta>0,\varepsilon>0$に対し$k\ge C\log(1/\varepsilon)/\delta$ならば以下が成り立つ:
-> 関数$f\colon \binset^n\to\binset$が$\SIZE(s)$に対して$\delta$-困難ならば, 式(1)で定まる関数$f^{\oplus k}$は適当な$s'\lesssim s$に対し, $\SIZE(s')$に対して$(1/2-\varepsilon)$-困難である.
+> ある定数 $C>0$ が存在して、パラメータ $n\in\Nat,\delta>0,\varepsilon>0$ に対し $k\ge C\log(1/\varepsilon)/\delta$ ならば以下が成り立つ：
+> 関数 $f\colon \binset^n\to\binset$ が $\SIZE(s)$ に対して $\delta$-困難ならば、式(1)で定まる関数 $f^{\oplus k}$ は適当な $s'\lesssim s$ に対し、 $\SIZE(s')$ に対して $(1/2-\varepsilon)$-困難である。
 
-また, [相関]({{site.baseurl}}/docs/average_case_complexity/average_case_hardness#相関に基づく定義)の言葉で述べると以下のようになります.
+また、[相関]({{site.baseurl}}/docs/average_case_complexity/average_case_hardness#相関に基づく定義)の言葉で述べると以下のようになる。
 
 {: .theorem-title }
 > **定理 (YaoのXOR補題; 相関を用いたステートメント)**

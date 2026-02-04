@@ -2,5 +2,8 @@
   "cSpell.words": [
     "Feige",
     "STACS"
-  ]
+  ],
+  "editor.suggest.showSnippets": true,
+  "editor.snippetSuggestions": "top",
+  "editor.tabCompletion": "on"
 }

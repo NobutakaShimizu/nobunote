@@ -11,7 +11,7 @@ nav_order: 2
 
 ## 概要
 
-$f$-ダイバージェンスは、[KLダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/kl_divergence)や[$\chi^2$ダイバージェンス]( {{site.baseurl}}/docs/information_theory/f_divergence/chi2_divergence)を特殊ケースとして含む広いクラスの確率分布間の距離尺度である。これらのダイバージェンスが満たす重要な性質（**非負性**や**凸性**など）はより一般に $f$-ダイバージェンスに対して成り立つ。
+$f$-ダイバージェンスは、[KLダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/kl_divergence)や[$\chi^2$ダイバージェンス]( {{site.baseurl}}/docs/information_theory/f_divergence/chi2_divergence)を特殊ケースとして含む広いクラスの確率分布間の距離尺度である。これらのダイバージェンスが満たす重要な性質（ **非負性** や **凸性** など）はより一般に $f$-ダイバージェンスに対して成り立つ。
 Bregmanダイバージェンスとは異なる概念であり、KLダイバージェンスは両者の唯一の交差点である。
 
 ## 定義
@@ -19,7 +19,7 @@ Bregmanダイバージェンスとは異なる概念であり、KLダイバー�
 {: .definition-title }
 > **定義 ($f$-ダイバージェンス)**
 >
-> 有限集合$\calX$上に値をとる二つの確率変数 $X,Y$ と, 凸関数 $f: (0,\infty) \to \mathbb{R}$ に対して, 以下で定義される量 $\fdiv{f}{X}{Y}$ を $X$ から $Y$ への **$f$-ダイバージェンス** という:
+> 有限集合 $\calX$ 上に値をとる二つの確率変数 $X,Y$ と、凸関数 $f: (0,\infty) \to \mathbb{R}$ に対して、以下で定義される量 $\fdiv{f}{X}{Y}$ を $X$ から $Y$ への **$f$-ダイバージェンス** という：
 >
 > $$
   \begin{align*}
@@ -28,7 +28,7 @@ Bregmanダイバージェンスとは異なる概念であり、KLダイバー�
   \end{align*}
 > $$
 >
-> ここで, $f$ は $f(1)=0$ を満たすとする. また, $f(0) = \lim_{t \to 0^+} f(t)$と約束し, $\Pr[Y=x] = 0$かつ$\Pr[X=x] > 0$の場合は$D_f(X \| Y) = \infty$とする.
+> ここで、 $f$ は $f(1)=0$ を満たすとする。また、 $f(0) = \lim_{t \to 0^+} f(t)$ と約束し、 $\Pr[Y=x] = 0$ かつ $\Pr[X=x] > 0$ の場合は $D_f(X \| Y) = \infty$ とする。
 
 例えば以下の値は $f$-ダイバージェンスの特殊ケースとして表現できます:
 - [KLダイバージェンス]({{site.baseurl}}/docs/information_theory/f_divergence/kl_divergence): $f(t) = t \ln t$
@@ -38,11 +38,11 @@ Bregmanダイバージェンスとは異なる概念であり、KLダイバー�
 ## 基本的性質
 
 {: .proposition }
-> 任意の確率変数$X,Y$に対して $\fdiv{f}{X}{Y}\ge 0$.
+> 任意の確率変数 $X,Y$ に対して $\fdiv{f}{X}{Y}\ge 0$。
 
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item">証明</summary>
-  $f$は凸なので, Jensenの不等式から
+  $f$ は凸なので、Jensenの不等式から
 
   $$
     \begin{align*}
@@ -60,14 +60,14 @@ $f$-ダイバージェンスは、二つの確率単体上のベクトルを受�
 {: .definition-title }
 > **定義 (確率変数の凸結合)**
 >
-> 確率変数$X_1,\dots,X_n$ と $[n]$ 上に値を取る確率変数 $I$ に対し, $\E_{I}[X_I]$を,
-> まず$I$を選び, その後に$X_I$を出力する確率変数として定義する.
+> 確率変数 $X_1,\dots,X_n$ と $[n]$ 上に値を取る確率変数 $I$ に対し、 $\E_{I}[X_I]$ を、
+> まず $I$ を選び、その後に $X_I$ を出力する確率変数として定義する。
 
 {: .proposition-title }
 > **命題 ($f$-ダイバージェンスの凸性)**
 >
-> $\fdiv{f}{\cdot}{\cdot}$は凸関数である。すなわち、
-> 確率変数 $X_1,X_2$と$Y_1,Y_2$に対して、任意の$\lambda \in [0,1]$に対し
+> $\fdiv{f}{\cdot}{\cdot}$ は凸関数である。すなわち、
+> 確率変数 $X_1,X_2$ と $Y_1,Y_2$ に対して、任意の $\lambda \in [0,1]$ に対し
 > 
 > $$
   \begin{align*}
@@ -77,7 +77,7 @@ $f$-ダイバージェンスは、二つの確率単体上のベクトルを受�
 <details markdown="1" style="background-color: #eee;">
 <summary style="display: list-item">証明 (簡単のため $f$ は2回微分可能とする)</summary>
 
-関数 $g\colon (x,y)\mapsto yf(x/y)$ を考える（$x\geq 0, y>0$）。この関数$g$のヘシアンは
+関数 $g\colon (x,y)\mapsto yf(x/y)$ を考える（ $x\geq 0, y>0$ ）。この関数 $g$ のヘシアンは
     
 $$\begin{align*}
           H = \frac{f''(x/y)}{y}

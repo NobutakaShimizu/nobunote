@@ -14,8 +14,8 @@ parent: 平均時計算量理論
 
 ハードコア補題とは [Impagliazzo (1995)](https://ieeexplore.ieee.org/document/492584)の結果で、[XOR補題]({{site.baseurl}}/docs/average_case_complexity/Yao_XOR)など平均時計算量の様々な定理の証明に用いることができる非常に便利な定理である。
 
-サイズ$s$以下の回路全体の集合を$\SIZE(s)$とする。
-部分集合$H\subseteq\binset^n$は$|H|\ge \delta 2^n$を満たすとき**$\delta$-密**であると呼ぶことにする。
+サイズ $s$ 以下の回路全体の集合を $\SIZE(s)$ とする。
+部分集合 $H\subseteq\binset^n$ は $|H|\ge \delta 2^n$ を満たすとき **$\delta$-密** であると呼ぶことにする。
 
 <div id="hardcore-set" markdown="1">
 {: .theorem-title }
@@ -34,8 +34,8 @@ parent: 平均時計算量理論
 > ここで$o(1)$の項は$n^{-\omega(1)}$にとれる.
 </div>
 
-弱い平均時困難性を持つ任意の関数$f$では、任意の小さい回路はそこそこの割合の入力で誤った値を出力するが、ハードコア補題はその関数$f$の困難性を凝縮したような入力部分集合$H\subset\binset^n$が存在して、$H$上では$f(x)$の計算が非常に困難になることを示す。
-このような$H$を**ハードコア集合**という。
+弱い平均時困難性を持つ任意の関数 $f$ では、任意の小さい回路はそこそこの割合の入力で誤った値を出力するが、ハードコア補題はその関数 $f$ の困難性を凝縮したような入力部分集合 $H\subset\binset^n$ が存在して、 $H$ 上では $f(x)$ の計算が非常に困難になることを示す。
+このような $H$ を **ハードコア集合** という。
 
 {: align="center"}
   ![ハードコア補題のイメージ]({{site.baseurl}}/docs/average_case_complexity/images/hardcore_image.svg)
@@ -43,12 +43,12 @@ parent: 平均時計算量理論
 
 ## 擬似ランダムネスからの理解
 
-$\delta$-困難な関数$f\colon\binset^n\to\binset$を考える。
-この困難性は、一様ランダムな$x\sim\binset^n$に対して確率変数$f(x)$は確率$\delta$で表が出るコイントス$\mathrm{Ber}(\delta)$と(計算量的に)識別できないことを意味し、特に$\delta\approx 1/2$のときはフェアなコイントスと識別できない。
-さて、$\delta$-困難な関数$f$に対してハードコア補題により保証されるハードコア集合を$H\subseteq\binset^n$とする。
-$H$上では関数$f$は$(1/2-\varepsilon)$-困難であるので、($\varepsilon\approx 0$のとき)一様ランダムな$x\sim H$に対して$f(x)$は$\mathrm{Ber}(1/2)$と識別できない。
+$\delta$-困難な関数 $f\colon\binset^n\to\binset$ を考える。
+この困難性は、一様ランダムな $x\sim\binset^n$ に対して確率変数 $f(x)$ は確率 $\delta$ で表が出るコイントス $\mathrm{Ber}(\delta)$ と（計算量的に）識別できないことを意味し、特に $\delta\approx 1/2$ のときはフェアなコイントスと識別できない。
+さて、 $\delta$-困難な関数 $f$ に対してハードコア補題により保証されるハードコア集合を $H\subseteq\binset^n$ とする。
+$H$ 上では関数 $f$ は $(1/2-\varepsilon)$-困難であるので、（ $\varepsilon\approx 0$ のとき）一様ランダムな $x\sim H$ に対して $f(x)$ は $\mathrm{Ber}(1/2)$ と識別できない。
 
-これを鑑みて, ランダム関数$f_H$を
+これを鑑みて、ランダム関数 $f_H$ を
 
 $$
   \begin{align*}
@@ -59,9 +59,9 @@ $$
   \end{align*}
 $$
 
-と定義します (各$x\in H$ごとに独立ランダムに$f(x)$の値を定める).
-すると$f$と$f_H$は識別不可能性が成り立つことが期待されます.
-この直感は実際に成り立ち, 一様ランダムな$x\sim\binset^n$に対して二つの確率変数
+と定義する（各 $x\in H$ ごとに独立ランダムに $f(x)$ の値を定める）。
+すると $f$ と $f_H$ は識別不可能性が成り立つことが期待される。
+この直感は実際に成り立ち、一様ランダムな $x\sim\binset^n$ に対して二つの確率変数
 
 $$
   \begin{align*}
@@ -69,13 +69,13 @@ $$
   \end{align*}
 $$
 
-の識別困難性がハードコア補題から証明することができます (cf. [[Healy, Vadhan, Viola, SICOMP(2006)]](https://epubs.siam.org/doi/10.1137/S0097539705447281), Lemma 3.2).
+の識別困難性がハードコア補題から証明することができる（cf. [[Healy, Vadhan, Viola, SICOMP(2006)]](https://epubs.siam.org/doi/10.1137/S0097539705447281), Lemma 3.2）。
 
 
 
 ## パラメータの改善
 
-[ハードコア補題](#hardcore-set)では, ハードコア集合$H$上で困難性を議論する回路のサイズは$O(\delta^2\varepsilon^2 s)$になっていましたが, このバウンドを改善し, より大きなサイズ$s\cdot O(\varepsilon^2/\log(1/\delta))$回路に対する困難性を主張することができます [[Krivans, Servedio, Machine Learning(2003)]](https://link.springer.com/article/10.1023/A:1022949332276), [[Barak, Hardt, Kale, SODA(2009)]](https://epubs.siam.org/doi/10.1137/1.9781611973068.129).
+[ハードコア補題](#hardcore-set)では、ハードコア集合 $H$ 上で困難性を議論する回路のサイズは $O(\delta^2\varepsilon^2 s)$ になっていたが、このバウンドを改善し、より大きなサイズ $s\cdot O(\varepsilon^2/\log(1/\delta))$ 回路に対する困難性を主張することができる [[Krivans, Servedio, Machine Learning(2003)]](https://link.springer.com/article/10.1023/A:1022949332276), [[Barak, Hardt, Kale, SODA(2009)]](https://epubs.siam.org/doi/10.1137/1.9781611973068.129)。
 
 <div id="hardcore-set" markdown="1">
 {: .theorem-title }
@@ -96,7 +96,7 @@ $$
 
 # ハードコア補題の証明
 
-ハードコア補題はブースティングに基づく証明とvon-Neumannのminimax定理に基づく証明の二通りの証明が有名ですが, ここでは前者の証明を解説します.
+ハードコア補題はブースティングに基づく証明とvon-Neumannのminimax定理に基づく証明の二通りの証明が有名であるが、ここでは前者の証明を解説する。
 
 ## 概要
 対偶を証明します.

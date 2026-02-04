@@ -18,8 +18,8 @@ Hoeffdingの不等式は独立な確率変数の和の集中性を与える基�
 {: .theorem-title }
 > **定理 (Hoeffdingの不等式)**
 >
-> $X_1,\dots,X_n$を独立な確率変数, $S=\sum_{i\in[n]}X_i$とし, 任意の$i\in[n]$に対して$0\le X_i\le 1$とする.
-> このとき, 任意の$c \ge 0$に対して
+> $X_1,\dots,X_n$ を独立な確率変数、 $S=\sum_{i\in[n]}X_i$ とし、任意の $i\in[n]$ に対して $0\le X_i\le 1$ とする。
+> このとき、任意の $c \ge 0$ に対して
 >  
 > $$
   \begin{align*}
@@ -33,7 +33,7 @@ Hoeffdingの不等式は独立な確率変数の和の集中性を与える基�
 {: .theorem-title }
 > **定理 (一般化された区間に対するHoeffdingの不等式)**
 >
-> $X_1,\ldots,X_n$を独立な確率変数とし, 各$i$に対して$a_i \le X_i \le b_i$とする. $S = \sum_{i=1}^n X_i$とすると, 任意の$t > 0$に対して
+> $X_1,\ldots,X_n$ を独立な確率変数とし、各 $i$ に対して $a_i \le X_i \le b_i$ とする。 $S = \sum_{i=1}^n X_i$ とすると、任意の $t > 0$ に対して
 > 
 > $$
   \begin{align}
@@ -46,7 +46,7 @@ Hoeffdingの不等式は独立な確率変数の和の集中性を与える基�
 Hoeffdingの不等式は独立な確率変数の平均の集中性を示すのに特に有用である。
 
 {: .corollary }
-> $X_1,\ldots,X_n$を独立で$[0,1]$に値をとる確率変数とし, $\mu = \E[X_1]$とする. このとき, 任意の$\varepsilon > 0$に対して
+> $X_1,\ldots,X_n$ を独立で $[0,1]$ に値をとる確率変数とし、 $\mu = \E[X_1]$ とする。このとき、任意の $\varepsilon > 0$ に対して
 > 
 > $$
   \begin{align}

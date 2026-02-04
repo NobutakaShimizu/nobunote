@@ -88,6 +88,9 @@
 <loc>http://localhost:4000/nobunote/docs/average_case_complexity/hardcore/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/nobunote/docs/crypto/hardcore_predicate/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/nobunote/docs/concentration_inequalities/hoeffding/</loc>
 </url>
 <url>
@@ -98,6 +101,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/interactive_proofs/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/nobunote/docs/crypto/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/randomness/</loc>
@@ -152,6 +158,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/interactive_proofs/np_zero_knowledge/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/nobunote/docs/crypto/one_way_function/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nobunote/docs/column/order/</loc>

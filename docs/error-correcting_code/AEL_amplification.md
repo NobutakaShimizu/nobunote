@@ -20,12 +20,12 @@ parent: 誤り訂正符号
 
 ## AEL距離増幅の概要
 
-AEL距離増幅は、レートが高いが誤り訂正能力(=距離)の低い符号に対して作用させて、高い距離(=誤り訂正能力)を持つ符号を得るための手法である。[^AEL02]
+AEL距離増幅は、レートが高いが誤り訂正能力（=距離）の低い符号に対して作用させて、高い距離（=誤り訂正能力）を持つ符号を得るための手法である。[^AEL02]
 例えばKoppartyら(2017)はこの増幅手法を用いて局所復号可能な符号を初めて構成した。[^KMRS17]
 増幅に必要な道具は以下の二つである：
-- レートの高い符号$\calC\subseteq \F_q^n$
+- レートの高い符号 $\calC\subseteq \F_q^n$
 - 平衡二部正則[エクスパンダーグラフ]({{site.baseurl}}/docs/graph_theory/expander) $G=(L\cup R,E)$
-  - 頂点数は$\abs{L}=\abs{R}=n$、左右全ての頂点の次数は$d$であり、かつ$G$の正規化された隣接行列の非自明な固有値は絶対値$\lambda$以下であるとする。
+  - 頂点数は $\abs{L}=\abs{R}=n$、左右全ての頂点の次数は $d$ であり、かつ $G$ の正規化された隣接行列の非自明な固有値は絶対値 $\lambda$ 以下であるとする。
 
 [^AEL02]: N. Alon, J. Edmonds, M. Luby. "Linear time erasure codes with nearly optimal recovery." Proceedings of IEEE 36th Annual Foundations of Computer Science, 2002.
 [^KMRS17]: Swastik Kopparty, Or Meir, Noga Ron-Zewi, Shubhangi Saraf. "High-rate locally correctable and locally testable codes with sub-polynomial query complexity." Journal of the ACM, 2017.
